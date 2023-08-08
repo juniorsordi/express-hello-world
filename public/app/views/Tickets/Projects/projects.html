@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-12 col-lg-12" ng-init="initProjectsView()">
+		<div class="row">
+			<div class="col-10">
+				<input type="text" class="form-control" ng-model="filtro" placeholder="{{ 'Search' | translate }}" />
+			</div>
+			<div class="col">
+				<a class="btn btn-primary btn-sm " href="#!/projects/new" role="button"> <i class="fa fa-plus"></i> <span translate>Add Project</span></a>
+			</div>
+		</div>
+        
+		<div style="margin-top: 15px;cursor: pointer;">
+			
+		</div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Projects</h5>
+                        <p class="card-text">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Project Group</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Com Owner</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="project in projectsList | filter:filtro">
+                                        <th scope="row">{{ project.id }}</th>
+                                        <td>{{ project.name }}</td>
+                                        <td>{{ project.groupName }}</td>
+                                        <td>{{ project.priority }}</td>
+                                        <td>{{ project.typeName }}</td>
+                                        <td>{{ project.commercial_owner }}</td>
+                                        <td>
+                                            <i class="fa fa-chevron-right" aria-hidden="true" title="View Project Details"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+      feather.replace()
+    </script>
+</div>

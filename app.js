@@ -1,6 +1,11 @@
+require('dotenv').config();
 const express = require('express')
 const path = require("path");
-const app = express()
+const app = express();
+var bodyParser = require('body-parser');
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+
 
 // #############################################################################
 // Logs all request paths and method
@@ -10,6 +15,11 @@ app.use(function (req, res, next) {
   console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
   next();
 });
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(cookieParser());
+app.use(session({ secret: 'XASDASDA', saveUninitialized: true, resave: true }));
 
 // #############################################################################
 // This configures static hosting for files in /public that have the extensions
@@ -23,9 +33,17 @@ var options = {
   redirect: false
 }
 app.use(express.static('public', options))
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, x-access-token');
+  res.header('Access-Control-Max-Age', 600);
+  next();
+});
 
 // #############################################################################
 // Catch all handler for all other request.
+/*
 app.use('*', (req,res) => {
   res.json({
       at: new Date().toISOString(),
@@ -38,6 +56,34 @@ app.use('*', (req,res) => {
       params: req.params
     })
     .end()
-})
+});
+//*/
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/api/test', function (req, res) { 
+  res.send('hello world'); 
+});
+
+app.use('/api/', require('./server/routes/authRoutes'));
+/*
+
+app.use('/api/v1/', require('./server/routes/tickets.routes'));
+app.use('/api/v1/', require('./server/routes/projectsRoute'));
+app.use('/api/v1/', require('./server/routes/financesRoute'));
+//app.use('/api/v1/', require('./server/routes/logisticsRoutes'));
+app.use('/api/v1/', require('./server/routes/companyRoute'));
+//*/
+
+var errorHandler = function (err, req, res, next) {
+  console.error(err);
+  res.status(422);
+  //res.send({ error: err });
+  res.json({ message: err.message });
+};
+
+app.use(errorHandler);
+process.on('uncaughtException', function (error) {
+  console.error(error.stack);
+});
 
 module.exports = app

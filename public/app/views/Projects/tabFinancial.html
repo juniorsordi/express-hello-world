@@ -1,0 +1,138 @@
+<div class="row" ng-controller="FinancesController">
+    <div class="col-12 mb-2">
+        <h5 class="card-title mb-0" align="center"><span translate>Financial</span> {{ versao }}</h5>
+        <div class="row mb-3">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" translate>Incomes</h5>
+                        <p class="card-text">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" translate>Title</th>
+                                        <th scope="col" translate>FINANCIAL_DUE_DATE</th>
+                                        <th scope="col" translate>Amount</th>
+                                        <th scope="col" translate>Paid</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="income in incomesList">
+                                        <th scope="row">{{ ($index+1) }}</th>
+                                        <td>{{ income.titulo }}</td>
+                                        <td>{{ income.data_vencto | date }}</td>
+                                        <td>{{ income.valor | currency }}</td>
+                                        <td>{{ income.pago }}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="3" align="right">Total</th>
+                                        <td>
+                                            {{ (incomesList | sumByKey:'valor') | currency }}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <button class="btn btn-secondary" type="button" ng-click="openModalFinanceMovement(2)"><i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span> </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" translate>Expenses</h5>
+                        <p class="card-text">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" translate>Title</th>
+                                        <th scope="col" translate>FINANCIAL_DUE_DATE</th>
+                                        <th scope="col" translate>Amount</th>
+                                        <th scope="col" translate>Paid</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="payment in paymentsList">
+                                        <th scope="row">{{ ($index+1) }}</th>
+                                        <td>{{ payment.titulo }}</td>
+                                        <td>{{ payment.data_vencto | date }}</td>
+                                        <td>{{ payment.valor | currency }}</td>
+                                        <td>{{ payment.pago }}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="3" align="right">Total</th>
+                                        <td>
+                                            {{ (paymentsList | sumByKey:'valor') | currency }}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <button class="btn btn-secondary" type="button" ng-click="openModalFinanceMovement(1)"><i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span> </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <i class="fa fa-refresh" aria-hidden="true" ng-click="reloadFinancialTab()"></i>
+    </div>
+    <br>
+    <div>
+        {{ projectInfo.cashflow }}
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0"><span translate>Financial</span> {{ versao }}</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-md-12" align="center">
+                    <h3 align="center">Unpaid Hours</h3>
+                    Total: <b>{{ projectInfo.unpaidHours | number:2 }} Hours</b>
+                    <br>
+                    <button class="btn btn-primary btn-sm " role="button" ng-click="generatePaymentInvoice()"> Generate Invoice</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 align="center">Income Entries</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Due Date</th>
+                                    <th scope="col">Paid Date</th>
+                                    <th scope="col">Hours Charged</th>
+                                    <th scope="col">Total Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="entry in incomeEntries" class="">
+                                    <td scope="row">{{ entry.dueDate | date:'dd/MM/yyyy' }}</td>
+                                    <td>{{ entry.paidDate | date:'dd/MM/yyyy' }}</td>
+                                    <td>{{ entry.totalHours }}</td>
+                                    <td>{{ (entry.totalHours * entry.hourPrice) | currency: 'R$ ' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </p>
+    </div>
+</div>
+<!--div ng-include="'app/views/Modals/ModalFinanceInvoice.html'"></div-->

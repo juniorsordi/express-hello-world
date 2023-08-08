@@ -1,0 +1,1808 @@
+<div class="panel-content" id="plans_panel">
+
+    <script
+        src="https://assets.artia.com/assets/artia/artia.plans-777ffb83a3bde0977cfe350ab1bd9dbc500c85aeed8665e21cf492b7110f0a3d.js"></script>
+
+    <table class="plans-table" id="plans-table" width="100%">
+        <tbody>
+            <tr class="plans" id="plans-header">
+                <td class="plan-text" style="background: none;">
+                    <div class="plan-text-inner">
+                        <div class="recurrence-type">
+                            <p>
+                                Tipo de recorrência
+                            </p>
+                        </div>
+                        <div class="plan-toggle-container">
+                            <input class="recurrence-input toggle" onclick="toggle_values('trial')" type="checkbox"
+                                value="monthly">
+                            <div class="switch">
+                                <div class="inner">
+                                    <div class="disc"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="recurrence-type user-amount">
+                            <p>
+                                Quantidade de Usuários
+                            </p>
+                            <div class="user-counter-input">
+                                <input id="total_users" min="3"
+                                    onblur="ehnoisApplication.adjustPlanValue(false, [], {&quot;id&quot;:8,&quot;free_monthly&quot;:0.0,&quot;free_yearly&quot;:0.0,&quot;free_leaders&quot;:1,&quot;free_communities&quot;:1,&quot;free_disk_space&quot;:314572800,&quot;free_extra_monthly&quot;:0.0,&quot;free_extra_yearly&quot;:0.0,&quot;free_extra_disk_space&quot;:0,&quot;light_monthly&quot;:180.0,&quot;light_yearly&quot;:1792.8,&quot;light_leaders&quot;:3,&quot;light_communities&quot;:1,&quot;light_disk_space&quot;:3221225472,&quot;light_extra_monthly&quot;:0.0,&quot;light_extra_yearly&quot;:0.0,&quot;light_extra_disk_space&quot;:0,&quot;pro_monthly&quot;:390.0,&quot;pro_yearly&quot;:3884.4,&quot;pro_leaders&quot;:3,&quot;pro_communities&quot;:99,&quot;pro_disk_space&quot;:1073741824000,&quot;pro_extra_monthly&quot;:0.0,&quot;pro_extra_yearly&quot;:0.0,&quot;pro_extra_disk_space&quot;:0,&quot;workgroups_monthly&quot;:450.0,&quot;workgroups_yearly&quot;:4482.0,&quot;workgroups_leaders&quot;:3,&quot;workgroups_communities&quot;:99,&quot;workgroups_disk_space&quot;:1073741824000,&quot;workgroups_extra_monthly&quot;:0.0,&quot;workgroups_extra_yearly&quot;:0.0,&quot;workgroups_extra_disk_space&quot;:0,&quot;corporate_monthly&quot;:0.0,&quot;corporate_yearly&quot;:0.0,&quot;corporate_leaders&quot;:3,&quot;corporate_communities&quot;:99,&quot;corporate_disk_space&quot;:1073741824000,&quot;corporate_extra_monthly&quot;:0.0,&quot;corporate_extra_yearly&quot;:0.0,&quot;corporate_extra_disk_space&quot;:0,&quot;version&quot;:&quot;Novos Planos por Usuário 2022&quot;,&quot;begin&quot;:&quot;2022-06-10T15:37:33.000-03:00&quot;,&quot;end&quot;:&quot;2022-05-02T08:26:02.000-03:00&quot;,&quot;active&quot;:true,&quot;created_at&quot;:&quot;2022-05-01T20:44:09.000-03:00&quot;,&quot;updated_at&quot;:&quot;2022-06-10T15:37:35.000-03:00&quot;,&quot;free_can_copy&quot;:false,&quot;light_can_copy&quot;:false,&quot;pro_can_copy&quot;:true,&quot;workgroups_can_copy&quot;:true,&quot;corporate_can_copy&quot;:true,&quot;free_can_calculate_activities&quot;:false,&quot;light_can_calculate_activities&quot;:false,&quot;pro_can_calculate_activities&quot;:true,&quot;workgroups_can_calculate_activities&quot;:true,&quot;corporate_can_calculate_activities&quot;:true,&quot;deleted_at&quot;:null,&quot;free_can_personalize_logo&quot;:false,&quot;light_can_personalize_logo&quot;:false,&quot;pro_can_personalize_logo&quot;:true,&quot;workgroups_can_personalize_logo&quot;:true,&quot;corporate_can_personalize_logo&quot;:true,&quot;free_folders&quot;:5,&quot;light_folders&quot;:0,&quot;pro_folders&quot;:0,&quot;workgroups_folders&quot;:0,&quot;corporate_folders&quot;:0,&quot;free_export_limit&quot;:500,&quot;light_export_limit&quot;:500,&quot;pro_export_limit&quot;:500,&quot;workgroups_export_limit&quot;:500,&quot;corporate_export_limit&quot;:500,&quot;free_can_schedule_by_resource&quot;:false,&quot;light_can_schedule_by_resource&quot;:false,&quot;pro_can_schedule_by_resource&quot;:true,&quot;workgroups_can_schedule_by_resource&quot;:true,&quot;corporate_can_schedule_by_resource&quot;:true,&quot;free_can_import_project_xml&quot;:false,&quot;light_can_import_project_xml&quot;:false,&quot;pro_can_import_project_xml&quot;:true,&quot;workgroups_can_import_project_xml&quot;:true,&quot;corporate_can_import_project_xml&quot;:true,&quot;free_can_use_finances&quot;:false,&quot;light_can_use_finances&quot;:false,&quot;pro_can_use_finances&quot;:true,&quot;workgroups_can_use_finances&quot;:true,&quot;corporate_can_use_finances&quot;:true,&quot;values&quot;:{&quot;BRL&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:180.0,&quot;yearly&quot;:1792.8,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:390.0,&quot;yearly&quot;:3884.4,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:450.0,&quot;yearly&quot;:4482.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;USD&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;EUR&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}}},&quot;free_can_customize_statuses&quot;:false,&quot;light_can_customize_statuses&quot;:true,&quot;pro_can_customize_statuses&quot;:true,&quot;workgroups_can_customize_statuses&quot;:true,&quot;corporate_can_customize_statuses&quot;:true,&quot;free_can_customize_categories&quot;:false,&quot;light_can_customize_categories&quot;:false,&quot;pro_can_customize_categories&quot;:true,&quot;workgroups_can_customize_categories&quot;:true,&quot;corporate_can_customize_categories&quot;:true,&quot;free_other_users&quot;:1,&quot;light_other_users&quot;:0,&quot;pro_other_users&quot;:1,&quot;workgroups_other_users&quot;:1,&quot;corporate_other_users&quot;:1,&quot;free_total_users&quot;:null,&quot;light_total_users&quot;:0,&quot;pro_total_users&quot;:0,&quot;workgroups_total_users&quot;:0,&quot;corporate_total_users&quot;:0,&quot;trial_monthly&quot;:0.0,&quot;trial_yearly&quot;:0.0,&quot;trial_leaders&quot;:10,&quot;trial_communities&quot;:99,&quot;trial_disk_space&quot;:314572800,&quot;trial_extra_monthly&quot;:0.0,&quot;trial_extra_yearly&quot;:0.0,&quot;trial_extra_disk_space&quot;:0,&quot;trial_can_copy&quot;:true,&quot;trial_can_calculate_activities&quot;:true,&quot;trial_can_personalize_logo&quot;:true,&quot;trial_folders&quot;:0,&quot;trial_export_limit&quot;:500,&quot;trial_can_schedule_by_resource&quot;:true,&quot;trial_can_import_project_xml&quot;:true,&quot;trial_can_use_finances&quot;:true,&quot;trial_can_customize_statuses&quot;:true,&quot;trial_can_customize_categories&quot;:true,&quot;trial_other_users&quot;:1,&quot;trial_total_users&quot;:10,&quot;free_can_use_reports&quot;:false,&quot;light_can_use_reports&quot;:false,&quot;pro_can_use_reports&quot;:true,&quot;workgroups_can_use_reports&quot;:true,&quot;corporate_can_use_reports&quot;:true,&quot;trial_can_use_reports&quot;:true,&quot;free_report_limit&quot;:1000,&quot;light_report_limit&quot;:1000,&quot;pro_report_limit&quot;:1000,&quot;workgroups_report_limit&quot;:1000,&quot;corporate_report_limit&quot;:1000,&quot;trial_report_limit&quot;:1000,&quot;free_can_use_wiki&quot;:false,&quot;light_can_use_wiki&quot;:false,&quot;pro_can_use_wiki&quot;:true,&quot;workgroups_can_use_wiki&quot;:true,&quot;corporate_can_use_wiki&quot;:true,&quot;trial_can_use_wiki&quot;:true,&quot;free_can_use_advanced_gantt&quot;:false,&quot;light_can_use_advanced_gantt&quot;:false,&quot;pro_can_use_advanced_gantt&quot;:true,&quot;workgroups_can_use_advanced_gantt&quot;:true,&quot;corporate_can_use_advanced_gantt&quot;:true,&quot;trial_can_use_advanced_gantt&quot;:true,&quot;free_support_chat&quot;:false,&quot;free_support_phone&quot;:false,&quot;free_support_ticket&quot;:true,&quot;free_support_has_sla&quot;:false,&quot;light_support_chat&quot;:false,&quot;light_support_phone&quot;:false,&quot;light_support_ticket&quot;:true,&quot;light_support_has_sla&quot;:false,&quot;pro_support_chat&quot;:true,&quot;pro_support_phone&quot;:true,&quot;pro_support_ticket&quot;:true,&quot;pro_support_has_sla&quot;:false,&quot;workgroups_support_chat&quot;:true,&quot;workgroups_support_phone&quot;:true,&quot;workgroups_support_ticket&quot;:true,&quot;workgroups_support_has_sla&quot;:true,&quot;corporate_support_chat&quot;:true,&quot;corporate_support_phone&quot;:true,&quot;corporate_support_ticket&quot;:true,&quot;corporate_support_has_sla&quot;:true,&quot;trial_support_chat&quot;:true,&quot;trial_support_phone&quot;:true,&quot;trial_support_ticket&quot;:true,&quot;trial_support_has_sla&quot;:false,&quot;free_can_block_access_by_ip&quot;:false,&quot;trial_can_block_access_by_ip&quot;:true,&quot;light_can_block_access_by_ip&quot;:false,&quot;pro_can_block_access_by_ip&quot;:false,&quot;workgroups_can_block_access_by_ip&quot;:true,&quot;corporate_can_block_access_by_ip&quot;:true,&quot;free_can_use_baseline&quot;:false,&quot;light_can_use_baseline&quot;:false,&quot;pro_can_use_baseline&quot;:true,&quot;workgroups_can_use_baseline&quot;:true,&quot;corporate_can_use_baseline&quot;:true,&quot;trial_can_use_baseline&quot;:true,&quot;free_can_use_status_report&quot;:false,&quot;light_can_use_status_report&quot;:false,&quot;pro_can_use_status_report&quot;:true,&quot;workgroups_can_use_status_report&quot;:true,&quot;corporate_can_use_status_report&quot;:true,&quot;trial_can_use_status_report&quot;:true,&quot;free_can_use_wbs&quot;:false,&quot;light_can_use_wbs&quot;:false,&quot;pro_can_use_wbs&quot;:true,&quot;workgroups_can_use_wbs&quot;:true,&quot;corporate_can_use_wbs&quot;:true,&quot;trial_can_use_wbs&quot;:true,&quot;free_can_block_time_entry&quot;:false,&quot;light_can_block_time_entry&quot;:false,&quot;pro_can_block_time_entry&quot;:false,&quot;workgroups_can_block_time_entry&quot;:true,&quot;corporate_can_block_time_entry&quot;:true,&quot;trial_can_block_time_entry&quot;:true,&quot;free_can_use_additional_permissions&quot;:false,&quot;light_can_use_additional_permissions&quot;:false,&quot;pro_can_use_additional_permissions&quot;:true,&quot;workgroups_can_use_additional_permissions&quot;:true,&quot;corporate_can_use_additional_permissions&quot;:true,&quot;trial_can_use_additional_permissions&quot;:true,&quot;free_can_use_skills&quot;:false,&quot;light_can_use_skills&quot;:false,&quot;pro_can_use_skills&quot;:true,&quot;workgroups_can_use_skills&quot;:true,&quot;corporate_can_use_skills&quot;:true,&quot;trial_can_use_skills&quot;:true,&quot;free_can_use_strong_passwords&quot;:false,&quot;light_can_use_strong_passwords&quot;:false,&quot;pro_can_use_strong_passwords&quot;:false,&quot;workgroups_can_use_strong_passwords&quot;:true,&quot;corporate_can_use_strong_passwords&quot;:true,&quot;trial_can_use_strong_passwords&quot;:true,&quot;free_can_use_ranking&quot;:false,&quot;light_can_use_ranking&quot;:false,&quot;pro_can_use_ranking&quot;:true,&quot;workgroups_can_use_ranking&quot;:true,&quot;corporate_can_use_ranking&quot;:true,&quot;trial_can_use_ranking&quot;:true,&quot;free_can_use_kanban&quot;:true,&quot;light_can_use_kanban&quot;:true,&quot;pro_can_use_kanban&quot;:true,&quot;workgroups_can_use_kanban&quot;:true,&quot;corporate_can_use_kanban&quot;:true,&quot;trial_can_use_kanban&quot;:true,&quot;free_theme&quot;:&quot;full&quot;,&quot;light_theme&quot;:&quot;full&quot;,&quot;pro_theme&quot;:&quot;full&quot;,&quot;workgroups_theme&quot;:&quot;full&quot;,&quot;corporate_theme&quot;:&quot;full&quot;,&quot;trial_theme&quot;:&quot;full&quot;,&quot;free_can_use_custom_menu&quot;:false,&quot;light_can_use_custom_menu&quot;:false,&quot;pro_can_use_custom_menu&quot;:true,&quot;workgroups_can_use_custom_menu&quot;:true,&quot;corporate_can_use_custom_menu&quot;:true,&quot;theme_plan&quot;:&quot;full&quot;,&quot;trial_can_use_custom_menu&quot;:true,&quot;free_default_plan&quot;:false,&quot;light_default_plan&quot;:false,&quot;pro_default_plan&quot;:false,&quot;workgroups_default_plan&quot;:false,&quot;corporate_default_plan&quot;:false,&quot;trial_default_plan&quot;:false,&quot;trial_can_activity_recurrence_scheduled&quot;:true,&quot;free_can_activity_recurrence_scheduled&quot;:false,&quot;light_can_activity_recurrence_scheduled&quot;:false,&quot;pro_can_activity_recurrence_scheduled&quot;:true,&quot;workgroups_can_activity_recurrence_scheduled&quot;:true,&quot;corporate_can_activity_recurrence_scheduled&quot;:true,&quot;trial_can_agreement_management&quot;:true,&quot;free_can_agreement_management&quot;:false,&quot;light_can_agreement_management&quot;:false,&quot;pro_can_agreement_management&quot;:false,&quot;workgroups_can_agreement_management&quot;:true,&quot;corporate_can_agreement_management&quot;:true,&quot;free_has_checklist&quot;:true,&quot;light_has_checklist&quot;:true,&quot;pro_has_checklist&quot;:true,&quot;workgroups_has_checklist&quot;:true,&quot;corporate_has_checklist&quot;:true,&quot;trial_has_checklist&quot;:true})"
+                                    onchange="change_users('trial');"
+                                    onkeyup="ehnoisApplication.adjustPlanValue(false, [], {&quot;id&quot;:8,&quot;free_monthly&quot;:0.0,&quot;free_yearly&quot;:0.0,&quot;free_leaders&quot;:1,&quot;free_communities&quot;:1,&quot;free_disk_space&quot;:314572800,&quot;free_extra_monthly&quot;:0.0,&quot;free_extra_yearly&quot;:0.0,&quot;free_extra_disk_space&quot;:0,&quot;light_monthly&quot;:180.0,&quot;light_yearly&quot;:1792.8,&quot;light_leaders&quot;:3,&quot;light_communities&quot;:1,&quot;light_disk_space&quot;:3221225472,&quot;light_extra_monthly&quot;:0.0,&quot;light_extra_yearly&quot;:0.0,&quot;light_extra_disk_space&quot;:0,&quot;pro_monthly&quot;:390.0,&quot;pro_yearly&quot;:3884.4,&quot;pro_leaders&quot;:3,&quot;pro_communities&quot;:99,&quot;pro_disk_space&quot;:1073741824000,&quot;pro_extra_monthly&quot;:0.0,&quot;pro_extra_yearly&quot;:0.0,&quot;pro_extra_disk_space&quot;:0,&quot;workgroups_monthly&quot;:450.0,&quot;workgroups_yearly&quot;:4482.0,&quot;workgroups_leaders&quot;:3,&quot;workgroups_communities&quot;:99,&quot;workgroups_disk_space&quot;:1073741824000,&quot;workgroups_extra_monthly&quot;:0.0,&quot;workgroups_extra_yearly&quot;:0.0,&quot;workgroups_extra_disk_space&quot;:0,&quot;corporate_monthly&quot;:0.0,&quot;corporate_yearly&quot;:0.0,&quot;corporate_leaders&quot;:3,&quot;corporate_communities&quot;:99,&quot;corporate_disk_space&quot;:1073741824000,&quot;corporate_extra_monthly&quot;:0.0,&quot;corporate_extra_yearly&quot;:0.0,&quot;corporate_extra_disk_space&quot;:0,&quot;version&quot;:&quot;Novos Planos por Usuário 2022&quot;,&quot;begin&quot;:&quot;2022-06-10T15:37:33.000-03:00&quot;,&quot;end&quot;:&quot;2022-05-02T08:26:02.000-03:00&quot;,&quot;active&quot;:true,&quot;created_at&quot;:&quot;2022-05-01T20:44:09.000-03:00&quot;,&quot;updated_at&quot;:&quot;2022-06-10T15:37:35.000-03:00&quot;,&quot;free_can_copy&quot;:false,&quot;light_can_copy&quot;:false,&quot;pro_can_copy&quot;:true,&quot;workgroups_can_copy&quot;:true,&quot;corporate_can_copy&quot;:true,&quot;free_can_calculate_activities&quot;:false,&quot;light_can_calculate_activities&quot;:false,&quot;pro_can_calculate_activities&quot;:true,&quot;workgroups_can_calculate_activities&quot;:true,&quot;corporate_can_calculate_activities&quot;:true,&quot;deleted_at&quot;:null,&quot;free_can_personalize_logo&quot;:false,&quot;light_can_personalize_logo&quot;:false,&quot;pro_can_personalize_logo&quot;:true,&quot;workgroups_can_personalize_logo&quot;:true,&quot;corporate_can_personalize_logo&quot;:true,&quot;free_folders&quot;:5,&quot;light_folders&quot;:0,&quot;pro_folders&quot;:0,&quot;workgroups_folders&quot;:0,&quot;corporate_folders&quot;:0,&quot;free_export_limit&quot;:500,&quot;light_export_limit&quot;:500,&quot;pro_export_limit&quot;:500,&quot;workgroups_export_limit&quot;:500,&quot;corporate_export_limit&quot;:500,&quot;free_can_schedule_by_resource&quot;:false,&quot;light_can_schedule_by_resource&quot;:false,&quot;pro_can_schedule_by_resource&quot;:true,&quot;workgroups_can_schedule_by_resource&quot;:true,&quot;corporate_can_schedule_by_resource&quot;:true,&quot;free_can_import_project_xml&quot;:false,&quot;light_can_import_project_xml&quot;:false,&quot;pro_can_import_project_xml&quot;:true,&quot;workgroups_can_import_project_xml&quot;:true,&quot;corporate_can_import_project_xml&quot;:true,&quot;free_can_use_finances&quot;:false,&quot;light_can_use_finances&quot;:false,&quot;pro_can_use_finances&quot;:true,&quot;workgroups_can_use_finances&quot;:true,&quot;corporate_can_use_finances&quot;:true,&quot;values&quot;:{&quot;BRL&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:180.0,&quot;yearly&quot;:1792.8,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:390.0,&quot;yearly&quot;:3884.4,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:450.0,&quot;yearly&quot;:4482.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;USD&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;EUR&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}}},&quot;free_can_customize_statuses&quot;:false,&quot;light_can_customize_statuses&quot;:true,&quot;pro_can_customize_statuses&quot;:true,&quot;workgroups_can_customize_statuses&quot;:true,&quot;corporate_can_customize_statuses&quot;:true,&quot;free_can_customize_categories&quot;:false,&quot;light_can_customize_categories&quot;:false,&quot;pro_can_customize_categories&quot;:true,&quot;workgroups_can_customize_categories&quot;:true,&quot;corporate_can_customize_categories&quot;:true,&quot;free_other_users&quot;:1,&quot;light_other_users&quot;:0,&quot;pro_other_users&quot;:1,&quot;workgroups_other_users&quot;:1,&quot;corporate_other_users&quot;:1,&quot;free_total_users&quot;:null,&quot;light_total_users&quot;:0,&quot;pro_total_users&quot;:0,&quot;workgroups_total_users&quot;:0,&quot;corporate_total_users&quot;:0,&quot;trial_monthly&quot;:0.0,&quot;trial_yearly&quot;:0.0,&quot;trial_leaders&quot;:10,&quot;trial_communities&quot;:99,&quot;trial_disk_space&quot;:314572800,&quot;trial_extra_monthly&quot;:0.0,&quot;trial_extra_yearly&quot;:0.0,&quot;trial_extra_disk_space&quot;:0,&quot;trial_can_copy&quot;:true,&quot;trial_can_calculate_activities&quot;:true,&quot;trial_can_personalize_logo&quot;:true,&quot;trial_folders&quot;:0,&quot;trial_export_limit&quot;:500,&quot;trial_can_schedule_by_resource&quot;:true,&quot;trial_can_import_project_xml&quot;:true,&quot;trial_can_use_finances&quot;:true,&quot;trial_can_customize_statuses&quot;:true,&quot;trial_can_customize_categories&quot;:true,&quot;trial_other_users&quot;:1,&quot;trial_total_users&quot;:10,&quot;free_can_use_reports&quot;:false,&quot;light_can_use_reports&quot;:false,&quot;pro_can_use_reports&quot;:true,&quot;workgroups_can_use_reports&quot;:true,&quot;corporate_can_use_reports&quot;:true,&quot;trial_can_use_reports&quot;:true,&quot;free_report_limit&quot;:1000,&quot;light_report_limit&quot;:1000,&quot;pro_report_limit&quot;:1000,&quot;workgroups_report_limit&quot;:1000,&quot;corporate_report_limit&quot;:1000,&quot;trial_report_limit&quot;:1000,&quot;free_can_use_wiki&quot;:false,&quot;light_can_use_wiki&quot;:false,&quot;pro_can_use_wiki&quot;:true,&quot;workgroups_can_use_wiki&quot;:true,&quot;corporate_can_use_wiki&quot;:true,&quot;trial_can_use_wiki&quot;:true,&quot;free_can_use_advanced_gantt&quot;:false,&quot;light_can_use_advanced_gantt&quot;:false,&quot;pro_can_use_advanced_gantt&quot;:true,&quot;workgroups_can_use_advanced_gantt&quot;:true,&quot;corporate_can_use_advanced_gantt&quot;:true,&quot;trial_can_use_advanced_gantt&quot;:true,&quot;free_support_chat&quot;:false,&quot;free_support_phone&quot;:false,&quot;free_support_ticket&quot;:true,&quot;free_support_has_sla&quot;:false,&quot;light_support_chat&quot;:false,&quot;light_support_phone&quot;:false,&quot;light_support_ticket&quot;:true,&quot;light_support_has_sla&quot;:false,&quot;pro_support_chat&quot;:true,&quot;pro_support_phone&quot;:true,&quot;pro_support_ticket&quot;:true,&quot;pro_support_has_sla&quot;:false,&quot;workgroups_support_chat&quot;:true,&quot;workgroups_support_phone&quot;:true,&quot;workgroups_support_ticket&quot;:true,&quot;workgroups_support_has_sla&quot;:true,&quot;corporate_support_chat&quot;:true,&quot;corporate_support_phone&quot;:true,&quot;corporate_support_ticket&quot;:true,&quot;corporate_support_has_sla&quot;:true,&quot;trial_support_chat&quot;:true,&quot;trial_support_phone&quot;:true,&quot;trial_support_ticket&quot;:true,&quot;trial_support_has_sla&quot;:false,&quot;free_can_block_access_by_ip&quot;:false,&quot;trial_can_block_access_by_ip&quot;:true,&quot;light_can_block_access_by_ip&quot;:false,&quot;pro_can_block_access_by_ip&quot;:false,&quot;workgroups_can_block_access_by_ip&quot;:true,&quot;corporate_can_block_access_by_ip&quot;:true,&quot;free_can_use_baseline&quot;:false,&quot;light_can_use_baseline&quot;:false,&quot;pro_can_use_baseline&quot;:true,&quot;workgroups_can_use_baseline&quot;:true,&quot;corporate_can_use_baseline&quot;:true,&quot;trial_can_use_baseline&quot;:true,&quot;free_can_use_status_report&quot;:false,&quot;light_can_use_status_report&quot;:false,&quot;pro_can_use_status_report&quot;:true,&quot;workgroups_can_use_status_report&quot;:true,&quot;corporate_can_use_status_report&quot;:true,&quot;trial_can_use_status_report&quot;:true,&quot;free_can_use_wbs&quot;:false,&quot;light_can_use_wbs&quot;:false,&quot;pro_can_use_wbs&quot;:true,&quot;workgroups_can_use_wbs&quot;:true,&quot;corporate_can_use_wbs&quot;:true,&quot;trial_can_use_wbs&quot;:true,&quot;free_can_block_time_entry&quot;:false,&quot;light_can_block_time_entry&quot;:false,&quot;pro_can_block_time_entry&quot;:false,&quot;workgroups_can_block_time_entry&quot;:true,&quot;corporate_can_block_time_entry&quot;:true,&quot;trial_can_block_time_entry&quot;:true,&quot;free_can_use_additional_permissions&quot;:false,&quot;light_can_use_additional_permissions&quot;:false,&quot;pro_can_use_additional_permissions&quot;:true,&quot;workgroups_can_use_additional_permissions&quot;:true,&quot;corporate_can_use_additional_permissions&quot;:true,&quot;trial_can_use_additional_permissions&quot;:true,&quot;free_can_use_skills&quot;:false,&quot;light_can_use_skills&quot;:false,&quot;pro_can_use_skills&quot;:true,&quot;workgroups_can_use_skills&quot;:true,&quot;corporate_can_use_skills&quot;:true,&quot;trial_can_use_skills&quot;:true,&quot;free_can_use_strong_passwords&quot;:false,&quot;light_can_use_strong_passwords&quot;:false,&quot;pro_can_use_strong_passwords&quot;:false,&quot;workgroups_can_use_strong_passwords&quot;:true,&quot;corporate_can_use_strong_passwords&quot;:true,&quot;trial_can_use_strong_passwords&quot;:true,&quot;free_can_use_ranking&quot;:false,&quot;light_can_use_ranking&quot;:false,&quot;pro_can_use_ranking&quot;:true,&quot;workgroups_can_use_ranking&quot;:true,&quot;corporate_can_use_ranking&quot;:true,&quot;trial_can_use_ranking&quot;:true,&quot;free_can_use_kanban&quot;:true,&quot;light_can_use_kanban&quot;:true,&quot;pro_can_use_kanban&quot;:true,&quot;workgroups_can_use_kanban&quot;:true,&quot;corporate_can_use_kanban&quot;:true,&quot;trial_can_use_kanban&quot;:true,&quot;free_theme&quot;:&quot;full&quot;,&quot;light_theme&quot;:&quot;full&quot;,&quot;pro_theme&quot;:&quot;full&quot;,&quot;workgroups_theme&quot;:&quot;full&quot;,&quot;corporate_theme&quot;:&quot;full&quot;,&quot;trial_theme&quot;:&quot;full&quot;,&quot;free_can_use_custom_menu&quot;:false,&quot;light_can_use_custom_menu&quot;:false,&quot;pro_can_use_custom_menu&quot;:true,&quot;workgroups_can_use_custom_menu&quot;:true,&quot;corporate_can_use_custom_menu&quot;:true,&quot;theme_plan&quot;:&quot;full&quot;,&quot;trial_can_use_custom_menu&quot;:true,&quot;free_default_plan&quot;:false,&quot;light_default_plan&quot;:false,&quot;pro_default_plan&quot;:false,&quot;workgroups_default_plan&quot;:false,&quot;corporate_default_plan&quot;:false,&quot;trial_default_plan&quot;:false,&quot;trial_can_activity_recurrence_scheduled&quot;:true,&quot;free_can_activity_recurrence_scheduled&quot;:false,&quot;light_can_activity_recurrence_scheduled&quot;:false,&quot;pro_can_activity_recurrence_scheduled&quot;:true,&quot;workgroups_can_activity_recurrence_scheduled&quot;:true,&quot;corporate_can_activity_recurrence_scheduled&quot;:true,&quot;trial_can_agreement_management&quot;:true,&quot;free_can_agreement_management&quot;:false,&quot;light_can_agreement_management&quot;:false,&quot;pro_can_agreement_management&quot;:false,&quot;workgroups_can_agreement_management&quot;:true,&quot;corporate_can_agreement_management&quot;:true,&quot;free_has_checklist&quot;:true,&quot;light_has_checklist&quot;:true,&quot;pro_has_checklist&quot;:true,&quot;workgroups_has_checklist&quot;:true,&quot;corporate_has_checklist&quot;:true,&quot;trial_has_checklist&quot;:true}); change_users('trial');"
+                                    type="number" value="10">
+                            </div>
+                            <div class="user-counter-spinner">
+                                <div class="first-user-spinner"
+                                    onclick="ehnoisApplication.adjustPlanValue('add', [], {&quot;id&quot;:8,&quot;free_monthly&quot;:0.0,&quot;free_yearly&quot;:0.0,&quot;free_leaders&quot;:1,&quot;free_communities&quot;:1,&quot;free_disk_space&quot;:314572800,&quot;free_extra_monthly&quot;:0.0,&quot;free_extra_yearly&quot;:0.0,&quot;free_extra_disk_space&quot;:0,&quot;light_monthly&quot;:180.0,&quot;light_yearly&quot;:1792.8,&quot;light_leaders&quot;:3,&quot;light_communities&quot;:1,&quot;light_disk_space&quot;:3221225472,&quot;light_extra_monthly&quot;:0.0,&quot;light_extra_yearly&quot;:0.0,&quot;light_extra_disk_space&quot;:0,&quot;pro_monthly&quot;:390.0,&quot;pro_yearly&quot;:3884.4,&quot;pro_leaders&quot;:3,&quot;pro_communities&quot;:99,&quot;pro_disk_space&quot;:1073741824000,&quot;pro_extra_monthly&quot;:0.0,&quot;pro_extra_yearly&quot;:0.0,&quot;pro_extra_disk_space&quot;:0,&quot;workgroups_monthly&quot;:450.0,&quot;workgroups_yearly&quot;:4482.0,&quot;workgroups_leaders&quot;:3,&quot;workgroups_communities&quot;:99,&quot;workgroups_disk_space&quot;:1073741824000,&quot;workgroups_extra_monthly&quot;:0.0,&quot;workgroups_extra_yearly&quot;:0.0,&quot;workgroups_extra_disk_space&quot;:0,&quot;corporate_monthly&quot;:0.0,&quot;corporate_yearly&quot;:0.0,&quot;corporate_leaders&quot;:3,&quot;corporate_communities&quot;:99,&quot;corporate_disk_space&quot;:1073741824000,&quot;corporate_extra_monthly&quot;:0.0,&quot;corporate_extra_yearly&quot;:0.0,&quot;corporate_extra_disk_space&quot;:0,&quot;version&quot;:&quot;Novos Planos por Usuário 2022&quot;,&quot;begin&quot;:&quot;2022-06-10T15:37:33.000-03:00&quot;,&quot;end&quot;:&quot;2022-05-02T08:26:02.000-03:00&quot;,&quot;active&quot;:true,&quot;created_at&quot;:&quot;2022-05-01T20:44:09.000-03:00&quot;,&quot;updated_at&quot;:&quot;2022-06-10T15:37:35.000-03:00&quot;,&quot;free_can_copy&quot;:false,&quot;light_can_copy&quot;:false,&quot;pro_can_copy&quot;:true,&quot;workgroups_can_copy&quot;:true,&quot;corporate_can_copy&quot;:true,&quot;free_can_calculate_activities&quot;:false,&quot;light_can_calculate_activities&quot;:false,&quot;pro_can_calculate_activities&quot;:true,&quot;workgroups_can_calculate_activities&quot;:true,&quot;corporate_can_calculate_activities&quot;:true,&quot;deleted_at&quot;:null,&quot;free_can_personalize_logo&quot;:false,&quot;light_can_personalize_logo&quot;:false,&quot;pro_can_personalize_logo&quot;:true,&quot;workgroups_can_personalize_logo&quot;:true,&quot;corporate_can_personalize_logo&quot;:true,&quot;free_folders&quot;:5,&quot;light_folders&quot;:0,&quot;pro_folders&quot;:0,&quot;workgroups_folders&quot;:0,&quot;corporate_folders&quot;:0,&quot;free_export_limit&quot;:500,&quot;light_export_limit&quot;:500,&quot;pro_export_limit&quot;:500,&quot;workgroups_export_limit&quot;:500,&quot;corporate_export_limit&quot;:500,&quot;free_can_schedule_by_resource&quot;:false,&quot;light_can_schedule_by_resource&quot;:false,&quot;pro_can_schedule_by_resource&quot;:true,&quot;workgroups_can_schedule_by_resource&quot;:true,&quot;corporate_can_schedule_by_resource&quot;:true,&quot;free_can_import_project_xml&quot;:false,&quot;light_can_import_project_xml&quot;:false,&quot;pro_can_import_project_xml&quot;:true,&quot;workgroups_can_import_project_xml&quot;:true,&quot;corporate_can_import_project_xml&quot;:true,&quot;free_can_use_finances&quot;:false,&quot;light_can_use_finances&quot;:false,&quot;pro_can_use_finances&quot;:true,&quot;workgroups_can_use_finances&quot;:true,&quot;corporate_can_use_finances&quot;:true,&quot;values&quot;:{&quot;BRL&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:180.0,&quot;yearly&quot;:1792.8,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:390.0,&quot;yearly&quot;:3884.4,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:450.0,&quot;yearly&quot;:4482.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;USD&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;EUR&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}}},&quot;free_can_customize_statuses&quot;:false,&quot;light_can_customize_statuses&quot;:true,&quot;pro_can_customize_statuses&quot;:true,&quot;workgroups_can_customize_statuses&quot;:true,&quot;corporate_can_customize_statuses&quot;:true,&quot;free_can_customize_categories&quot;:false,&quot;light_can_customize_categories&quot;:false,&quot;pro_can_customize_categories&quot;:true,&quot;workgroups_can_customize_categories&quot;:true,&quot;corporate_can_customize_categories&quot;:true,&quot;free_other_users&quot;:1,&quot;light_other_users&quot;:0,&quot;pro_other_users&quot;:1,&quot;workgroups_other_users&quot;:1,&quot;corporate_other_users&quot;:1,&quot;free_total_users&quot;:null,&quot;light_total_users&quot;:0,&quot;pro_total_users&quot;:0,&quot;workgroups_total_users&quot;:0,&quot;corporate_total_users&quot;:0,&quot;trial_monthly&quot;:0.0,&quot;trial_yearly&quot;:0.0,&quot;trial_leaders&quot;:10,&quot;trial_communities&quot;:99,&quot;trial_disk_space&quot;:314572800,&quot;trial_extra_monthly&quot;:0.0,&quot;trial_extra_yearly&quot;:0.0,&quot;trial_extra_disk_space&quot;:0,&quot;trial_can_copy&quot;:true,&quot;trial_can_calculate_activities&quot;:true,&quot;trial_can_personalize_logo&quot;:true,&quot;trial_folders&quot;:0,&quot;trial_export_limit&quot;:500,&quot;trial_can_schedule_by_resource&quot;:true,&quot;trial_can_import_project_xml&quot;:true,&quot;trial_can_use_finances&quot;:true,&quot;trial_can_customize_statuses&quot;:true,&quot;trial_can_customize_categories&quot;:true,&quot;trial_other_users&quot;:1,&quot;trial_total_users&quot;:10,&quot;free_can_use_reports&quot;:false,&quot;light_can_use_reports&quot;:false,&quot;pro_can_use_reports&quot;:true,&quot;workgroups_can_use_reports&quot;:true,&quot;corporate_can_use_reports&quot;:true,&quot;trial_can_use_reports&quot;:true,&quot;free_report_limit&quot;:1000,&quot;light_report_limit&quot;:1000,&quot;pro_report_limit&quot;:1000,&quot;workgroups_report_limit&quot;:1000,&quot;corporate_report_limit&quot;:1000,&quot;trial_report_limit&quot;:1000,&quot;free_can_use_wiki&quot;:false,&quot;light_can_use_wiki&quot;:false,&quot;pro_can_use_wiki&quot;:true,&quot;workgroups_can_use_wiki&quot;:true,&quot;corporate_can_use_wiki&quot;:true,&quot;trial_can_use_wiki&quot;:true,&quot;free_can_use_advanced_gantt&quot;:false,&quot;light_can_use_advanced_gantt&quot;:false,&quot;pro_can_use_advanced_gantt&quot;:true,&quot;workgroups_can_use_advanced_gantt&quot;:true,&quot;corporate_can_use_advanced_gantt&quot;:true,&quot;trial_can_use_advanced_gantt&quot;:true,&quot;free_support_chat&quot;:false,&quot;free_support_phone&quot;:false,&quot;free_support_ticket&quot;:true,&quot;free_support_has_sla&quot;:false,&quot;light_support_chat&quot;:false,&quot;light_support_phone&quot;:false,&quot;light_support_ticket&quot;:true,&quot;light_support_has_sla&quot;:false,&quot;pro_support_chat&quot;:true,&quot;pro_support_phone&quot;:true,&quot;pro_support_ticket&quot;:true,&quot;pro_support_has_sla&quot;:false,&quot;workgroups_support_chat&quot;:true,&quot;workgroups_support_phone&quot;:true,&quot;workgroups_support_ticket&quot;:true,&quot;workgroups_support_has_sla&quot;:true,&quot;corporate_support_chat&quot;:true,&quot;corporate_support_phone&quot;:true,&quot;corporate_support_ticket&quot;:true,&quot;corporate_support_has_sla&quot;:true,&quot;trial_support_chat&quot;:true,&quot;trial_support_phone&quot;:true,&quot;trial_support_ticket&quot;:true,&quot;trial_support_has_sla&quot;:false,&quot;free_can_block_access_by_ip&quot;:false,&quot;trial_can_block_access_by_ip&quot;:true,&quot;light_can_block_access_by_ip&quot;:false,&quot;pro_can_block_access_by_ip&quot;:false,&quot;workgroups_can_block_access_by_ip&quot;:true,&quot;corporate_can_block_access_by_ip&quot;:true,&quot;free_can_use_baseline&quot;:false,&quot;light_can_use_baseline&quot;:false,&quot;pro_can_use_baseline&quot;:true,&quot;workgroups_can_use_baseline&quot;:true,&quot;corporate_can_use_baseline&quot;:true,&quot;trial_can_use_baseline&quot;:true,&quot;free_can_use_status_report&quot;:false,&quot;light_can_use_status_report&quot;:false,&quot;pro_can_use_status_report&quot;:true,&quot;workgroups_can_use_status_report&quot;:true,&quot;corporate_can_use_status_report&quot;:true,&quot;trial_can_use_status_report&quot;:true,&quot;free_can_use_wbs&quot;:false,&quot;light_can_use_wbs&quot;:false,&quot;pro_can_use_wbs&quot;:true,&quot;workgroups_can_use_wbs&quot;:true,&quot;corporate_can_use_wbs&quot;:true,&quot;trial_can_use_wbs&quot;:true,&quot;free_can_block_time_entry&quot;:false,&quot;light_can_block_time_entry&quot;:false,&quot;pro_can_block_time_entry&quot;:false,&quot;workgroups_can_block_time_entry&quot;:true,&quot;corporate_can_block_time_entry&quot;:true,&quot;trial_can_block_time_entry&quot;:true,&quot;free_can_use_additional_permissions&quot;:false,&quot;light_can_use_additional_permissions&quot;:false,&quot;pro_can_use_additional_permissions&quot;:true,&quot;workgroups_can_use_additional_permissions&quot;:true,&quot;corporate_can_use_additional_permissions&quot;:true,&quot;trial_can_use_additional_permissions&quot;:true,&quot;free_can_use_skills&quot;:false,&quot;light_can_use_skills&quot;:false,&quot;pro_can_use_skills&quot;:true,&quot;workgroups_can_use_skills&quot;:true,&quot;corporate_can_use_skills&quot;:true,&quot;trial_can_use_skills&quot;:true,&quot;free_can_use_strong_passwords&quot;:false,&quot;light_can_use_strong_passwords&quot;:false,&quot;pro_can_use_strong_passwords&quot;:false,&quot;workgroups_can_use_strong_passwords&quot;:true,&quot;corporate_can_use_strong_passwords&quot;:true,&quot;trial_can_use_strong_passwords&quot;:true,&quot;free_can_use_ranking&quot;:false,&quot;light_can_use_ranking&quot;:false,&quot;pro_can_use_ranking&quot;:true,&quot;workgroups_can_use_ranking&quot;:true,&quot;corporate_can_use_ranking&quot;:true,&quot;trial_can_use_ranking&quot;:true,&quot;free_can_use_kanban&quot;:true,&quot;light_can_use_kanban&quot;:true,&quot;pro_can_use_kanban&quot;:true,&quot;workgroups_can_use_kanban&quot;:true,&quot;corporate_can_use_kanban&quot;:true,&quot;trial_can_use_kanban&quot;:true,&quot;free_theme&quot;:&quot;full&quot;,&quot;light_theme&quot;:&quot;full&quot;,&quot;pro_theme&quot;:&quot;full&quot;,&quot;workgroups_theme&quot;:&quot;full&quot;,&quot;corporate_theme&quot;:&quot;full&quot;,&quot;trial_theme&quot;:&quot;full&quot;,&quot;free_can_use_custom_menu&quot;:false,&quot;light_can_use_custom_menu&quot;:false,&quot;pro_can_use_custom_menu&quot;:true,&quot;workgroups_can_use_custom_menu&quot;:true,&quot;corporate_can_use_custom_menu&quot;:true,&quot;theme_plan&quot;:&quot;full&quot;,&quot;trial_can_use_custom_menu&quot;:true,&quot;free_default_plan&quot;:false,&quot;light_default_plan&quot;:false,&quot;pro_default_plan&quot;:false,&quot;workgroups_default_plan&quot;:false,&quot;corporate_default_plan&quot;:false,&quot;trial_default_plan&quot;:false,&quot;trial_can_activity_recurrence_scheduled&quot;:true,&quot;free_can_activity_recurrence_scheduled&quot;:false,&quot;light_can_activity_recurrence_scheduled&quot;:false,&quot;pro_can_activity_recurrence_scheduled&quot;:true,&quot;workgroups_can_activity_recurrence_scheduled&quot;:true,&quot;corporate_can_activity_recurrence_scheduled&quot;:true,&quot;trial_can_agreement_management&quot;:true,&quot;free_can_agreement_management&quot;:false,&quot;light_can_agreement_management&quot;:false,&quot;pro_can_agreement_management&quot;:false,&quot;workgroups_can_agreement_management&quot;:true,&quot;corporate_can_agreement_management&quot;:true,&quot;free_has_checklist&quot;:true,&quot;light_has_checklist&quot;:true,&quot;pro_has_checklist&quot;:true,&quot;workgroups_has_checklist&quot;:true,&quot;corporate_has_checklist&quot;:true,&quot;trial_has_checklist&quot;:true}); change_users('trial');">
+                                    <div class="icon-up-open spinner-icon"></div>
+                                </div>
+                                <div class="sec-user-spinner"
+                                    onclick="ehnoisApplication.adjustPlanValue('rem', [], {&quot;id&quot;:8,&quot;free_monthly&quot;:0.0,&quot;free_yearly&quot;:0.0,&quot;free_leaders&quot;:1,&quot;free_communities&quot;:1,&quot;free_disk_space&quot;:314572800,&quot;free_extra_monthly&quot;:0.0,&quot;free_extra_yearly&quot;:0.0,&quot;free_extra_disk_space&quot;:0,&quot;light_monthly&quot;:180.0,&quot;light_yearly&quot;:1792.8,&quot;light_leaders&quot;:3,&quot;light_communities&quot;:1,&quot;light_disk_space&quot;:3221225472,&quot;light_extra_monthly&quot;:0.0,&quot;light_extra_yearly&quot;:0.0,&quot;light_extra_disk_space&quot;:0,&quot;pro_monthly&quot;:390.0,&quot;pro_yearly&quot;:3884.4,&quot;pro_leaders&quot;:3,&quot;pro_communities&quot;:99,&quot;pro_disk_space&quot;:1073741824000,&quot;pro_extra_monthly&quot;:0.0,&quot;pro_extra_yearly&quot;:0.0,&quot;pro_extra_disk_space&quot;:0,&quot;workgroups_monthly&quot;:450.0,&quot;workgroups_yearly&quot;:4482.0,&quot;workgroups_leaders&quot;:3,&quot;workgroups_communities&quot;:99,&quot;workgroups_disk_space&quot;:1073741824000,&quot;workgroups_extra_monthly&quot;:0.0,&quot;workgroups_extra_yearly&quot;:0.0,&quot;workgroups_extra_disk_space&quot;:0,&quot;corporate_monthly&quot;:0.0,&quot;corporate_yearly&quot;:0.0,&quot;corporate_leaders&quot;:3,&quot;corporate_communities&quot;:99,&quot;corporate_disk_space&quot;:1073741824000,&quot;corporate_extra_monthly&quot;:0.0,&quot;corporate_extra_yearly&quot;:0.0,&quot;corporate_extra_disk_space&quot;:0,&quot;version&quot;:&quot;Novos Planos por Usuário 2022&quot;,&quot;begin&quot;:&quot;2022-06-10T15:37:33.000-03:00&quot;,&quot;end&quot;:&quot;2022-05-02T08:26:02.000-03:00&quot;,&quot;active&quot;:true,&quot;created_at&quot;:&quot;2022-05-01T20:44:09.000-03:00&quot;,&quot;updated_at&quot;:&quot;2022-06-10T15:37:35.000-03:00&quot;,&quot;free_can_copy&quot;:false,&quot;light_can_copy&quot;:false,&quot;pro_can_copy&quot;:true,&quot;workgroups_can_copy&quot;:true,&quot;corporate_can_copy&quot;:true,&quot;free_can_calculate_activities&quot;:false,&quot;light_can_calculate_activities&quot;:false,&quot;pro_can_calculate_activities&quot;:true,&quot;workgroups_can_calculate_activities&quot;:true,&quot;corporate_can_calculate_activities&quot;:true,&quot;deleted_at&quot;:null,&quot;free_can_personalize_logo&quot;:false,&quot;light_can_personalize_logo&quot;:false,&quot;pro_can_personalize_logo&quot;:true,&quot;workgroups_can_personalize_logo&quot;:true,&quot;corporate_can_personalize_logo&quot;:true,&quot;free_folders&quot;:5,&quot;light_folders&quot;:0,&quot;pro_folders&quot;:0,&quot;workgroups_folders&quot;:0,&quot;corporate_folders&quot;:0,&quot;free_export_limit&quot;:500,&quot;light_export_limit&quot;:500,&quot;pro_export_limit&quot;:500,&quot;workgroups_export_limit&quot;:500,&quot;corporate_export_limit&quot;:500,&quot;free_can_schedule_by_resource&quot;:false,&quot;light_can_schedule_by_resource&quot;:false,&quot;pro_can_schedule_by_resource&quot;:true,&quot;workgroups_can_schedule_by_resource&quot;:true,&quot;corporate_can_schedule_by_resource&quot;:true,&quot;free_can_import_project_xml&quot;:false,&quot;light_can_import_project_xml&quot;:false,&quot;pro_can_import_project_xml&quot;:true,&quot;workgroups_can_import_project_xml&quot;:true,&quot;corporate_can_import_project_xml&quot;:true,&quot;free_can_use_finances&quot;:false,&quot;light_can_use_finances&quot;:false,&quot;pro_can_use_finances&quot;:true,&quot;workgroups_can_use_finances&quot;:true,&quot;corporate_can_use_finances&quot;:true,&quot;values&quot;:{&quot;BRL&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:180.0,&quot;yearly&quot;:1792.8,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:390.0,&quot;yearly&quot;:3884.4,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:450.0,&quot;yearly&quot;:4482.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;USD&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}},&quot;EUR&quot;:{&quot;free&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;light&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;pro&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;workgroups&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;corporate&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0},&quot;trial&quot;:{&quot;monthly&quot;:0.0,&quot;yearly&quot;:0.0,&quot;extra_monthly&quot;:0.0,&quot;extra_yearly&quot;:0.0}}},&quot;free_can_customize_statuses&quot;:false,&quot;light_can_customize_statuses&quot;:true,&quot;pro_can_customize_statuses&quot;:true,&quot;workgroups_can_customize_statuses&quot;:true,&quot;corporate_can_customize_statuses&quot;:true,&quot;free_can_customize_categories&quot;:false,&quot;light_can_customize_categories&quot;:false,&quot;pro_can_customize_categories&quot;:true,&quot;workgroups_can_customize_categories&quot;:true,&quot;corporate_can_customize_categories&quot;:true,&quot;free_other_users&quot;:1,&quot;light_other_users&quot;:0,&quot;pro_other_users&quot;:1,&quot;workgroups_other_users&quot;:1,&quot;corporate_other_users&quot;:1,&quot;free_total_users&quot;:null,&quot;light_total_users&quot;:0,&quot;pro_total_users&quot;:0,&quot;workgroups_total_users&quot;:0,&quot;corporate_total_users&quot;:0,&quot;trial_monthly&quot;:0.0,&quot;trial_yearly&quot;:0.0,&quot;trial_leaders&quot;:10,&quot;trial_communities&quot;:99,&quot;trial_disk_space&quot;:314572800,&quot;trial_extra_monthly&quot;:0.0,&quot;trial_extra_yearly&quot;:0.0,&quot;trial_extra_disk_space&quot;:0,&quot;trial_can_copy&quot;:true,&quot;trial_can_calculate_activities&quot;:true,&quot;trial_can_personalize_logo&quot;:true,&quot;trial_folders&quot;:0,&quot;trial_export_limit&quot;:500,&quot;trial_can_schedule_by_resource&quot;:true,&quot;trial_can_import_project_xml&quot;:true,&quot;trial_can_use_finances&quot;:true,&quot;trial_can_customize_statuses&quot;:true,&quot;trial_can_customize_categories&quot;:true,&quot;trial_other_users&quot;:1,&quot;trial_total_users&quot;:10,&quot;free_can_use_reports&quot;:false,&quot;light_can_use_reports&quot;:false,&quot;pro_can_use_reports&quot;:true,&quot;workgroups_can_use_reports&quot;:true,&quot;corporate_can_use_reports&quot;:true,&quot;trial_can_use_reports&quot;:true,&quot;free_report_limit&quot;:1000,&quot;light_report_limit&quot;:1000,&quot;pro_report_limit&quot;:1000,&quot;workgroups_report_limit&quot;:1000,&quot;corporate_report_limit&quot;:1000,&quot;trial_report_limit&quot;:1000,&quot;free_can_use_wiki&quot;:false,&quot;light_can_use_wiki&quot;:false,&quot;pro_can_use_wiki&quot;:true,&quot;workgroups_can_use_wiki&quot;:true,&quot;corporate_can_use_wiki&quot;:true,&quot;trial_can_use_wiki&quot;:true,&quot;free_can_use_advanced_gantt&quot;:false,&quot;light_can_use_advanced_gantt&quot;:false,&quot;pro_can_use_advanced_gantt&quot;:true,&quot;workgroups_can_use_advanced_gantt&quot;:true,&quot;corporate_can_use_advanced_gantt&quot;:true,&quot;trial_can_use_advanced_gantt&quot;:true,&quot;free_support_chat&quot;:false,&quot;free_support_phone&quot;:false,&quot;free_support_ticket&quot;:true,&quot;free_support_has_sla&quot;:false,&quot;light_support_chat&quot;:false,&quot;light_support_phone&quot;:false,&quot;light_support_ticket&quot;:true,&quot;light_support_has_sla&quot;:false,&quot;pro_support_chat&quot;:true,&quot;pro_support_phone&quot;:true,&quot;pro_support_ticket&quot;:true,&quot;pro_support_has_sla&quot;:false,&quot;workgroups_support_chat&quot;:true,&quot;workgroups_support_phone&quot;:true,&quot;workgroups_support_ticket&quot;:true,&quot;workgroups_support_has_sla&quot;:true,&quot;corporate_support_chat&quot;:true,&quot;corporate_support_phone&quot;:true,&quot;corporate_support_ticket&quot;:true,&quot;corporate_support_has_sla&quot;:true,&quot;trial_support_chat&quot;:true,&quot;trial_support_phone&quot;:true,&quot;trial_support_ticket&quot;:true,&quot;trial_support_has_sla&quot;:false,&quot;free_can_block_access_by_ip&quot;:false,&quot;trial_can_block_access_by_ip&quot;:true,&quot;light_can_block_access_by_ip&quot;:false,&quot;pro_can_block_access_by_ip&quot;:false,&quot;workgroups_can_block_access_by_ip&quot;:true,&quot;corporate_can_block_access_by_ip&quot;:true,&quot;free_can_use_baseline&quot;:false,&quot;light_can_use_baseline&quot;:false,&quot;pro_can_use_baseline&quot;:true,&quot;workgroups_can_use_baseline&quot;:true,&quot;corporate_can_use_baseline&quot;:true,&quot;trial_can_use_baseline&quot;:true,&quot;free_can_use_status_report&quot;:false,&quot;light_can_use_status_report&quot;:false,&quot;pro_can_use_status_report&quot;:true,&quot;workgroups_can_use_status_report&quot;:true,&quot;corporate_can_use_status_report&quot;:true,&quot;trial_can_use_status_report&quot;:true,&quot;free_can_use_wbs&quot;:false,&quot;light_can_use_wbs&quot;:false,&quot;pro_can_use_wbs&quot;:true,&quot;workgroups_can_use_wbs&quot;:true,&quot;corporate_can_use_wbs&quot;:true,&quot;trial_can_use_wbs&quot;:true,&quot;free_can_block_time_entry&quot;:false,&quot;light_can_block_time_entry&quot;:false,&quot;pro_can_block_time_entry&quot;:false,&quot;workgroups_can_block_time_entry&quot;:true,&quot;corporate_can_block_time_entry&quot;:true,&quot;trial_can_block_time_entry&quot;:true,&quot;free_can_use_additional_permissions&quot;:false,&quot;light_can_use_additional_permissions&quot;:false,&quot;pro_can_use_additional_permissions&quot;:true,&quot;workgroups_can_use_additional_permissions&quot;:true,&quot;corporate_can_use_additional_permissions&quot;:true,&quot;trial_can_use_additional_permissions&quot;:true,&quot;free_can_use_skills&quot;:false,&quot;light_can_use_skills&quot;:false,&quot;pro_can_use_skills&quot;:true,&quot;workgroups_can_use_skills&quot;:true,&quot;corporate_can_use_skills&quot;:true,&quot;trial_can_use_skills&quot;:true,&quot;free_can_use_strong_passwords&quot;:false,&quot;light_can_use_strong_passwords&quot;:false,&quot;pro_can_use_strong_passwords&quot;:false,&quot;workgroups_can_use_strong_passwords&quot;:true,&quot;corporate_can_use_strong_passwords&quot;:true,&quot;trial_can_use_strong_passwords&quot;:true,&quot;free_can_use_ranking&quot;:false,&quot;light_can_use_ranking&quot;:false,&quot;pro_can_use_ranking&quot;:true,&quot;workgroups_can_use_ranking&quot;:true,&quot;corporate_can_use_ranking&quot;:true,&quot;trial_can_use_ranking&quot;:true,&quot;free_can_use_kanban&quot;:true,&quot;light_can_use_kanban&quot;:true,&quot;pro_can_use_kanban&quot;:true,&quot;workgroups_can_use_kanban&quot;:true,&quot;corporate_can_use_kanban&quot;:true,&quot;trial_can_use_kanban&quot;:true,&quot;free_theme&quot;:&quot;full&quot;,&quot;light_theme&quot;:&quot;full&quot;,&quot;pro_theme&quot;:&quot;full&quot;,&quot;workgroups_theme&quot;:&quot;full&quot;,&quot;corporate_theme&quot;:&quot;full&quot;,&quot;trial_theme&quot;:&quot;full&quot;,&quot;free_can_use_custom_menu&quot;:false,&quot;light_can_use_custom_menu&quot;:false,&quot;pro_can_use_custom_menu&quot;:true,&quot;workgroups_can_use_custom_menu&quot;:true,&quot;corporate_can_use_custom_menu&quot;:true,&quot;theme_plan&quot;:&quot;full&quot;,&quot;trial_can_use_custom_menu&quot;:true,&quot;free_default_plan&quot;:false,&quot;light_default_plan&quot;:false,&quot;pro_default_plan&quot;:false,&quot;workgroups_default_plan&quot;:false,&quot;corporate_default_plan&quot;:false,&quot;trial_default_plan&quot;:false,&quot;trial_can_activity_recurrence_scheduled&quot;:true,&quot;free_can_activity_recurrence_scheduled&quot;:false,&quot;light_can_activity_recurrence_scheduled&quot;:false,&quot;pro_can_activity_recurrence_scheduled&quot;:true,&quot;workgroups_can_activity_recurrence_scheduled&quot;:true,&quot;corporate_can_activity_recurrence_scheduled&quot;:true,&quot;trial_can_agreement_management&quot;:true,&quot;free_can_agreement_management&quot;:false,&quot;light_can_agreement_management&quot;:false,&quot;pro_can_agreement_management&quot;:false,&quot;workgroups_can_agreement_management&quot;:true,&quot;corporate_can_agreement_management&quot;:true,&quot;free_has_checklist&quot;:true,&quot;light_has_checklist&quot;:true,&quot;pro_has_checklist&quot;:true,&quot;workgroups_has_checklist&quot;:true,&quot;corporate_has_checklist&quot;:true,&quot;trial_has_checklist&quot;:true}); change_users('trial');">
+                                    <div class="icon-down-open spinner-icon"></div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td class="box-plan box-free selected trial">
+                    <div class="plan-title">
+                        TRIAL
+                    </div>
+                    <br>
+                    <div class="plan-price">
+                        <div class="get-in-touch" id="free" style="display: none;">
+                            <div class="get-in-touch" style="height: 85px; display: none;"></div>
+                        </div>
+                        <table class="plan-pricing free-pricing">
+
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency_symbol">
+                                        <!-- / TODO: Chumbando R$ pois ainda não será considerado o pagamento com moedas internacionais -->
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value free" style="display: none;">
+                                        0,00
+                                    </td>
+                                    <td class="plan-price-value monthly-value free">
+                                        0,00
+                                    </td>
+                                    <td class="plan-period">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subprice"></div>
+                    <table class="plan-pricing free-pricing">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="month-selected" style="height: 125px; display: none;"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="plan-description">
+                        <ul class="list-unstyled">
+                            <li class="plan-one-line-description">
+                                Comece a organizar <br> atividades
+                            </li>
+                            <li class="plan-buttom">
+                                <table class="subscribed-container">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="height: 120px;"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li class="plan-expiration">
+                            </li>
+                        </ul>
+                        <div class="more-info-plans">
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td class="box-plan box-light  trial">
+                    <div class="plan-title">
+                        SLIM
+                    </div>
+                    <br>
+                    <div class="plan-price">
+                        <div class="get-in-touch" id="light" style="display: none;">
+                            <h3>
+                                Entre em contato conosco
+                            </h3>
+                            <h5 class="artia-mail">
+                                <a href="mailto:comercial@artia.com">
+                                    comercial@artia.com
+                                </a>
+                            </h5>
+                            <h5 class="artia-phone">
+                                0800 003 0200
+                            </h5>
+                        </div>
+                        <table class="plan-pricing light-pricing" style="display: table;">
+
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency_symbol">
+                                        <!-- / TODO: Chumbando R$ pois ainda não será considerado o pagamento com moedas internacionais -->
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value light" style="display: none;">1.792,80</td>
+                                    <td class="plan-price-value monthly-value light">180,00</td>
+                                    <td class="plan-period">
+                                        <p class="per-year" style="display: none;">
+                                            /ano
+                                        </p>
+                                        <p class="per-month">
+                                            /mês
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subprice"></div>
+                    <table class="plan-pricing light-pricing" style="display: table;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="month-selected" style="line-height: 20px; color: #424242;">
+                                        OU <br><strong>R$<label class="yearly_value">1.792,80</label></strong> / ano
+                                        <br> que é o mesmo que <br> <strong>R$<label
+                                                class="month_value">149,40</label></strong> / mês<br> Economize:
+                                        <strong>R$<label class="discount_value">367,20</label></strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="plan-description">
+                        <ul class="list-unstyled">
+                            <li class="plan-one-line-description">
+                                Escale a <br> produtividade
+                            </li>
+                            <li class="plan-buttom">
+                                <div class="buttom-plan buttom_light" id="buttom_light"
+                                    onclick="payment_types('d9bb1fc647e9d58dcddca766990c00147f81c7cb', 'd9d60e35132ee87ad877dff73eae79de17e0c2b1', 'light')"
+                                    style="visibility: initial;">
+                                    Assinar
+                                </div>
+                            </li>
+                            <li class="plan-expiration">
+                            </li>
+                        </ul>
+                        <div class="more-info-plans">
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td class="box-plan box-pro  trial">
+                    <div class="most-picked-plan">
+                        <p>
+                            MAIS ESCOLHIDO
+                        </p>
+                    </div>
+                    <div class="plan-title">
+                        BUSINESS
+                    </div>
+                    <br>
+                    <div class="plan-price">
+                        <div class="get-in-touch" id="pro" style="display: none;">
+                            <h3>
+                                Entre em contato conosco
+                            </h3>
+                            <h5 class="artia-mail">
+                                <a href="mailto:comercial@artia.com">
+                                    comercial@artia.com
+                                </a>
+                            </h5>
+                            <h5 class="artia-phone">
+                                0800 003 0200
+                            </h5>
+                        </div>
+                        <table class="plan-pricing pro-pricing" style="display: table;">
+
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency_symbol">
+                                        <!-- / TODO: Chumbando R$ pois ainda não será considerado o pagamento com moedas internacionais -->
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value pro" style="display: none;">3.884,40</td>
+                                    <td class="plan-price-value monthly-value pro">390,00</td>
+                                    <td class="plan-period">
+                                        <p class="per-year" style="display: none;">
+                                            /ano
+                                        </p>
+                                        <p class="per-month">
+                                            /mês
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subprice"></div>
+                    <table class="plan-pricing pro-pricing" style="display: table;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="month-selected" style="line-height: 20px; color: #424242;">
+                                        OU <br><strong>R$<label class="yearly_value">3.884,40</label></strong> / ano
+                                        <br> que é o mesmo que <br> <strong>R$<label
+                                                class="month_value">323,70</label></strong> / mês<br> Economize:
+                                        <strong>R$<label class="discount_value">795,60</label></strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="plan-description">
+                        <ul class="list-unstyled">
+                            <li class="plan-one-line-description">
+                                Gerencie projetos <br> e portfólios
+                            </li>
+                            <li class="plan-buttom">
+                                <div class="buttom-plan buttom_pro" id="buttom_pro"
+                                    onclick="payment_types('35e18668fbdf5a98c0827f0a02f5957819df6674', 'ba45900662a06487ce231a05429be91fde38903a', 'pro')"
+                                    style="visibility: initial;">
+                                    Assinar
+                                </div>
+                            </li>
+                            <li class="plan-expiration">
+                            </li>
+                        </ul>
+                        <div class="more-info-plans">
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td class="box-plan box-workgroups  trial">
+                    <div class="plan-title">
+                        ENTERPRISE
+                    </div>
+                    <br>
+                    <div class="plan-price">
+                        <div class="get-in-touch" id="workgroups" style="display: none;">
+                            <h3>
+                                Entre em contato conosco
+                            </h3>
+                            <h5 class="artia-mail">
+                                <a href="mailto:comercial@artia.com">
+                                    comercial@artia.com
+                                </a>
+                            </h5>
+                            <h5 class="artia-phone">
+                                0800 003 0200
+                            </h5>
+                        </div>
+                        <table class="plan-pricing workgroups-pricing" style="display: table;">
+
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency_symbol">
+                                        <!-- / TODO: Chumbando R$ pois ainda não será considerado o pagamento com moedas internacionais -->
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value workgroups" style="display: none;">4.482,00
+                                    </td>
+                                    <td class="plan-price-value monthly-value workgroups">450,00</td>
+                                    <td class="plan-period">
+                                        <p class="per-year" style="display: none;">
+                                            /ano
+                                        </p>
+                                        <p class="per-month">
+                                            /mês
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subprice"></div>
+                    <table class="plan-pricing workgroups-pricing" style="display: table;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="month-selected" style="line-height: 20px; color: #424242;">
+                                        OU <br><strong>R$<label class="yearly_value">4.482,00</label></strong> / ano
+                                        <br> que é o mesmo que <br> <strong>R$<label
+                                                class="month_value">373,50</label></strong> / mês<br> Economize:
+                                        <strong>R$<label class="discount_value">918,00</label></strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="plan-description">
+                        <ul class="list-unstyled">
+                            <li class="plan-one-line-description">
+                                Maximize a gestão <br> corporativa
+                            </li>
+                            <li class="plan-buttom">
+                                <div class="buttom-plan buttom_workgroups" id="buttom_workgroups"
+                                    onclick="payment_types('e10385eb860ebe86d3a8177de000795752ce6f3d', '69bc52f9bc5ac27d04dfab2696913b15ba777f5c', 'workgroups')"
+                                    style="visibility: initial;">
+                                    Assinar
+                                </div>
+                            </li>
+                            <li class="plan-expiration">
+                            </li>
+                        </ul>
+                        <div class="more-info-plans">
+                            Mais informações
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Usuários e Segurança
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Grupos de trabalho (Ativo)
+                </td>
+                <td class="plan-values selected trial">
+                    1
+                </td>
+                <td class="plan-values trial">
+                    1
+                </td>
+                <td class="plan-values trial">
+                    99
+                </td>
+                <td class="plan-values trial">
+                    99
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Segurança por perfil de usuário
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Definição de política de senha
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Bloqueio de Acesso por IP
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Permissões adicionais
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Definição de política de senha
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Colaboração
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gestão de Documentos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Versionamento de Documentos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Fórum de Discussão
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Espaço em Disco
+                </td>
+                <td class="plan-values selected trial">
+                    300 MB
+                </td>
+                <td class="plan-values trial">
+                    3 GB
+                </td>
+                <td class="plan-values trial">
+                    1.000 GB
+                </td>
+                <td class="plan-values trial">
+                    1.000 GB
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Wiki
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Ranking
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Importação Bizagi
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Gestão de Projetos
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gestão de Riscos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gestão de Marcos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Projetos / Pastas
+                </td>
+                <td class="plan-values selected trial">
+                    5
+                </td>
+                <td class="plan-values trial">
+                    Ilimitado
+                </td>
+                <td class="plan-values trial">
+                    Ilimitado
+                </td>
+                <td class="plan-values trial">
+                    Ilimitado
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Modelo de Projetos e Pastas
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Finanças em Projetos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Linha de Base
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Relatório de Situação
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    EAP
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Reporte de Despesas
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Aprovação de Despesas
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Atividades
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Apontamentos de horas
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Bloquear Apontamentos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Cálculo de Atividades
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Dependência entre Atividades
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Importação de MS Project/XML
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Ferramentas de Gestão
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Indicadores do Projeto
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Agenda Compartilhada
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Listagens personalizadas
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Exportação de dados em formato CSV
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Kanban
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gráfico de Gantt
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gantt Avançado
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Relatórios
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Alocação da Equipe
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Competências
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Customização de Menus
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Mobile (iOS e Android)
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Visualização de Documentos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gestão de Atividades
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Fórum de Discussão
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Ferramentas de Produtividade
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Agenda integrada com Outlook e Google
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Meu Trabalho
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Notificações por email
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Serviços
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Acesso à documentação e vídeos
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Suporte via Ticket
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Suporte via Chat
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Suporte Telefônico
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Possui SLA de Atendimento
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Consultoria para implantação
+                </td>
+                <td class="plan-values selected trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+                <td class="plan-values trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+                <td class="plan-values trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+                <td class="plan-values trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Capacitação
+                </td>
+                <td class="plan-values selected trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+                <td class="plan-values trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+                <td class="plan-values trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+                <td class="plan-values trial">
+                    <a href="mailto:comercial@artia.com">Consulte</a>
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Infraestrutura
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Backup a cada 30 min
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Disponibilidade de 99,5%
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Gestão de Infraestrutura
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Limite de exportação CSV
+                </td>
+                <td class="plan-values selected trial">
+                    500
+                </td>
+                <td class="plan-values trial">
+                    500
+                </td>
+                <td class="plan-values trial">
+                    500
+                </td>
+                <td class="plan-values trial">
+                    500
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Limite de relatório
+                </td>
+                <td class="plan-values selected trial">
+                    1000
+                </td>
+                <td class="plan-values trial">
+                    1000
+                </td>
+                <td class="plan-values trial">
+                    1000
+                </td>
+                <td class="plan-values trial">
+                    1000
+                </td>
+            </tr>
+            <tr class="group" style="display: none;">
+                <td class="plan-text">
+                    Customização
+                </td>
+                <td class="plan-values selected trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+                <td class="plan-values trial"></td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Personalização de Logo
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Personalização de Situação
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+            <tr class="text-info" style="display: none;">
+                <td class="plan-text">
+                    Personalização de Categorias
+                </td>
+                <td class="plan-values selected trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-x-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+                <td class="plan-values trial">
+                    <div class="icon-check-alt"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="plan-values last_child selected trial" style="display: none;"></td>
+                <td class="plan-values last_child trial" style="display: none;"></td>
+                <td class="plan-values last_child trial" style="display: none;"></td>
+                <td class="plan-values last_child trial" style="display: none;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="footer-logos-planos">
+        <h5 class="texto-logos-planos">
+            Todos os dias, grandes empresas confiam no Artia
+        </h5>
+        <ul class="logos-planos-ul">
+            <li>
+                <img alt="Rede Globo" class="globo-logo logos-planos"
+                    src="https://assets.artia.com/assets/plans/globo-logo-a57046762a6c98702a68fa5deb6b259f6f04761bbe1c74b9a0917b43efd6e9a5.png"
+                    title="Rede Globo">
+            </li>
+            <li>
+                <img alt="United" class="united-logo logos-planos"
+                    src="https://assets.artia.com/assets/plans/united-logo-5e407cbc89331f9764a2dce47a80ca8ef1f36a0def45301a60d997c94c38aa5a.png"
+                    title="United Airlines">
+            </li>
+            <li>
+                <img alt="Agemed" class="agemed-logo logos-planos"
+                    src="https://assets.artia.com/assets/plans/agemed-logo-fa9b45225a4b23db501576d56d31b63768a98ad7fe8170a07fc018a4edadab84.png"
+                    title="Agemed Saúde">
+            </li>
+            <li>
+                <img alt="Weg" class="weg-logo logos-planos"
+                    src="https://assets.artia.com/assets/plans/weg-logo-e07d7f4501ebe02bd9c8e4d6e20904a8d81078e45f07ca3200ed59135f752d0c.png"
+                    title="WEG">
+            </li>
+            <li>
+                <img alt="Ciser" class="ciser-logo logos-planos"
+                    src="https://assets.artia.com/assets/plans/ciser-logo-2-c38db7f3270e4de1813a14fc3ec773f40d65826ec1cdf17f870b87b29e751596.png"
+                    title="Ciser">
+            </li>
+            <li>
+                <img alt="Coamo" class="coamo-logo logos-planos"
+                    src="https://assets.artia.com/assets/plans/coamo-logo-0a024f6e00a2f741714543f54d7bd74a9a45aa0df3a861556111d9ecb4920aee.png"
+                    title="Coamo">
+            </li>
+        </ul>
+    </div>
+    <table class="background-plan" style="width: 1563px; display: none;">
+        <tbody>
+            <tr>
+                <td class="sticky-first"></td>
+                <td class="sticky-header sticky-custom" style="width: 315.5px;">
+                    <h3>
+                        FREE
+                    </h3>
+                    <div class="plan-price">
+                        <table class="plan-pricing free-pricing">
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency">
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value free" style="display: none;">
+                                        Free
+                                    </td>
+                                    <td class="plan-price-value monthly-value free">
+                                        Free
+                                    </td>
+                                    <td class="plan-period">
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="subscribed-container stick-container">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="icon-check-alt subscribed-plan"></div>
+                                    </td>
+                                    <td class="subcribed-text">
+                                        Plano atual
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+                <td class="sticky-header sticky-custom" style="width: 315.5px;">
+                    <h3>
+                        SLIM
+                    </h3>
+                    <div class="plan-price">
+                        <table class="plan-pricing light-pricing" style="display: table;">
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency">
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value light" style="display: none;">1.792,80</td>
+                                    <td class="plan-price-value monthly-value light">180,00</td>
+                                    <td class="plan-period">
+                                        /mês
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="buttom-plan buttom_light"
+                            onclick="payment_types('d9bb1fc647e9d58dcddca766990c00147f81c7cb', 'd9d60e35132ee87ad877dff73eae79de17e0c2b1', 'light')"
+                            style="visibility: initial;">
+                            Assinar
+                        </div>
+                    </div>
+                </td>
+                <td class="sticky-header sticky-custom" style="width: 315.5px;">
+                    <h3>
+                        BUSINESS
+                    </h3>
+                    <div class="plan-price">
+                        <table class="plan-pricing pro-pricing" style="display: table;">
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency">
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value pro" style="display: none;">3.884,40</td>
+                                    <td class="plan-price-value monthly-value pro">390,00</td>
+                                    <td class="plan-period">
+                                        /mês
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="buttom-plan buttom_pro"
+                            onclick="payment_types('35e18668fbdf5a98c0827f0a02f5957819df6674', 'ba45900662a06487ce231a05429be91fde38903a', 'pro')"
+                            style="visibility: initial;">
+                            Assinar
+                        </div>
+                    </div>
+                </td>
+                <td class="sticky-header sticky-custom" style="width: 315.5px;">
+                    <h3>
+                        ENTERPRISE
+                    </h3>
+                    <div class="plan-price">
+                        <table class="plan-pricing workgroups-pricing" style="display: table;">
+                            <tbody>
+                                <tr>
+                                    <td class="plan-currency">
+                                        R$
+                                    </td>
+                                    <td class="plan-price-value yearly-value workgroups" style="display: none;">4.482,00
+                                    </td>
+                                    <td class="plan-price-value monthly-value workgroups">450,00</td>
+                                    <td class="plan-period">
+                                        /mês
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="buttom-plan buttom_workgroups"
+                            onclick="payment_types('e10385eb860ebe86d3a8177de000795752ce6f3d', '69bc52f9bc5ac27d04dfab2696913b15ba777f5c', 'workgroups')"
+                            style="visibility: initial;">
+                            Assinar
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        ehnoisApplication.currentPlan = { "total_users": 10, "plan_kind": "trial", "plan_type": "monthly", "price": 0.0 }
+        window.onscroll = function () { stick() };
+
+        const min_users = { "free": 1, "light": 3, "pro": 3, "workgroups": 3 };
+        const price_per_user = [];
+        const plans = ["light", "pro", "workgroups"];
+
+        var header = document.getElementById("plans-header");
+        var sticky = header.offsetTop;
+
+        $(".plan-buttom:contains('hidden')").css({ 'visibility': 'hidden' });
+
+        function stick() {
+            if ($(window).width() > 1000)
+                if (window.pageYOffset > (sticky + 450)) {
+                    $(".background-plan").slideDown('fast');
+                    $(".plan-buttom:contains('hidden')").css({ 'visibility': 'initial' });
+                } else {
+                    $(".plan-buttom:contains('hidden')").css({ 'visibility': 'hidden' });
+                    $(".background-plan").css({
+                        'display': 'none'
+                    });
+                };
+        };
+
+        $('.trial').css({ 'background-color': 'white;' });
+
+        $(document).ready(function () {
+            var prices_per_users = []
+            var price_list = { "id": 8, "free_monthly": 0.0, "free_yearly": 0.0, "free_leaders": 1, "free_communities": 1, "free_disk_space": 314572800, "free_extra_monthly": 0.0, "free_extra_yearly": 0.0, "free_extra_disk_space": 0, "light_monthly": 180.0, "light_yearly": 1792.8, "light_leaders": 3, "light_communities": 1, "light_disk_space": 3221225472, "light_extra_monthly": 0.0, "light_extra_yearly": 0.0, "light_extra_disk_space": 0, "pro_monthly": 390.0, "pro_yearly": 3884.4, "pro_leaders": 3, "pro_communities": 99, "pro_disk_space": 1073741824000, "pro_extra_monthly": 0.0, "pro_extra_yearly": 0.0, "pro_extra_disk_space": 0, "workgroups_monthly": 450.0, "workgroups_yearly": 4482.0, "workgroups_leaders": 3, "workgroups_communities": 99, "workgroups_disk_space": 1073741824000, "workgroups_extra_monthly": 0.0, "workgroups_extra_yearly": 0.0, "workgroups_extra_disk_space": 0, "corporate_monthly": 0.0, "corporate_yearly": 0.0, "corporate_leaders": 3, "corporate_communities": 99, "corporate_disk_space": 1073741824000, "corporate_extra_monthly": 0.0, "corporate_extra_yearly": 0.0, "corporate_extra_disk_space": 0, "version": "Novos Planos por Usuário 2022", "begin": "2022-06-10T15:37:33.000-03:00", "end": "2022-05-02T08:26:02.000-03:00", "active": true, "created_at": "2022-05-01T20:44:09.000-03:00", "updated_at": "2022-06-10T15:37:35.000-03:00", "free_can_copy": false, "light_can_copy": false, "pro_can_copy": true, "workgroups_can_copy": true, "corporate_can_copy": true, "free_can_calculate_activities": false, "light_can_calculate_activities": false, "pro_can_calculate_activities": true, "workgroups_can_calculate_activities": true, "corporate_can_calculate_activities": true, "deleted_at": null, "free_can_personalize_logo": false, "light_can_personalize_logo": false, "pro_can_personalize_logo": true, "workgroups_can_personalize_logo": true, "corporate_can_personalize_logo": true, "free_folders": 5, "light_folders": 0, "pro_folders": 0, "workgroups_folders": 0, "corporate_folders": 0, "free_export_limit": 500, "light_export_limit": 500, "pro_export_limit": 500, "workgroups_export_limit": 500, "corporate_export_limit": 500, "free_can_schedule_by_resource": false, "light_can_schedule_by_resource": false, "pro_can_schedule_by_resource": true, "workgroups_can_schedule_by_resource": true, "corporate_can_schedule_by_resource": true, "free_can_import_project_xml": false, "light_can_import_project_xml": false, "pro_can_import_project_xml": true, "workgroups_can_import_project_xml": true, "corporate_can_import_project_xml": true, "free_can_use_finances": false, "light_can_use_finances": false, "pro_can_use_finances": true, "workgroups_can_use_finances": true, "corporate_can_use_finances": true, "values": { "BRL": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 180.0, "yearly": 1792.8, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 390.0, "yearly": 3884.4, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 450.0, "yearly": 4482.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } }, "USD": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } }, "EUR": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } } }, "free_can_customize_statuses": false, "light_can_customize_statuses": true, "pro_can_customize_statuses": true, "workgroups_can_customize_statuses": true, "corporate_can_customize_statuses": true, "free_can_customize_categories": false, "light_can_customize_categories": false, "pro_can_customize_categories": true, "workgroups_can_customize_categories": true, "corporate_can_customize_categories": true, "free_other_users": 1, "light_other_users": 0, "pro_other_users": 1, "workgroups_other_users": 1, "corporate_other_users": 1, "free_total_users": null, "light_total_users": 0, "pro_total_users": 0, "workgroups_total_users": 0, "corporate_total_users": 0, "trial_monthly": 0.0, "trial_yearly": 0.0, "trial_leaders": 10, "trial_communities": 99, "trial_disk_space": 314572800, "trial_extra_monthly": 0.0, "trial_extra_yearly": 0.0, "trial_extra_disk_space": 0, "trial_can_copy": true, "trial_can_calculate_activities": true, "trial_can_personalize_logo": true, "trial_folders": 0, "trial_export_limit": 500, "trial_can_schedule_by_resource": true, "trial_can_import_project_xml": true, "trial_can_use_finances": true, "trial_can_customize_statuses": true, "trial_can_customize_categories": true, "trial_other_users": 1, "trial_total_users": 10, "free_can_use_reports": false, "light_can_use_reports": false, "pro_can_use_reports": true, "workgroups_can_use_reports": true, "corporate_can_use_reports": true, "trial_can_use_reports": true, "free_report_limit": 1000, "light_report_limit": 1000, "pro_report_limit": 1000, "workgroups_report_limit": 1000, "corporate_report_limit": 1000, "trial_report_limit": 1000, "free_can_use_wiki": false, "light_can_use_wiki": false, "pro_can_use_wiki": true, "workgroups_can_use_wiki": true, "corporate_can_use_wiki": true, "trial_can_use_wiki": true, "free_can_use_advanced_gantt": false, "light_can_use_advanced_gantt": false, "pro_can_use_advanced_gantt": true, "workgroups_can_use_advanced_gantt": true, "corporate_can_use_advanced_gantt": true, "trial_can_use_advanced_gantt": true, "free_support_chat": false, "free_support_phone": false, "free_support_ticket": true, "free_support_has_sla": false, "light_support_chat": false, "light_support_phone": false, "light_support_ticket": true, "light_support_has_sla": false, "pro_support_chat": true, "pro_support_phone": true, "pro_support_ticket": true, "pro_support_has_sla": false, "workgroups_support_chat": true, "workgroups_support_phone": true, "workgroups_support_ticket": true, "workgroups_support_has_sla": true, "corporate_support_chat": true, "corporate_support_phone": true, "corporate_support_ticket": true, "corporate_support_has_sla": true, "trial_support_chat": true, "trial_support_phone": true, "trial_support_ticket": true, "trial_support_has_sla": false, "free_can_block_access_by_ip": false, "trial_can_block_access_by_ip": true, "light_can_block_access_by_ip": false, "pro_can_block_access_by_ip": false, "workgroups_can_block_access_by_ip": true, "corporate_can_block_access_by_ip": true, "free_can_use_baseline": false, "light_can_use_baseline": false, "pro_can_use_baseline": true, "workgroups_can_use_baseline": true, "corporate_can_use_baseline": true, "trial_can_use_baseline": true, "free_can_use_status_report": false, "light_can_use_status_report": false, "pro_can_use_status_report": true, "workgroups_can_use_status_report": true, "corporate_can_use_status_report": true, "trial_can_use_status_report": true, "free_can_use_wbs": false, "light_can_use_wbs": false, "pro_can_use_wbs": true, "workgroups_can_use_wbs": true, "corporate_can_use_wbs": true, "trial_can_use_wbs": true, "free_can_block_time_entry": false, "light_can_block_time_entry": false, "pro_can_block_time_entry": false, "workgroups_can_block_time_entry": true, "corporate_can_block_time_entry": true, "trial_can_block_time_entry": true, "free_can_use_additional_permissions": false, "light_can_use_additional_permissions": false, "pro_can_use_additional_permissions": true, "workgroups_can_use_additional_permissions": true, "corporate_can_use_additional_permissions": true, "trial_can_use_additional_permissions": true, "free_can_use_skills": false, "light_can_use_skills": false, "pro_can_use_skills": true, "workgroups_can_use_skills": true, "corporate_can_use_skills": true, "trial_can_use_skills": true, "free_can_use_strong_passwords": false, "light_can_use_strong_passwords": false, "pro_can_use_strong_passwords": false, "workgroups_can_use_strong_passwords": true, "corporate_can_use_strong_passwords": true, "trial_can_use_strong_passwords": true, "free_can_use_ranking": false, "light_can_use_ranking": false, "pro_can_use_ranking": true, "workgroups_can_use_ranking": true, "corporate_can_use_ranking": true, "trial_can_use_ranking": true, "free_can_use_kanban": true, "light_can_use_kanban": true, "pro_can_use_kanban": true, "workgroups_can_use_kanban": true, "corporate_can_use_kanban": true, "trial_can_use_kanban": true, "free_theme": "full", "light_theme": "full", "pro_theme": "full", "workgroups_theme": "full", "corporate_theme": "full", "trial_theme": "full", "free_can_use_custom_menu": false, "light_can_use_custom_menu": false, "pro_can_use_custom_menu": true, "workgroups_can_use_custom_menu": true, "corporate_can_use_custom_menu": true, "theme_plan": "full", "trial_can_use_custom_menu": true, "free_default_plan": false, "light_default_plan": false, "pro_default_plan": false, "workgroups_default_plan": false, "corporate_default_plan": false, "trial_default_plan": false, "trial_can_activity_recurrence_scheduled": true, "free_can_activity_recurrence_scheduled": false, "light_can_activity_recurrence_scheduled": false, "pro_can_activity_recurrence_scheduled": true, "workgroups_can_activity_recurrence_scheduled": true, "corporate_can_activity_recurrence_scheduled": true, "trial_can_agreement_management": true, "free_can_agreement_management": false, "light_can_agreement_management": false, "pro_can_agreement_management": false, "workgroups_can_agreement_management": true, "corporate_can_agreement_management": true, "free_has_checklist": true, "light_has_checklist": true, "pro_has_checklist": true, "workgroups_has_checklist": true, "corporate_has_checklist": true, "trial_has_checklist": true }
+            ehnoisApplication.adjustPlanValue(false, prices_per_users, price_list);
+            $('.group').hide();
+            $('.text-info').hide();
+            $('.last_child').hide();
+            $('.yearly-value').hide();
+            set_slider_text();
+
+            if ($('.recurrence-input.toggle').val() == "yearly") {
+                $('.recurrence-input.toggle').trigger('click');
+            }
+            $('.user-counter-input #total_users').trigger('change')
+        });
+
+        function set_slider_text() {
+            $("<style>.toggle ~ .switch .inner .disc::before { content: 'Mensal';}</style>").appendTo('head');
+            $("<style>.toggle ~ .switch .inner::before { content: 'Mensal';}</style>").appendTo('head');
+            $("<style>.toggle ~ .switch .inner::after { content: 'Anual';}</style>").appendTo('head');
+            $("<style>.toggle:checked ~ .switch .inner .disc::before  { content: 'Anual';}</style>").appendTo('head');
+        }
+
+        $('.user-counter-input input').on('focus', function () {
+            $('.user-counter-input input').select();
+        })
+
+        $('.more-info-plans').click(function () {
+            $('.group').slideDown('slow');
+            $('.text-info').slideDown('slow');
+            $('.last_child').slideDown('slow');
+            $('.more-info-plans').hide();
+            $('.footer-logos-planos').css({
+                'transform': 'translateY(0)'
+            });
+            $('.plan-text-inner').css({
+                'transform': 'translateY(14px)'
+            });
+        })
+
+        $(window).resize(function () {
+            $('.background-plan').css({
+                'width': '' + ($('.plans-table').width() + 1) + ''
+            });
+            $('.sticky-header').css({
+                'width': '' + ($('.plans-table').width() - 300) / 4 + ''
+            });
+        });
+
+        function toggle_values(period) {
+            if ($(".yearly-value").is(":visible")) {
+                $(".yearly-value").hide();
+                $(".per-year").hide();
+                $(".monthly-value").show();
+                $(".per-month").show();
+                $("input.recurrence-input").val('monthly');
+                $('.month-selected').show();
+            } else {
+                $(".yearly-value").show();
+                $(".per-year").show();
+                $(".monthly-value").hide();
+                $(".per-month").hide();
+                $("input.recurrence-input").val('yearly');
+                $('.month-selected').hide();
+            }
+
+            change_period(period)
+            $('.user-counter-input #total_users').trigger('change')
+        }
+
+        function change_period(plan) {
+            var actual_users = $('#total_users')[0].value;
+            var users_number = 10;
+            var plan_expiration = 02 /08 / 2023;
+            var period = $('.recurrence-input')[0].value;
+            var prices = []
+            var exist_price_per_user = prices.filter(function (p) { return (p.quantity_of_users == actual_users && p.plan_kind == plan) }).length
+
+            if (period != 'monthly' && actual_users == min_users[plan]) {
+                $('.true_selected').removeClass("not_visible").addClass('is_visible');
+            } else {
+                $('.true_selected').addClass("not_visible").removeClass('is_visible');
+            }
+
+            if (exist_price_per_user != 2) {
+                $('.month-selected')[0].style.display = 'none';
+            } else {
+                (period == 'monthly') && ($('.month-selected')[0].style.display = '');
+            }
+
+            var price_list = { "id": 8, "free_monthly": 0.0, "free_yearly": 0.0, "free_leaders": 1, "free_communities": 1, "free_disk_space": 314572800, "free_extra_monthly": 0.0, "free_extra_yearly": 0.0, "free_extra_disk_space": 0, "light_monthly": 180.0, "light_yearly": 1792.8, "light_leaders": 3, "light_communities": 1, "light_disk_space": 3221225472, "light_extra_monthly": 0.0, "light_extra_yearly": 0.0, "light_extra_disk_space": 0, "pro_monthly": 390.0, "pro_yearly": 3884.4, "pro_leaders": 3, "pro_communities": 99, "pro_disk_space": 1073741824000, "pro_extra_monthly": 0.0, "pro_extra_yearly": 0.0, "pro_extra_disk_space": 0, "workgroups_monthly": 450.0, "workgroups_yearly": 4482.0, "workgroups_leaders": 3, "workgroups_communities": 99, "workgroups_disk_space": 1073741824000, "workgroups_extra_monthly": 0.0, "workgroups_extra_yearly": 0.0, "workgroups_extra_disk_space": 0, "corporate_monthly": 0.0, "corporate_yearly": 0.0, "corporate_leaders": 3, "corporate_communities": 99, "corporate_disk_space": 1073741824000, "corporate_extra_monthly": 0.0, "corporate_extra_yearly": 0.0, "corporate_extra_disk_space": 0, "version": "Novos Planos por Usuário 2022", "begin": "2022-06-10T15:37:33.000-03:00", "end": "2022-05-02T08:26:02.000-03:00", "active": true, "created_at": "2022-05-01T20:44:09.000-03:00", "updated_at": "2022-06-10T15:37:35.000-03:00", "free_can_copy": false, "light_can_copy": false, "pro_can_copy": true, "workgroups_can_copy": true, "corporate_can_copy": true, "free_can_calculate_activities": false, "light_can_calculate_activities": false, "pro_can_calculate_activities": true, "workgroups_can_calculate_activities": true, "corporate_can_calculate_activities": true, "deleted_at": null, "free_can_personalize_logo": false, "light_can_personalize_logo": false, "pro_can_personalize_logo": true, "workgroups_can_personalize_logo": true, "corporate_can_personalize_logo": true, "free_folders": 5, "light_folders": 0, "pro_folders": 0, "workgroups_folders": 0, "corporate_folders": 0, "free_export_limit": 500, "light_export_limit": 500, "pro_export_limit": 500, "workgroups_export_limit": 500, "corporate_export_limit": 500, "free_can_schedule_by_resource": false, "light_can_schedule_by_resource": false, "pro_can_schedule_by_resource": true, "workgroups_can_schedule_by_resource": true, "corporate_can_schedule_by_resource": true, "free_can_import_project_xml": false, "light_can_import_project_xml": false, "pro_can_import_project_xml": true, "workgroups_can_import_project_xml": true, "corporate_can_import_project_xml": true, "free_can_use_finances": false, "light_can_use_finances": false, "pro_can_use_finances": true, "workgroups_can_use_finances": true, "corporate_can_use_finances": true, "values": { "BRL": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 180.0, "yearly": 1792.8, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 390.0, "yearly": 3884.4, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 450.0, "yearly": 4482.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } }, "USD": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } }, "EUR": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } } }, "free_can_customize_statuses": false, "light_can_customize_statuses": true, "pro_can_customize_statuses": true, "workgroups_can_customize_statuses": true, "corporate_can_customize_statuses": true, "free_can_customize_categories": false, "light_can_customize_categories": false, "pro_can_customize_categories": true, "workgroups_can_customize_categories": true, "corporate_can_customize_categories": true, "free_other_users": 1, "light_other_users": 0, "pro_other_users": 1, "workgroups_other_users": 1, "corporate_other_users": 1, "free_total_users": null, "light_total_users": 0, "pro_total_users": 0, "workgroups_total_users": 0, "corporate_total_users": 0, "trial_monthly": 0.0, "trial_yearly": 0.0, "trial_leaders": 10, "trial_communities": 99, "trial_disk_space": 314572800, "trial_extra_monthly": 0.0, "trial_extra_yearly": 0.0, "trial_extra_disk_space": 0, "trial_can_copy": true, "trial_can_calculate_activities": true, "trial_can_personalize_logo": true, "trial_folders": 0, "trial_export_limit": 500, "trial_can_schedule_by_resource": true, "trial_can_import_project_xml": true, "trial_can_use_finances": true, "trial_can_customize_statuses": true, "trial_can_customize_categories": true, "trial_other_users": 1, "trial_total_users": 10, "free_can_use_reports": false, "light_can_use_reports": false, "pro_can_use_reports": true, "workgroups_can_use_reports": true, "corporate_can_use_reports": true, "trial_can_use_reports": true, "free_report_limit": 1000, "light_report_limit": 1000, "pro_report_limit": 1000, "workgroups_report_limit": 1000, "corporate_report_limit": 1000, "trial_report_limit": 1000, "free_can_use_wiki": false, "light_can_use_wiki": false, "pro_can_use_wiki": true, "workgroups_can_use_wiki": true, "corporate_can_use_wiki": true, "trial_can_use_wiki": true, "free_can_use_advanced_gantt": false, "light_can_use_advanced_gantt": false, "pro_can_use_advanced_gantt": true, "workgroups_can_use_advanced_gantt": true, "corporate_can_use_advanced_gantt": true, "trial_can_use_advanced_gantt": true, "free_support_chat": false, "free_support_phone": false, "free_support_ticket": true, "free_support_has_sla": false, "light_support_chat": false, "light_support_phone": false, "light_support_ticket": true, "light_support_has_sla": false, "pro_support_chat": true, "pro_support_phone": true, "pro_support_ticket": true, "pro_support_has_sla": false, "workgroups_support_chat": true, "workgroups_support_phone": true, "workgroups_support_ticket": true, "workgroups_support_has_sla": true, "corporate_support_chat": true, "corporate_support_phone": true, "corporate_support_ticket": true, "corporate_support_has_sla": true, "trial_support_chat": true, "trial_support_phone": true, "trial_support_ticket": true, "trial_support_has_sla": false, "free_can_block_access_by_ip": false, "trial_can_block_access_by_ip": true, "light_can_block_access_by_ip": false, "pro_can_block_access_by_ip": false, "workgroups_can_block_access_by_ip": true, "corporate_can_block_access_by_ip": true, "free_can_use_baseline": false, "light_can_use_baseline": false, "pro_can_use_baseline": true, "workgroups_can_use_baseline": true, "corporate_can_use_baseline": true, "trial_can_use_baseline": true, "free_can_use_status_report": false, "light_can_use_status_report": false, "pro_can_use_status_report": true, "workgroups_can_use_status_report": true, "corporate_can_use_status_report": true, "trial_can_use_status_report": true, "free_can_use_wbs": false, "light_can_use_wbs": false, "pro_can_use_wbs": true, "workgroups_can_use_wbs": true, "corporate_can_use_wbs": true, "trial_can_use_wbs": true, "free_can_block_time_entry": false, "light_can_block_time_entry": false, "pro_can_block_time_entry": false, "workgroups_can_block_time_entry": true, "corporate_can_block_time_entry": true, "trial_can_block_time_entry": true, "free_can_use_additional_permissions": false, "light_can_use_additional_permissions": false, "pro_can_use_additional_permissions": true, "workgroups_can_use_additional_permissions": true, "corporate_can_use_additional_permissions": true, "trial_can_use_additional_permissions": true, "free_can_use_skills": false, "light_can_use_skills": false, "pro_can_use_skills": true, "workgroups_can_use_skills": true, "corporate_can_use_skills": true, "trial_can_use_skills": true, "free_can_use_strong_passwords": false, "light_can_use_strong_passwords": false, "pro_can_use_strong_passwords": false, "workgroups_can_use_strong_passwords": true, "corporate_can_use_strong_passwords": true, "trial_can_use_strong_passwords": true, "free_can_use_ranking": false, "light_can_use_ranking": false, "pro_can_use_ranking": true, "workgroups_can_use_ranking": true, "corporate_can_use_ranking": true, "trial_can_use_ranking": true, "free_can_use_kanban": true, "light_can_use_kanban": true, "pro_can_use_kanban": true, "workgroups_can_use_kanban": true, "corporate_can_use_kanban": true, "trial_can_use_kanban": true, "free_theme": "full", "light_theme": "full", "pro_theme": "full", "workgroups_theme": "full", "corporate_theme": "full", "trial_theme": "full", "free_can_use_custom_menu": false, "light_can_use_custom_menu": false, "pro_can_use_custom_menu": true, "workgroups_can_use_custom_menu": true, "corporate_can_use_custom_menu": true, "theme_plan": "full", "trial_can_use_custom_menu": true, "free_default_plan": false, "light_default_plan": false, "pro_default_plan": false, "workgroups_default_plan": false, "corporate_default_plan": false, "trial_default_plan": false, "trial_can_activity_recurrence_scheduled": true, "free_can_activity_recurrence_scheduled": false, "light_can_activity_recurrence_scheduled": false, "pro_can_activity_recurrence_scheduled": true, "workgroups_can_activity_recurrence_scheduled": true, "corporate_can_activity_recurrence_scheduled": true, "trial_can_agreement_management": true, "free_can_agreement_management": false, "light_can_agreement_management": false, "pro_can_agreement_management": false, "workgroups_can_agreement_management": true, "corporate_can_agreement_management": true, "free_has_checklist": true, "light_has_checklist": true, "pro_has_checklist": true, "workgroups_has_checklist": true, "corporate_has_checklist": true, "trial_has_checklist": true }
+            ehnoisApplication.adjustPlanValue(false, prices, price_list);
+        }
+
+        function change_users(plan) {
+            var actual_users = $('#total_users')[0].value;
+            var period = $('.recurrence-input')[0].value;
+            var different_period = period == 'monthly';
+            var users_number = 10;
+            var prices = []
+            var exist_price_per_user = prices.filter(function (p) { return (p.quantity_of_users == actual_users && p.plan_kind == plan) }).length
+
+            change_price(actual_users);
+
+            if ((actual_users == users_number && different_period) || (exist_price_per_user != 2 && actual_users != 3)) {
+                $('.true_selected').addClass("not_visible").removeClass('is_visible');
+            } else {
+                $('.true_selected').removeClass("not_visible").addClass('is_visible');
+            }
+
+            if (exist_price_per_user != 2) {
+                $('.month-selected')[0].style.display = 'none';
+            } else {
+                (period == 'monthly') && ($('.month-selected')[0].style.display = '');
+            }
+        }
+
+        function change_price(actual_users) {
+            const values = ArtiaPlans.plan_value(plans, min_users, actual_users, { "id": 8, "free_monthly": 0.0, "free_yearly": 0.0, "free_leaders": 1, "free_communities": 1, "free_disk_space": 314572800, "free_extra_monthly": 0.0, "free_extra_yearly": 0.0, "free_extra_disk_space": 0, "light_monthly": 180.0, "light_yearly": 1792.8, "light_leaders": 3, "light_communities": 1, "light_disk_space": 3221225472, "light_extra_monthly": 0.0, "light_extra_yearly": 0.0, "light_extra_disk_space": 0, "pro_monthly": 390.0, "pro_yearly": 3884.4, "pro_leaders": 3, "pro_communities": 99, "pro_disk_space": 1073741824000, "pro_extra_monthly": 0.0, "pro_extra_yearly": 0.0, "pro_extra_disk_space": 0, "workgroups_monthly": 450.0, "workgroups_yearly": 4482.0, "workgroups_leaders": 3, "workgroups_communities": 99, "workgroups_disk_space": 1073741824000, "workgroups_extra_monthly": 0.0, "workgroups_extra_yearly": 0.0, "workgroups_extra_disk_space": 0, "corporate_monthly": 0.0, "corporate_yearly": 0.0, "corporate_leaders": 3, "corporate_communities": 99, "corporate_disk_space": 1073741824000, "corporate_extra_monthly": 0.0, "corporate_extra_yearly": 0.0, "corporate_extra_disk_space": 0, "version": "Novos Planos por Usuário 2022", "begin": "2022-06-10T15:37:33.000-03:00", "end": "2022-05-02T08:26:02.000-03:00", "active": true, "created_at": "2022-05-01T20:44:09.000-03:00", "updated_at": "2022-06-10T15:37:35.000-03:00", "free_can_copy": false, "light_can_copy": false, "pro_can_copy": true, "workgroups_can_copy": true, "corporate_can_copy": true, "free_can_calculate_activities": false, "light_can_calculate_activities": false, "pro_can_calculate_activities": true, "workgroups_can_calculate_activities": true, "corporate_can_calculate_activities": true, "deleted_at": null, "free_can_personalize_logo": false, "light_can_personalize_logo": false, "pro_can_personalize_logo": true, "workgroups_can_personalize_logo": true, "corporate_can_personalize_logo": true, "free_folders": 5, "light_folders": 0, "pro_folders": 0, "workgroups_folders": 0, "corporate_folders": 0, "free_export_limit": 500, "light_export_limit": 500, "pro_export_limit": 500, "workgroups_export_limit": 500, "corporate_export_limit": 500, "free_can_schedule_by_resource": false, "light_can_schedule_by_resource": false, "pro_can_schedule_by_resource": true, "workgroups_can_schedule_by_resource": true, "corporate_can_schedule_by_resource": true, "free_can_import_project_xml": false, "light_can_import_project_xml": false, "pro_can_import_project_xml": true, "workgroups_can_import_project_xml": true, "corporate_can_import_project_xml": true, "free_can_use_finances": false, "light_can_use_finances": false, "pro_can_use_finances": true, "workgroups_can_use_finances": true, "corporate_can_use_finances": true, "values": { "BRL": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 180.0, "yearly": 1792.8, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 390.0, "yearly": 3884.4, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 450.0, "yearly": 4482.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } }, "USD": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } }, "EUR": { "free": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "light": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "pro": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "workgroups": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "corporate": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 }, "trial": { "monthly": 0.0, "yearly": 0.0, "extra_monthly": 0.0, "extra_yearly": 0.0 } } }, "free_can_customize_statuses": false, "light_can_customize_statuses": true, "pro_can_customize_statuses": true, "workgroups_can_customize_statuses": true, "corporate_can_customize_statuses": true, "free_can_customize_categories": false, "light_can_customize_categories": false, "pro_can_customize_categories": true, "workgroups_can_customize_categories": true, "corporate_can_customize_categories": true, "free_other_users": 1, "light_other_users": 0, "pro_other_users": 1, "workgroups_other_users": 1, "corporate_other_users": 1, "free_total_users": null, "light_total_users": 0, "pro_total_users": 0, "workgroups_total_users": 0, "corporate_total_users": 0, "trial_monthly": 0.0, "trial_yearly": 0.0, "trial_leaders": 10, "trial_communities": 99, "trial_disk_space": 314572800, "trial_extra_monthly": 0.0, "trial_extra_yearly": 0.0, "trial_extra_disk_space": 0, "trial_can_copy": true, "trial_can_calculate_activities": true, "trial_can_personalize_logo": true, "trial_folders": 0, "trial_export_limit": 500, "trial_can_schedule_by_resource": true, "trial_can_import_project_xml": true, "trial_can_use_finances": true, "trial_can_customize_statuses": true, "trial_can_customize_categories": true, "trial_other_users": 1, "trial_total_users": 10, "free_can_use_reports": false, "light_can_use_reports": false, "pro_can_use_reports": true, "workgroups_can_use_reports": true, "corporate_can_use_reports": true, "trial_can_use_reports": true, "free_report_limit": 1000, "light_report_limit": 1000, "pro_report_limit": 1000, "workgroups_report_limit": 1000, "corporate_report_limit": 1000, "trial_report_limit": 1000, "free_can_use_wiki": false, "light_can_use_wiki": false, "pro_can_use_wiki": true, "workgroups_can_use_wiki": true, "corporate_can_use_wiki": true, "trial_can_use_wiki": true, "free_can_use_advanced_gantt": false, "light_can_use_advanced_gantt": false, "pro_can_use_advanced_gantt": true, "workgroups_can_use_advanced_gantt": true, "corporate_can_use_advanced_gantt": true, "trial_can_use_advanced_gantt": true, "free_support_chat": false, "free_support_phone": false, "free_support_ticket": true, "free_support_has_sla": false, "light_support_chat": false, "light_support_phone": false, "light_support_ticket": true, "light_support_has_sla": false, "pro_support_chat": true, "pro_support_phone": true, "pro_support_ticket": true, "pro_support_has_sla": false, "workgroups_support_chat": true, "workgroups_support_phone": true, "workgroups_support_ticket": true, "workgroups_support_has_sla": true, "corporate_support_chat": true, "corporate_support_phone": true, "corporate_support_ticket": true, "corporate_support_has_sla": true, "trial_support_chat": true, "trial_support_phone": true, "trial_support_ticket": true, "trial_support_has_sla": false, "free_can_block_access_by_ip": false, "trial_can_block_access_by_ip": true, "light_can_block_access_by_ip": false, "pro_can_block_access_by_ip": false, "workgroups_can_block_access_by_ip": true, "corporate_can_block_access_by_ip": true, "free_can_use_baseline": false, "light_can_use_baseline": false, "pro_can_use_baseline": true, "workgroups_can_use_baseline": true, "corporate_can_use_baseline": true, "trial_can_use_baseline": true, "free_can_use_status_report": false, "light_can_use_status_report": false, "pro_can_use_status_report": true, "workgroups_can_use_status_report": true, "corporate_can_use_status_report": true, "trial_can_use_status_report": true, "free_can_use_wbs": false, "light_can_use_wbs": false, "pro_can_use_wbs": true, "workgroups_can_use_wbs": true, "corporate_can_use_wbs": true, "trial_can_use_wbs": true, "free_can_block_time_entry": false, "light_can_block_time_entry": false, "pro_can_block_time_entry": false, "workgroups_can_block_time_entry": true, "corporate_can_block_time_entry": true, "trial_can_block_time_entry": true, "free_can_use_additional_permissions": false, "light_can_use_additional_permissions": false, "pro_can_use_additional_permissions": true, "workgroups_can_use_additional_permissions": true, "corporate_can_use_additional_permissions": true, "trial_can_use_additional_permissions": true, "free_can_use_skills": false, "light_can_use_skills": false, "pro_can_use_skills": true, "workgroups_can_use_skills": true, "corporate_can_use_skills": true, "trial_can_use_skills": true, "free_can_use_strong_passwords": false, "light_can_use_strong_passwords": false, "pro_can_use_strong_passwords": false, "workgroups_can_use_strong_passwords": true, "corporate_can_use_strong_passwords": true, "trial_can_use_strong_passwords": true, "free_can_use_ranking": false, "light_can_use_ranking": false, "pro_can_use_ranking": true, "workgroups_can_use_ranking": true, "corporate_can_use_ranking": true, "trial_can_use_ranking": true, "free_can_use_kanban": true, "light_can_use_kanban": true, "pro_can_use_kanban": true, "workgroups_can_use_kanban": true, "corporate_can_use_kanban": true, "trial_can_use_kanban": true, "free_theme": "full", "light_theme": "full", "pro_theme": "full", "workgroups_theme": "full", "corporate_theme": "full", "trial_theme": "full", "free_can_use_custom_menu": false, "light_can_use_custom_menu": false, "pro_can_use_custom_menu": true, "workgroups_can_use_custom_menu": true, "corporate_can_use_custom_menu": true, "theme_plan": "full", "trial_can_use_custom_menu": true, "free_default_plan": false, "light_default_plan": false, "pro_default_plan": false, "workgroups_default_plan": false, "corporate_default_plan": false, "trial_default_plan": false, "trial_can_activity_recurrence_scheduled": true, "free_can_activity_recurrence_scheduled": false, "light_can_activity_recurrence_scheduled": false, "pro_can_activity_recurrence_scheduled": true, "workgroups_can_activity_recurrence_scheduled": true, "corporate_can_activity_recurrence_scheduled": true, "trial_can_agreement_management": true, "free_can_agreement_management": false, "light_can_agreement_management": false, "pro_can_agreement_management": false, "workgroups_can_agreement_management": true, "corporate_can_agreement_management": true, "free_has_checklist": true, "light_has_checklist": true, "pro_has_checklist": true, "workgroups_has_checklist": true, "corporate_has_checklist": true, "trial_has_checklist": true });
+
+            for (var plan_index = 0; plan_index < values.length; plan_index++) {
+                var plan = values[plan_index][plans[plan_index]];
+
+                $('.yearly_value')[plan_index].textContent = plan.yearly_value;
+                $('.month_value')[plan_index].textContent = plan.month_value;
+                $('.discount_value')[plan_index].textContent = plan.discount_value;
+            }
+        }
+
+        function store_plan(plan) {
+            var container = $('.plan-toggle-container');
+            container.attr('class', 'plan-toggle-container');
+            container.addClass('name:' + plan);
+        }
+
+        function payment_types(hash_yearly, hash_monthly, plan) {
+            store_plan(plan);
+            if ($(".yearly-value").is(":visible")) {
+                ArtiaOrganization.set_payment('136937', hash_yearly, '399d6bf71355ea18d625e53536763ba30650cf73', '0', +$('.user-counter-input input').val())
+            } else {
+                ArtiaOrganization.set_payment('136937', hash_monthly, '399d6bf71355ea18d625e53536763ba30650cf73', '0', +$('.user-counter-input input').val())
+            }
+        }
+    </script>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="row">
+    <style>
+        .kanban-footer > li, .custom-right > li {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 2px;
+  margin-top: 4px;
+  height: 25px;
+}
+    </style>
+    <div class="col-12" ng-init="initKaban()">
+        <div style="width:80%; margin: 0 auto 0 auto;">
+            <div class="row">
+                <div class="col-lg-3 colStyle" id="{{col.id}}" kanban-board-drop="over" ng-repeat="col in kanbanRest">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{col.descricao}}</h5>
+                            <p class="card-text">
+                                <div class="row">
+                                    <div ng-repeat="card in col.cards" class="col-md-12"  draggable="true" kanban-board-dragg="card" style="border: 1px solid #ccc;border-left: 2px solid blue;height: 100px;margin: 3px;">
+                                        <div style=" display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: space-between;align-items: center;height: 50%;">
+                                            {{ card.titulo }}
+                                            <span class="pull-right">
+                                                <img ng-src="{{ card.foto }}" class="avatar img-fluid rounded-circle me-1" alt="{{ card.nome_usuario }}" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

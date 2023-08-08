@@ -1,0 +1,86 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="FinancesController" ng-init="initTestModal()">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="$hide()"></button>
+            </div>
+            <div class="modal-body m-3">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="mb-3">
+                            <label for="field1" translate="">Time Entries</label>
+                            <div id="field1">
+                                <div ng-repeat="entry in unpaidEntries" class="row col-md-12 form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" ng-model="entry.selected" ng-true-value="1"
+                                            ng-false-value="0" value="checkedValue"> {{ entry.data_apontamento | date:'dd/MM/yyyy' }} -
+                                        {{ entry.esforco | number: 2 }} Hours
+                                    </label>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        Total Hours Invoice: {{ unpaidEntries | filter: {selected:1} | sumByKey:'esforco' }}
+                        <div class="mb-3">
+                            <label for="field2" translate="">Hour Price</label>
+                            <input type="text" id="field2" class="form-control" ng-model="form.hour_price" ui-money-mask="2" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="field3" translate="">Total Invoice</label>
+                            <div id="field3">
+                                {{ ((unpaidEntries | filter: {selected:1} | sumByKey:'esforco') * form.hour_price) | currency:'R$ '}}
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="closeModal()">Close</button>
+                <button type="button" class="btn btn-success" ng-disabled="{{ (unpaidEntries | filter: {selected:1}).length == 0 }}" ng-click="saveFinanceInvoice(form)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hide">
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="mb-3">
+                    <label for="field1" translate="">Time Entries</label>
+                    <div id="field1">
+                        <div ng-repeat="entry in unpaidEntries" class="row col-md-12 form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" ng-model="entry.selected" ng-true-value="1"
+                                    ng-false-value="0" value="checkedValue"> {{ entry.data_apontamento | date:'dd/MM/yyyy' }} -
+                                {{ entry.esforco | number: 2 }} Hours
+                            </label>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                Total Hours Invoice: {{ unpaidEntries | filter: {selected:1} | sumByKey:'esforco' }}
+                <div class="mb-3">
+                    <label for="field2" translate="">Hour Price</label>
+                    <input type="text" id="field2" class="form-control" ng-model="form.hour_price" ui-money-mask="2" />
+                </div>
+                <div class="mb-3">
+                    <label for="field3" translate="">Total Invoice</label>
+                    <div id="field3">
+                        {{ ((unpaidEntries | filter: {selected:1} | sumByKey:'esforco') * form.hour_price) | currency:'R$ '}}
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="closeModal()">Close</button>
+        <button type="button" class="btn btn-success" ng-disabled="{{ (unpaidEntries | filter: {selected:1}).length == 0 }}" ng-click="saveFinanceInvoice(form)">Save changes</button>
+    </div>
+</div>

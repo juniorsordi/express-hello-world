@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" translate>Users</h5>
+                <p class="card-text">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Ativo</th>
+                                <th>Adminstrador</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <select ng-model="filtro.ativo">
+                                        <option value="">Todos</option>
+                                        <option value="0">Não</option>
+                                        <option value="1">Sim</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select ng-model="filtro.admin">
+                                        <option value="">Todos</option>
+                                        <option value="0">Não</option>
+                                        <option value="1">Sim</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="user in arrUsers | filter: filtro">
+                            <td>{{ user.nome }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ (user.ativo == 1 ? 'Sim' : 'Não') }}</td>
+                            <td>{{ (user.admin == 1 ? 'Sim' : 'Não') }}</td>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

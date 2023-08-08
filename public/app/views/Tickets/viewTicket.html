@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12" ng-init="initViewTicket()">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 align="center">{{ ticket.title }}</h2>
+                <!-- Timeline -->
+                <ul class="timeline">
+                    <li ng-repeat="event in ticket.events" class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                        <div class="timeline-arrow"></div>
+                        <h2 class="h5 mb-0">{{ event.userName }} <small>&lt;{{ event.email }}&gt;</small> </h2>
+                        <span class="small text-gray"><i class="fa fa-clock-o mr-2"></i> {{ event.creation_date | date:'dd MMMM, yyyy HH:mm' }}</span>
+                        <p class="text-small mt-2 font-weight-light" ng-bind-html="event.event"></p>
+                    </li>
+                </ul>
+                <!-- End -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">
+                            <ng-quill-editor ng-model="form.event"></ng-quill-editor>
+                            <button class="btn btn-primary" type="button" translate ng-click="addTicketReply(form)">Reply</button>
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Informations</h5>
+                        <p class="card-text">
+                            Creation Date: {{ ticket.creation_date | date:'dd MMMM, yyyy HH:mm' }}<br>
+                            Last Event Date: {{ ticket.events[ticket.events.length-1].creation_date | date:'dd MMMM, yyyy HH:mm' }}<br>
+                            Create By: {{ ticket.events[0].userName }}<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

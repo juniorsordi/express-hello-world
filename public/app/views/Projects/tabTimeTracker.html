@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0"><span translate>Time Tracker</span></h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="kt_profile_overview_table"
+                class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold dataTable no-footer">
+                <thead class="fs-7 text-gray-400 text-uppercase">
+                    <tr>
+                        <th class="sorting" tabindex="0" aria-controls="kt_profile_overview_table"
+                            rowspan="1" colspan="1" aria-label="Target: activate to sort column ascending">Task</th>
+                        <th class="sorting" width="90" tabindex="0" aria-controls="kt_profile_overview_table"
+                            rowspan="1" colspan="1" aria-label="Section: activate to sort column ascending">Date</th>
+                        <th class="sorting" width="90" tabindex="0" aria-controls="kt_profile_overview_table"
+                            rowspan="1" colspan="1" aria-label="Due Date: activate to sort column ascending">User</th>
+                        <th class=" sorting" width="90" tabindex="0" aria-controls="kt_profile_overview_table"
+                            rowspan="1" colspan="1" aria-label="Members: activate to sort column ascending">Effort</th>
+                    </tr>
+                </thead>
+                <tbody class="fs-6">
+                    <tr ng-repeat="item in projectInfo.timeEntries" class="{{ ($index % 2 == 0 ? 'odd' : 'even') }}">
+                        <td class="fw-bold">
+                            {{ item.atividade_titulo }}<br>
+                            <small>{{ item.observacao }}</small>
+                        </td>
+                        <td>{{ item.data_apontamento | date:'dd/MM/yyyy' }}</td>
+                        <td>
+                            <div class="symbol-group symbol-hover fs-8">
+                                <div class="symbol symbol-25px symbol-circle" data-bs-toggle="tooltip"
+                                    aria-label="{{ item.nome_responsavel }}" data-bs-original-title="{{ item.nome_responsavel }}y"
+                                    data-kt-initialized="1">
+                                    <img alt="Pic" ng-src="{{ item.foto_responsavel }}">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {{ item.esforco | number: 2 }} h
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

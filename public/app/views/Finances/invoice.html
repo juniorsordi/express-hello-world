@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12">
+        <style>
+            .grid {
+                width: 100%;
+                height: 350px;
+            }
+        </style>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Invoice</h5>
+                <p class="card-text">
+                    <div class="row">
+                        <div class="col-1"><span translate>Month</span></div>
+                        <div class="col-8"><input type="month" ng-model="form.date" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"><span translate>Amount</span></div>
+                        <div class="col-8"><input type="text" ng-model="form.value" ui-money-mask="2" /></div>
+                    </div>
+                    &nbsp;&nbsp;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    <button class="btn btn-primary" type="button" ng-click="generateInvoicePDF()" translate>Generate Invoice</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

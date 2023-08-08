@@ -1,0 +1,162 @@
+<div class="row">
+    <div class="col-12 col-lg-12" ng-init="initProjectsView()">
+		<div class="row">
+			<div class="col-10">
+				<input type="text" class="form-control" ng-model="filtro.nome" placeholder="{{ 'Search' | translate }}" />
+			</div>
+			<div class="col">
+				<a class="btn btn-primary btn-sm " href="#!/projects/new" role="button"> <i class="fa fa-plus"></i> <span translate>Add Project</span></a>
+                <button class="btn btn-primary" type="button" ng-click="exportProjects()">Test</button>
+			</div>
+		</div>
+        
+		<div style="margin-top: 15px;cursor: pointer;">
+			<span class="badge bg-primary" ng-click="filtro.id_situacao = '';" translate>All</span>
+            <span ng-repeat="status in arrStatus" class="badge {{ status.color }}" ng-click="setFilter(status.id)">{{ status.label }}</span>
+		</div>
+        <br>
+        <div class="row">
+            <div ng-repeat="project in projectsList | filter:filtro" class="col-12 col-md-6 col-lg-3">
+                <div class="card">
+					<div class="card-header px-4 pt-4">
+						<div class="card-actions float-end">
+							<div class="dropdown position-relative">
+								<a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
+                                    <i data-feather="more-horizontal"></i>
+                                </a>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item" href="#!/project/{{ project.id }}">View</a>
+								</div>
+							</div>
+						</div>
+						<h5 class="card-title mb-0" style="font-size: 1.0rem;">{{ project.nome }}</h5>
+                        <div class="badge {{ project.cor_situacao }} my-2">{{ project.nome_situacao }}</div>
+					</div>
+					<div class="card-body px-4 pt-2">
+						<p>
+                            <span>Inicio Estimado: </span>{{ project.inicio_estimado | date:'dd/MM/yyyy' }}<br>
+                            <span>Término Estimado: </span>{{ project.termino_estimado | date:'dd/MM/yyyy' }}<br>
+							<span>Inicio Real: </span>{{ project.inicio_real | date:'dd/MM/yyyy' }}<br>
+							<span>Término Real: </span>{{ project.termino_real | date:'dd/MM/yyyy' }}<br>
+                            <span>Receita Estimada: </span>{{ project.receita_estimada | currency }}<br>
+                            <span>Custo Estimado: </span>{{ project.custo_estimado | currency }}<br>
+                        </p>
+						<span>
+                            <img ng-repeat="pessoa in project.participantes" class="rounded-circle me-1" alt="Avatar" width="28" height="28" ng-src="{{ pessoa.foto }}" alt="{{ pessoa.nome }}" title="{{ pessoa.nome }}">
+						</span>
+					</div>
+                    <div class="row">
+                        <div class="col-10">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item px-4 pb-4">
+                                    <p class="mb-2 fw-bold"><span translate>Progress</span> <span class="float-end">{{ project.percentual_completo | number:2 }}%</span></p>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ project.percentual_completo }}" aria-valuemin="0" 
+                                            aria-valuemax="100" ng-style="{width: project.percentual_completo +'%' }">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-2">
+                            <a href="#!/project/{{ project.id }}"><i class="fa fa-chevron-right fa-2x" aria-hidden="true" ></i></a>
+                        </div>
+                    </div>
+					
+                    
+				</div>
+            </div>
+        </div>
+		<!--div class="row">
+			<div ng-repeat="project in projectsList | filter:filtro" class="col-xxl-3 col-sm-6 project-card">
+                <div class="card card-height-100">
+                    <div class="card-body">
+                        <div class="d-flex flex-column h-100">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-4">Updated 3hrs ago</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <button type="button" class="btn avatar-xs mt-n1 p-0 favourite-btn">
+                                            <span class="avatar-title bg-transparent fs-15">
+                                                <i class="mdi mdi-star"></i>
+                                            </span>
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link text-muted p-1 mt-n2 py-0 text-decoration-none fs-15" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal icon-sm"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                            </button>
+
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="apps-projects-overview.html"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>
+                                                <a class="dropdown-item" href="apps-projects-create.html"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#removeProjectModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title bg-soft-warning rounded p-2">
+                                            <img src="assets/images/brands/slack.png" alt="" class="img-fluid p-1">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fs-15"><a href="#!/project2/{{ project.id }}" class="text-dark">{{ project.nome }}</a></h5>
+                                    <p class="text-muted text-truncate-two-lines mb-3" ng-bind-html="project.descricao"></p>
+                                </div>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex mb-2">
+                                    <div class="flex-grow-1">
+                                        <div translate>Tasks</div>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <div><i class="ri-list-check align-bottom me-1 text-muted"></i> {{ project.percentual_completo | number: 2 }}%</div>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm animated-progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="{{ project.percentual_completo }}" aria-valuemin="0" aria-valuemax="100" ng-style="{width: project.percentual_completo +'%' }"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-dashed py-2">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <div class="avatar-group">
+                                    <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" aria-label="Darline Williams" data-bs-original-title="Darline Williams">
+                                        <div class="avatar-xxs">
+                                            <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle img-fluid">
+                                        </div>
+                                    </a>
+                                    <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" data-bs-original-title="Add Members">
+                                        <div class="avatar-xxs">
+                                            <div class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                 +
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="text-muted">
+                                    <i class="ri-calendar-event-fill me-1 align-bottom"></i> {{ project.termino_estimado | date:'dd MMMM yyyy' }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div-->
+    </div>
+    <script>
+      feather.replace()
+    </script>
+</div>

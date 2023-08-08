@@ -1,0 +1,111 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0"><span translate>Activities</span></h5>
+    </div>
+    <div class="card-body">
+        <button class="btn btn-secondary" type="button" ng-click="addTask('ModalNovaAtividade')"> <i class="fa fa-plus" aria-hidden="true"></i> Add Task</button>
+        <div ng-repeat="(key, value) in projectInfo.atividades | orderBy: 'etapa' | groupBy:'etapa'" class="card-list">
+            <div class="card-list-head">
+                <h6 ng-if="key">{{ (!key ? 'Unique' : 'Etapa '+key) }}</h6>
+            </div>
+            <div class="card-list-body">
+                <div ng-repeat="item in value" class="card card-task">
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar"
+                            ng-style="{ width: item.esforco_completo_perc + '%' }"
+                            aria-valuenow="{{ item.esforco_completo_perc }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="#!/projects/activity/{{ item.id }}">
+                                <h6 data-filter-by="text">{{ item.titulo }}</h6>
+                            </a>
+                            <span class="text-small">
+                                De {{ item.inicio_estimado | date:'dd/MM/yyyy' }} a
+                                {{ item.termino_estimado | date:'dd/MM/yyyy' }}
+                            </span>
+                        </div>
+                        <div class="card-meta">
+                            <ul class="avatars">
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="{{ item.responsavel.nome }}">
+                                        <img alt="{{ item.responsavel.nome }}" class="avatar"
+                                            ng-src="{{ item.responsavel.foto }}" />
+                                    </a>
+                                </li>
+                                <li ng-repeat="assignee in item.participantes">
+                                    <a href="#" data-toggle="tooltip" title="{{ assignee.nome }}">
+                                        <img alt="{{ assignee.nome }}" class="avatar" ng-src="{{ assignee.foto }}" />
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="d-flex align-items-center">
+                                <span>Esforço atual: {{ item.esforco_atual | number:2 }} h/{{ item.esforco_estimado | number:2 }} h| {{ item.id_status_atividade }}</span>
+                            </div>
+                            <div class="dropdown card-options">
+                                <i ng-if="item.id_status_atividade != closed_activity_status" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
+                                <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
+                                <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h6></h6>
+        <div class="card-list" style="background-color: orangered;">
+            <div class="card-list-head">
+                <h6>Canceled Activities</h6>
+            </div>
+            <div class="card-list-body">
+                <div ng-repeat="item in projectInfo.atividades | filter: { id_status_atividade: 4 }" class="card card-task">
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar" ng-style="{ width: item.esforco_completo_perc + '%' }"
+                            aria-valuenow="{{ item.esforco_completo_perc }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a href="#!/projects/activity/{{ item.id }}">
+                                <h6 data-filter-by="text">{{ item.titulo }}</h6>
+                            </a>
+                            <span class="text-small">
+                                De {{ item.inicio_estimado | date:'dd/MM/yyyy' }} a
+                                {{ item.termino_estimado | date:'dd/MM/yyyy' }}
+                            </span>
+                        </div>
+                        <div class="card-meta">
+                            <ul class="avatars">
+                                <li>
+                                    <a href="#" data-toggle="tooltip" title="{{ item.responsavel.nome }}">
+                                        <img alt="{{ item.responsavel.nome }}" class="avatar"
+                                            ng-src="{{ item.responsavel.foto }}" />
+                                    </a>
+                                </li>
+                                <li ng-repeat="assignee in item.participantes">
+                                    <a href="#" data-toggle="tooltip" title="{{ assignee.nome }}">
+                                        <img alt="{{ assignee.nome }}" class="avatar" ng-src="{{ assignee.foto }}" />
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="d-flex align-items-center">
+                                <span>Esforço atual: {{ item.esforco_atual | number:2 }} h/{{ item.esforco_estimado | number:2 }} h</span>
+                            </div>
+                            <div class="dropdown card-options">
+                                <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
+                                <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    feather.replace()
+</script>

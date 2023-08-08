@@ -1,0 +1,376 @@
+<div aria-labelledby="#artia-modal-title" class="modal fade2 in" id="artia-modal" role="dialog" tabindex=""
+    style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" id="artia-modal-header" style="">
+                <button aria-label="Fechar" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true" title="Fechar">
+                        ×
+                    </span>
+                </button>
+                <h4 id="artia-modal-title">Novo Lançamento Financeiro</h4>
+            </div>
+            <div class="modal-body" id="artia-modal-body">
+                <script>
+                    //<![CDATA[
+                    Artia.overlap.setTitle("Novo Lançamento Financeiro")
+//]]>
+                </script>
+                <form class="edit_finance" id="edit_finance_3352893"
+                    onsubmit="ehnoisApplication.data_loss_off(); if ( checkFileUploaded()) { jQuery.ajax({beforeSend:function(request){ehnoisApplication.loader('show');}, complete:function(request){ehnoisApplication.loader('hide')}, data:jQuery.param(jQuery(this).serializeArray()) + '&amp;_method=put' + '&amp;authenticity_token=' + encodeURIComponent('jfQ2fB3Zm-vEKkS6nxZ8hqnojBb_49QPmq242vBH_YnNwknbuHZtkL4nDqPrmPqIPTl-H3qBnfk5oUP0390qQQ'), dataType:'script', type:'post', url:'/a/4882122/f/4882139/finances/3352893'}); }; return false;"
+                    action="/a/4882122/f/4882139/finances/3352893" accept-charset="UTF-8" method="post"><input
+                        type="hidden" name="authenticity_token"
+                        value="9UJy51e8fZKGkHJ5OGGir7eLkSlOEUMpND9m5fHIdaxFsTzTYN8BJWdKIZ7neBjPo6SJRNpSOeonUQhHO5BZpQ"
+                        autocomplete="off">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a aria-expanded="" data-toggle="tab" href="#data-form">
+                                    Dados
+                                </a>
+                            </li>
+                            <li>
+                                <a aria-expanded="" data-toggle="tab" href="#archives">
+                                    <i class="icon-attach"></i>
+                                    Arquivos
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="data-form">
+                                <div class="form-group">
+                                    <input type="hidden" name="modal" id="modal" value="true" autocomplete="off">
+                                    <input value="1" autocomplete="off" type="hidden" name="finance[created_for_user]"
+                                        id="finance_created_for_user">
+                                    <label class="control-label" for="finance_title">Título*</label>
+                                    <input class="form-control" type="text" value="Novo Lançamento Financeiro"
+                                        name="finance[title]" id="finance_title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="finance_description">Descrição</label>
+                                    <textarea rows="3" class="form-control" name="finance[description]"
+                                        id="finance_description"></textarea>
+                                </div>
+                                <div class="form-group reference with-caret">
+                                    <label class="control-label" for="finance_category_text">Categorias</label>
+                                    <input size="255" maxlength="255" class="form-control" type="text" value=""
+                                        name="finance[category_text]" id="finance_category_text">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="finance_kind">Tipo</label>
+                                    <br>
+                                    <label>
+                                        <input type="radio" value="predicted" checked="checked" name="finance[kind]"
+                                            id="finance_kind_predicted">
+                                        Previsto
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="accomplished" checked="checked" name="finance[kind]"
+                                            id="finance_kind_accomplished">
+                                        Realizado
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="finance_date">Data*</label>
+                                    <div class="input-group date-field">
+                                        <div class="input-group-addon">
+                                            <i class="fa icon-calendar"></i>
+                                        </div>
+                                        <input size="30" class="input_small date hasDatepick form-control hasDatepicker"
+                                            type="text" value="03/08/2023" name="finance[date]" id="finance_date"><img
+                                            class="ui-datepicker-trigger" src="/assets/calendar-icon.png" alt="Data"
+                                            title="Data">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="" class="control-label" for="finance_unit">Unidade</label>
+                                            <input value="" class="input_small form-control" type="text"
+                                                name="finance[unit]" id="finance_unit">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="finance_unit_value">Valor unitário</label>
+                                            <div class="input-group calculator-field">
+                                                <div class="input-group-addon calculator-button">
+                                                    <i class="fa icon-calc"></i>
+                                                </div>
+                                                <input value=""
+                                                    class="input_small calculator auto_calc form-control hasCalculator"
+                                                    onblur="calculate_params(this)" type="text"
+                                                    name="finance[unit_value]" id="finance_unit_value"><img
+                                                    src="/assets/calculator.png" alt="Abrir a calculadora"
+                                                    title="Abrir a calculadora" class="calculator-trigger">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="finance_amount">Quantidade</label>
+                                            <div class="input-group calculator-field">
+                                                <div class="input-group-addon calculator-button">
+                                                    <i class="fa icon-calc"></i>
+                                                </div>
+                                                <input value=""
+                                                    class="input_small calculator auto_calc form-control hasCalculator"
+                                                    onblur="calculate_params(this)" type="text" name="finance[amount]"
+                                                    id="finance_amount"><img src="/assets/calculator.png"
+                                                    alt="Abrir a calculadora" title="Abrir a calculadora"
+                                                    class="calculator-trigger">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="finance_total_value">Valor total*</label>
+                                            <div class="input-group calculator-field">
+                                                <div class="input-group-addon calculator-button">
+                                                    <i class="fa icon-calc"></i>
+                                                </div>
+                                                <input value="0,00"
+                                                    class="input_small calculator auto_calc form-control hasCalculator"
+                                                    onblur="calculate_params(this)" type="text"
+                                                    name="finance[total_value]" id="finance_total_value"><img
+                                                    src="/assets/calculator.png" alt="Abrir a calculadora"
+                                                    title="Abrir a calculadora" class="calculator-trigger">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="finance_general_ledger_account">Conta
+                                        contábil</label>
+                                    <input size="255" maxlength="255" class="form-control" type="text"
+                                        name="finance[general_ledger_account]" id="finance_general_ledger_account">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="finance_cost_center">Centro de custo</label>
+                                    <input size="255" maxlength="255" class="form-control" type="text"
+                                        name="finance[cost_center]" id="finance_cost_center">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="finance_financial_rating">Classificação
+                                        financeira</label>
+                                    <input size="255" maxlength="255" class="form-control" type="text"
+                                        name="finance[financial_rating]" id="finance_financial_rating">
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="archives">
+                                <div class="box_inline" id="search_file">
+                                    <h4 class="link_file">
+                                        Vincular Arquivo
+                                    </h4>
+                                    <input id="search_file_input" placeholder="Digite para procurar um Arquivo..."
+                                        type="text" class="placeholder">
+                                    <ul id="file_list" style="display: none;"></ul>
+                                </div>
+                                <a class="btn btn-success box_inline" href="#"
+                                    onclick="newFileTab();; return false;">Novo Arquivo</a>
+                                <ul class="box_yellow box_yellow_spacing list-unstyled" id="files_ul"
+                                    style="background: #fff;">
+                                    <li class="no_records_found">
+                                        Nenhum registro encontrado.
+                                    </li>
+                                    <table class="table table-hover table-striped table-archives">
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </ul>
+                                <script>
+                                    var add_file_path = "/a/4882122/f/4882139/finances/3352893/add_file/:id?refresh_modal=true"
+                                    ArtiaSearchFile.exceptFiles = []
+                                    ArtiaSearchFile.filesPath = "/a/4882122/file_search"
+
+                                    ArtiaSearchFile.action = function () {
+                                        $("ul#file_list").hide();
+                                        var id = $(this).attr("file_id");
+                                        ArtiaSearchFile.inputClear();
+                                        $.ajax({ dataType: 'script', type: 'get', url: add_file_path.gsub(":id", id) });
+                                        ArtiaSearchFile.inputFocus();
+                                    };
+                                    ArtiaSearchFile.initialize();
+                                    doBindings();
+
+                                    $(function () {
+                                        $(".table-archives a.btn").on("click", function () {
+                                            artiaMessageBox.confirm("Deseja apagar o(s) registro(s) selecionado(s)?", function (confirm) {
+                                                if (confirm) {
+                                                    var url = "/a/4882122/f/4882139/finances/3352893/rm_file/:id?modal=true"
+                                                    $.ajax({ dataType: 'script', type: 'get', url: url.gsub(":id", $(this).attr("data-uid")) });
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-buttons">
+                        <button class="btn btn-primary" id="finances_save" type="submit">
+                            Salvar
+                        </button>
+                        <input type="hidden" name="save_and_new" id="finance_save_and_new" value="false"
+                            autocomplete="off">
+                        <button class="btn btn-primary"
+                            onclick="$('#finance_save_and_new').val('true');$('#finances_save').click()" type="button">
+                            Salvar e Novo
+                        </button>
+                        <button class="btn btn-default" onclick="Artia.overlap.hide()" type="button">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+                <script>
+                    $(function () {
+                        doBindings(".object-show");
+                    });
+
+                    function checkFileUploaded() {
+                        if ($("#file-sended").size() == 0) { return true; }
+                        if ($("#file-sended").val() != "") {
+                            return confirm("Você fez um upload pelo formulário. Clicando em ok, você irá perder o arquivo, deseja continuar?")
+                        }
+                    }
+
+                    Artia.formBind.save = function (event) {
+                        if ($('.edit_finance').size() > 0) { $('.edit_finance .btn-save').click(); }
+                        $('#item_save').hide();
+                        $('#item_edit').show();
+
+                        if (typeof (event) != 'undefined') { safePreventEvent(event); }
+                    }
+                    Artia.formBind.saveAndNew = function (event) {
+                        if ($('.edit_finance').size() > 0) { $('.edit_finance .btn-save-and-new').click(); }
+                        if (typeof (event) != 'undefined') { safePreventEvent(event); }
+                    }
+                    Artia.formBind.setupForm('.edit_finance');
+
+                    window.onbeforeunload = function () {
+                        if (wasTheFormChanged('.object-show form.edit_finance')) {
+                            return I18n.t('confirm_data_loss');
+                        }
+                        return;
+                    }
+
+                    // cancela a edição do formulário e exibe a mensagem de perda de dados caso necessário
+                    function cancelEditForm() {
+                        created_at = "2023-08-03 13:39:03"
+                        updated_at = "2023-08-03 13:39:03"
+                        if (created_at == updated_at) {
+                            window.location.href = '/a/4882122/f/4882139/finances';
+                        } else {
+                            if (wasTheFormChanged('.object-show form.edit_finance')) {
+                                if (confirm(I18n.t('confirm_data_loss_edit_form')))
+                                    cancelEditFormRequest();
+                            } else {
+                                cancelEditFormRequest();
+                            }
+                        }
+                    }
+
+                    function newFileTab() {
+                        var url = "/a/4882122/f/4882139/files/new?modal_element=.tab-pane%23archives&objectId=3352893&objectType=Finance"
+                        if (typeof $.fn.S3Uploader == "function") { url += "&s3loaded=true" }
+
+                        $.ajax(url, {
+                            dataType: 'script', type: 'GET',
+                            success: function (data) {
+                                //$(".tab-pane#archives").html(data);
+                            }
+                        });
+
+                        return false;
+                    }
+
+                    // Alterar valor do campo de categoria
+                    $(".category_check").change(function () {
+                        var value = $.map($(".category_check:checked"), function (e) { return $(e).val() }).join(", ")
+                        $("#finance_category_text").val(value);
+                        $('#finance_category_text').prop('title', value);
+                    })
+
+                    // Quando mudar o texto livre, trocar o title
+                    $("#finance_category_text").change(function () {
+                        var value = $("#finance_category_text").val();
+                        $('#finance_category_text').prop('title', value);
+                    })
+
+                    var mouseDown, currentTarget;
+                    $('.custom-field, .category-field').on({
+                        "mousedown mouseup": function (e) {
+                            mouseDown = e.type === "mousedown"; currentTarget = e.target;
+                        },
+                        "focus click": function (e) {
+                            if (mouseDown && currentTarget === e.target) return;
+
+                            var submenus = ".category_box_multiple, #category_box";
+                            $(submenus).not($(this).siblings(submenus)).hide();
+                            var $submenu_elemento = $(this).siblings(submenus);
+                            if (!$submenu_elemento.is(":visible"))
+                                setTimeout(function () { $submenu_elemento.showUntilClickOut(); }, 10);
+                        }
+                    });
+
+                    $(".category_box_multiple, #category_box").find(":checkbox").last().blur(function () {
+                        $(".category_box_multiple, #category_box").hide();
+                    });
+
+                    //calcula parametros ao utilizar calculadora
+                    $(document).ready(function () {
+                        $(".calculator-trigger").click(function () {
+                            element = $(this).prev();
+                        });
+
+                        $('.calculator-popup').mouseout(function () {
+                            if ($('.calculator-popup').css("overflow") == "hidden" || $('.calculator-popup').css("display") == "none") {
+                                element[0].focus();
+                            }
+                        });
+
+                        set_categories_red_border();
+
+                        $("select#finance_category_text").removeClass('form-control').select2({
+                            minimumResultsForSearch: Infinity,
+                            escapeMarkup: function (m) {
+                                $(".select2-container--open").css("word-wrap", "break-word");
+                                return m;
+                            }
+                        });
+                    });
+
+                    function cancelEditFormRequest() {
+                        jQuery.ajax({
+                            dataType: "html",
+                            beforeSend: function () { ehnoisApplication.loader('show'); },
+                            complete: function () { ehnoisApplication.loader('hide'); },
+                            success: function (request) {
+                                $('.object-show').html(request);
+                            },
+                            type: 'get',
+                            url: '/a/4882122/f/4882139/finances/3352893.js?back_to=https%3A%2F%2Fapp.artia.com%2Fa%2F4882122%2Ff%2F4882139%2Ffinances%2Fnew%3Factivity_id%3D25848989%26modal%3Dtrue'
+                        });
+                    }
+
+                    $('#item_edit').hide();
+                    $('#item_save').show();
+
+                    var created_for_user = false
+
+                    function set_categories_red_border() {
+                        if ($("#errorExplanation").length > 0) {
+                            if ($(".categories_label").attr("is_required") != undefined && $("#finance_category_text").val().trim() == "") {
+                                $("#finance_category_text").closest(".form-group").addClass("field_with_errors");
+                                try { $(".field_with_errors:first").children(":not(.category-field)")[0].focus(); } catch (e) { }
+                            }
+                        }
+                    }
+                </script>
+
+            </div>
+            <div class="modal-footer" id="artia-modal-footer" style="display:none;"></div>
+        </div>
+    </div>
+</div>

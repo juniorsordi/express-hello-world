@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" translate>New Ticket</h5>
+                <p class="card-text">
+                    <form>
+                        <div class="form-group">
+                            <label for="field0">Project Refference</label>
+                            <select id="field0" class="form-control" ></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editor">Description</label>
+
+                            <ng-quill-editor ng-model="form.event"></ng-quill-editor>
+
+                        </div>
+                    </form>
+                    <pre>
+                        {{ form | json }}
+                    </pre>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

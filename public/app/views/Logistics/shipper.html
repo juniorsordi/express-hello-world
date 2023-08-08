@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Shipper Module - {{ versao }}</h5>
+                <p class="card-text">
+                    <button class="btn btn-secondary" type="button" ng-click="importXLSFile()">
+                        <i class="fa fa-upload" aria-hidden="true"></i> Import Excel File
+                    </button>
+
+                    <button class="btn btn-secondary" type="button" onclick="goto('/logistics/newLabel')">
+                        <i class="fa fa-mail-forward" aria-hidden="true"></i> Create Label Etower
+                    </button>
+                    <button class="btn btn-secondary" type="button" ng-click="getLabelInfo()">
+                        <i class="fa fa-mail-forward" aria-hidden="true"></i> Load Label Etower
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                    <span>Tracking ID</span>
+                    <input type="text" class="form-control" ng-model="form.tracking" ng-value="LB890918626SE" />
+
+                    <big>{{ labelInfo.data[0].orderId }}</big>
+                    
+                    <table ng-if="order" class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th width="20%">Reference</th>
+                                <td><input type="text" ng-model="order.referenceNo" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Destination</th>
+                                <td><input type="text" ng-model="order.country" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>invoiceValue</th>
+                                <td><input type="text" ng-model="order.invoiceValue" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>invoiceCurrency</th>
+                                <td><input type="text" ng-model="order.invoiceCurrency" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>description</th>
+                                <td><input type="text" ng-model="order.description" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>shipperName</th>
+                                <td><input type="text" ng-model="order.shipperName" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>shipperCountry</th>
+                                <td><input type="text" ng-model="order.shipperCountry" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Items</th>
+                                <td>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th translate>Description</th>
+                                                <th translate>HS Code</th>
+                                                <th translate>Item Count</th>
+                                                <th translate>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tr ng-repeat="item in order.orderItems">
+                                            <td>{{ item.description }}</td>
+                                            <td>{{ item.hsCode }}</td>
+                                            <td>{{ item.itemCount }}</td>
+                                            <td>{{ item.unitValue }}</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <div ng-if="labelInfo.errors">
+                        <div ng-repeat="error in labelInfo.errors" class="alert alert-danger" role="alert">
+                            {{ error.message }}
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" ng-disabled="!order" type="button" ng-click="changeLabel()">
+                        <i class="fa fa-mail-forward" aria-hidden="true"></i> Create new Label for this package
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

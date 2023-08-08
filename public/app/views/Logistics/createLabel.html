@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-12" ng-init="initNewLabel()">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Create Label</h5>
+                <p class="card-text">
+                    <form>
+                        <div class="form-group">
+                            <label for="field0">Destination</label>
+                            <select id="field0" class="form-control" ng-model="form.destination">
+                                <option value="CA">Canada</option>
+                                <option value="AU">Australia</option>
+                                <option value="NZ">New Zeland</option>
+                                <option value="FR">France</option>
+                                <option value="BR">Brazil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="field1">Reference</label>
+                            <input id="field1" class="form-control" type="text" ng-model="form.reference" />
+                        </div>
+                        <div class="form-group">
+                            <label for="field2">Commodities</label>
+                            <div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="60%">Description</th>
+                                            <th width="5%">SKU</th>
+                                            <th width="5%">Count</th>
+                                            <th width="5%">Value</th>
+                                            <th width="5%">Weight</th>
+                                            <th width="10%">TariffNo</th>
+                                            <th width="5%">Origin Country</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in form.commodity">
+                                            <td>
+                                                <input type="text" class="form-control" ng-model="item.description">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="item.SKU">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="item.itemCount">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="item.unitValue">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="item.weight">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="item.hsCode">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="item.originCountry">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-secondary" type="button" ng-click="generateLabel(form)">
+                        <i class="mdi mdi-floppy" aria-hidden="true"></i> Create Label
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
