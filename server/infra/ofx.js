@@ -1,4 +1,4 @@
-const xml2json = require('xml2json');
+//const xml2json = require('xml2json');
 
 function sgml2Xml(sgml) {
     return sgml
@@ -10,7 +10,7 @@ function sgml2Xml(sgml) {
 }
 
 function parseXml(content) {
-    return JSON.parse(xml2json.toJson(content, { coerce: false }))
+    return "";//JSON.parse(xml2json.toJson(content, { coerce: false }))
 }
 
 function parse(data) {
