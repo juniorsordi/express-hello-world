@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" ng-init="initCashFlowView()">
         <style>
             .grid {
   width: 100%;
@@ -11,7 +11,66 @@
             <div class="card-body">
                 <h5 class="card-title">Cash Flow</h5>
                 <p class="card-text">
-                    <div id="grid1" ui-grid="gridOpts" class="grid"></div>
+                    <button class="btn btn-info" type="button" ng-click="loadCashFlow()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    <button class="btn btn-secondary" type="button" ng-click="openModalFinanceMovement()"> <i class="fa fa-2x fa-plus" aria-hidden="true"></i> </button>
+                    <br>
+                    <div class="row">
+                        <div class="col-1"><span translate>Account</span>:</div>
+                        <div class="col-3"><select class="form-control" id="account" select2 ng-model="filtro.forma_pagamento" ng-options="item.id as item.nome for item in paymentTypesList" ng-change="sumarioCashFlowFilter()"></select></div>
+                        <div class="col-2">Periodo</div>
+                        <div class="col-2"><input type="text" class="datepicker" id="data1" flatpickr ng-model="filtro.data_inicio" autofocus /></div>
+                        <div class="col-2"><input type="text" class="datepicker" id="data2" flatpickr ng-model="filtro.data_termino"  autofocus /></div>
+                        <div class="col-2"><button class="btn btn-outline-primary" type="button" ng-click="filtrar()">Filtrar</button></div>
+                    </div>
+                     &nbsp;<br>
+                    
+                    
+                    
+                    <table id="example" class="display" width="100%"></table>
+                    <table class="table table-bordered" id="datatable_1">
+                        <thead>
+                            <tr>
+                                <th>Titulo</th>
+                                <th>Data Vencimento</th>
+                                <th>Valor</th>
+                                <th>Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in incomesList">
+                                <td>{{ item.titulo }}</td>
+                                <td>{{ item.data_vencimento2 }}</td>
+                                <td>
+                                    <span ng-class="item.type == 1 ? 'finances-positive-value' : 'finances-negative-value'">{{ item.valor | currency:'R$ ' }}</span>
+                                </td>
+                                <td>
+                                    {{ item.pago | boolean }}
+                                    <i ng-if="item.pago == 0" class="fa fa-sort-down" aria-hidden="true" ng-click="marcarItemPago(item)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    Results:<br>
+                    <table>
+                        <tr>
+                            <td>Incomes:</td>
+                            <td>{{ results.incomes | currency:'R$ ' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Expenses:</td>
+                            <td>{{ results.expenses | currency:'R$ ' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Flow:</td>
+                            <td>{{ results.flow | currency:'R$ ' }}</td>
+                        </tr>
+                    </table>
+
+                    USD 1 = {{ exchange.BRL | currency:'R$ '}}<br>
+                    USD 1 = {{ exchange.EUR | currency:'EUR '}}<br>
+                    <pre>
+                        {{ filtro | json }}
+                    </pre>
                 </p>
             </div>
         </div>

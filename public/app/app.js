@@ -34,13 +34,13 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/projects/dashboard',    { templateUrl: 'app/views/Projects/dashboard.html?t=' + date, controller: 'ProjectCtrl' })
         .when('/projects',              { templateUrl: 'app/views/Projects/projects.html?t=' + date, controller: 'ProjectCtrl' })
         .when('/projects/kanban',       { templateUrl: 'app/views/Projects/kanban.html?t=' + date, controller: 'KanbanViewCtrl' })
-        .when('/projects/activities',   { templateUrl: 'app/views/Projects/activities.html?t=' + date, controller: 'ProjectCtrl' })
+        .when('/projects/activities',   { templateUrl: 'app/views/Projects/activities.html?t=' + date, controller: 'UserTasksCtrl' })
         .when('/projects/activity/:id', { templateUrl: 'app/views/Projects/viewActivity.html?t=' + date, controller: 'ProjectActivityCtrl' })
         .when('/projects/new',          { templateUrl: 'app/views/Projects/newProject.html?t=' + date, controller: 'NewProjectCtrl' })
         .when('/project/:id',           { templateUrl: 'app/views/Projects/viewProject.html?t=' + date, controller: 'ProjectCtrl' })
         .when('/project2/:id',          { templateUrl: 'app/views/Projects/viewProject2.html?t=' + date, controller: 'ProjectCtrl' })
 
-        .when('/finances',              { templateUrl: 'app/views/Finances/dashboard.html?t=' + date, controller: 'FinancesController' })
+        .when('/finances',              { templateUrl: 'app/views/Finances/dashboard.html?t=' + date, controller: 'FinancesDashboard' })
         .when('/finance/cashFlow',      { templateUrl: 'app/views/Finances/cashFlow.html?t=' + date, controller: 'FinancesController' })
         .when('/finance/invoices',      { templateUrl: 'app/views/Finances/invoice.html?t=' + date, controller: 'FinancesInvoicesCtrl' })
 
@@ -49,13 +49,13 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/tickets/list',          { templateUrl: 'app/views/Tickets/tickets.html', controller: 'TicketsCtrl' })
         .when('/ticket/:id',            { templateUrl: 'app/views/Tickets/viewTicket.html', controller: 'TicketsCtrl' })
 
-        .when('/logistics',             { templateUrl: 'app/views/Logistics/dashboard.html', controller: 'LogisticsCtrl' })
+        .when('/contracts',             { templateUrl: 'app/views/Contratos/listaContratos.html', controller: 'ContractsCtrl' })
         .when('/logistics/newLabel',    { templateUrl: 'app/views/Logistics/createLabel.html', controller: 'LogisticsCtrl' })
         .when('/logistics/shipper',     { templateUrl: 'app/views/Logistics/shipper.html', controller: 'LogisticsCtrl' })
         .when('/logistics/warehouse',   { templateUrl: 'app/views/Logistics/warehouse.html', controller: 'LogisticsCtrl' })
 
-        .when('/system/users',          { templateUrl: 'app/views/sistema/users.html', controller: 'CompanyUsersCtrl' })
-        .when('/settings',              { templateUrl: 'app/views/sistema/clientSettings.html', controller: 'ClientCtrl' })
+        .when('/company/users',          { templateUrl: 'app/views/Companies/users.html', controller: 'CompanyUsersCtrl' })
+        .when('/company/settings',       { templateUrl: 'app/views/Companies/clientSettings.html', controller: 'ClientCtrl' })
         .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);

@@ -12,8 +12,8 @@
                 <div ng-repeat="item in value" class="card card-task">
                     <div class="progress">
                         <div class="progress-bar bg-danger" role="progressbar"
-                            ng-style="{ width: item.esforco_completo_perc + '%' }"
-                            aria-valuenow="{{ item.esforco_completo_perc }}" aria-valuemin="0" aria-valuemax="100">
+                            ng-style="{ width: item.percentual_completo + '%' }"
+                            aria-valuenow="{{ item.percentual_completo }}" aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
                     <div class="card-body">
@@ -56,7 +56,7 @@
         </div>
 
         <h6></h6>
-        <div class="card-list" style="background-color: orangered;">
+        <div ng-if="(projectInfo.atividades | filter: { id_status_atividade: 4 }).length > 0" class="card-list" style="background-color: orangered;">
             <div class="card-list-head">
                 <h6>Canceled Activities</h6>
             </div>

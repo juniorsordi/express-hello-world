@@ -92,7 +92,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
         $modal({
             title: 'My Title',
             //template: 'app/views/Modals/ModalTest2.html',
-            template: 'app/views/Projects/Modals/ModalApontamentoAtividade.html',
+            templateUrl: 'app/views/Projects/Modals/ModalApontamentoAtividade.html',
             show: true,
             scope: $scope,
         });
@@ -118,7 +118,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
 
         $modal({
             title: 'My Title',
-            template: 'app/views/Projects/Modals/ModalNovaAtividade.html',
+            templateUrl: 'app/views/Projects/Modals/ModalNovaAtividade.html',
             show: true,
             scope: $scope,
         });
@@ -127,10 +127,41 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     $scope.saveNewTask = function () {
         var id = $routeParams.id;
         APIService.postData(`/project/${id}/task`, $scope.form, function (resp) {
-            if (resp.data.affectedRows > 0) {
+            if (resp.data > 0) {
                 $scope.initProjectView();
             }
         });
+    }
+    ///############################################################################################
+    $scope.calculateEffort = function() {
+        var startDate = $scope.form.start_date;
+        var endDate = $scope.form.due_date;
+        var param = moment(startDate);
+        var param2 = moment(endDate);
+        var signal = param.unix() < param2.unix() ? 1 : -1;
+        var start = moment.min(param, param2).clone();
+        var end = moment.max(param, param2).clone();
+        var start_offset = start.day() - 7;
+        var end_offset = end.day();
+
+        var end_sunday = end.clone().subtract(end_offset, 'd');
+        var start_sunday = start.clone().subtract(start_offset, 'd');
+        var weeks = end_sunday.diff(start_sunday, 'days') / 7;
+
+        start_offset = Math.abs(start_offset);
+        if (start_offset == 7)
+            start_offset = 5;
+        else if (start_offset == 1)
+            start_offset = 0;
+        else
+            start_offset -= 2;
+
+
+        if (end_offset == 6)
+            end_offset--;
+
+        var total = signal * (weeks * 5 + start_offset + end_offset);
+        $scope.form.estimated_effort = total * 5;
     }
     ///############################################################################################
     $scope.salvarApontamento = function () {
@@ -312,13 +343,21 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
         })
     }
     ///############################################################################################
+    $scope.$on("updateListTasks", function () {
+        $scope.initProjectView();
+    });
+    ///############################################################################################
+    
+    ///############################################################################################
+    ///############################################################################################
+    ///############################################################################################
     ///############################################################################################
     ///############################################################################################
     ///############################################################################################
 
 });
 ///#####################################################################################################
-app.controller("NewProjectCtrl", function ($scope, $resource, APIService) {
+app.controller("NewProjectCtrl", function ($scope, $rootScope, $resource, APIService) {
 
     $scope.form = {
         name: "Testes de Psicopedagogia",
@@ -357,6 +396,7 @@ app.controller("NewProjectCtrl", function ($scope, $resource, APIService) {
     $scope.inserirNovoProjeto = function () {
         APIService.postData("/project", $scope.form, function (resp) {
             console.log(resp.data);
+            $rootScope.$broadcast('updateListTasks');
         })
     }
 
@@ -375,9 +415,54 @@ app.controller("ProjectActivityCtrl", function ($scope, $resource, $routeParams,
     $scope.init();
 });
 ///#####################################################################################################
+app.controller("UserTasksCtrl", function ($scope, $rootScope, $resource, $routeParams, $modal, APIService) {
+    $scope.form = {};
+
+    ///############################################################################################
+    $scope.initUserActivities = function () {
+        APIService.getData("/activities/users", function (resp) {
+            $scope.activitiesList = resp.data;
+        })
+    }
+    ///############################################################################################
+    $scope.$on("updateListTasks", function () {
+        $scope.initUserActivities();
+    });
+    ///############################################################################################
+    $scope.apontarHoras = function (item, element) {
+        $scope.selectedItem = item;
+        $scope.form = {};
+        console.log(item);
+        //*
+        $modal({
+            title: 'My Title',
+            templateUrl: 'app/views/Projects/Modals/ModalApontamentoTarefa.html',
+            show: true,
+            scope: $scope,
+        });
+    }
+    ///############################################################################################
+    $scope.salvarApontamento = function () {
+        var temp = $scope.form.data_apontamento.toISOString().substr(0, 10);
+        var selectedItem = $scope.selectedItem;
+        var tempEsforco = $scope.form.horas + ( $scope.form.minutos / 60);
+        var apontamento = {
+            id_atividade: selectedItem.id,
+            id_usuario: $scope.Usuario.id,
+            esforco: tempEsforco.toFixed(2),
+            data: temp,
+            observacao: $scope.form.observacao
+        };
+        APIService.postData("/activities/" + selectedItem.id + "/time_entry", apontamento, function (response) {
+            $rootScope.$broadcast('updateListTasks');
+        });
+    }
+    ///############################################################################################
+});
+///#####################################################################################################
 app.controller("KanbanViewCtrl", function ($scope, $resource, $routeParams, APIService) {
 
-    $scope.id_projeto = 4;
+    $scope.id_projeto = 1;
     ///############################################################################################
     $scope.initKaban = function () {
         $scope.kanban = {

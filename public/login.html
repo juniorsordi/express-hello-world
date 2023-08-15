@@ -93,7 +93,8 @@
             $scope.login = function () {
                 $http.post("api/auth/login", $scope.form).then(function (resp) {
                     if(resp.data.success) {
-                        sessionStorage.setItem('user', JSON.stringify(resp.data));
+                        //sessionStorage.setItem('user', JSON.stringify(resp.data));
+                        localStorage.setItem('user', JSON.stringify(resp.data));
                         location.href = "./";
                     } else {
 						alert(resp.data.msg);

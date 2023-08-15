@@ -12,10 +12,10 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, APIS
     };
 
     $scope.modules = {
-      finances: true,
-      logistics: false,
-      projects: true,
-      tickets: true
+		finances: true,
+		logistics: false,
+		projects: true,
+		tickets: true
     };
 
     $scope.languagesList = [
@@ -27,6 +27,32 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, APIS
     $rootScope.Usuario = $scope.loggedUser;
 
     $scope.initApp = function () {
+		if (localStorage.getItem('user')) {
+			$scope.lang = $window.navigator.language || $window.navigator.userLanguage;
+			$scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
+			$translate.use($scope.currentLang.locale);
+			$scope.Usuario = JSON.parse(localStorage.getItem('user'));
+			$rootScope.Usuario = $scope.Usuario;
+			//$scope.anoAtendimento = (new Date()).getFullYear();
+			APIService.getData("/../auth/checkToken", function (response) {});
+		} else {
+			location.href = "login.html";
+		}
+		/*
+		APIService.getData("/../auth/checkToken", function (response) {
+			if (response.data.loggedin) {
+				$scope.lang = $window.navigator.language || $window.navigator.userLanguage;
+				$scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
+				$translate.use($scope.currentLang.locale);
+				$scope.Usuario = JSON.parse(localStorage.getItem('user'));
+				//console.log($scope.Usuario);
+				$rootScope.Usuario = $scope.Usuario;
+			} else {
+				location.href = "login.html";
+			}
+		});
+		//*/
+      /*
         if (sessionStorage.getItem('user')) {
             $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
             $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
@@ -35,9 +61,18 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, APIS
             console.log($scope.Usuario);
             $rootScope.Usuario = $scope.Usuario;
             //$scope.anoAtendimento = (new Date()).getFullYear();
+        } else if (localStorage.getItem('user')) { 
+            $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
+            $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
+            $translate.use($scope.currentLang.locale);
+            $scope.Usuario = JSON.parse(localStorage.getItem('user'));
+            console.log($scope.Usuario);
+            $rootScope.Usuario = $scope.Usuario;
+            //$scope.anoAtendimento = (new Date()).getFullYear();
         } else {
             location.href = "login.html";
         }
+      //*/
     }
     ///############################################################################################
     $scope.changeLocale = function (locale) {
@@ -184,12 +219,6 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, APIS
         sessionStorage.clear();
         APIService.resourceQuery("/../auth/logout");
         location.href = "login.html";
-    }
-    
-    $scope.atualizarDados = function () {
-        APIService.postData("Importacao", "rotinaAtualizacaoDadosArtia", 2, {}, function (data) {
-
-        });
     }
     ///############################################################################################
     ///############################################################################################

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12" ng-init="initDashboard()">
+    <div class="col-md-12">
         <br>
         <h1 class="h3 mb-3">Dashboard</h1>
         <br>
@@ -7,19 +7,62 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Cash Flow</h5>
+                        <h5 class="card-title" translate>Accounts</h5>
                         <p class="card-text">
-                
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Conta</th>
+                                            <th scope="col">Expenses</th>
+                                            <th scope="col">Incomes</th>
+                                            <th scope="col">Flow</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in dashboardAccountsList" class="">
+                                            <td scope="row">{{ item.conta }}</td>
+                                            <td style="color: red;">-{{ item.expenses | currency:'R$ '}}</td>
+                                            <td style="color: blue;">{{ item.incomes | currency:'R$ '}}</td>
+                                            <td>
+                                                <span ng-if="item.expenses > item.incomes" style="color: red;">-{{ (item.expenses - item.incomes) | currency:'R$ '}}</span>
+                                                <span ng-if="item.expenses <= item.incomes" style="color: blue;">{{ (item.incomes - item.expenses) | currency:'R$ '}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-6">
-
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" translate>Categories</h5>
+                        <p class="card-text">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" translate>Category</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in dashboardCategoryCards" class="">
+                                            <td scope="row">{{ item.nome }}</td>
+                                            <td style="color: red;">{{ item.total | currency:'R$ '}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-<span class="material-symbols-outlined">
-    currency_exchange
-</span>
     </div>
 </div>

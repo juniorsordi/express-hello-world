@@ -78,6 +78,15 @@ app.directive('datepicker', function () {
     }
 });
 ///#####################################################################################################
+app.directive('flatpickr', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            flatpickr(element, { dateFormat: 'd/m/Y', locale: 'pt', altInput: false, allowInput: true }); // flatpickr
+        }
+    }
+});
+///#####################################################################################################
 app.directive('choices', function () {
     return {
         restrict: 'A',
@@ -88,7 +97,7 @@ app.directive('choices', function () {
     }
 });
 ///#####################################################################################################
-app.directive('flatpickr', function () {
+app.directive('flatpickr2', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {

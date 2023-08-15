@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const path = require("path");
+const cors = require("cors");
 const app = express();
 var bodyParser = require('body-parser');
 const session = require("express-session");
@@ -12,14 +13,17 @@ const cookieParser = require("cookie-parser");
 app.use(function (req, res, next) {
   res.set('x-timestamp', Date.now())
   res.set('x-powered-by', 'cyclic.sh')
-  console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
+  //console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
   next();
 });
 
+const oneDay = 1000 * 60 * 60 * 23;
+
+app.use(cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser());
-app.use(session({ secret: 'XASDASDA', saveUninitialized: true, resave: true }));
+app.use(session({ secret: 'XASDASDA', saveUninitialized: true, resave: false, cookie: { maxAge: oneDay } }));
 
 // #############################################################################
 // This configures static hosting for files in /public that have the extensions
@@ -37,7 +41,8 @@ app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, x-access-token');
-  res.header('Access-Control-Max-Age', 600);
+  res.header('Access-Control-Max-Age', 60000);
+  //console.log(req.session);
   next();
 });
 
@@ -65,13 +70,12 @@ app.get('/api/test', function (req, res) {
 });
 
 app.use('/api/', require('./server/routes/authRoutes'));
-/*
-
-app.use('/api/v1/', require('./server/routes/tickets.routes'));
 app.use('/api/v1/', require('./server/routes/projectsRoute'));
-app.use('/api/v1/', require('./server/routes/financesRoute'));
-//app.use('/api/v1/', require('./server/routes/logisticsRoutes'));
 app.use('/api/v1/', require('./server/routes/companyRoute'));
+app.use('/api/v1/', require('./server/routes/financesRoute'));
+
+/*
+app.use('/api/v1/', require('./server/routes/tickets.routes'));
 //*/
 
 var errorHandler = function (err, req, res, next) {

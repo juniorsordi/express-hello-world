@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="Sistema">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="DSJ">
+	<title>Register</title>
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+	<link class="js-stylesheet" href="assets/css/light.css" rel="stylesheet">
+    <style>
+        .auth-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            min-width: 100%;
+            min-height: 100vh;
+        }
+        .auth-wrapper .auth-content {
+    position: relative;
+    width: 390px;
+    padding: 15px;
+    z-index: 5;
+}
+    </style>
+</head>
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" ng-controller="RegisterCtrl">
+	<div class="main d-flex justify-content-center w-100">
+		<main class="auth-wrapper">
+            <div class="auth-content">
+                <div class="auth-bg">
+                    <span class="r"></span>
+                    <span class="r s"></span>
+                    <span class="r s"></span>
+                    <span class="r"></span>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <i class="feather icon-user-plus auth-icon"></i>
+                        </div>
+                        <h3 class="mb-4" translate>Sign up</h3>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Full Name" ng-model="form.nome">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email" ng-model="form.email">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Password" ng-model="form.senha">
+                        </div>
+                        <div class="input-group mb-5">
+                            <input type="text" class="form-control" placeholder="Company Name" ng-model="form.empresa">
+                        </div>
+                        <button class="btn btn-primary shadow-2 mb-4" ng-click="login()">Sign up</button>
+                        <p class="mb-0 text-muted">Already have an account? <a href="login.html"> Log in</a></p>
+                    </div>
+                </div>
+            </div>
+		</main>
+	</div>
+
+	<script src="assets/js/app.js"></script>
+    <script src="assets/js/angular/angular.min.js"></script>
+    <script src="assets/js/angular/angular-translate.min.js"></script>
+    <script>
+        'use strict';
+        var app = angular.module('Sistema', ["pascalprecht.translate"]);
+        ///#######################################################################################
+        app.config(function ($controllerProvider) {
+            app.controller = $controllerProvider.register;
+        });
+        
+    </script>
+    <script src="app/utils/translation.js"></script>
+	<script>
+		///#######################################################################################
+        app.controller('RegisterCtrl', function ($scope, $http) {
+            $scope.form = {};
+            $scope.login = function () {
+                $http.post("api/auth/register", $scope.form).then(function (resp) {
+                    if(resp.data.success) {
+                        alert(resp.data.Msg);
+                        location.href = "login.html";
+                    } else {
+						alert(resp.data.Msg);
+					}
+                });
+            }
+        })
+        ///#######################################################################################
+	</script>
+</body>
+</html>

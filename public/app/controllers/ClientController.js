@@ -40,7 +40,7 @@ app.controller("ClientCtrl", function ($scope, $resource, APIService, $modal, $t
     $scope.openModalClient = function() {
         $modal({
             title: 'My Title',
-            template: 'app/views/Sistema/Modals/ModalClient.html',
+            templateUrl: 'app/views/Sistema/Modals/ModalClient.html',
             show: true,
             scope: $scope,
         });
@@ -48,7 +48,7 @@ app.controller("ClientCtrl", function ($scope, $resource, APIService, $modal, $t
 
     $scope.saveClient = function(form) {
         APIService.postData("/company/clients", form, function(resp) {
-            if (resp.data.affectedRows > 0) {
+            if (resp.data > 0) {
                 myModal.hide();
                 $scope.init();
             }

@@ -13,7 +13,7 @@ let leo = await animals.set("leo", {
 let item = await animals.get("leo")
 console.log(item);
 //*/
-const sqlite3 = require('sqlite3');
+const sqlite3 = require('sqlite3').verbose();
 const util    = require('util');
 
 let db = new sqlite3.Database('./database.db', sqlite3.OPEN_READWRITE, (err) => {

@@ -6,7 +6,7 @@
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home"
                     aria-selected="true">
                     <span class="mdi mdi-format-list-bulleted align-middle"></span>
-                    Categories
+                    Project Categories
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -20,7 +20,14 @@
                 <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages"
                     aria-selected="false">
                     <span class="mdi mdi-format-list-bulleted align-middle"></span>
-                    Status
+                    Project Status
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="actstatus-tab" data-bs-toggle="tab" data-bs-target="#actstatus" type="button" role="tab" aria-controls="actstatus"
+                    aria-selected="false">
+                    <span class="mdi mdi-format-list-bulleted align-middle"></span>
+                    Activity Status
                 </button>
             </li>
         </ul>
@@ -74,6 +81,29 @@
 				<br>
             </div>
             <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab" style="padding: 15px;">
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="5%">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col" width="5%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in arrStatus">
+                            <th scope="row">{{ $index+1 }}</th>
+                            <td>{{ item.label }}</td>
+                            <td>
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+				<button class="btn btn-primary" type="button" ng-click="addNewStatus()"><i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span></button>
+				<br>
+            </div>
+            <div class="tab-pane" id="actstatus" role="tabpanel" aria-labelledby="actstatus-tab" style="padding: 15px;">
                 <br>
                 <table class="table">
                     <thead>

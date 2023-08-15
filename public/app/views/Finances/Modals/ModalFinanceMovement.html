@@ -1,0 +1,61 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" translate="">Financial Movement</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    ng-click="$hide()"></button>
+            </div>
+            <div class="modal-body m-3">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="mb-3">
+                            <label for="field0" translate="">Type</label>
+                            <div id="field0">
+                                <label class="ui-radio ui-radio-danger">
+                                    <input name="radio1" type="radio" value="1" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false"> 
+                                    <span>Despesa</span>
+                                </label>
+                                <label class="ui-radio">
+                                    <input name="radio1" type="radio" value="2" ng-model="form.tipo_operacao" aria-invalid="false" > 
+                                    <span>Receita</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="field1" translate="">Title</label>
+                            <input type="text" id="field1" class="form-control" ng-model="form.titulo" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="field3" translate="">Value</label>
+                            <input type="text" id="field3" class="form-control" ng-model="form.valor"
+                                ui-money-mask="2" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="field4" translate="">Due Date</label>
+                            <input type="date" id="field4" class="form-control" ng-model="form.data_vencimento" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="field5" translate="">Category</label>
+                            <select id="field5" class="form-control" ng-model="form.id_categoria" ng-options="item.id as item.nome for item in financesCategoriesList">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="field5" translate="">Payment Type</label>
+                            <select id="field5" class="form-control" ng-model="form.tipo_pagamento" ng-options="item.id as item.nome for item in paymentTypesList">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ng-click="$hide()"
+                    translate>Close</button>
+                <button type="button" class="btn btn-success" ng-click="saveFinanceMovement(form);$hide()"
+                    translate>Save</button>
+            </div>
+        </div>
+    </div>
+</div>
