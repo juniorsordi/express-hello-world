@@ -61,6 +61,28 @@ app.config(function ($routeProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
 });
 ///#####################################################################################################
+app.factory("tokenInterceptor", ["$window", "$location", function ($window, $location) {
+    return {
+        request: function (config) {
+            var token = JSON.parse(localStorage.getItem("user")).token;
+            if (token && !config.noAuth) {
+                config.headers['x-access-token'] = token;
+            }
+
+            return config;
+        },
+        response: function (response) {
+            return response;
+        }
+    };
+}]);
+///#####################################################################################################
+app.config(["$httpProvider", function ($httpProvider) {
+    $httpProvider.interceptors.push("tokenInterceptor");
+    //$httpProvider.interceptors.push("authenticationInterceptor");
+    //$httpProvider.interceptors.push("responseErrorInterceptor");
+}]);
+///#####################################################################################################
 var myModal;
 
 function MyModalController($scope) {
