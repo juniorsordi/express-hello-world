@@ -1,6 +1,6 @@
 {
   "name": "express-hello-world",
-  "version": "2023 r45",
+  "version": "2023 r46",
   "description": "Expressjs Hello World example to provide faster start deploying on Cyclic platform",
   "main": "server.js",
   "scripts": {
@@ -28,7 +28,6 @@
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
     "mongodb": "^5.8.1",
-    "ofx-convertjs": "^1.0.8",
     "pg": "^8.11.3",
     "pg-promise": "^11.5.4",
     "sequelize": "^6.32.1",
