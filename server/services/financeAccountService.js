@@ -2,8 +2,7 @@ var crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 var fs = require("fs");
 const moment = require("moment");
-var parser = require('xml2json');
-const ofx = require('ofx-convertjs');
+//const ofx = require('ofx-convertjs');
 
 const database = require("../infra/postgres");
 //const ofx = require('../infra/ofx');
@@ -101,6 +100,7 @@ async function saveAccountMoviment(fields, idEmpresa) {
 }
 
 async function testeOFX(idEmpresa) {
+    /*
     const file = fs.readFileSync('extrato_202307.ofx', 'utf8')
     const data = ofx.toJson(file);
     const listaTransacoes = data.OFX.BANKMSGSRSV1.BANKTRANLIST.STMTTRN;
@@ -115,6 +115,7 @@ async function testeOFX(idEmpresa) {
     });
     return listaTransacoes;
     return data.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN;
+    //*/
 }
 
 module.exports = {

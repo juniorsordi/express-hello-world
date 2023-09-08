@@ -6,7 +6,7 @@ const utils = require("../infra/utils");
 const companyCtrl = require("./company");
 
 var fs = require('fs');
-var parser = require('xml2json');
+//var parser = require('xml2json');
 
 async function userLogin(email, password) {
     try {
@@ -117,6 +117,7 @@ async function userLoginPG(email, password) {
 }
 
 async function processManifestXML() {
+    /*
     fs.readFile('./manifest_sample.xml', function (err, data) {
         var json = parser.toJson(data, { object: true });
         //console.log("to json ->", );
@@ -187,6 +188,7 @@ async function processManifestXML() {
         //console.log(temp1);
         
     });
+    //*/
 }
 
 module.exports = {
