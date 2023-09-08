@@ -1,0 +1,17 @@
+<div layout=row>
+    <md-chips ng-model=vm.selectedItems md-require-match=true md-autocomplete-snap=width flex ng-change=vm.onChangeItems()>
+        <md-autocomplete md-input-id={{vm.inputId}} md-selected-item=vm.selected md-no-cache=true md-min-length=0 md-search-text=vm.searchText md-items="item in vm.query(vm.searchText)" md-item-text=item.nome md-selected-item-change=vm.onSelect(item) placeholder={{vm.label}} md-input-name={{vm.name}} md-menu-class=mdw-select>
+            <md-item-template>
+                <div class=contents ng-class=vm.tipo>
+                    <span ng-if="item.id==-1" style=margin-right:3px>
+                        <i>Criar tag:</i>
+                    </span>
+                    <span md-highlight-text=vm.searchText md-highlight-flags=^i title={{item.nome}}>{{item.nome}}</span>
+                </div>
+            </md-item-template>
+        </md-autocomplete>
+        <md-chip-template mdw-chip=$chip>
+            <span>{{$chip.nome}}</span>
+        </md-chip-template>
+    </md-chips>
+</div>

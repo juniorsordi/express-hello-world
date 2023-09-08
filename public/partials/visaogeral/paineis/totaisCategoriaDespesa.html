@@ -1,0 +1,52 @@
+<div flex layout=column>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <div flex>
+            Despesas por categoria <em ng-if="card.opened && vm.vg.totaisCategoriaD._initialized" class=detalhe>Situação {{vm.vg.totaisCategoriaD.visualizacao == 'c' ? 'confirmada' : 'projetada'}}</em>
+        </div>
+        <div class=actions layout=row>
+            <md-button class=md-icon-button ng-if="card.opened && vm.vg.totaisCategoriaD._initialized && vm.vg.totaisCategoriaD.charts.d.canChangeChartType" ng-click=vm.vg.totaisCategoriaD.changeChartType()>
+                <md-icon>{{vm.vg.totaisCategoriaD.chartType =='p' ? 'insert_chart' : 'pie_chart'}}</md-icon>
+                <md-tooltip>Alternar para gráfico de {{vm.vg.totaisCategoriaD.chartType == 'p'? 'barras' : 'pizza'}}</md-tooltip>
+            </md-button>
+            <md-button ng-if="card.opened && vm.vg.totaisCategoriaD._initialized" class=md-icon-button ng-class=vm.vg.totaisCategoriaD.visualizacao ng-click=vm.vg.totaisCategoriaD.toggleVisualizacao()>
+                <md-tooltip>{{vm.vg.totaisCategoriaD.visualizacao == 'c' ? 'Alterar para situação projetada' : 'Alterar para situação confirmada'}}</md-tooltip>
+                <md-icon>{{vm.vg.totaisCategoriaD.visualizacao == 'c' ? 'check_circle' : 'check'}}</md-icon>
+            </md-button>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if="vm.vg.totaisCategoriaD.loading && card.opened && vm.vg.totaisCategoriaD._initialized"></md-progress-linear>
+    <div class=conteudo ng-if="!vm.vg.totaisCategoriaD.loading && card.opened && vm.vg.totaisCategoriaD._initialized">
+        <div ng-if="vm.vg.totaisCategoriaD.despesas.length > 0" google-chart chart=vm.vg.totaisCategoriaD.charts.d style="width: 100%;height: 200px"></div>
+        <md-content ng-if="vm.vg.totaisCategoriaD.despesas.length >0">
+            <table>
+                <tbody>
+                    <tr ng-repeat="categoria in vm.vg.totaisCategoriaD.despesas track by $index">
+                        <td>
+                            <span class=cor-legenda ng-style="{'background-color' : categoria.cor}"></span>
+                            <span class=link-detalhe ng-click=vm.vg.totaisCategoriaD.onselect(categoria)>{{categoria.categoria.nome}}</span>
+                        </td>
+                        <td>
+                            <span mdw-currency=categoria.valor mask=auto></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-content>
+        <div class=mdw-empty-space flex ng-if="vm.vg.totaisCategoriaD.despesas.length == 0">
+            <md-icon>error_outline</md-icon>
+            <p class=mdw-empty-space-text>
+                Nenhuma despesa no mês selecionado.<br>Despesas são lançamentos negativos, pagos ou a pagar.
+            </p>
+            <div class=mdw-empty-space-actions>
+                <md-button mdw-rest-perm-lancamentos-g=0 class="md-primary md-raised" ui-sref=".lancamentosNovo({tipo:'d'})">Incluir despesa</md-button>
+            </div>
+        </div>
+    </div>
+    <div class=rodape layout=row ng-if="!vm.vg.totaisCategoriaD.loading && card.opened && vm.vg.totaisCategoriaD._initialized && vm.vg.totaisCategoriaD.despesas.length > 0">
+        <span flex>Total</span>
+        <span mdw-currency=vm.vg.totaisCategoriaD.totais.despesas mask=auto></span>
+    </div>
+</div>

@@ -11,8 +11,8 @@
 		</div>
         
 		<div style="margin-top: 15px;cursor: pointer;">
-			<span class="badge bg-primary" ng-click="filtro.id_situacao = '';" translate>All</span>
-            <span ng-repeat="status in arrStatus" class="badge {{ status.color }}" ng-click="setFilter(status.id)">{{ status.label }}</span>
+			<span class="badge bg-primary" ng-click="filtro.id_status = '';" translate>All</span>
+            <span ng-repeat="status in arrStatus" class="badge {{ status.cor }}" ng-click="setFilter(status.id)">{{ status.nome }}</span>
 		</div>
         <br>
         <div class="row">
@@ -36,10 +36,8 @@
 						<p>
                             <span>Inicio Estimado: </span>{{ project.inicio_estimado | date:'dd/MM/yyyy' }}<br>
                             <span>Término Estimado: </span>{{ project.termino_estimado | date:'dd/MM/yyyy' }}<br>
-							<span>Inicio Real: </span>{{ project.inicio_real | date:'dd/MM/yyyy' }}<br>
-							<span>Término Real: </span>{{ project.termino_real | date:'dd/MM/yyyy' }}<br>
                             <span>Receita Estimada: </span>{{ project.receita_estimada | currency }}<br>
-                            <span>Custo Estimado: </span>{{ project.custo_estimado | currency }}<br>
+                            <span>Custo Estimado: </span>{{ project.gasto_estimado | currency }}<br>
                         </p>
 						<span>
                             <img ng-repeat="pessoa in project.participantes" class="rounded-circle me-1" alt="Avatar" width="28" height="28" ng-src="{{ pessoa.foto }}" alt="{{ pessoa.nome }}" title="{{ pessoa.nome }}">
@@ -62,8 +60,6 @@
                             <a href="#!/project/{{ project.id }}"><i class="fa fa-chevron-right fa-2x" aria-hidden="true" ></i></a>
                         </div>
                     </div>
-					
-                    
 				</div>
             </div>
         </div>

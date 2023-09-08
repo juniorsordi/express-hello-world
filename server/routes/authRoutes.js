@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 const controller = require('../controllers/auth');
-const seq1 = require("../infra/sequelize");
-const auth = require("../middleware/auth");
 
 router.post("/auth/login", async function (req, res, next) {
     try {
         // Get user input
         const { email, password } = req.body;
-        const user = await controller.userLogin(email, password);
+        const user = await controller.userLoginPG(email, password);
         // user
         if (user) {
             res.cookie("access_token", user.token, {
@@ -51,12 +50,25 @@ router.post("/auth/register", async function (req, res, next) {
 });
 
 router.get("/test/seq", async function (req, res, next) {
-    let resp = seq1.connect();
+    //let resp = seq1.connect();
+    let resp = await controller.userLoginPG("dilson@sc.senac.br","123456");
     res.status(200).json(resp);
 });
 
+router.get("/test/manifestXML", async function (req, res, next) {
+    res.status(200).json(await controller.processManifestXML());
+});
+
 router.get("/auth/checkToken", async function (req, res, next) {
-    res.status(200).json(req.session);
+    let token = req.cookies.access_token;
+    
+    try {
+        const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+        res.status(200).json(decoded);
+    } catch (err) {
+        res.status(200).json({ valid: false, error: "Unauthorized! Invalid Token" });
+    }
+    
 });
 
 module.exports = router;

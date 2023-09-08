@@ -1,0 +1,69 @@
+<div flex layout=column class=metasorcamentovg>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <div flex>
+            Metas de despesas por centro<br>
+            <em ng-if="card.opened && vm.vg.metasOrcamentoCentroD._initialized" class=detalhe>Situação {{vm.vg.metasOrcamentoCentroD.visualizacao == 'c' ? 'confirmada' : 'projetada'}}</em>
+        </div>
+        <div class=actions layout=row>
+            <md-button ng-if="!vm.isBasico && card.opened && vm.vg.metasOrcamentoCentroD._initialized" class="md-icon-button swap-view {{'v'+vm.vg.metasOrcamentoCentroD.visao}}" ng-click=vm.vg.metasOrcamentoCentroD.toggleVisao()>
+                <md-tooltip>{{vm.vg.metasOrcamentoCentroD.visao == 1 ? 'Alterar para visão do total' : 'Alterar para visão por categorias'}}</md-tooltip>
+                <md-icon>swap_horiz</md-icon>
+            </md-button>
+            <md-button ng-if="!vm.isBasico && card.opened && vm.vg.metasOrcamentoCentroD._initialized" class=md-icon-button ng-class=vm.vg.metasOrcamentoCentroD.visualizacao ng-click=vm.vg.metasOrcamentoCentroD.toggleVisualizacao()>
+                <md-tooltip>{{vm.vg.metasOrcamentoCentroD.visualizacao == 'c' ? 'Alterar para situação projetada' : 'Alterar para situação confirmada'}}</md-tooltip>
+                <md-icon>{{vm.vg.metasOrcamentoCentroD.visualizacao == 'c' ? 'check_circle' : 'check'}}</md-icon>
+            </md-button>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if="vm.vg.metasOrcamentoCentroD.loading && card.opened && vm.vg.metasOrcamentoCentroD._initialized"></md-progress-linear>
+    <div class="conteudo metas" ng-class="{'exibir-subcategorias' : vm.vg.metasOrcamentoCentroD.subcategorias}" ng-if="!vm.isBasico && !vm.vg.metasOrcamentoCentroD.loading && card.opened && vm.vg.metasOrcamentoCentroD._initialized">
+        <md-content ng-if="vm.vg.metasOrcamentoCentroD.metas.d && !vm.isMoeda">
+            <div ng-if="vm.vg.metasOrcamentoCentroD.visao == 1" class="mdw-list mdw-list-bordered" flex>
+                <div class="mdw-list-item meta" ng-class="{parent : vm.vg.metasOrcamentoCentroD.subcategorias && (categoria.subcategorias.length > 0)}" layout-align="start center" layout=row ng-repeat-start="categoria in vm.vg.metasOrcamentoCentroD.metas.d.categorias | orderBy : '-razao'" ng-include="'/partials/visaogeral/paineis/metaOrcamentoLinha.html'"></div>
+                <div ng-if=categoria.subcategorias class="mdw-list-item meta sub" ng-class="{last : $last}" ng-show=vm.vg.metasOrcamentoCentroD.subcategorias layout-align="start center" layout=row ng-repeat="subcat in categoria.subcategorias | orderBy : '-razao'" onload="categoria = subcat" ng-include="'/partials/visaogeral/paineis/metaOrcamentoLinha.html'"></div>
+                <div style="display: none" ng-repeat-end></div>
+            </div>
+            <div ng-if="vm.vg.metasOrcamentoCentroD.visao == 2" class="mdw-list mdw-list-bordered" flex>
+                <mdw-pgbar-circular razao=vm.vg.metasOrcamentoCentroD.metas.d.geral.razao cor=vm.vg.metasOrcamentoCentroD.metas.d.geral.cor></mdw-pgbar-circular>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Meta definida {{vm.vg.metasOrcamentoCentroD.mes}}</td>
+                            <td mdw-currency=vm.vg.metasOrcamentoCentroD.metas.d.geral.meta mask=auto></td>
+                        </tr>
+                        <tr>
+                            <td>Total {{vm.vg.metasOrcamentoCentroD.visualizacao == 'p' ? 'projetado' : 'confirmado'}}</td>
+                            <td mdw-currency=vm.vg.metasOrcamentoCentroD.metas.d.geral.valor mask=auto></td>
+                        </tr>
+                        <tr ng-if=vm.vg.metasOrcamentoCentroD.metas.d.geral.residuo>
+                            <td>Total a realizar</td>
+                            <td mdw-currency=vm.vg.metasOrcamentoCentroD.metas.d.geral.residuo mask=auto></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-content>
+        <div class=mdw-empty-space flex ng-if="!vm.isBasico && !vm.vg.metasOrcamentoCentroD.metas.d && !vm.isMoeda">
+            <md-icon>error_outline</md-icon>
+            <p class=mdw-empty-space-text>
+                Sem metas de despesa definidas para {{vm.vg.getData().fim | mdwDate : 'MMMM'}}.<br>Defina uma meta para o valor máximo que espera gastar.
+            </p>
+            <div class=mdw-empty-space-actions>
+                <md-button class=md-primary ui-sref="metasc.lista.despesa({inicio : vm.vg.getData().inicio , fim : vm.vg.getData().fim})">Gerenciar metas</md-button>
+            </div>
+        </div>
+        <div flex ng-if=vm.isMoeda layout=column layout-align="start center">
+            <div>
+                <md-icon class=mdw-icon-noresults>error_outline</md-icon>
+            </div>
+            <p>Metas por centros disponíveis apenas na moeda padrão.</p>
+        </div>
+    </div>
+    <mdw-vg-placeholder-basico ng-if="vm.isBasico && card.opened && !vm.vg.metasOrcamentoCentroD.loading" id=metas></mdw-vg-placeholder-basico>
+    <div class=rodape layout=row ng-if="!vm.isBasico && !vm.isMoeda && !vm.vg.metasOrcamentoCentroD.loading && card.opened && vm.vg.metasOrcamentoCentroD._initialized && vm.vg.metasOrcamentoCentroD.metas.d && vm.vg.metasOrcamentoCentroD.visao == 1">
+        <div flex class=meta layout-align="start center" layout=row ng-repeat="categoria in [vm.vg.metasOrcamentoCentroD.metas.d]" ng-include="'/partials/visaogeral/paineis/metaOrcamentoLinha.html'"></div>
+    </div>
+</div>

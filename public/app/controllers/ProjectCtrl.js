@@ -41,7 +41,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     ///############################################################################################
     $scope.setFilter = function (id) {
-        $scope.filtro.id_situacao = id;
+        $scope.filtro.id_status = id;
     }
     ///############################################################################################
     ///############################################################################################
@@ -126,16 +126,25 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     $scope.saveNewTask = function () {
         var id = $routeParams.id;
+        $scope.form.esforco_atual = 0;
+        $scope.form.id_status_atividade = 1;
+        $scope.form.responsavel = $scope.User;
+        $scope.form.participantes = [];
+        $scope.form.inicio_estimado = new Date($scope.form.inicio_estimado).toISOString();
+        $scope.form.termino_estimado = new Date($scope.form.termino_estimado).toISOString();
+        //$scope.projectInfo.atividades.push($scope.form);
         APIService.postData(`/project/${id}/task`, $scope.form, function (resp) {
-            if (resp.data > 0) {
+            if (resp) {
+                console.log(resp);
                 $scope.initProjectView();
             }
         });
+        //*/
     }
     ///############################################################################################
     $scope.calculateEffort = function() {
-        var startDate = $scope.form.start_date;
-        var endDate = $scope.form.due_date;
+        var startDate = $scope.form.inicio_estimado;
+        var endDate = $scope.form.termino_estimado;
         var param = moment(startDate);
         var param2 = moment(endDate);
         var signal = param.unix() < param2.unix() ? 1 : -1;
@@ -161,7 +170,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
             end_offset--;
 
         var total = signal * (weeks * 5 + start_offset + end_offset);
-        $scope.form.estimated_effort = total * 5;
+        $scope.form.esforco_estimado = total * 5;
     }
     ///############################################################################################
     $scope.salvarApontamento = function () {
@@ -360,17 +369,16 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
 app.controller("NewProjectCtrl", function ($scope, $rootScope, $resource, APIService) {
 
     $scope.form = {
-        name: "Testes de Psicopedagogia",
-        description: "Testes de Psicopedagogia utilizando uma planilha de excel como exemplo para os calculos e entrada de campos.",
-        start_date: "10/05/2023",
-        due_date: "10/09/2023",
+        nome: "Testes de Psicopedagogia",
+        descricao: "Testes de Psicopedagogia utilizando uma planilha de excel como exemplo para os calculos e entrada de campos.",
+        inicio_estimado: "10/05/2023",
+        termino_estimado: "10/09/2023",
         budget: 9000,
-        id_client: 11,
-        id_category: 4,
-        estimated_effort: 440,
-        hour_value: 20.00,
-        priority: 1,
-        status: 2
+        id_cliente: 11,
+        id_categoria: 4,
+        esforco_estimado: 440,
+        valor_hora: 20.00,
+        prioridade: 1,
     };
     $scope.arrPriorities = [
         { id: 0, label: 'Low', value: '0' },
@@ -387,9 +395,9 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, $resource, APISer
     $scope.init = function () {
         $scope.arrTipoProjeto = APIService.resourceQuery("/company/projectTypes");
         $scope.arrClientes = APIService.resourceQuery("/company/clients");
-        $scope.arrClients = APIService.resourceQuery("/company/clients");
+        //$scope.arrClients = APIService.resourceQuery("/company/clients");
         $scope.arrCategorias = APIService.resourceQuery("/company/categories");
-        $scope.arrCategories = APIService.resourceQuery("/company/categories");
+        //$scope.arrCategories = APIService.resourceQuery("/company/categories");
         $scope.arrStatus = APIService.resourceQuery("/company/status");
     }
 
@@ -445,11 +453,11 @@ app.controller("UserTasksCtrl", function ($scope, $rootScope, $resource, $routeP
     $scope.salvarApontamento = function () {
         var temp = $scope.form.data_apontamento.toISOString().substr(0, 10);
         var selectedItem = $scope.selectedItem;
-        var tempEsforco = $scope.form.horas + ( $scope.form.minutos / 60);
+        console.log($scope.form);
         var apontamento = {
             id_atividade: selectedItem.id,
             id_usuario: $scope.Usuario.id,
-            esforco: tempEsforco.toFixed(2),
+            esforco: $scope.form.duracao,
             data: temp,
             observacao: $scope.form.observacao
         };

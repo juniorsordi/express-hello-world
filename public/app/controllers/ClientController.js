@@ -3,11 +3,14 @@ app.controller("ClientCtrl", function ($scope, $resource, APIService, $modal, $t
     $scope.form = {
         logo: null
     };
+
+    let myModal = $modal({ templateUrl: 'app/views/Sistema/Modals/ModalClient.html', show: false, scope: $scope, });
     
     $scope.init = function () {
         $scope.arrClients = APIService.resourceQuery("/company/clients");
         $scope.arrCategories = APIService.resourceQuery("/company/categories");
         $scope.arrStatus = APIService.resourceQuery("/company/status");
+        $scope.form = {};
     }
 
     $scope.addNewCategory = function() {
@@ -38,17 +41,12 @@ app.controller("ClientCtrl", function ($scope, $resource, APIService, $modal, $t
     }
 
     $scope.openModalClient = function() {
-        $modal({
-            title: 'My Title',
-            templateUrl: 'app/views/Sistema/Modals/ModalClient.html',
-            show: true,
-            scope: $scope,
-        });
+        myModal.show();
     }
 
     $scope.saveClient = function(form) {
         APIService.postData("/company/clients", form, function(resp) {
-            if (resp.data > 0) {
+            if (resp) {
                 myModal.hide();
                 $scope.init();
             }

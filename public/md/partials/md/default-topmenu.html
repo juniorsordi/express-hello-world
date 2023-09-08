@@ -1,0 +1,84 @@
+<md-toolbar ng-show=vm.topmenu.enabled class="md-whiteframe-z2 mdw-top-menu no-transition" aria-hidden=false md-theme={{vm.theme}} md-theme-watch=true>
+    <div class=md-toolbar-tools ng-cloak>
+        <md-button id=md-main-menu-trigger class=md-icon-button ng-click=vm.leftmenu.toggle() aria-label="Abrir menu">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <span ng-bind-html=vm.title></span>
+        <mdw-moeda-toggler></mdw-moeda-toggler>
+        <div hide-xs hide-sm class=left-menu-items-separator ng-if="vm.leftmenu.pinnedItems.length > 0"></div>
+        <md-button hide-xs hide-sm md-ink-ripple=false class=md-icon-button ng-repeat="item in vm.leftmenu.pinnedItems" ui-sref={{item.sref}} ng-href={{item.href}} ng-click=vm.leftmenu.toggle(false) target={{item.target}}>
+            <md-tooltip>{{item.pinLabel}}</md-tooltip>
+            <md-icon>{{item.pinIcon}}</md-icon>
+        </md-button>
+        <span flex></span>
+        <div layout=row layout-align="start center" hide-xs>
+            <md-button ng-if=vm.linkExperimentar class=md-stroked ng-click=vm.experimentar()>Experimentar a versão completa</md-button>
+            <a ui-sref=assinatura ng-if=vm.linkAssinatura class="md-button md-stroked">{{vm.linkAssinatura}}</a>
+            <md-button ui-sref=contas.conexoes ng-if="!vm.topmenu.investMod && vm.conexoesEnabled" id=btn-dialog-update-conexoes class=md-icon-button>
+                <md-tooltip>
+                    Integração bancária <span ng-if=vm.cup.isUpdating>(atualizando)</span>
+                </md-tooltip>
+                <md-icon ng-class="{spin : vm.cup.isUpdating}">{{vm.cup.isUpdating ? 'sync' : 'account_balance'}}</md-icon>
+                <span class=badge ng-class="{visible : vm.cup.pendingCount > 0}">{{vm.cup.pendingCount}}</span>
+            </md-button>
+            <md-button ng-if=!vm.topmenu.investMod class=md-icon-button ng-click=vm.buscarLancamentos()>
+                <md-tooltip>Buscar lançamentos</md-tooltip>
+                <md-icon>search</md-icon>
+            </md-button>
+            <md-menu md-offset="0 50">
+                <md-button aria-label="Abrir menu de lançamentos" class=md-icon-button ng-click=$mdOpenMenu()>
+                    <md-tooltip>Central de Ajuda</md-tooltip>
+                    <md-icon>help</md-icon>
+                </md-button>
+                <md-menu-content width=4>
+                    <md-menu-item>
+                        <md-button href=https://docs.meudinheiroweb.com.br target=_blank ng-click="vm.supportEvent('Manual')">
+                            <md-icon>book</md-icon>
+                            Manual
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button href=https://docs.meudinheiroweb.com.br/perguntas-frequentes target=_blank ng-click="vm.supportEvent('FAQ')">
+                            <md-icon>forum</md-icon>
+                            Perguntas frequentes
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button href=https://docs.meudinheiroweb.com.br/curso-md360 target=_blank ng-click="vm.supportEvent('Curso')">
+                            <md-icon>video_library</md-icon>
+                            Curso
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button href=https://t.me/usuariosappmeudinheiro target=_blank ng-click="vm.supportEvent('Grupo do Telegram')">
+                            <md-icon md-svg-src=/icons/telegram.svg></md-icon>
+                            Grupo do Telegram
+                        </md-button>
+                    </md-menu-item>
+                    <md-divider></md-divider>
+                    <md-menu-item>
+                        <md-button ng-click=vm.ticket()>
+                            <md-icon>mail</md-icon>
+                            Ticket de suporte
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-button class=md-icon-button ng-click=vm.pdi()>
+                <md-tooltip>Ganhe cupons de desconto</md-tooltip>
+                <md-icon>card_giftcard</md-icon>
+            </md-button>
+            <md-button class=md-icon-button href=https://www.calculadora.com.br target=_blank>
+                <md-tooltip>Calculadoras</md-tooltip>
+                <md-icon md-svg-src=/icons/calculator.svg ng-hide=vm.loading></md-icon>
+            </md-button>
+        </div>
+        <mdw-usuarios-topmenu></mdw-usuarios-topmenu>
+    </div>
+    <div layout=row class=mdw-topmenu-sub ng-if=vm.topmenu.secondary onload="parent = vm.topmenu.secondaryScope" ng-include=vm.topmenu.secondaryUrl></div>
+    <div flex ng-if="vm.topmenu.tabs.length > 0">
+        <md-tabs md-no-ink md-center-tabs classs=mdw-topmenu-tabs md-border-bottom>
+            <md-tab ng-repeat="tab in vm.topmenu.tabs" label={{tab.label}} ui-sref={{tab.state}}(tab.params) md-active=tab.active></md-tab>
+        </md-tabs>
+    </div>
+</md-toolbar>

@@ -1,0 +1,7 @@
+<md-autocomplete md-no-cache md-selected-item=vm.selected md-min-length=1 md-search-text=vm.searchText md-items="item in vm.query(vm.searchText)" md-selected-item-change=vm.selectRegra(item) md-item-text=item.descricao md-floating-label=Descrição>
+    <md-item-template>
+        <div>
+            <span md-highlight-text=vm.searchText md-highlight-flags=^i>{{item.descricao}}</span>
+        </div>
+    </md-item-template>
+</md-autocomplete>

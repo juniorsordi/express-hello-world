@@ -10,7 +10,7 @@
                     <div class="col-xl-12">
                         <div class="mb-3">
                             <label for="field1" translate="">Title</label>
-                            <input type="text" id="field1" class="form-control" ng-model="form.title" />
+                            <input type="text" id="field1" class="form-control" ng-model="form.titulo" />
                         </div>
                         <div class="mb-3">
                             <label for="field2" translate="">Description</label>
@@ -18,19 +18,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="field2" translate="">Group</label>
-                            <input type="text" id="field2" class="form-control" ng-model="form.group" />
+                            <input type="text" id="field2" class="form-control" ng-model="form.etapa" />
                         </div>
                         <div class="mb-3">
                             <label for="field2" translate="">Start Date</label>
-                            <input type="date" id="field2" class="form-control" ng-model="form.start_date" />
+                            <input type="date" id="field2" class="form-control" ng-model="form.inicio_estimado" />
                         </div>
                         <div class="mb-3">
                             <label for="field2" translate="">Due Date</label>
-                            <input type="date" id="field2" class="form-control" ng-model="form.due_date" ng-change="calculateEffort()" />
+                            <input type="date" id="field2" class="form-control" ng-model="form.termino_estimado" ng-change="calculateEffort()" />
                         </div>
                         <div class="mb-3">
                             <label for="field6" translate="">Estimated Effort</label>
-                            <input type="text" id="field6" class="form-control" ui-number-mask="2" ng-model="form.estimated_effort" />
+                            <input type="text" id="field6" class="form-control" ui-number-mask="2" ng-model="form.esforco_estimado" />
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require("../middleware/auth");
 const controller = require('../controllers/company');
+const service = require('../services/companyService');
 
 router.get("/company/users", auth, async function (req, res, next) {
     try {
@@ -42,7 +43,8 @@ router.post("/company/status", auth, async function (req, res, next) {
 
 router.get("/company/clients", auth, async function (req, res, next) {
     try {
-        res.json(await controller.getCompanyClients(req.cookies.user.id_empresa));
+        console.log(req.cookies.user.id_empresa);
+        res.json(await service.getCompanyClients(req.cookies.user.id_empresa));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -51,7 +53,7 @@ router.get("/company/clients", auth, async function (req, res, next) {
 
 router.post("/company/clients", auth, async function (req, res, next) {
     try {
-        const data = await controller.saveCompanyClient(req.body, req.cookies.user.id_empresa);
+        const data = await service.saveCompanyClient(req.body, req.cookies.user.id_empresa);
         res.json(data);
     } catch (err) {
         console.error(`Error while getting response`, err.message);

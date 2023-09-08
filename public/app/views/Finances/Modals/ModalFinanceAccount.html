@@ -1,0 +1,83 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document" ng-controller="FinancesDashboard">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" translate="">Financial Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    ng-click="$hide()"></button>
+            </div>
+            <div class="modal-body m-3">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"> 
+                                <label for="field5">Tipo de Conta</label> 
+                                <selectize config="{maxItems:1,valueField: 'id',labelField: 'nome'}" options="tiposContasBancarias" placeholder="Selecione o Tipo de Conta..." ng-model="form.tipo_conta"></selectize>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"> 
+                                <label for="field5b">Tipo de Conta</label> 
+                                <selectize config='configMoedas' placeholder="Selecione a Moeda..." ng-model="form.moeda"></selectize>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="form-group"> 
+                            <label for="field1">Nome</label> 
+                            <input type="text" class="form-control" id="field1" placeholder="Digite o nome" ng-model="form.nome"> 
+                        </div>
+                        <div class="form-group"> 
+                            <label for="field2">Banco</label> 
+                            <selectize config='myConfig' placeholder="Selecione o banco..." ng-model="form.banco"></selectize>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field2a">Agência</label>
+                                    <input type="text" class="form-control" id="field2a" placeholder="Agência" ng-model="form.agencia">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field2b">Conta</label>
+                                    <input type="text" class="form-control" id="field2b" placeholder="Conta" ng-model="form.numero_conta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group"> 
+                                    <label for="field3">Saldo Inicial</label> 
+                                    <input type="text" class="form-control" id="field3" placeholder="Saldo Inicial" ng-model="form.saldo_inicial" ui-money-mask="2"> 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="field3b" translate="">Data do Saldo</label>
+                                    <input type="date" id="field3b" class="form-control" ng-model="form.data_saldo" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="field4">Limite</label>
+                                    <input type="text" class="form-control" id="field4" placeholder="Limite" ng-model="form.limite" ui-money-mask="2">
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                        
+                        
+                        
+                        
+                        {{ form | json }}
+                    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ng-click="$hide()" translate>Close</button>
+                <button type="button" class="btn btn-success" ng-click="salvarContaBancaria(form)" translate>Save</button>
+            </div>
+        </div>
+    </div>
+</div>

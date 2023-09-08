@@ -1,0 +1,66 @@
+<div ng-show="vm.orientation == 'horizontal'" class=horizontal>
+    <div flex layout=row layout-align=center ng-if="vm.calendar.currentInterval != 'p'">
+        <md-button class=md-icon-button ng-click=vm.calendar.navigate(-1) ng-disabled=vm.calendar.reachedMin() ng-hide=vm.nonav>
+            <md-icon>chevron_left</md-icon>
+        </md-button>
+        <md-button class=display flex mdw-calendar-btn>{{vm.calendar.display()}}</md-button>
+        <md-button class=md-icon-button ng-click=vm.calendar.navigate(1) ng-disabled=vm.calendar.reachedMax() ng-hide=vm.nonav>
+            <md-icon>chevron_right</md-icon>
+        </md-button>
+        <md-button class="action md-icon-button" ng-click=vm.calendar.navigate(0) ng-disabled=vm.calendar.isPresent() ng-hide=vm.nonav>
+            <md-tooltip>Ir para data atual</md-tooltip>
+            <md-icon>today</md-icon>
+        </md-button>
+        <md-menu class=action ng-if="vm.calendar.intervals.length > 1">
+            <md-button class=md-icon-button ng-click=$mdOpenMenu()>
+                <md-icon>settings</md-icon>
+            </md-button>
+            <md-menu-content width=3 class=mdw-calendar-content>
+                <md-menu-item ng-repeat="interval in vm.calendar.intervals">
+                    <md-button ng-class="{'md-primary' : interval.id == vm.calendar.currentInterval}" ng-click=vm.calendar.changeInterval(interval.id)>{{interval.label}}</md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div layout=row layout-align="start center" ng-if="vm.calendar.currentInterval == 'p'">
+        <md-input-container flex=50>
+            <label>Início</label>
+            <input required mdw-date-format date-time ng-model=vm.calendar.custom.start view=date min-view=date max-view=date format=DD/MM/YYYY position=absolute auto-close=true>
+        </md-input-container>
+        <md-input-container flex=50>
+            <label>Fim</label>
+            <input required mdw-date-format date-time ng-model=vm.calendar.custom.end view=date min-view=date max-view=date format=DD/MM/YYYY position=absolute auto-close=true>
+        </md-input-container>
+        <md-button class=md-icon-button ng-click=vm.calendar.custom.go() ng-disabled=!vm.calendar.custom.validate()>
+            <md-tooltip>Buscar</md-tooltip>
+            <md-icon>done</md-icon>
+        </md-button>
+        <md-button class=md-icon-button ng-click=vm.calendar.custom.cancel()>
+            <md-tooltip>Fechar busca personalizada</md-tooltip>
+            <md-icon>cancel</md-icon>
+        </md-button>
+    </div>
+</div>
+<div ng-show="vm.orientation == 'vertical'" class=vertical layout-gt-xs=column layout=row layout-align="center center">
+    <md-button class="action md-icon-button navigate-btn" ng-click=vm.calendar.navigate(-1) ng-disabled=vm.calendar.reachedMin()>
+        <md-icon>expand_less</md-icon>
+    </md-button>
+    <span class=display mdw-calendar-btn flex>{{vm.calendar.displayCompact()}}</span>
+    <md-button class="action md-icon-button navigate-btn" ng-click=vm.calendar.navigate(1) ng-disabled=vm.calendar.reachedMax()>
+        <md-icon>expand_more</md-icon>
+    </md-button>
+    <md-button class="action md-icon-button" ng-click=vm.calendar.navigate(0) ng-disabled=vm.calendar.isPresent()>
+        <md-tooltip>Ir para data atual</md-tooltip>
+        <md-icon>today</md-icon>
+    </md-button>
+    <md-menu class=action ng-if="vm.calendar.intervals.length > 1">
+        <md-button class=md-icon-button ng-click=$mdOpenMenu()>
+            <md-icon>settings</md-icon>
+        </md-button>
+        <md-menu-content width=3 class=mdw-calendar-content>
+            <md-menu-item ng-repeat="interval in vm.calendar.intervals | filter : {id : '!p'}">
+                <md-button ng-class="{'md-primary' : interval.id == vm.calendar.currentInterval}" ng-click=vm.calendar.changeInterval(interval.id)>{{interval.label}}</md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</div>

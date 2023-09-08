@@ -1,7 +1,6 @@
 'use strict';
 var app = angular.module('Sistema', ['ngRoute'
     , 'ngAnimate'
-    , 'ngSanitize'
     , 'ngResource'
     , 'angular.filter'
     , 'mgcrea.ngStrap'
@@ -15,7 +14,10 @@ var app = angular.module('Sistema', ['ngRoute'
     , 'ngQuill'
     //, 'angularUtils.directives.dirPagination'
     //, 'datatables'
-    , "pascalprecht.translate"]);
+    //, 'ui.select'
+    , 'selectize'
+    , "pascalprecht.translate"
+    , 'ngSanitize']);
 ///////////////////////////////////////////////////////////////////
 app.config(function ($controllerProvider) {
     app.controller = $controllerProvider.register;
@@ -41,6 +43,7 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/project2/:id',          { templateUrl: 'app/views/Projects/viewProject2.html?t=' + date, controller: 'ProjectCtrl' })
 
         .when('/finances',              { templateUrl: 'app/views/Finances/dashboard.html?t=' + date, controller: 'FinancesDashboard' })
+        .when('/finances/movimentacoes', { templateUrl: 'app/views/Finances/movimentacoes.html?t=' + date, controller: 'FinancesDashboard' })
         .when('/finance/cashFlow',      { templateUrl: 'app/views/Finances/cashFlow.html?t=' + date, controller: 'FinancesController' })
         .when('/finance/invoices',      { templateUrl: 'app/views/Finances/invoice.html?t=' + date, controller: 'FinancesInvoicesCtrl' })
 
@@ -56,6 +59,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
         .when('/company/users',          { templateUrl: 'app/views/Companies/users.html', controller: 'CompanyUsersCtrl' })
         .when('/company/settings',       { templateUrl: 'app/views/Companies/clientSettings.html', controller: 'ClientCtrl' })
+
+        .when('/games',       { templateUrl: 'app/views/GamesApp/dashboard.html' })
         .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);

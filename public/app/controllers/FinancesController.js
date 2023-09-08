@@ -435,14 +435,374 @@ app.controller("FinancesInvoicesCtrl", function ($scope, $routeParams, $resource
     $scope.init();
 });
 ///#########################################################################################################################
-app.controller("FinancesDashboard", function ($scope, $routeParams, $resource, APIService, $uibModal, $modal, $ocModal) {
+app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
     $scope.form = {};
+    var modalAccount = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceAccount.html', show: false, scope: $scope, });
+    var modalCategory = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceCategory.html', show: false, scope: $scope, });
+
+    $scope.employees = [{ "id": "1", "employee_name": "Albano", "employee_salary": "222", "employee_age": "38", "profile_image": "" }, 
+    { "id": "2", "employee_name": "Lemos", "employee_salary": "89", "employee_age": "50", "profile_image": "" }, 
+    { "id": "3", "employee_name": "Carla", "employee_salary": "0", "employee_age": "0", "profile_image": "" }, 
+    { "id": "4", "employee_name": "albano", "employee_salary": "439", "employee_age": "255", "profile_image": "" }, 
+    { "id": "5", "employee_name": "Paula", "employee_salary": "50", "employee_age": "53", "profile_image": "" }, 
+    { "id": "6", "employee_name": "test", "employee_salary": "1111", "employee_age": "111111", "profile_image": "" }, 
+    { "id": "7", "employee_name": "Junior-codigo", "employee_salary": "137500", "employee_age": "605", "profile_image": "" }, 
+    { "id": "8", "employee_name": "Rhona Davidson", "employee_salary": "327900", "employee_age": "55", "profile_image": "" }, 
+    { "id": "9", "employee_name": "ori", "employee_salary": "1", "employee_age": "25", "profile_image": "" }, 
+    { "id": "10", "employee_name": "Sonya \/\/\/Frostdddf", "employee_salary": "2775675678", "employee_age": "23", "profile_image": "" }]
+
+    $scope.calcularSaldo = function(item, idx) {
+        var saldo = 0;
+        if(idx == 0) {
+            saldo = $scope.relatorio.saldo_inicial + item.valor;
+        } else {
+            var temp = $scope.relatorio.lancamentos[idx - 1];
+            console.log(temp);
+            saldo = $scope.relatorio.lancamentos[idx - 1].saldo + item.valor;
+        }
+        item.saldo = saldo;
+        return ""+saldo;
+    }
+
+    ///############################################################################################
+    $scope.$on("updateListTasks", function () {
+        APIService.getData("/finances/accounts/2/movimentacoes", function (resp) {
+            $scope.movimentacoesContaList = resp.data;
+            for (var i = 0; i < $scope.movimentacoesContaList.length; i++) {
+                var saldo = 0;
+                var item = $scope.movimentacoesContaList[i];
+                if (i == 0) {
+                    saldo = $scope.relatorio.saldo_inicial + item.valor;
+                } else {
+                    saldo = parseFloat($scope.movimentacoesContaList[i - 1].saldo) + parseFloat(item.valor);
+                }
+                $scope.movimentacoesContaList[i].saldo = saldo;
+            }
+
+            console.log($scope.movimentacoesContaList);
+        });
+    });
+    ///############################################################################################
 
     $scope.init = function () {
-        APIService.getData("/finances/dashboard/accounts", function (resp) { $scope.dashboardAccountsList = resp.data; });
+        APIService.getData("/finances/dashboard/accounts", function (resp) { 
+            $scope.dashboardAccountsList = resp.data; 
+            $("#select-console").selectize({
+                valueField: 'id',
+                labelField: 'nome',
+                searchField: 'nome',
+                sortField: 'nome',
+                options: resp.data,
+                render: {
+                    item: function (item, escape) {
+                        return '<div>'
+                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    },
+                    option: function (item, escape) {
+                        return '<div>'
+                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/'+ item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    }
+                },
+            });
+        });
         APIService.getData("/finances/report/categoryCards", function (resp) { $scope.dashboardCategoryCards = resp.data; });
+        APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
+        APIService.getData("/finances/accounts/categories", function (resp) { $scope.categoriesList = resp.data; });
+        APIService.getData("/finances/accounts/2/movimentacoes", function (resp) { 
+            $scope.movimentacoesContaList = resp.data; 
+            for (var i = 0; i < $scope.movimentacoesContaList.length; i++) {
+                var saldo = 0;
+                var item = $scope.movimentacoesContaList[i];
+                if (i == 0) {
+                    saldo = $scope.relatorio.saldo_inicial + item.valor;
+                } else {
+                    saldo = parseFloat($scope.movimentacoesContaList[i - 1].saldo) + parseFloat(item.valor);
+                }
+                $scope.movimentacoesContaList[i].saldo = saldo;
+            }
+
+            console.log($scope.movimentacoesContaList);
+        });
+        APIService.getData("/cadastros/contas/moedas", function (resp) { 
+            $scope.listaMoedas = resp.data; 
+
+            $scope.configMoedas = {
+                valueField: 'id',
+                labelField: 'nome',
+                searchField: 'nome',
+                maxItems: 1,
+                options: resp.data,
+                render: {
+                    item: function (item, escape) {
+                        return '<div>'
+                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    },
+                    option: function (item, escape) {
+                        return '<div>'
+                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    }
+                },
+            };
+            
+            /*$("#field5b").selectize({
+                valueField: 'id',
+                labelField: 'nome',
+                searchField: 'nome',
+                options: resp.data,
+                render: {
+                    item: function (item, escape) {
+                        return '<div>'
+                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    },
+                    option: function (item, escape) {
+                        return '<div>'
+                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    }
+                },
+            });*/
+
+            /*$("#field5").selectize({
+                valueField: 'id',
+                labelField: 'nome',
+                searchField: 'nome',
+                options: $scope.tiposContasBancarias
+            });//*/
+        });
+
+        APIService.getData("/cadastros/contas/bancos", function (resp) {
+            $scope.listaBancos = resp.data; 
+
+            $scope.myConfig = {
+                valueField: 'id',
+                labelField: 'nome',
+                searchField: 'nome',
+                maxItems: 1,
+                options: resp.data,
+                render: {
+                    item: function (item, escape) {
+                        return '<div>'
+                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg"" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    },
+                    option: function (item, escape) {
+                        return '<div>'
+                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg"" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                            + '<span>&nbsp;' + item.nome + '</span> '
+                            + '</div>';
+                    }
+                },
+            }
+        });
         
+        $scope.relatorio = {
+            saldo_inicial: 0,
+            lancamentos: [
+                {
+                    "id": 182272367,
+                    "descricao": "Santissima Gula",
+                    "conciliado": false,
+                    "dataCompetencia": "2023-08-01",
+                    "status": "confirmado",
+                    "tipo": "d",
+                    "valor": -34.34,
+                    "valorPrevisto": -34.34,
+                    "valorEfetivo": -34.34,
+                    "data": "2023-08-01",
+                    "dataPrevista": "2023-08-01",
+                    "dataEfetiva": "2023-08-01",
+                    "dataCriacao": "2023-08-30T09:13:55-03:00",
+                    "exibirCp": true,
+                    "exibirCr": true,
+                    "labels": ['Conta Corrente', 'Alimentação/Padaria'],
+                    "permissoes": {
+                        "visivel": true,
+                        "acoes": {
+                            "conciliar": true,
+                            "confirmar": true,
+                            "editar": true,
+                            "excluir": true,
+                            "clonar": true
+                        }
+                    },
+                    "dataReconhecimento": "2023-08-01",
+                    "estorno": false,
+                    "conta": 1136507,
+                    "categoria": 25287459,
+                    "categoriaPai": 25287448,
+                    "observacoes": "",
+                    "ndocumento": "",
+                    "lembrete": 0,
+                    "automatico": false,
+                    "regime": "ca"
+                },
+                {
+                    "id": 182273019,
+                    "descricao": "Transferencia Dilson Sordi",
+                    "conciliado": false,
+                    "dataCompetencia": "2023-08-01",
+                    "status": "confirmado",
+                    "tipo": "r",
+                    "valor": 200,
+                    "valorPrevisto": 200,
+                    "valorEfetivo": 200,
+                    "data": "2023-08-01",
+                    "dataPrevista": "2023-08-01",
+                    "dataEfetiva": "2023-08-01",
+                    "dataCriacao": "2023-08-30T09:16:31-03:00",
+                    "exibirCp": true,
+                    "exibirCr": true,
+                    "labels": ['Conta Corrente','Outras Receitas'],
+                    "permissoes": {
+                        "visivel": true,
+                        "acoes": {
+                            "conciliar": true,
+                            "confirmar": true,
+                            "editar": true,
+                            "excluir": true,
+                            "clonar": true
+                        }
+                    },
+                    "estorno": false,
+                    "conta": 1136507,
+                    "categoria": 25287194,
+                    "observacoes": "",
+                    "ndocumento": "",
+                    "lembrete": 0,
+                    "automatico": false,
+                    "regime": "ca"
+                },
+                {
+                    "id": 182272133,
+                    "descricao": "CELESC",
+                    "conciliado": false,
+                    "dataCompetencia": "2023-09-02",
+                    "status": "agendado",
+                    "tipo": "d",
+                    "valor": -181.34,
+                    "valorPrevisto": -181.34,
+                    "data": "2023-09-02",
+                    "dataPrevista": "2023-09-02",
+                    "dataCriacao": "2023-08-30T09:11:41-03:00",
+                    "exibirCp": true,
+                    "exibirCr": true,
+                    "permissoes": {
+                        "visivel": true,
+                        "acoes": {
+                            "conciliar": true,
+                            "confirmar": true,
+                            "editar": true,
+                            "excluir": true,
+                            "clonar": true
+                        }
+                    },
+                    "agendaId": 27242243,
+                    "estorno": false,
+                    "conta": 1136507,
+                    "categoria": 25287181,
+                    "observacoes": "",
+                    "ndocumento": "",
+                    "lembrete": 0,
+                    "automatico": false,
+                    "regime": "ca"
+                }
+            ]
+        };
+
     }
+
+    $scope.filtrarCategorias = function(value) {
+        if (value == 1) { $scope.filtredCategoriesList = $scope.categoriesList.filter(e => e.tipo == 'D'); }
+        if (value == 2) { $scope.filtredCategoriesList = $scope.categoriesList.filter(e => e.tipo == 'C'); }
+    }
+
+    $scope.myConfigCB = {
+        valueField: 'id',
+        labelField: 'nome',
+        searchField: 'nome',
+        sortField: 'nome',
+        maxItems: 1,
+        //options: resp.data,
+        render: {
+            item: function (item, escape) {
+                return '<div>'
+                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                    + '<span>&nbsp;' + item.nome + '</span> '
+                    + '</div>';
+            },
+            option: function (item, escape) {
+                return '<div>'
+                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                    + '<span>&nbsp;' + item.nome + '</span> '
+                    + '</div>';
+            }
+        },
+    }
+
+    $scope.tiposContasBancarias = [
+        { id: 1, nome: 'Conta Corrente' },
+        { id: 2, nome: 'Conta Poupança' },
+        { id: 3, nome: 'Conta Salário' },
+        { id: 4, nome: 'Cartão Crédito' },
+    ];
+
+    $scope.salvarContaBancaria = function(form) {
+        APIService.postData("/finances/accounts", form, function(resp) {
+            modalAccount.hide();
+            $scope.form = {};
+        });
+    }
+
+    $scope.salvarCategoria = function(form) {
+        APIService.postData("/finances/accounts/categories", form, function(resp) {
+            $scope.form = {};
+            modalCategory.hide();
+            $scope.init();
+        });
+    }
+
+    $scope.salvarMovimentacao = function(form) {
+        APIService.postData("/finances/accounts/2/movimentacoes", form, function (resp) {
+            $scope.form = {};
+            $rootScope.$broadcast('updateListTasks');
+        });
+    }
+
+    $scope.testeOFX = function() {
+        APIService.getData("/finances/accounts/testeOFX", function (resp) { $scope.ofxList = resp.data; });
+    }
+
+    $scope.lancarItem = function(item) {
+        $scope.form.titulo = item.MEMO;
+        if (item.TRNAMT < 0) {
+            $scope.form.tipo_operacao = "1";
+            $scope.form.valor = item.TRNAMT * -1;
+        } else {
+            $scope.form.tipo_operacao = "2";
+            $scope.form.valor = item.TRNAMT;
+        }
+        $scope.filtrarCategorias( parseInt($scope.form.tipo_operacao));
+        
+        let tempData = item.FITID.substr(0, 4) + "-" + item.FITID.substr(4, 2) + "-" + item.FITID.substr(6,2);
+        $scope.form.data_vencimento  = new Date(tempData+"T12:00:00.0Z");
+        
+        console.log($scope.form);
+    }
+
+    $scope.showModalCreateAccount = function() { modalAccount.show(); }
+    $scope.showModalCreateCategory = function () { modalCategory.show(); }
 
     $scope.init();
 });

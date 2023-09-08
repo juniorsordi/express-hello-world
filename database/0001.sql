@@ -238,3 +238,6 @@ CREATE TABLE usuario_tarefa_apontamento (
 	criado_em datetime,
 	atualizado_em datetime
 );
+
+
+CREATE USER fharjwsz WITH PASSWORD 'EnMlTdh1l3ktKqPj7zHtcEyxUAke1m0X' WITH SUPERUSER;

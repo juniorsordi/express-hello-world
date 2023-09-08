@@ -1,0 +1,91 @@
+<div flex layout=column class=cartoes>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <span flex>Cartões de crédito</span>
+        <div class=actions layout=row>
+            <md-menu ng-if="card.opened && vm.vg.cartoes._initialized && vm.vg.cartoes.visualizacao == 1">
+                <md-button class=md-icon-button ng-click=$mdOpenMenu() ng-disabled=vm.fatura.chartsView>
+                    <md-icon>sort</md-icon>
+                    <md-tooltip>Ordenar cartões</md-tooltip>
+                </md-button>
+                <md-menu-content width=3>
+                    <md-menu-item>
+                        <md-button ng-class="{'md-primary' : vm.vg.cartoes.ordenacao == 'a'}" ng-click="vm.vg.cartoes.alterarOrdenacao('a')">Alfabeticamente</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-class="{'md-primary' : vm.vg.cartoes.ordenacao == 'm'}" ng-click="vm.vg.cartoes.alterarOrdenacao('m')">Por melhor dia de compra</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-button ng-if="card.opened && vm.vg.cartoes._initialized" class="md-icon-button swap-view {{'v'+vm.vg.cartoes.visualizacao}}" ng-click=vm.vg.cartoes.alterarVisualizacao()>
+                <md-tooltip>{{vm.vg.cartoes.visualizacao == 1 ? 'Alterar para visão totalizada' : 'Alterar para visão detalhada'}}</md-tooltip>
+                <md-icon>swap_horiz</md-icon>
+            </md-button>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if="vm.vg.cartoes.loading && card.opened && vm.vg.cartoes._initialized"></md-progress-linear>
+    <div class=conteudo ng-if="!vm.vg.cartoes.loading && card.opened && vm.vg.cartoes._initialized">
+        <md-content class="mdw-whitebg mdw-list mdw-list-bordered" ng-if="vm.vg.cartoes.cartoes.length > 0 && vm.vg.cartoes.visualizacao == 1">
+            <table>
+                <tbody ng-repeat="cartao in vm.vg.cartoes.cartoes">
+                    <tr>
+                        <td colspan=3 class=nome-cartao>
+                            <div layout=row layout-align="start center">
+                                <mdw-banco-viewer conta=cartao.conta style="margin-right: 10px; display:inline-block;" dim=20></mdw-banco-viewer>
+                                <a class=mdw-link-text mdw-nome-cadastro=contas ng-model=cartao.cartao.id ui-sref="{{'fatura.listar({conta :' + cartao.cartao.id+ '})'}}"></a>
+                                <em ng-if=!cartao.cartao.status>&nbsp;(Inativo)</em>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if=cartao.aberta>
+                        <td class=label>Fatura {{cartao.aberta.vencimento | mdwDate : 'dd/MM/yyyy'}}</td>
+                        <td class=dado mdw-currency=cartao.aberta.valor mask=auto></td>
+                    </tr>
+                    <tr ng-if=cartao.mes>
+                        <td class=label>
+                            Fatura {{cartao.mes.vencimento | mdwDate : 'dd/MM/yyyy'}} <em ng-if=cartao.mes.fechada>(fechada)</em>
+                        </td>
+                        <td class=dado mdw-currency=cartao.mes.valor mask=auto></td>
+                    </tr>
+                    <tr ng-if="cartao.cartao.tipoLimite != 3">
+                        <td class=label>Disponível</td>
+                        <td class=dado mdw-currency=cartao.disponivel mask=auto></td>
+                    </tr>
+                    <tr ng-if=cartao.aberta.pagamentos>
+                        <td class=label>Pagamentos agendados</td>
+                        <td class=dado mdw-currency=cartao.aberta.pagamentos mask=auto></td>
+                    </tr>
+                    <tr ng-if="cartao.cartao.tipoLimite != 3 && cartao.aberta.pagamentos">
+                        <td class=label>Disponível após pagamento</td>
+                        <td class=dado mdw-currency="cartao.aberta.pagamentos + cartao.disponivel" mask=auto></td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-content>
+        <md-content class="mdw-whitebg mdw-list mdw-list-bordered" ng-if="vm.vg.cartoes.cartoes.length > 0 && vm.vg.cartoes.visualizacao == 2">
+            <table>
+                <tr>
+                    <td class=label>Total de faturas em {{vm.vg.getData().inicio | date : 'MMM/yy'}}</td>
+                    <td class=dado mdw-currency=vm.vg.cartoes.totalMes></td>
+                </tr>
+                <tr>
+                    <td class=label>Total de faturas abertas</td>
+                    <td class=dado mdw-currency=vm.vg.cartoes.totalAberto></td>
+                </tr>
+                <tr>
+                    <td class=label>Limite total disponível</td>
+                    <td class=dado mdw-currency=vm.vg.cartoes.totalDisponivel></td>
+                </tr>
+            </table>
+        </md-content>
+        <div class=mdw-empty-space flex ng-if="vm.vg.cartoes.cartoes.length == 0">
+            <md-icon>error_outline</md-icon>
+            <p class=mdw-empty-space-text>Nenhum cartão de crédito cadastrado.</p>
+            <div class=mdw-empty-space-actions>
+                <md-button class="md-primary md-raised" ui-sref=cartoes.semcartoes.novo>Adicionar um cartão</md-button>
+            </div>
+        </div>
+    </div>
+</div>

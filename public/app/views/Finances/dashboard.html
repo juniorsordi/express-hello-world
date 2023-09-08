@@ -1,5 +1,9 @@
 <div class="row">
     <div class="col-md-12">
+        <style>
+            .positivo { color: blue; }
+            .negativo { color: red; }
+        </style>
         <br>
         <h1 class="h3 mb-3">Dashboard</h1>
         <br>
@@ -13,24 +17,38 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Conta</th>
-                                            <th scope="col">Expenses</th>
-                                            <th scope="col">Incomes</th>
-                                            <th scope="col">Flow</th>
+                                            <th scope="col" translate>Account</th>
+                                            <th scope="col" translate>Expenses</th>
+                                            <th scope="col" translate>Incomes</th>
+                                            <th scope="col" translate>Flow</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="item in dashboardAccountsList" class="">
-                                            <td scope="row">{{ item.conta }}</td>
-                                            <td style="color: red;">-{{ item.expenses | currency:'R$ '}}</td>
-                                            <td style="color: blue;">{{ item.incomes | currency:'R$ '}}</td>
+                                            <td scope="row">
+                                                {{ item.nome }}
+                                                <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{item.banco.img}}.jpg" alt="{{item.banco.nome}}" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                            </td>
+                                            <td style="color: red;">{{ item.total_despesas | currency:'R$ '}}</td>
+                                            <td style="color: blue;">{{ item.total_receitas | currency:'R$ '}}</td>
                                             <td>
-                                                <span ng-if="item.expenses > item.incomes" style="color: red;">-{{ (item.expenses - item.incomes) | currency:'R$ '}}</span>
-                                                <span ng-if="item.expenses <= item.incomes" style="color: blue;">{{ (item.incomes - item.expenses) | currency:'R$ '}}</span>
+                                                <span ng-class="{'positivo': item.saldo_atual > 0, 'negativo': item.saldo_atual <= 0}" >{{ item.saldo_atual | currency:'R$ '}}</span>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <button class="btn btn-secondary" type="button" ng-click="showModalCreateAccount()" translate>New</button>
+                                <button class="btn btn-secondary" type="button" ng-click="showModalCreateCategory()" translate>New Category</button>
+                                <div class="control-group">
+                                    <label for="select-console">Console:</label>
+                                    <select id="select-console" class="demo-consoles" placeholder="Select console..."></select>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                             </div>
                             
                         </p>
@@ -64,5 +82,6 @@
                 </div>
             </div>
         </div>
+        {{ categoriesList }}
     </div>
 </div>

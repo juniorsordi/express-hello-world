@@ -1,0 +1,105 @@
+<div flex class=resultadocontas>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <span flex>Resultados de caixa</span>
+        <div class=actions layout=row>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.resultadocontas.filtrarContasSaldo()>
+                <md-tooltip>{{ vm.vg.resultadocontas.filtrarSaldo? "Exibir contas com resultado zerado": "Ocultar contas com resultado zerado"}}</md-tooltip>
+                <md-icon>{{ vm.vg.resultadocontas.filtrarSaldo ? "visibility_off" : "visibility"}}</md-icon>
+            </md-button>
+            <md-button ng-if="card.opened && vm.vg.resultadocontas._initialized" class="md-icon-button swap-view {{'v'+vm.vg.resultadocontas.visualizacao}}" ng-click=vm.vg.resultadocontas.toggleVisualizacao()>
+                <md-tooltip>{{vm.vg.resultadocontas.visualizacao == 1 ? 'Alterar para visão resumida' : 'Alterar para visão detalhada'}}</md-tooltip>
+                <md-icon>swap_horiz</md-icon>
+            </md-button>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if=vm.vg.resultadocontas.loading></md-progress-linear>
+    <div class=conteudo ng-if="!vm.vg.resultadocontas.loading && card.opened && vm.vg.resultadocontas._initialized">
+        <div ng-if="vm.vg.resultadocontas.visualizacao == 1">
+            <div google-chart chart=vm.vg.resultadocontas.chart style="max-height:200px; width:100%;"></div>
+            <md-content>
+                <table>
+                    <thead>
+                        <tr>
+                            <td class=checkbox>
+                                <input type=checkbox mdw-indeterminate=vm.vg.resultadocontas.allMarkedIndeterminate ng-click=isAllMarked() ng-change=vm.vg.resultadocontas.markAllOptions() ng-model=vm.vg.resultadocontas.allMarked>
+                                <md-tooltip md-direction=right>{{vm.vg.resultadocontas.allMarked ? 'Desmarcar' : 'Marcar'}} todos</md-tooltip>
+                            </td>
+                            <th class=left>Conta</th>
+                            <th class=right>Entradas</th>
+                            <th class=right>Saídas</th>
+                            <th class=right>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="saldo in vm.vg.resultadocontas.resultado.contas">
+                            <td class=checkbox>
+                                <input type=checkbox ng-change=vm.vg.resultadocontas.filtrarContas(saldo.conta) ng-model=vm.vg.resultadocontas.filtroContas[saldo.conta]>
+                            </td>
+                            <td>
+                                <span class=cor-legenda ng-style="{'background-color' : saldo.cor}"></span>
+                                <a class=mdw-link-text ng-if="saldo.conta != 'residuo'" mdw-nome-cadastro=contas ng-model=saldo.conta ui-sref="{{'extratoConta.listar({conta :' + saldo.conta + '})'}}"></a>
+                                <span ng-if="saldo.conta == 'residuo'">Resíduo de metas</span>
+                            </td>
+                            <td mdw-currency=saldo.entradas></td>
+                            <td mdw-currency=saldo.saidas></td>
+                            <td mdw-currency=saldo.resultado></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-content>
+        </div>
+        <div ng-if="vm.vg.resultadocontas.visualizacao == 2">
+            <div google-chart chart=vm.vg.resultadocontas.chartTotal style="max-height:200px; width:100%;"></div>
+            <md-content>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class=cor-legenda ng-style="{'background-color' : vm.vg.resultadocontas.corReceitas}"></span>
+                                Entradas
+                            </td>
+                            <td mdw-currency=vm.vg.resultadocontas.resultado.entradas></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class=cor-legenda ng-style="{'background-color' : vm.vg.resultadocontas.corDespesas}"></span>
+                                Saídas
+                            </td>
+                            <td mdw-currency=vm.vg.resultadocontas.resultado.saidas></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-content>
+        </div>
+    </div>
+    <div class=rodape layout=row ng-if="!vm.vg.resultadocontas.loading && card.opened && vm.vg.resultadocontas._initialized">
+        <div flex layout=row ng-if="vm.vg.resultadocontas.visualizacao == 1">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=left>
+                            <span class=cor-legenda ng-style="{'background-color' : vm.vg.resultadocontas.resultado.cor}"></span>
+                            <strong>Total</strong>
+                        </td>
+                        <td class=right>
+                            <strong mdw-currency=vm.vg.resultadocontas.resultado.entradasContas></strong>
+                        </td>
+                        <td class=right>
+                            <strong mdw-currency=vm.vg.resultadocontas.resultado.saidasContas></strong>
+                        </td>
+                        <td class=right>
+                            <strong mdw-currency=vm.vg.resultadocontas.resultado.resultado></strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div flex layout=row ng-if="vm.vg.resultadocontas.visualizacao == 2">
+            <span flex>Resultado</span>
+            <span mdw-currency=vm.vg.resultadocontas.resultado.resultado mask=auto></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,188 @@
+[
+    {
+        "id": 1,
+        "codigo": "BRL",
+        "nome": "Real",
+        "simbolo": "R$"
+    },
+    {
+        "id": 2,
+        "codigo": "USD",
+        "nome": "Dólar",
+        "simbolo": "US$"
+    },
+    {
+        "id": 3,
+        "codigo": "EUR",
+        "nome": "Euro",
+        "simbolo": "€"
+    },
+    {
+        "id": 4,
+        "codigo": "GBP",
+        "nome": "Libra Esterlina",
+        "simbolo": "£"
+    },
+    {
+        "id": 29,
+        "codigo": "THB",
+        "nome": "Baht Tailandês",
+        "simbolo": "฿"
+    },
+    {
+        "id": 23,
+        "codigo": "BOB",
+        "nome": "Boliviano",
+        "simbolo": "Bs"
+    },
+    {
+        "id": 14,
+        "codigo": "SEK",
+        "nome": "Coroa Suéca",
+        "simbolo": "kr"
+    },
+    {
+        "id": 19,
+        "codigo": "CZK",
+        "nome": "Coroa Tcheca",
+        "simbolo": "Kč"
+    },
+    {
+        "id": 22,
+        "codigo": "AED",
+        "nome": "Dirham EAU",
+        "simbolo": "DH"
+    },
+    {
+        "id": 15,
+        "codigo": "AUD",
+        "nome": "Dólar Australiano",
+        "simbolo": "A$"
+    },
+    {
+        "id": 8,
+        "codigo": "CAD",
+        "nome": "Dólar Canadense",
+        "simbolo": "C$"
+    },
+    {
+        "id": 18,
+        "codigo": "HKD",
+        "nome": "Dólar de Hong Kong",
+        "simbolo": "HK$"
+    },
+    {
+        "id": 20,
+        "codigo": "NZD",
+        "nome": "Dólar Neozelândes",
+        "simbolo": "NZ$"
+    },
+    {
+        "id": 28,
+        "codigo": "SGD",
+        "nome": "Dólar Singapuriano",
+        "simbolo": "S$"
+    },
+    {
+        "id": 30,
+        "codigo": "VND",
+        "nome": "Dong Viatnamita",
+        "simbolo": "₫"
+    },
+    {
+        "id": 26,
+        "codigo": "HUF",
+        "nome": "Florim Húngaro",
+        "simbolo": "Ft"
+    },
+    {
+        "id": 16,
+        "codigo": "CHF",
+        "nome": "Franco Suíço",
+        "simbolo": "Fr"
+    },
+    {
+        "id": 7,
+        "codigo": "PYG",
+        "nome": "Guarani Paraguaio",
+        "simbolo": "Gs"
+    },
+    {
+        "id": 11,
+        "codigo": "JPY",
+        "nome": "Iene",
+        "simbolo": "¥"
+    },
+    {
+        "id": 25,
+        "codigo": "HRK",
+        "nome": "Kuna Croata",
+        "simbolo": "Kn"
+    },
+    {
+        "id": 9,
+        "codigo": "AOA",
+        "nome": "Kwanza Angolano",
+        "simbolo": "Kz"
+    },
+    {
+        "id": 24,
+        "codigo": "ALL",
+        "nome": "Lek Albanês",
+        "simbolo": "L"
+    },
+    {
+        "id": 31,
+        "codigo": "HNL",
+        "nome": "Lempira Hondurenha",
+        "simbolo": "L"
+    },
+    {
+        "id": 10,
+        "codigo": "MZN",
+        "nome": "Metical Moçambicano",
+        "simbolo": "MT"
+    },
+    {
+        "id": 5,
+        "codigo": "ARS",
+        "nome": "Peso Argentino",
+        "simbolo": "$"
+    },
+    {
+        "id": 17,
+        "codigo": "CLP",
+        "nome": "Peso Chileno",
+        "simbolo": "$"
+    },
+    {
+        "id": 13,
+        "codigo": "MXN",
+        "nome": "Peso Mexicano",
+        "simbolo": "$"
+    },
+    {
+        "id": 6,
+        "codigo": "UYU",
+        "nome": "Peso Uruguaio",
+        "simbolo": "$U"
+    },
+    {
+        "id": 21,
+        "codigo": "MYR",
+        "nome": "Ringgit Malaio",
+        "simbolo": "RM"
+    },
+    {
+        "id": 27,
+        "codigo": "IDR",
+        "nome": "Rúpia Indonésia",
+        "simbolo": "Rp"
+    },
+    {
+        "id": 12,
+        "codigo": "CNY",
+        "nome": "Yuan",
+        "simbolo": "¥"
+    }
+]

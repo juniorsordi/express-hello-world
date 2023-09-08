@@ -65,14 +65,19 @@ app.use('*', (req,res) => {
 //*/
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/api/test', function (req, res) { 
-  res.send('hello world'); 
-});
+app.get('/api/test', function (req, res) {   res.send('hello world');  });
+app.get('/apiweb/notificacoes/naolidas', function (req, res) { res.json([]); });
+app.get('/apiweb/pagamentos', function (req, res) { res.json([]); });
+app.get('/apiweb/filtros', function (req, res) { res.json([]); });
 
 app.use('/api/', require('./server/routes/authRoutes'));
+app.use('/api/', require('./server/routes/gamesRoutes'));
 app.use('/api/v1/', require('./server/routes/projectsRoute'));
 app.use('/api/v1/', require('./server/routes/companyRoute'));
 app.use('/api/v1/', require('./server/routes/financesRoute'));
+app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
+app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
+app.use('/api/v1/finances/accounts', require('./server/routes/financesAccountsRoute'));
 
 /*
 app.use('/api/v1/', require('./server/routes/tickets.routes'));

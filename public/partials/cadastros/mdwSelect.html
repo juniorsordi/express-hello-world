@@ -1,0 +1,24 @@
+<div layout=row>
+    <md-autocomplete flex md-input-id={{vm.inputId}} md-selected-item=vm.selected md-no-cache=true md-min-length=0 md-search-text=vm.searchText md-items="item in vm.query(vm.searchText)" md-item-text=item.nome md-selected-item-change=vm.onSelect(item) md-floating-label="{{vm.label}}{{vm.showMaxMsg ? ' (Exibindo '+vm.listSize+' de ' + vm.resultLen + '. Refine a busca)' : ''}}" md-input-name={{vm.name}} md-menu-class="{{'mdw-select' + (vm.btnNovo ? ' btnNovo' : '')}}" ng-disabled=vm.ngDisabled ng-required=vm.ngRequired md-require-match=true>
+        <md-item-template>
+            <div class=contents ng-class="{'conta-option': vm.tipo=='contas' || vm.tipo=='contasO' || vm.tipo=='contasD'}" ng-mousedown=vm.onClickOption() layout=row layout-align="start center">
+                <div>
+                    <div class=icons ng-if="(vm.tipo=='contas' || vm.tipo =='contasO' || vm.tipo=='contasD') && !item.icon && item.id !== 0" mdw-banco-selector conta=item view-only dim=30></div>
+                    <md-icon class=icons ng-if=item.icon>{{item.icon}}</md-icon>
+                    <span ng-if=item.create>{{item.nome}}</span>
+                </div>
+                <div ng-class="{'option': vm.tipo=='contas' || vm.tipo=='contasO' || vm.tipo=='contasD'}" flex>
+                    <div ng-if=!item.create md-highlight-text=vm.searchText md-highlight-flags=gi title={{item.nome}}>{{item.nome}}</div>
+                    <div ng-if="vm.tipo=='contas' || vm.tipo =='contasO' || vm.tipo=='contasD'" class=subtext>{{item.tipo | tipoConta: 'contas'}}</div>
+                </div>
+            </div>
+        </md-item-template>
+        <div ng-if="form && form[vm.name] && (form[vm.name].$touched || form.$submitted)" ng-messages=form[vm.name].$error>
+            <div ng-message=required>Campo obrigatório</div>
+            <div ng-message=md-require-match>Escolha um dos itens da lista</div>
+        </div>
+    </md-autocomplete>
+    <md-button ng-if="vm.unselectable && vm.model !== null" ng-click=vm.unselect() class=md-icon-button>
+        <md-icon>close</md-icon>
+    </md-button>
+</div>

@@ -91,8 +91,16 @@ app.directive('choices', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
-            var choices = new Choices(element);
-            choices.setChoices(attrs.options);
+            var choices = new Choices(element, {
+                searchEnabled: true,
+                maxItemCount: -1,
+                allowHTML: true,
+                placeholder: true,
+                choices: attrs.options
+            });/*.setChoices(attrs.options, 'id',
+                'nome',
+                false,);
+                //*/
         }
     }
 });
@@ -204,29 +212,6 @@ app.directive('summernote2', function () {
 });
 ///#####################################################################################################
 ///#####################################################################################################
-app.directive('datepicker2', function () {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function (scope, element, attrs, ngModelCtrl) {
-            /*
-            $(element).datepicker({
-                uiLibrary: 'bootstrap4',
-                dateFormat: 'dd/mm/yyyy',
-                language: 'pt-BR',
-                pickTime: false
-            }).on('changeDate', function (e) {
-                ngModelCtrl.$setViewValue(e.date.toLocaleDateString());
-                scope.$apply();
-            });
-            //*/
-            $(element).datetimepicker({
-                format: 'L',
-                locale: 'pt-br'
-            });
-        }
-    };
-});
 ///#####################################################################################################
 app.directive('datefield', function () {
     return {
@@ -670,6 +655,16 @@ app.directive('kanbanBoardDrop', function () {
     };
 });
 ///#####################################################################################################
+app.directive('selectize2', function () {
+    return {
+        scope: {
+            selectize: '<',
+        },
+        link: function (scope, el) {
+            var selectize = $(el).selectize(scope.selectize);
+        },
+    };
+});
 ///#####################################################################################################
 ///#####################################################################################################
 ///#####################################################################################################

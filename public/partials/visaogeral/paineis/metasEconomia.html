@@ -1,0 +1,51 @@
+<div flex layout=column class=metasorcamentovg>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <div flex>Metas de economia</div>
+        <div class=actions layout=row>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if="vm.vg.metasEconomia.loading && card.opened && vm.vg.metasEconomia._initialized"></md-progress-linear>
+    <div class="conteudo metas" ng-if="!vm.isBasico && !vm.vg.metasEconomia.loading && card.opened && vm.vg.metasEconomia._initialized">
+        <md-content ng-if="vm.vg.metasEconomia.metas && !vm.isMoeda">
+            <div ng-repeat="meta in vm.vg.metasEconomia.metas" flex=33 class="meta mdw-list mdw-list-bordered">
+                <div class="mdw-list-item meta" layout-align="start center" layout=row>
+                    <div flex=40>
+                        <a ui-sref="metaseconomiaextrato({idMeta : meta.id})" class=link-meta>{{meta.descricao}}</a>
+                        <mdw-pgbar flex razao=meta.saldo/meta.valor cor="'#32a852'"></mdw-pgbar>
+                    </div>
+                    <div flex=20 layout=column layout-align="start end">
+                        <label>Objetivo</label>
+                        <span mdw-currency=meta.valor mdw-style=false abs=true></span>
+                    </div>
+                    <div flex=20 layout=column layout-align="start end">
+                        <label>Prazo</label>
+                        <span class=vencimento>{{meta.data | mdwDate : vm.vg.columns.length > 2 ? "MM/yyyy" : "MMMM 'de' yyyy"}}</span>
+                    </div>
+                    <div flex=20 layout=column layout-align="start end">
+                        <label>Saldo</label>
+                        <span mdw-currency=meta.saldo></span>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+        <div class=mdw-empty-space flex ng-if="!vm.isBasico && !vm.isMoeda && vm.vg.metasEconomia.metas.length == 0">
+            <md-icon>error_outline</md-icon>
+            <p class=mdw-empty-space-text>
+                Sem metas de economia definidas.<br>Utilize para o planejamento de objetivos financeiros de longo prazo.
+            </p>
+            <div class=mdw-empty-space-actions>
+                <md-button class=md-primary ui-sref=metaseconomia>Gerenciar metas</md-button>
+            </div>
+        </div>
+        <div flex ng-if=vm.isMoeda layout=column layout-align="start center">
+            <div>
+                <md-icon class=mdw-icon-noresults>error_outline</md-icon>
+            </div>
+            <p>Metas de economia disponíveis apenas na moeda padrão.</p>
+        </div>
+    </div>
+    <mdw-vg-placeholder-basico ng-if="vm.isBasico && card.opened && !vm.vg.metasOrcamento.loading" id=metaeconomia></mdw-vg-placeholder-basico>
+</div>

@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const auth = require("../middleware/auth");
 const controller = require('../controllers/finances');
+const service = require("../services/financeAccountService");
 
 router.get("/finances/dashboard/accounts", auth, async function (req, res, next) {
     try {
-        res.json(await controller.getDashboardAcounts(req.cookies.user.id_empresa));
+        res.json(await service.getContasBancarias(req.cookies.user.id_empresa));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -95,7 +96,7 @@ router.get("/finances/categories", auth, async function (req, res, next) {
 
 router.get("/finances/report/categoryCards", auth, async function (req, res, next) {
     try {
-        res.json(await controller.getCategoriasReportCards(req.cookies.user.id_empresa, 1));
+        res.json(await service.getDashboardCategorias(2, req.cookies.user.id_empresa));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);

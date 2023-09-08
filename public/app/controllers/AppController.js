@@ -28,13 +28,20 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, APIS
 
     $scope.initApp = function () {
 		if (localStorage.getItem('user')) {
-			$scope.lang = $window.navigator.language || $window.navigator.userLanguage;
-			$scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
-			$translate.use($scope.currentLang.locale);
-			$scope.Usuario = JSON.parse(localStorage.getItem('user'));
-			$rootScope.Usuario = $scope.Usuario;
-			//$scope.anoAtendimento = (new Date()).getFullYear();
-			APIService.getData("/../auth/checkToken", function (response) {});
+			
+			APIService.getData("/../auth/checkToken", function (response) {
+				
+				if(!response.data) {
+					location.href = "login.html";
+				} else {
+					$scope.lang = $window.navigator.language || $window.navigator.userLanguage;
+					$scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
+					$translate.use($scope.currentLang.locale);
+					$scope.Usuario = JSON.parse(localStorage.getItem('user'));
+					$rootScope.Usuario = $scope.Usuario;
+					//$scope.anoAtendimento = (new Date()).getFullYear();
+				}
+			});
 		} else {
 			location.href = "login.html";
 		}

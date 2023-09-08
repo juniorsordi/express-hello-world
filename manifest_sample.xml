@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+	<manifest_name>xml_manifest.xml</manifest_name>
+	<customer_id>DLI</customer_id>
+	<customer_name>Direct Link</customer_name>
+	<customer_no>1112223334</customer_no>
+	<customer_vat>00000000000</customer_vat>
+	<items>
+		<item>
+			<receiver_name>Customer name 1</receiver_name>	
+			<receiver_address1>Street 72</receiver_address1>
+			<receiver_address2>X</receiver_address2>
+			<receiver_accesscode>123456</receiver_accesscode>
+			<receiver_city>Dallas</receiver_city>
+			<receiver_post_code>14252</receiver_post_code>
+			<receiver_country_code>US</receiver_country_code>
+			<receiver_email_address>customer.name@something.com</receiver_email_address>
+			<receiver_contact_person>Contact name</receiver_contact_person>
+			<receiver_phone_no>555-757575</receiver_phone_no>
+			<receiver_mobile_no>555-353535</receiver_mobile_no>
+			<receiver_state>TX</receiver_state>
+			<sender_name>Store name</sender_name>
+			<sender_address1>Store street 1</sender_address1>
+			<sender_address2>X</sender_address2>
+			<sender_city>Store city</sender_city>
+			<sender_post_code>44499</sender_post_code>
+			<sender_country_code>AU</sender_country_code>
+			<sender_email_address>store.name@store.com</sender_email_address>
+			<sender_contact_person>Contact name</sender_contact_person>
+			<sender_phone_no>555-787878</sender_phone_no>
+			<sender_tax_id>123456789</sender_tax_id>
+			<return_name>Return name</return_name>
+			<return_address1>Return box 1</return_address1>
+			<return_address2>X</return_address2>
+			<return_city>Return city</return_city>
+			<return_post_code>44499</return_post_code>
+			<return_country_code>SE</return_country_code>
+			<order_no>PP123456789</order_no>
+			<tracking_no>RE123456789SE</tracking_no>
+			<description_content>Toys</description_content>
+			<total_weight>3.25</total_weight>
+			<content>Toys</content>
+			<quantity_of_content>3</quantity_of_content>
+			<invoice_amount>200</invoice_amount>
+			<invoice_currency>GBP</invoice_currency>
+			<customs_total_weight>3.25</customs_total_weight>
+			<type_of_goods>4</type_of_goods>
+			<returns>1</returns>
+			<service_code>300</service_code>
+			<contains_lithium>Y</contains_lithium>
+			<articles>
+				<article>
+					<name>Police car</name>
+					<unit_quantity>1</unit_quantity>
+					<unit_weight>0.5</unit_weight>
+					<unit_value>50</unit_value>
+					<hs_tariff_no>666666</hs_tariff_no>
+					<country_of_origin>CA</country_of_origin>
+				</article>
+			</articles>
+			<articles>
+				<article>
+					<name>Doll</name>
+					<unit_quantity>2</unit_quantity>
+					<unit_weight>1.0</unit_weight>
+					<unit_value>50</unit_value>
+					<hs_tariff_no>555555</hs_tariff_no>
+					<country_of_origin>FR</country_of_origin>
+				</article>
+			</articles>
+		</item>
+		<item>
+			<receiver_name>Customer name 2</receiver_name>	
+			<receiver_address1>Street 99</receiver_address1>
+			<receiver_address2>X</receiver_address2>
+			<receiver_accesscode>123456</receiver_accesscode>
+			<receiver_city>City</receiver_city>
+			<receiver_post_code>159489</receiver_post_code>
+			<receiver_country_code>FR</receiver_country_code>
+			<receiver_email_address>customer.name@something.com</receiver_email_address>
+			<receiver_contact_person>Contact name</receiver_contact_person>
+			<receiver_phone_no>555-888888</receiver_phone_no>
+			<receiver_mobile_no>555-445566</receiver_mobile_no>
+			<sender_name>Store name</sender_name>
+			<sender_address1>Store street 1</sender_address1>
+			<sender_address2>X</sender_address2>
+			<sender_city>Store city</sender_city>
+			<sender_post_code>44499</sender_post_code>
+			<sender_country_code>AU</sender_country_code>
+			<sender_email_address>store.name@store.com</sender_email_address>
+			<sender_contact_person>Contact name</sender_contact_person>
+			<sender_phone_no>555-787878</sender_phone_no>
+			<sender_tax_id>987654321</sender_tax_id>
+			<return_name>Return name</return_name>
+			<return_address1>Return box 1</return_address1>
+			<return_address2>X</return_address2>
+			<return_city>Return city</return_city>
+			<return_post_code>44499</return_post_code>
+			<return_country_code>SE</return_country_code>
+			<order_no>PP987654321</order_no>
+			<tracking_no>RE987654321SE</tracking_no>
+			<description_content>T-shirts</description_content>
+			<total_weight>1.75</total_weight>
+			<content>Clothes</content>
+			<quantity_of_content>2</quantity_of_content>
+			<invoice_amount>150</invoice_amount>
+			<invoice_currency>USD</invoice_currency>
+			<customs_total_weight>1.75</customs_total_weight>
+			<type_of_goods>4</type_of_goods>
+			<returns>2</returns>
+			<hs_number1>444444</hs_number1>
+			<hs_number2>444444</hs_number2>
+			<country_of_origin>CN</country_of_origin>
+			<service_code>300</service_code>
+			<shipment_reference>REF123</shipment_reference>
+			<contains_lithium>N</contains_lithium>
+			<return_mode>0</return_mode>
+			<insure_returns>0</insure_returns>
+			<articles>
+				<article>
+					<name>T-Shirt green</name>
+					<unit_quantity>1</unit_quantity>
+					<unit_weight>0.75</unit_weight>
+					<unit_value>75</unit_value>
+					<hs_tariff_no>444444</hs_tariff_no>
+					<country_of_origin>CN</country_of_origin>
+				</article>
+				<article>
+					<name>T-Shirt blue</name>
+					<unit_quantity>1</unit_quantity>
+					<unit_weight>0.75</unit_weight>
+					<unit_value>75</unit_value>
+					<hs_tariff_no>444444</hs_tariff_no>
+					<country_of_origin>CN</country_of_origin>
+				</article>
+			</articles>
+		</item>
+	</items>
+</manifest>

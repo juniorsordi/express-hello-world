@@ -1,0 +1,78 @@
+<div flex layout=column class=metasInvestimentosvg>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <div flex>
+            Metas de investimentos<br>
+            <em ng-if="card.opened && vm.vg.metasInvestimentos._initialized" class=detalhe>Situação {{vm.vg.metasInvestimentos.visualizacao == 'c' ? 'confirmada' : 'projetada'}}</em>
+        </div>
+        <div class=actions layout=row>
+            <md-button ng-if="!vm.isBasico && card.opened && vm.vg.metasInvestimentos._initialized" class="md-icon-button swap-view {{'v'+vm.vg.metasInvestimentos.visao}}" ng-click="vm.vg.metasInvestimentos.toggleVisao('d')">
+                <md-tooltip>{{vm.vg.metasInvestimentos.visao == 1 ? 'Alterar para visão do total' : 'Alterar para visão por categorias'}}</md-tooltip>
+                <md-icon>swap_horiz</md-icon>
+            </md-button>
+            <md-button ng-if="!vm.isBasico && card.opened && vm.vg.metasInvestimentos._initialized" class=md-icon-button ng-class=vm.vg.metasInvestimentos.visualizacao ng-click="vm.vg.metasInvestimentos.toggleVisualizacao('d')">
+                <md-tooltip>{{vm.vg.metasInvestimentos.visualizacao == 'c' ? 'Alterar para situação projetada' : 'Alterar para situação confirmada'}}</md-tooltip>
+                <md-icon>{{vm.vg.metasInvestimentos.visualizacao == 'c' ? 'check_circle' : 'check'}}</md-icon>
+            </md-button>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if="vm.vg.metasInvestimentos.loading && card.opened && vm.vg.metasInvestimentos._initialized"></md-progress-linear>
+    <div class="conteudo metas" ng-if="!vm.isBasico && !vm.vg.metasInvestimentos.loading && card.opened && vm.vg.metasInvestimentos._initialized">
+        <md-content ng-if="vm.vg.metasInvestimentos.visao == 1 && !vm.isMoeda">
+            <div ng-if="vm.vg.metasInvestimentos.metas.contas.length > 0" class="mdw-list mdw-list-bordered" flex>
+                <div class="mdw-list-item meta" layout-align="start center" layout=row ng-repeat="categoria in vm.vg.metasInvestimentos.metas.contas | orderBy : '-razao'" ng-include="'/partials/visaogeral/paineis/metaOrcamentoLinha.html'"></div>
+            </div>
+            <div class=mdw-empty-space flex ng-if="!vm.isBasico && (!vm.vg.metasInvestimentos.metas.contas || vm.vg.metasInvestimentos.metas.contas.length == 0)">
+                <md-icon>error_outline</md-icon>
+                <p class=mdw-empty-space-text>
+                    Sem metas de investimentos definidas.<br>São valores mensais que você quer transferir para investimentos.
+                </p>
+                <div class=mdw-empty-space-actions>
+                    <md-button class=md-primary ui-sref="metasrd.investimentos.listar({inicio : vm.vg.getData().inicio , fim : vm.vg.getData().fim})">Gerenciar metas</md-button>
+                </div>
+            </div>
+        </md-content>
+        <md-content ng-if="vm.vg.metasInvestimentos.visao == 2 && !vm.isMoeda">
+            <div ng-if=vm.vg.metasInvestimentos.metas.geral class="mdw-list mdw-list-bordered" flex>
+                <mdw-pgbar-circular razao=vm.vg.metasInvestimentos.metas.geral.razao cor=vm.vg.metasInvestimentos.metas.geral.cor></mdw-pgbar-circular>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Meta definida {{vm.vg.metasInvestimentos.mes}}</td>
+                            <td mdw-currency=vm.vg.metasInvestimentos.metas.geral.meta mask=auto></td>
+                        </tr>
+                        <tr>
+                            <td>Total {{vm.vg.metasInvestimentos.visualizacao == 'p' ? 'projetado' : 'confirmado'}}</td>
+                            <td mdw-currency=vm.vg.metasInvestimentos.metas.geral.valor mask=auto></td>
+                        </tr>
+                        <tr ng-if=vm.vg.metasInvestimentos.metas.geral.residuo>
+                            <td>Total a realizar</td>
+                            <td mdw-currency=vm.vg.metasInvestimentos.metas.geral.residuo mask=auto></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class=mdw-empty-space flex ng-if="!vm.isBasico && !vm.vg.metasInvestimentos.metas.geral">
+                <md-icon>error_outline</md-icon>
+                <p class=text>
+                    Sem metas de investimentos definidas.<br>São valores mensais que você quer transferir para investimentos.
+                </p>
+                <div class=actions>
+                    <md-button class=md-primary ui-sref="metasrd.investimentos.listar({inicio : vm.vg.getData().inicio , fim : vm.vg.getData().fim})">Gerenciar metas</md-button>
+                </div>
+            </div>
+        </md-content>
+        <div flex ng-if=vm.isMoeda layout=column layout-align="start center">
+            <div>
+                <md-icon class=mdw-icon-noresults>error_outline</md-icon>
+            </div>
+            <p>Metas de investimentos disponíveis apenas na moeda padrão.</p>
+        </div>
+    </div>
+    <mdw-vg-placeholder-basico ng-if="vm.isBasico && card.opened && !vm.vg.metasInvestimentos.loading" id=metas></mdw-vg-placeholder-basico>
+    <div class=rodape layout=row ng-if="!vm.isBasico && !vm.vg.metasInvestimentos.loading && card.opened && vm.vg.metasInvestimentos._initialized && vm.vg.metasInvestimentos.metas.contas.length > 0 && vm.vg.metasInvestimentos.visao == 1">
+        <div flex class=meta layout-align="start center" layout=row ng-repeat="categoria in [vm.vg.metasInvestimentos.metas]" ng-include="'/partials/visaogeral/paineis/metaOrcamentoLinha.html'"></div>
+    </div>
+</div>

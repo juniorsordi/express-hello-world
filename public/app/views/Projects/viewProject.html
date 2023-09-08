@@ -34,7 +34,7 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-8">
                         <h3 class="d-flex align-items-center mb-0 fw-light">
-                            {{ projectInfo.receita_real | currency }}
+                            {{ projectInfo.receita_estimada | currency:'R$ ' }}
                         </h3>
                     </div>
                     <div class="col-4 text-end">
@@ -57,7 +57,7 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-8">
                         <h3 class="d-flex align-items-center mb-0 fw-light">
-                            {{ projectInfo.custo_real | currency }}
+                            {{ projectInfo.gasto_estimado | currency:'R$ ' }}
                         </h3>
                     </div>
                     <div class="col-4 text-end">
@@ -96,17 +96,13 @@
             <div class="card-body pt-0">
                 <h5 translate>Description</h5>
 
-                <p class="text-muted" ng-bind-html="projectInfo.descricao">
-                    Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-                    adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
-                    pulvinar, hendrerit id, lorem.
-                </p>
+                <p class="text-muted" ng-bind-html="projectInfo.descricao"></p>
                 <br>
                 <i class="fa fa-refresh" aria-hidden="true" ng-click="initProjectView()"></i>
                 <br>
                 <br>
                 <ul class="nav nav-tabs">
-                    <li class="nav-item">
+                    <li class="nav-item hide">
                         <a class="nav-link" aria-current="page" data-bs-toggle="tab" data-bs-target="#tab1" href="" translate>Overview</a>
                     </li>
                     <li class="nav-item">
@@ -126,7 +122,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="tab1" role="tabpanel">
+                    <div class="tab-pane hide" id="tab1" role="tabpanel">
                         <div ng-include="'app/views/Projects/tabs/tabOverview.html'"></div>
                     </div>
                     <div class="tab-pane active" id="tab2" role="tabpanel">
@@ -211,15 +207,15 @@
                     </dd>
                 </dl>
                 <dl class="row">
-                    <dt class="col-5 col-xxl-4 mb-0" translate>Estimated Next Payment</dt>
+                    <dt class="col-5 col-xxl-4 mb-0" translate>Estimated Expenses</dt>
                     <dd class="col-7 col-xxl-8 mb-0">
-                        <p class="mb-0">{{ projectInfo.expected_payment | currency }}</p>
+                        <p class="mb-0">{{ projectInfo.gasto_estimado | currency }}</p>
                     </dd>
                 </dl>
                 <dl class="row">
-                    <dt class="col-5 col-xxl-4 mb-0" translate>Estimated Expenses</dt>
+                    <dt class="col-5 col-xxl-4 mb-0" translate>Estimated Next Payment</dt>
                     <dd class="col-7 col-xxl-8 mb-0">
-                        <p class="mb-0">{{ projectInfo.custo_estimado | currency }}</p>
+                        <p class="mb-0">{{ projectInfo.expected_payment | currency }}</p>
                     </dd>
                 </dl>
 

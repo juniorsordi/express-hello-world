@@ -12,7 +12,7 @@
                                 id="projectname"
                                 class="form-control"
                                 placeholder="Enter project name"
-                                ng-model="form.name"></div>
+                                ng-model="form.nome"></div>
 
                             <div class="mb-3">
                                 <label for="project-overview" class="form-label" translate="">Overview</label>
@@ -21,7 +21,7 @@
                                     id="project-overview"
                                     rows="5"
                                     placeholder="Enter some brief about project.."
-                                    ng-model="form.description"></textarea>
+                                    ng-model="form.descricao"></textarea>
                                 <div id="ckeditor-classic"></div>
                             </div>
 
@@ -33,7 +33,7 @@
                                     class="form-control"
                                     data-provide="datepicker"
                                     data-date-language="pt-BR"
-                                    ng-model="form.start_date"
+                                    ng-model="form.inicio_estimado"
                                     data-date-container="#datepicker1"
                                     data-date-format="dd/mm/yyyy"
                                     data-date-autoclose="true"/>
@@ -47,7 +47,7 @@
                                     class="form-control"
                                     data-provide="datepicker"
                                     data-date-language="pt-BR"
-                                    ng-model="form.due_date"
+                                    ng-model="form.termino_estimado"
                                     data-date-container="#datepicker2"
                                     data-date-format="dd/mm/yyyy"
                                     data-date-autoclose="true"/>
@@ -71,7 +71,7 @@
                                     id="hour-value"
                                     class="form-control"
                                     placeholder="Enter hour value"
-                                    ng-model="form.hour_value"
+                                    ng-model="form.valor_hora"
                                     ui-money-mask="2"/>
                             </div>
 
@@ -82,19 +82,19 @@
                                     id="estimated_effort"
                                     class="form-control"
                                     placeholder="Enter Estimated Effort"
-                                    ng-model="form.estimated_effort"/>
+                                    ng-model="form.esforco_estimado"/>
                             </div>
 
                             <div class="mb-3">
                                 <label for="client" class="form-label" translate="">Client</label>
-                                <select id="client" class="form-control" select2 ng-model="form.id_client"  ng-options="item.id as item.label for item in arrClients">
+                                <select id="client" class="form-control" select2 ng-model="form.id_cliente"  ng-options="item.id as item.nome for item in arrClientes">
                                     <option value=""></option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="categorie" class="form-label" translate="">Category</label>
-                                <select id="categorie" class="form-control" select2 ng-model="form.id_category" ng-options="item.id as item.label for item in arrCategories">
+                                <select id="categorie" class="form-control" select2 ng-model="form.id_categoria" ng-options="item.id as item.label for item in arrCategorias">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -278,29 +278,5 @@
                                     <br></div>
                                 </div>
                                 <button type="button" class="btn btn-success" ng-click="inserirNovoProjeto()">Salvar</button>
-                                <script>
-                                    var previewTemplate,
-                                        dropzone,
-                                        ckeditorClassic = document.querySelector("#ckeditor-classic"),
-                                        dropzonePreviewNode = (
-                                            ckeditorClassic && ClassicEditor.create(document.querySelector("#ckeditor-classic")).then(function (e) {
-                                                e.ui.view.editable.element.style.height = "200px"
-                                            }).catch(function (e) {
-                                                console.error(e)
-                                            }),
-                                            document.querySelector("#dropzone-preview-list")
-                                        );
-                                    dropzonePreviewNode && (
-                                        dropzonePreviewNode.id = "",
-                                        previewTemplate = dropzonePreviewNode.parentNode.innerHTML,
-                                        dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode),
-                                        dropzone = new Dropzone(".dropzone", {
-                                            url: "https://httpbin.org/post",
-                                            method: "post",
-                                            previewTemplate: previewTemplate,
-                                            previewsContainer: "#dropzone-preview"
-                                        })
-                                    );
-                                </script>
                             </div>
                         </div>

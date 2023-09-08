@@ -1,0 +1,514 @@
+{
+    "expenses": [
+        {
+            "name": "bars_and_restaurants",
+            "used": false
+        },
+        {
+            "name": "clothing",
+            "used": false
+        },
+        {
+            "name": "debts_and_loans",
+            "used": false
+        },
+        {
+            "name": "education",
+            "used": false
+        },
+        {
+            "name": "entertainment",
+            "used": false
+        },
+        {
+            "name": "airplane",
+            "used": false
+        },
+        {
+            "name": "apartment",
+            "used": false
+        },
+        {
+            "name": "audiotrack",
+            "used": false
+        },
+        {
+            "name": "basketball",
+            "used": false
+        },
+        {
+            "name": "beach",
+            "used": false
+        },
+        {
+            "name": "book",
+            "used": false
+        },
+        {
+            "name": "briefcase",
+            "used": false
+        },
+        {
+            "name": "countertops",
+            "used": false
+        },
+        {
+            "name": "currency",
+            "used": false
+        },
+        {
+            "name": "desktop",
+            "used": false
+        },
+        {
+            "name": "dice",
+            "used": false
+        },
+        {
+            "name": "earning_investments",
+            "used": false
+        },
+        {
+            "name": "events",
+            "used": false
+        },
+        {
+            "name": "eye",
+            "used": false
+        },
+        {
+            "name": "family_and_children",
+            "used": false
+        },
+        {
+            "name": "favorite",
+            "used": false
+        },
+        {
+            "name": "flag",
+            "used": false
+        },
+        {
+            "name": "food",
+            "used": false
+        },
+        {
+            "name": "games",
+            "used": false
+        },
+        {
+            "name": "gifts_and_donations",
+            "used": false
+        },
+        {
+            "name": "groceries",
+            "used": false
+        },
+        {
+            "name": "group",
+            "used": false
+        },
+        {
+            "name": "gym",
+            "used": false
+        },
+        {
+            "name": "health",
+            "used": false
+        },
+        {
+            "name": "home",
+            "used": false
+        },
+        {
+            "name": "insight",
+            "used": false
+        },
+        {
+            "name": "investments",
+            "used": false
+        },
+        {
+            "name": "landscape",
+            "used": false
+        },
+        {
+            "name": "loans",
+            "used": false
+        },
+        {
+            "name": "lock",
+            "used": false
+        },
+        {
+            "name": "motorcycle",
+            "used": false
+        },
+        {
+            "name": "mug",
+            "used": false
+        },
+        {
+            "name": "other",
+            "used": false
+        },
+        {
+            "name": "other_earnings",
+            "used": false
+        },
+        {
+            "name": "palette",
+            "used": false
+        },
+        {
+            "name": "paper",
+            "used": false
+        },
+        {
+            "name": "people",
+            "used": false
+        },
+        {
+            "name": "personal_care",
+            "used": false
+        },
+        {
+            "name": "pets",
+            "used": false
+        },
+        {
+            "name": "privacy",
+            "used": false
+        },
+        {
+            "name": "sailing",
+            "used": false
+        },
+        {
+            "name": "salary",
+            "used": false
+        },
+        {
+            "name": "sale_tag",
+            "used": false
+        },
+        {
+            "name": "shipping",
+            "used": false
+        },
+        {
+            "name": "shopping",
+            "used": false
+        },
+        {
+            "name": "smile",
+            "used": false
+        },
+        {
+            "name": "snowflake",
+            "used": false
+        },
+        {
+            "name": "spa",
+            "used": false
+        },
+        {
+            "name": "store",
+            "used": false
+        },
+        {
+            "name": "style_options",
+            "used": false
+        },
+        {
+            "name": "subscriptions_and_services",
+            "used": false
+        },
+        {
+            "name": "taxes",
+            "used": false
+        },
+        {
+            "name": "taxi",
+            "used": false
+        },
+        {
+            "name": "toolbox",
+            "used": false
+        },
+        {
+            "name": "tram",
+            "used": false
+        },
+        {
+            "name": "transportation",
+            "used": false
+        },
+        {
+            "name": "travel",
+            "used": false
+        },
+        {
+            "name": "waterhouse",
+            "used": false
+        },
+        {
+            "name": "work",
+            "used": false
+        }
+    ],
+    "earnings": [
+        {
+            "name": "earning_investments",
+            "used": false
+        },
+        {
+            "name": "airplane",
+            "used": false
+        },
+        {
+            "name": "apartment",
+            "used": false
+        },
+        {
+            "name": "audiotrack",
+            "used": false
+        },
+        {
+            "name": "bars_and_restaurants",
+            "used": false
+        },
+        {
+            "name": "basketball",
+            "used": false
+        },
+        {
+            "name": "beach",
+            "used": false
+        },
+        {
+            "name": "book",
+            "used": false
+        },
+        {
+            "name": "briefcase",
+            "used": false
+        },
+        {
+            "name": "clothing",
+            "used": false
+        },
+        {
+            "name": "countertops",
+            "used": false
+        },
+        {
+            "name": "currency",
+            "used": false
+        },
+        {
+            "name": "debts_and_loans",
+            "used": false
+        },
+        {
+            "name": "desktop",
+            "used": false
+        },
+        {
+            "name": "dice",
+            "used": false
+        },
+        {
+            "name": "education",
+            "used": false
+        },
+        {
+            "name": "entertainment",
+            "used": false
+        },
+        {
+            "name": "events",
+            "used": false
+        },
+        {
+            "name": "eye",
+            "used": false
+        },
+        {
+            "name": "family_and_children",
+            "used": false
+        },
+        {
+            "name": "favorite",
+            "used": false
+        },
+        {
+            "name": "flag",
+            "used": false
+        },
+        {
+            "name": "food",
+            "used": false
+        },
+        {
+            "name": "games",
+            "used": false
+        },
+        {
+            "name": "gifts_and_donations",
+            "used": false
+        },
+        {
+            "name": "groceries",
+            "used": false
+        },
+        {
+            "name": "group",
+            "used": false
+        },
+        {
+            "name": "gym",
+            "used": false
+        },
+        {
+            "name": "health",
+            "used": false
+        },
+        {
+            "name": "home",
+            "used": false
+        },
+        {
+            "name": "insight",
+            "used": false
+        },
+        {
+            "name": "investments",
+            "used": false
+        },
+        {
+            "name": "landscape",
+            "used": false
+        },
+        {
+            "name": "loans",
+            "used": false
+        },
+        {
+            "name": "lock",
+            "used": false
+        },
+        {
+            "name": "motorcycle",
+            "used": false
+        },
+        {
+            "name": "mug",
+            "used": false
+        },
+        {
+            "name": "other_earnings",
+            "used": false
+        },
+        {
+            "name": "palette",
+            "used": false
+        },
+        {
+            "name": "paper",
+            "used": false
+        },
+        {
+            "name": "people",
+            "used": false
+        },
+        {
+            "name": "personal_care",
+            "used": false
+        },
+        {
+            "name": "pets",
+            "used": false
+        },
+        {
+            "name": "privacy",
+            "used": false
+        },
+        {
+            "name": "sailing",
+            "used": false
+        },
+        {
+            "name": "salary",
+            "used": false
+        },
+        {
+            "name": "sale_tag",
+            "used": false
+        },
+        {
+            "name": "shipping",
+            "used": false
+        },
+        {
+            "name": "shopping",
+            "used": false
+        },
+        {
+            "name": "smile",
+            "used": false
+        },
+        {
+            "name": "snowflake",
+            "used": false
+        },
+        {
+            "name": "spa",
+            "used": false
+        },
+        {
+            "name": "store",
+            "used": false
+        },
+        {
+            "name": "style_options",
+            "used": false
+        },
+        {
+            "name": "subscriptions_and_services",
+            "used": false
+        },
+        {
+            "name": "taxes",
+            "used": false
+        },
+        {
+            "name": "taxi",
+            "used": false
+        },
+        {
+            "name": "toolbox",
+            "used": false
+        },
+        {
+            "name": "tram",
+            "used": false
+        },
+        {
+            "name": "transportation",
+            "used": false
+        },
+        {
+            "name": "travel",
+            "used": false
+        },
+        {
+            "name": "waterhouse",
+            "used": false
+        },
+        {
+            "name": "work",
+            "used": false
+        }
+    ]
+}

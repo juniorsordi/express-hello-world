@@ -1,0 +1,130 @@
+<div class="row">
+    <div class="col-md-12">
+        <style>
+        </style>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Movimentações</h5>
+                <p class="card-text">
+                    <div class="row p-5">
+                        <div class="col-3">
+                            <input type="text" datepicker class="form-control" ng-model="filtro.periodo" />
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <br>
+                    {{ filtro }}
+                    <br>
+                    <select class="form-control select-one" type="select-one" choices="select-one" options="accountsList" data-type="select-one"></select>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Confirmado/Pago</th>
+                                <th>Valor</th>
+                                <th>Saldo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in movimentacoesContaList">
+                                <td width="8%">{{ item.data_prevista | date:'dd/MM/yyyy'}}</td>
+                                <td>
+                                    {{ item.descricao }}<br>
+                                    <span ng-repeat="label in item.labels" class="badge bg-secondary" style="margin-right: 5px;font-size: 8px;padding:2px;">{{ label }}</span>
+                                </td>
+                                <td width="10%" align="center"><i ng-if="item.status == 1" class="fa fa-check" aria-hidden="true" style="font-size: 16px;color: green;"></i></td>
+                                <td style="width: 8%;"><span ng-class="{'positivo': item.valor > 0, 'negativo': item.valor <= 0}">{{ item.valor | currency:'R$ ' }}</span></td>
+                                <td style="width: 8%;"><span ng-class="{'positivo': item.saldo > 0, 'negativo': item.saldo <= 0}">{{ item.saldo | currency:'R$ ' }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="border-bottom: 1px solid #ccc;">Nova Movimentação</h5>
+                        <p class="card-text">
+                            <form ng-submit="salvarMovimentacao(form)">
+                                <div class="form-group">
+                                    <label for="field1" translate>Type</label>
+                                    <div id="field1">
+                                        <label class="ui-radio ui-radio-danger">
+                                            <input name="radio1" type="radio" value="1" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false" ng-change="filtrarCategorias(1)">
+                                            <span>Despesa</span>
+                                        </label>
+                                        <label class="ui-radio">
+                                            <input name="radio1" type="radio" value="2" ng-model="form.tipo_operacao" aria-invalid="false" ng-change="filtrarCategorias(2)">
+                                            <span>Receita</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="field1" translate="">Title</label>
+                                    <input type="text" id="field1" class="form-control" ng-model="form.titulo" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="field3" translate="">Value</label>
+                                    <input type="text" id="field3" class="form-control" ng-model="form.valor" ui-money-mask="2" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="field4" translate="">Due Date</label>
+                                    <input type="date" id="field4" class="form-control" ng-model="form.data_vencimento" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="field5" translate="">Category</label>
+                                    <select id="field5" class="form-control" ng-model="form.id_categoria" select2 ng-options="item.id as item.nome for item in filtredCategoriesList">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="field5" translate="">Account</label>
+                                    <!--select id="field5" class="form-control" ng-model="form.id_conta_bancaria" ng-options="item.id as item.nome for item in accountsList">
+                                        <option value=""></option>
+                                    </select-->
+                                    <selectize config='myConfigCB' options='accountsList' ng-model="form.id_conta_bancaria"></selectize>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Teste OFX</h5>
+                        <p class="card-text">
+                            <button class="btn btn-secondary" type="button" ng-click="testeOFX()">Teste</button>
+                            <br>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr ng-repeat="item in ofxList">
+                                        <td>{{ item.MEMO }}</td>
+                                        <td ng-class="{'positivo': item.TRNAMT > 0, 'negativo': item.TRNAMT <= 0}">
+                                            {{ item.TRNAMT | currency: 'R$ ' }}
+                                        </td>
+                                        <td>
+                                            {{ item.FITID.substr(6,2) }}/{{ item.FITID.substr(4,2) }}/{{ item.FITID.substr(0,4) }}
+                                        </td>
+                                        <td ng-class="{'positivo': item.saldo > 0, 'negativo': item.saldo <= 0}">{{ item.saldo | currency: 'R$ ' }}</td>
+                                        <td>
+                                            <i class="fa fa-toggle-right" aria-hidden="true" ng-click="lancarItem(item)"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div class=mdw-calculator md-whiteframe=1>
+    <table class=operators>
+        <tr>
+            <td>
+                <button class=btn-toggleType ng-click=vm.toggleType()>
+                    <md-icon ng-if=vm.calcFin>attach_money</md-icon>
+                    <md-icon ng-if=!vm.calcFin>money_off</md-icon>
+                    <md-tooltip ng-if=vm.calcFin>Desativar calculadora financeira</md-tooltip>
+                    <md-tooltip ng-if=!vm.calcFin>Ativar calculadora financeira</md-tooltip>
+                </button>
+            </td>
+            <td ng-if=vm.calcFin colspan=3>
+                <div class=display>{{vm.current | currency : ''}}</div>
+            </td>
+            <td ng-if=!vm.calcFin colspan=3>
+                <div class=display>{{vm.current}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class=btn-copy ng-click="vm.action('copy',$event)">
+                    <md-tooltip>Transferir valor (C)</md-tooltip>
+                    <md-icon>content_copy</md-icon>
+                </button>
+            </td>
+            <td>
+                <button class=btn-ac ng-click="vm.action('AC',$event)">
+                    <md-tooltip>Apagar tudo (DEL)</md-tooltip>
+                    AC
+                </button>
+            </td>
+            <td>
+                <button class=btn-toggle ng-click="vm.action('+/-',$event)">+/-</button>
+            </td>
+            <td>
+                <button class=btn-divide ng-click="vm.action('/',$event)">÷</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class=btn-7 ng-click="vm.action('7',$event)">7</button>
+            </td>
+            <td>
+                <button class=btn-8 ng-click="vm.action('8',$event)">8</button>
+            </td>
+            <td>
+                <button class=btn-9 ng-click="vm.action('9',$event)">9</button>
+            </td>
+            <td>
+                <button class=btn-times ng-click="vm.action('*',$event)">x</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class=btn-4 ng-click="vm.action('4',$event)">4</button>
+            </td>
+            <td>
+                <button class=btn-5 ng-click="vm.action('5',$event)">5</button>
+            </td>
+            <td>
+                <button class=btn-6 ng-click="vm.action('6',$event)">6</button>
+            </td>
+            <td>
+                <button class=btn-minus ng-click="vm.action('-',$event)">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class=btn-1 ng-click="vm.action('1',$event)">1</button>
+            </td>
+            <td>
+                <button class=btn-2 ng-click="vm.action('2',$event)">2</button>
+            </td>
+            <td>
+                <button class=btn-3 ng-click="vm.action('3',$event)">3</button>
+            </td>
+            <td>
+                <button class=btn-sum ng-click="vm.action('+',$event)">+</button>
+            </td>
+        </tr>
+        <tr ng-if=vm.calcFin>
+            <td colspan=2>
+                <button class="btn-0 btn-0-f" ng-click="vm.action('0',$event)">0</button>
+            </td>
+            <td>
+                <button class=btn-percent ng-click="vm.action('%',$event)">%</button>
+            </td>
+            <td>
+                <button class=btn-result ng-click="vm.action('=',$event)">=</button>
+            </td>
+        </tr>
+        <tr ng-if=!vm.calcFin>
+            <td>
+                <button class=btn-0 ng-click="vm.action('0',$event)">0</button>
+            </td>
+            <td>
+                <button class=btn-comma ng-click="vm.action(',',$event)">,</button>
+            </td>
+            <td>
+                <button class=btn-percent ng-click="vm.action('%',$event)">%</button>
+            </td>
+            <td>
+                <button class=btn-result ng-click="vm.action('=',$event)">=</button>
+            </td>
+        </tr>
+    </table>
+</div>

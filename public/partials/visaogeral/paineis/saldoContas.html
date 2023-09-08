@@ -1,0 +1,102 @@
+<div flex>
+    <div layout=row layout-align="start center" class=titulo as-sortable-item-handle>
+        <span flex>Saldos de caixa</span>
+        <div class=actions layout=row>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.saldocontas.filtrarContasSaldo()>
+                <md-tooltip>{{ vm.vg.saldocontas.filtrarSaldo? "Exibir contas com saldo zerado": "Ocultar contas com saldo zerado"}}</md-tooltip>
+                <md-icon>{{ vm.vg.saldocontas.filtrarSaldo ? "visibility_off" : "visibility"}}</md-icon>
+            </md-button>
+            <md-menu>
+                <md-button class=md-icon-button ng-click=$mdOpenMenu()>
+                    <md-icon>sort</md-icon>
+                    <md-tooltip>Ordenar itens</md-tooltip>
+                </md-button>
+                <md-menu-content width=3>
+                    <md-menu-item>
+                        <md-button ng-class="{'md-primary' : vm.vg.saldocontas.orderBy == 'a'}" ng-click="vm.vg.saldocontas.toggleSort('a')">em ordem alfabética</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-class="{'md-primary' : vm.vg.saldocontas.orderBy == 'v'}" ng-click="vm.vg.saldocontas.toggleSort('v')">por R$ confirmado</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-button class="md-icon-button toggle-card" ng-click=vm.vg.togglePanel(card)>
+                <md-icon>keyboard_arrow_up</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <md-progress-linear class=md-primary ng-if=vm.vg.saldocontas.loading></md-progress-linear>
+    <div layout=column class=conteudo ng-if="!vm.vg.saldocontas.loading && card.opened && vm.vg.saldocontas._initialized">
+        <md-content ng-if="vm.vg.saldocontas.saldos.length >0">
+            <table>
+                <thead>
+                    <tr>
+                        <th class=padding></th>
+                        <td class=left>
+                            <div class=saldo-caixa-checkbox>
+                                <input type=checkbox mdw-indeterminate=vm.vg.saldocontas.allMarkedIndeterminate ng-click=isAllMarked() ng-change=vm.vg.saldocontas.markAllOptions() ng-model=vm.vg.saldocontas.allMarked>
+                                <md-tooltip md-direction=right>{{vm.vg.saldocontas.allMarked ? 'Desmarcar' : 'Marcar'}} todos</md-tooltip>
+                            </div>
+                        </td>
+                        <th class="right saldo">Confirmado</th>
+                        <th class="right saldo">Projetado</th>
+                        <th class=padding></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="saldo in vm.vg.saldocontas.saldos" ng-if="!saldo.encerrada || saldo.saldoConf || saldo.saldoProj">
+                        <td class=padding></td>
+                        <td>
+                            <div layout=row layout-align="start center">
+                                <input type=checkbox ng-change=vm.vg.saldocontas.filtrarContas(saldo.conta) ng-model=vm.vg.saldocontas.filtroContas[saldo.conta]>
+                                <mdw-banco-viewer conta=saldo.conta style="margin-right: 10px" dim=25></mdw-banco-viewer>
+                                <a class=mdw-link-text mdw-nome-cadastro=contas ng-model=saldo.conta ui-sref="{{'extratoConta.listar({conta :' + saldo.conta + '})'}}"></a>
+                            </div>
+                        </td>
+                        <td class=saldo>
+                            <span mdw-currency=saldo.saldoConf></span>
+                        </td>
+                        <td class=saldo>
+                            <span mdw-currency=saldo.saldoProj></span>
+                        </td>
+                        <td class=padding></td>
+                    </tr>
+                    <tr ng-if="vm.vg.saldocontas.residuoHabilitado && vm.vg.saldocontas.totalResiduo" mdw-plano-has=metas>
+                        <td class=padding></td>
+                        <td>
+                            <label>
+                                <input type=checkbox ng-change="vm.vg.saldocontas.filtrarContas('r')" ng-model=vm.vg.saldocontas.filtroContas.r>Saldo de resíduo de metas
+                            </label>
+                        </td>
+                        <td class=right>-</td>
+                        <td>
+                            <span mdw-currency=vm.vg.saldocontas.totalResiduo></span>
+                        </td>
+                        <td class=padding></td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-content>
+        <div flex ng-if="vm.vg.saldocontas.saldos.length == 0" layout=column layout-align="start center">
+            <div>
+                <md-icon class=mdw-icon-noresults>error_outline</md-icon>
+            </div>
+            <p>Nenhuma conta com disponibilidade imediata cadastrada</p>
+        </div>
+    </div>
+    <div class=rodape layout=row ng-if="!vm.vg.saldocontas.loading && card.opened && vm.vg.saldocontas._initialized && vm.vg.saldocontas.saldos.length >0">
+        <table>
+            <tr>
+                <td class=padding></td>
+                <td class=left>Total</td>
+                <td class=saldo>
+                    <span mdw-currency=vm.vg.saldocontas.saldoConfTotal></span>
+                </td>
+                <td class=saldo>
+                    <span mdw-currency=vm.vg.saldocontas.saldoProjTotal></span>
+                </td>
+                <td class=padding></td>
+            </tr>
+        </table>
+    </div>
+</div>

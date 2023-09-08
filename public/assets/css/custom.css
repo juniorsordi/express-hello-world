@@ -2269,3 +2269,10 @@
 .card-header:first-child {
   border-radius: var(--x-card-inner-border-radius)var(--x-card-inner-border-radius)0 0;
 }
+
+.negativo {
+  color: #CE6060 !important;
+}
+.positivo {
+  color: #179428 !important;
+}
