@@ -1,6 +1,6 @@
 {
   "name": "express-hello-world",
-  "version": "2023 r39",
+  "version": "2023 r40",
   "description": "Expressjs Hello World example to provide faster start deploying on Cyclic platform",
   "main": "server.js",
   "scripts": {
@@ -36,8 +36,7 @@
     "sqlite3": "^5.1.6",
     "util": "^0.12.5",
     "windows-1252": "^3.0.4",
-    "xlsx": "^0.18.5",
-    "xml2json": "^0.12.0"
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
