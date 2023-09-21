@@ -1,6 +1,6 @@
 {
   "name": "express-hello-world",
-  "version": "2023 r51",
+  "version": "2023 r52",
   "description": "Expressjs Hello World example to provide faster start deploying on Cyclic platform",
   "main": "server.js",
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
   "dependencies": {
+    "aws-sdk": "^2.1462.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -27,7 +28,6 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
-    "mongodb": "^5.8.1",
     "multer": "^1.4.5-lts.1",
     "ofx-js": "^0.1.1",
     "pg": "^8.11.3",

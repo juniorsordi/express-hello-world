@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require("../middleware/auth");
 const controller = require('../controllers/projects');
-const service = require('../services/projectMongoService');
+//const service = require('../services/projectMongoService');
 const services = require('../services/projectService');
 const dashboardService = require('../services/projectDashboardService');
 
