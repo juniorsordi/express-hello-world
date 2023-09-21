@@ -1,0 +1,1635 @@
+OFXHEADER:100DATA:OFXSGMLVERSION:102SECURITY:NONEENCODING:USASCIICHARSET:1252COMPRESSION:NONEOLDFILEUID:NONENEWFILEUID:NONE<OFX>
+   <SIGNONMSGSRSV1>
+      <SONRS>
+         <STATUS>
+            <CODE>0</CODE>
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <DTSERVER>20230811120000[-3:BRT]</DTSERVER>
+         <LANGUAGE>POR</LANGUAGE>
+         <FI>
+            <ORG>Banco do Brasil</ORG>
+            <FID>1</FID>
+         </FI>
+      </SONRS>
+   </SIGNONMSGSRSV1>
+   <BANKMSGSRSV1>
+      <STMTTRNRS>
+         <TRNUID>1</TRNUID>
+         <STATUS>
+            <CODE>0</CODE>
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <STMTRS>
+            <CURDEF>BRL</CURDEF>
+            <BANKACCTFROM>
+               <BANKID>1</BANKID>
+               <BRANCHID>3616-1</BRANCHID>
+               <ACCTID>15647-7</ACCTID>
+               <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTFROM>
+            <BANKTRANLIST>
+               <DTSTART>20230428120000[-3:BRT]</DTSTART>
+               <DTEND>20230531120000[-3:BRT]</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>780.26</TRNAMT>
+                  <FITID>202305020780260</FITID>
+                  <CHECKNUM>000281355900</CHECKNUM>
+                  <REFNUM>281.355.900</REFNUM>
+                  <MEMO>TED-Pag FGTS Trabalhador - 104 0000   360305000104 CAIXA ECONOMIC</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1000.00</TRNAMT>
+                  <FITID>2023050201000000</FITID>
+                  <CHECKNUM>910050355798</CHECKNUM>
+                  <REFNUM>4.910.050.355.798</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>19.06</TRNAMT>
+                  <FITID>20230502019060</FITID>
+                  <CHECKNUM>910050355798</CHECKNUM>
+                  <REFNUM>4.910.050.355.798</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>200.00</TRNAMT>
+                  <FITID>202305020200000</FITID>
+                  <CHECKNUM>400002433560</CHECKNUM>
+                  <REFNUM>714.400.002.433.560</REFNUM>
+                  <MEMO>Transferência Agendada - 02/05 DILSON SORDI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-19.90</TRNAMT>
+                  <FITID>20230502119900</FITID>
+                  <CHECKNUM>000000141973</CHECKNUM>
+                  <REFNUM>141.973</REFNUM>
+                  <MEMO>Compra com Cartão - 01/05 11:39 BIG PAN</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-86.60</TRNAMT>
+                  <FITID>20230502186600</FITID>
+                  <CHECKNUM>000000143523</CHECKNUM>
+                  <REFNUM>143.523</REFNUM>
+                  <MEMO>Compra com Cartão - 29/04 12:05 RESTAURANTE TUTTI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-115.80</TRNAMT>
+                  <FITID>202305021115800</FITID>
+                  <CHECKNUM>000000172523</CHECKNUM>
+                  <REFNUM>172.523</REFNUM>
+                  <MEMO>Compra com Cartão - 02/05 20:08 BOKAS</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-118.54</TRNAMT>
+                  <FITID>202305021118540</FITID>
+                  <CHECKNUM>000000243956</CHECKNUM>
+                  <REFNUM>243.956</REFNUM>
+                  <MEMO>Compra com Cartão - 01/05 12:12 RAFFAELLOS CAFE GRIL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-61.58</TRNAMT>
+                  <FITID>20230502161580</FITID>
+                  <CHECKNUM>000000260393</CHECKNUM>
+                  <REFNUM>260.393</REFNUM>
+                  <MEMO>Compra com Cartão - 29/04 16:46 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.55</TRNAMT>
+                  <FITID>20230502136550</FITID>
+                  <CHECKNUM>000000326790</CHECKNUM>
+                  <REFNUM>326.790</REFNUM>
+                  <MEMO>Compra com Cartão - 02/05 07:26 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-16.95</TRNAMT>
+                  <FITID>20230502116950</FITID>
+                  <CHECKNUM>000000360577</CHECKNUM>
+                  <REFNUM>360.577</REFNUM>
+                  <MEMO>Compra com Cartão - 29/04 16:49 DIAMANTE PET SHOP</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-15.00</TRNAMT>
+                  <FITID>20230502115000</FITID>
+                  <CHECKNUM>000000466210</CHECKNUM>
+                  <REFNUM>466.210</REFNUM>
+                  <MEMO>Compra com Cartão - 30/04 12:42 BEIRAMAR PARK</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-13.00</TRNAMT>
+                  <FITID>20230502113000</FITID>
+                  <CHECKNUM>000000591149</CHECKNUM>
+                  <REFNUM>591.149</REFNUM>
+                  <MEMO>Compra com Cartão - 01/05 12:29 ITAGUACU</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-133.66</TRNAMT>
+                  <FITID>202305021133660</FITID>
+                  <CHECKNUM>000000645030</CHECKNUM>
+                  <REFNUM>645.030</REFNUM>
+                  <MEMO>Compra com Cartão - 30/04 12:30 TEXANO GRILL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-50.49</TRNAMT>
+                  <FITID>20230502150490</FITID>
+                  <CHECKNUM>000000647948</CHECKNUM>
+                  <REFNUM>647.948</REFNUM>
+                  <MEMO>Compra com Cartão - 02/05 13:19 ESPETINHO DE OURO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-18.00</TRNAMT>
+                  <FITID>20230502118000</FITID>
+                  <CHECKNUM>000000748342</CHECKNUM>
+                  <REFNUM>748.342</REFNUM>
+                  <MEMO>Compra com Cartão - 02/05 13:25 IDEAL PARK ESTACIONA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-48.13</TRNAMT>
+                  <FITID>20230502148130</FITID>
+                  <CHECKNUM>000000763181</CHECKNUM>
+                  <REFNUM>763.181</REFNUM>
+                  <MEMO>Compra com Cartão - 30/04 17:33 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-32.39</TRNAMT>
+                  <FITID>20230502132390</FITID>
+                  <CHECKNUM>000000861034</CHECKNUM>
+                  <REFNUM>861.034</REFNUM>
+                  <MEMO>Compra com Cartão - 02/05 16:57 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-30.11</TRNAMT>
+                  <FITID>20230502130110</FITID>
+                  <CHECKNUM>000000873210</CHECKNUM>
+                  <REFNUM>873.210</REFNUM>
+                  <MEMO>Compra com Cartão - 30/04 20:20 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-335.00</TRNAMT>
+                  <FITID>202305021335000</FITID>
+                  <CHECKNUM>000000050201</CHECKNUM>
+                  <REFNUM>50.201</REFNUM>
+                  <MEMO>Pix - Enviado - 01/05 11:06 New Game Shop</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-168.00</TRNAMT>
+                  <FITID>202305021168000</FITID>
+                  <CHECKNUM>000000050202</CHECKNUM>
+                  <REFNUM>50.202</REFNUM>
+                  <MEMO>Pagamento de Impostos - DARE SANTA CATARINA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-237.13</TRNAMT>
+                  <FITID>202305021237130</FITID>
+                  <CHECKNUM>000000050203</CHECKNUM>
+                  <REFNUM>50.203</REFNUM>
+                  <MEMO>Pagamento de Boleto - CELESC DISTRIBUICAO SA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-30.00</TRNAMT>
+                  <FITID>20230502130000</FITID>
+                  <CHECKNUM>000000050204</CHECKNUM>
+                  <REFNUM>50.204</REFNUM>
+                  <MEMO>Pix - Enviado - 02/05 16:44 Jose Americo Borba</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230502120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-11.00</TRNAMT>
+                  <FITID>20230502111000</FITID>
+                  <CHECKNUM>000000050205</CHECKNUM>
+                  <REFNUM>50.205</REFNUM>
+                  <MEMO>Pix - Enviado - 02/05 20:09 Carlos Alberto Kallenberge</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230503120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-40.05</TRNAMT>
+                  <FITID>20230503140050</FITID>
+                  <CHECKNUM>000000129316</CHECKNUM>
+                  <REFNUM>129.316</REFNUM>
+                  <MEMO>Compra com Cartão - 03/05 08:08 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230503120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202305031100000</FITID>
+                  <CHECKNUM>000000230183</CHECKNUM>
+                  <REFNUM>230.183</REFNUM>
+                  <MEMO>Compra com Cartão - 03/05 08:23 POSTO VILA RICA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230503120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-27.40</TRNAMT>
+                  <FITID>20230503127400</FITID>
+                  <CHECKNUM>000000343764</CHECKNUM>
+                  <REFNUM>343.764</REFNUM>
+                  <MEMO>Compra com Cartão - 03/05 12:09 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230503120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-54.00</TRNAMT>
+                  <FITID>20230503154000</FITID>
+                  <CHECKNUM>000000669468</CHECKNUM>
+                  <REFNUM>669.468</REFNUM>
+                  <MEMO>Compra com Cartão - 03/05 19:17 TCHE ESPETINHO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1000.00</TRNAMT>
+                  <FITID>2023050401000000</FITID>
+                  <CHECKNUM>810050682876</CHECKNUM>
+                  <REFNUM>3.810.050.682.876</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>12.78</TRNAMT>
+                  <FITID>20230504012780</FITID>
+                  <CHECKNUM>810050682876</CHECKNUM>
+                  <REFNUM>3.810.050.682.876</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.76</TRNAMT>
+                  <FITID>20230504131760</FITID>
+                  <CHECKNUM>000000129715</CHECKNUM>
+                  <REFNUM>129.715</REFNUM>
+                  <MEMO>Compra com Cartão - 04/05 08:15 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-23.70</TRNAMT>
+                  <FITID>20230504123700</FITID>
+                  <CHECKNUM>000000243622</CHECKNUM>
+                  <REFNUM>243.622</REFNUM>
+                  <MEMO>Compra com Cartão - 04/05 12:07 BOM APETITE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-42.93</TRNAMT>
+                  <FITID>20230504142930</FITID>
+                  <CHECKNUM>000000344835</CHECKNUM>
+                  <REFNUM>344.835</REFNUM>
+                  <MEMO>Compra com Cartão - 04/05 12:27 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.00</TRNAMT>
+                  <FITID>20230504136000</FITID>
+                  <CHECKNUM>000000656379</CHECKNUM>
+                  <REFNUM>656.379</REFNUM>
+                  <MEMO>Compra com Cartão - 04/05 15:39 PANIFICADORA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-13.18</TRNAMT>
+                  <FITID>20230504113180</FITID>
+                  <CHECKNUM>000000766451</CHECKNUM>
+                  <REFNUM>766.451</REFNUM>
+                  <MEMO>Compra com Cartão - 04/05 18:27 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-12.00</TRNAMT>
+                  <FITID>20230504112000</FITID>
+                  <CHECKNUM>000000866895</CHECKNUM>
+                  <REFNUM>866.895</REFNUM>
+                  <MEMO>Compra com Cartão - 04/05 18:34 PANIFICADORA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230504120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-400.00</TRNAMT>
+                  <FITID>202305041400000</FITID>
+                  <CHECKNUM>000000050401</CHECKNUM>
+                  <REFNUM>50.401</REFNUM>
+                  <MEMO>Pix - Enviado - 04/05 20:04 Dilson Sordi Junior</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230505120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>2870.95</TRNAMT>
+                  <FITID>2023050502870950</FITID>
+                  <CHECKNUM>000282600779</CHECKNUM>
+                  <REFNUM>282.600.779</REFNUM>
+                  <MEMO>TED-Crédito em Conta - 341 2937 40985911000130 COOP SOMA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230505120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-26.43</TRNAMT>
+                  <FITID>20230505126430</FITID>
+                  <CHECKNUM>000000130016</CHECKNUM>
+                  <REFNUM>130.016</REFNUM>
+                  <MEMO>Compra com Cartão - 05/05 08:20 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230505120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-38.20</TRNAMT>
+                  <FITID>20230505138200</FITID>
+                  <CHECKNUM>000000243932</CHECKNUM>
+                  <REFNUM>243.932</REFNUM>
+                  <MEMO>Compra com Cartão - 05/05 12:12 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230505120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-42.00</TRNAMT>
+                  <FITID>20230505142000</FITID>
+                  <CHECKNUM>000000376061</CHECKNUM>
+                  <REFNUM>376.061</REFNUM>
+                  <MEMO>Compra com Cartão - 05/05 21:07 BEIRA MAR GOL CENTRO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230505120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-2500.00</TRNAMT>
+                  <FITID>2023050512500000</FITID>
+                  <CHECKNUM>310051313425</CHECKNUM>
+                  <REFNUM>1.310.051.313.425</REFNUM>
+                  <MEMO>Aplicação BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230505120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-601.92</TRNAMT>
+                  <FITID>202305051601920</FITID>
+                  <CHECKNUM>000000050501</CHECKNUM>
+                  <REFNUM>50.501</REFNUM>
+                  <MEMO>Pagamento de Boleto - PJBANK PAGAMENTOS S.A.</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-37.97</TRNAMT>
+                  <FITID>20230508137970</FITID>
+                  <CHECKNUM>000000134996</CHECKNUM>
+                  <REFNUM>134.996</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 09:43 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-15.50</TRNAMT>
+                  <FITID>20230508115500</FITID>
+                  <CHECKNUM>000000163135</CHECKNUM>
+                  <REFNUM>163.135</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 17:32 BOBS SHOPPING ITA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-83.00</TRNAMT>
+                  <FITID>20230508183000</FITID>
+                  <CHECKNUM>000000242566</CHECKNUM>
+                  <REFNUM>242.566</REFNUM>
+                  <MEMO>Compra com Cartão - 07/05 11:49 FRANGO MIX</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-78.95</TRNAMT>
+                  <FITID>20230508178950</FITID>
+                  <CHECKNUM>000000244812</CHECKNUM>
+                  <REFNUM>244.812</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 12:26 RESTAURANTE TUTTI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-23.10</TRNAMT>
+                  <FITID>20230508123100</FITID>
+                  <CHECKNUM>000000347583</CHECKNUM>
+                  <REFNUM>347.583</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 13:13 CHOCOLATES DI AGU</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-94.25</TRNAMT>
+                  <FITID>20230508194250</FITID>
+                  <CHECKNUM>000000359218</CHECKNUM>
+                  <REFNUM>359.218</REFNUM>
+                  <MEMO>Compra com Cartão - 07/05 16:26 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.54</TRNAMT>
+                  <FITID>20230508136540</FITID>
+                  <CHECKNUM>000000628675</CHECKNUM>
+                  <REFNUM>628.675</REFNUM>
+                  <MEMO>Compra com Cartão - 08/05 07:57 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-299.00</TRNAMT>
+                  <FITID>202305081299000</FITID>
+                  <CHECKNUM>000000648102</CHECKNUM>
+                  <REFNUM>648.102</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 13:21 PAG*AdcosSaoJose</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-27.40</TRNAMT>
+                  <FITID>20230508127400</FITID>
+                  <CHECKNUM>000000744105</CHECKNUM>
+                  <REFNUM>744.105</REFNUM>
+                  <MEMO>Compra com Cartão - 08/05 12:15 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-13.00</TRNAMT>
+                  <FITID>20230508113000</FITID>
+                  <CHECKNUM>000000748845</CHECKNUM>
+                  <REFNUM>748.845</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 13:34 SHOPPING PARK</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-146.75</TRNAMT>
+                  <FITID>202305081146750</FITID>
+                  <CHECKNUM>000000863014</CHECKNUM>
+                  <REFNUM>863.014</REFNUM>
+                  <MEMO>Compra com Cartão - 06/05 17:30 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-75.00</TRNAMT>
+                  <FITID>20230508175000</FITID>
+                  <CHECKNUM>000000869197</CHECKNUM>
+                  <REFNUM>869.197</REFNUM>
+                  <MEMO>Compra com Cartão - 08/05 19:13 SOUL GOURMET</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230508120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1000.00</TRNAMT>
+                  <FITID>2023050801000000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>2.29</TRNAMT>
+                  <FITID>2023050902290</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 08/05/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>6.76</TRNAMT>
+                  <FITID>2023050906760</FITID>
+                  <CHECKNUM>810050682876</CHECKNUM>
+                  <REFNUM>3.810.050.682.876</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 08/05/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.07</TRNAMT>
+                  <FITID>20230509131070</FITID>
+                  <CHECKNUM>000000129139</CHECKNUM>
+                  <REFNUM>129.139</REFNUM>
+                  <MEMO>Compra com Cartão - 09/05 08:05 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-42.90</TRNAMT>
+                  <FITID>20230509142900</FITID>
+                  <CHECKNUM>000000247227</CHECKNUM>
+                  <REFNUM>247.227</REFNUM>
+                  <MEMO>Compra com Cartão - 09/05 13:07 PAPELARIA KOBRASOL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-105.79</TRNAMT>
+                  <FITID>202305091105790</FITID>
+                  <CHECKNUM>000000371613</CHECKNUM>
+                  <REFNUM>371.613</REFNUM>
+                  <MEMO>Compra com Cartão - 09/05 19:53 HAMEI SUSHI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-300.00</TRNAMT>
+                  <FITID>202305091300000</FITID>
+                  <CHECKNUM>000000050901</CHECKNUM>
+                  <REFNUM>50.901</REFNUM>
+                  <MEMO>Pix - Enviado - 09/05 18:46 Vilmar César Pereira Júnio</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230509120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202305090500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>2.54</TRNAMT>
+                  <FITID>2023051002540</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 09/05/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-34.34</TRNAMT>
+                  <FITID>20230510134340</FITID>
+                  <CHECKNUM>000000129944</CHECKNUM>
+                  <REFNUM>129.944</REFNUM>
+                  <MEMO>Compra com Cartão - 10/05 08:19 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202305101100000</FITID>
+                  <CHECKNUM>000000230759</CHECKNUM>
+                  <REFNUM>230.759</REFNUM>
+                  <MEMO>Compra com Cartão - 10/05 08:32 POSTO VILA RICA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-46.90</TRNAMT>
+                  <FITID>20230510146900</FITID>
+                  <CHECKNUM>000000342415</CHECKNUM>
+                  <REFNUM>342.415</REFNUM>
+                  <MEMO>Compra com Cartão - 10/05 11:46 BURGER KING</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-12.00</TRNAMT>
+                  <FITID>20230510112000</FITID>
+                  <CHECKNUM>000000668545</CHECKNUM>
+                  <REFNUM>668.545</REFNUM>
+                  <MEMO>Compra com Cartão - 10/05 19:02 EST COSTEIRA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-56.76</TRNAMT>
+                  <FITID>20230510156760</FITID>
+                  <CHECKNUM>000000771475</CHECKNUM>
+                  <REFNUM>771.475</REFNUM>
+                  <MEMO>Compra com Cartão - 10/05 19:51 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230510120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202305101100001</FITID>
+                  <CHECKNUM>000000051001</CHECKNUM>
+                  <REFNUM>51.001</REFNUM>
+                  <MEMO>Pix - Enviado - 10/05 15:57 Lucas Nunes De Castro</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230511120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-29.84</TRNAMT>
+                  <FITID>20230511129840</FITID>
+                  <CHECKNUM>000000129218</CHECKNUM>
+                  <REFNUM>129.218</REFNUM>
+                  <MEMO>Compra com Cartão - 11/05 08:06 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230511120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-33.70</TRNAMT>
+                  <FITID>20230511133700</FITID>
+                  <CHECKNUM>000000243784</CHECKNUM>
+                  <REFNUM>243.784</REFNUM>
+                  <MEMO>Compra com Cartão - 11/05 12:09 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230511120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-186.00</TRNAMT>
+                  <FITID>202305111186000</FITID>
+                  <CHECKNUM>000000347254</CHECKNUM>
+                  <REFNUM>347.254</REFNUM>
+                  <MEMO>Compra com Cartão - 11/05 13:07 DONNA PET</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230511120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-50.47</TRNAMT>
+                  <FITID>20230511150470</FITID>
+                  <CHECKNUM>000000661507</CHECKNUM>
+                  <REFNUM>661.507</REFNUM>
+                  <MEMO>Compra com Cartão - 11/05 17:05 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230511120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.71</TRNAMT>
+                  <FITID>20230511136710</FITID>
+                  <CHECKNUM>000000767999</CHECKNUM>
+                  <REFNUM>767.999</REFNUM>
+                  <MEMO>Compra com Cartão - 11/05 18:53 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230511120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202305110500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>3.08</TRNAMT>
+                  <FITID>2023051203080</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 11/05/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202305120500000</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>3.35</TRNAMT>
+                  <FITID>2023051203350</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-32.79</TRNAMT>
+                  <FITID>20230512132790</FITID>
+                  <CHECKNUM>000000130287</CHECKNUM>
+                  <REFNUM>130.287</REFNUM>
+                  <MEMO>Compra com Cartão - 12/05 08:24 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-65.54</TRNAMT>
+                  <FITID>20230512165540</FITID>
+                  <CHECKNUM>000000245692</CHECKNUM>
+                  <REFNUM>245.692</REFNUM>
+                  <MEMO>Compra com Cartão - 12/05 12:41 PAG*TemperoDaFazenda</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-84.50</TRNAMT>
+                  <FITID>20230512184500</FITID>
+                  <CHECKNUM>000000346641</CHECKNUM>
+                  <REFNUM>346.641</REFNUM>
+                  <MEMO>Compra com Cartão - 12/05 12:57 LE BOSS DELICATESSEN</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-15.00</TRNAMT>
+                  <FITID>20230512115000</FITID>
+                  <CHECKNUM>000000646901</CHECKNUM>
+                  <REFNUM>646.901</REFNUM>
+                  <MEMO>Compra com Cartão - 12/05 13:01 BEIRAMAR PARK ESTAC</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230512120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-114.09</TRNAMT>
+                  <FITID>202305121114090</FITID>
+                  <CHECKNUM>000000766076</CHECKNUM>
+                  <REFNUM>766.076</REFNUM>
+                  <MEMO>Compra com Cartão - 12/05 18:21 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>4303.44</TRNAMT>
+                  <FITID>2023051504303440</FITID>
+                  <CHECKNUM>350800094444</CHECKNUM>
+                  <REFNUM>101.350.800.094.444</REFNUM>
+                  <MEMO>Resgate LCI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>4267.53</TRNAMT>
+                  <FITID>2023051504267530</FITID>
+                  <CHECKNUM>350800094444</CHECKNUM>
+                  <REFNUM>101.350.800.094.444</REFNUM>
+                  <MEMO>Resgate LCI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-150.00</TRNAMT>
+                  <FITID>202305151150000</FITID>
+                  <CHECKNUM>000000130527</CHECKNUM>
+                  <REFNUM>130.527</REFNUM>
+                  <MEMO>Compra com Cartão - 13/05 08:28 GDI COMERCIO DE COMB</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-84.27</TRNAMT>
+                  <FITID>20230515184270</FITID>
+                  <CHECKNUM>000000244854</CHECKNUM>
+                  <REFNUM>244.854</REFNUM>
+                  <MEMO>Compra com Cartão - 13/05 12:27 RESTAURANTE TUTTI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-33.00</TRNAMT>
+                  <FITID>20230515133000</FITID>
+                  <CHECKNUM>000000330029</CHECKNUM>
+                  <REFNUM>330.029</REFNUM>
+                  <MEMO>Compra com Cartão - 15/05 08:20 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-19.96</TRNAMT>
+                  <FITID>20230515119960</FITID>
+                  <CHECKNUM>000000661402</CHECKNUM>
+                  <REFNUM>661.402</REFNUM>
+                  <MEMO>Compra com Cartão - 15/05 17:03 BRISA MINI MERCADO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-24.89</TRNAMT>
+                  <FITID>20230515124890</FITID>
+                  <CHECKNUM>000000770184</CHECKNUM>
+                  <REFNUM>770.184</REFNUM>
+                  <MEMO>Compra com Cartão - 15/05 19:29 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-134.99</TRNAMT>
+                  <FITID>202305151134990</FITID>
+                  <CHECKNUM>000000051501</CHECKNUM>
+                  <REFNUM>51.501</REFNUM>
+                  <MEMO>Pagto conta telefone - VIVO FIXO/BRASIL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-500.00</TRNAMT>
+                  <FITID>202305151500000</FITID>
+                  <CHECKNUM>000000051502</CHECKNUM>
+                  <REFNUM>51.502</REFNUM>
+                  <MEMO>Pix - Enviado - 15/05 18:00 Dilson Sordi Junior</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230515120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-1000.00</TRNAMT>
+                  <FITID>2023051511000000</FITID>
+                  <CHECKNUM>000000051503</CHECKNUM>
+                  <REFNUM>51.503</REFNUM>
+                  <MEMO>Pix - Enviado - 15/05 20:43 Hallan Medeiros</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>2231.00</TRNAMT>
+                  <FITID>2023051602231000</FITID>
+                  <CHECKNUM>000284289280</CHECKNUM>
+                  <REFNUM>284.289.280</REFNUM>
+                  <MEMO>TED-Crédito em Conta - 104 0000   360305000104 CAIXA ECONOMIC</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-37.00</TRNAMT>
+                  <FITID>20230516137000</FITID>
+                  <CHECKNUM>000000129868</CHECKNUM>
+                  <REFNUM>129.868</REFNUM>
+                  <MEMO>Compra com Cartão - 16/05 08:17 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-26.90</TRNAMT>
+                  <FITID>20230516126900</FITID>
+                  <CHECKNUM>000000243641</CHECKNUM>
+                  <REFNUM>243.641</REFNUM>
+                  <MEMO>Compra com Cartão - 16/05 12:07 BURGER KING</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-12.00</TRNAMT>
+                  <FITID>20230516112000</FITID>
+                  <CHECKNUM>000000365814</CHECKNUM>
+                  <REFNUM>365.814</REFNUM>
+                  <MEMO>Compra com Cartão - 16/05 18:16 ESTACIONAMENTO BAIA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-4500.00</TRNAMT>
+                  <FITID>2023051614500000</FITID>
+                  <CHECKNUM>310051429205</CHECKNUM>
+                  <REFNUM>310.051.429.205</REFNUM>
+                  <MEMO>Aplicação BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-2011.00</TRNAMT>
+                  <FITID>2023051612011000</FITID>
+                  <CHECKNUM>000000051601</CHECKNUM>
+                  <REFNUM>51.601</REFNUM>
+                  <MEMO>Pix - Enviado - 16/05 11:18 Hallan Medeiros</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230516120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-150.00</TRNAMT>
+                  <FITID>202305161150000</FITID>
+                  <CHECKNUM>000000051602</CHECKNUM>
+                  <REFNUM>51.602</REFNUM>
+                  <MEMO>Pix - Enviado - 16/05 20:45 Mariana Viana Costa</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230517120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-38.09</TRNAMT>
+                  <FITID>20230517138090</FITID>
+                  <CHECKNUM>000000128956</CHECKNUM>
+                  <REFNUM>128.956</REFNUM>
+                  <MEMO>Compra com Cartão - 17/05 08:02 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230517120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-46.00</TRNAMT>
+                  <FITID>20230517146000</FITID>
+                  <CHECKNUM>000000236233</CHECKNUM>
+                  <REFNUM>236.233</REFNUM>
+                  <MEMO>Compra com Cartão - 17/05 10:03 PAPELARIA KOBRASOL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230517120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-56.14</TRNAMT>
+                  <FITID>20230517156140</FITID>
+                  <CHECKNUM>000000355694</CHECKNUM>
+                  <REFNUM>355.694</REFNUM>
+                  <MEMO>Compra com Cartão - 17/05 15:28 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230517120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-300.00</TRNAMT>
+                  <FITID>202305171300000</FITID>
+                  <CHECKNUM>000000051701</CHECKNUM>
+                  <REFNUM>51.701</REFNUM>
+                  <MEMO>Pix - Enviado - 17/05 14:27 Vilmar César Pereira Júnio</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230517120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-70.00</TRNAMT>
+                  <FITID>20230517170000</FITID>
+                  <CHECKNUM>000000051702</CHECKNUM>
+                  <REFNUM>51.702</REFNUM>
+                  <MEMO>Pix - Enviado - 17/05 15:59 Otto Santos Da Costa Filh</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230518120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-33.44</TRNAMT>
+                  <FITID>20230518133440</FITID>
+                  <CHECKNUM>000000129214</CHECKNUM>
+                  <REFNUM>129.214</REFNUM>
+                  <MEMO>Compra com Cartão - 18/05 08:06 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230518120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-24.98</TRNAMT>
+                  <FITID>20230518124980</FITID>
+                  <CHECKNUM>000000243801</CHECKNUM>
+                  <REFNUM>243.801</REFNUM>
+                  <MEMO>Compra com Cartão - 18/05 12:10 BOM APETITE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230518120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-43.55</TRNAMT>
+                  <FITID>20230518143550</FITID>
+                  <CHECKNUM>000000347394</CHECKNUM>
+                  <REFNUM>347.394</REFNUM>
+                  <MEMO>Compra com Cartão - 18/05 13:09 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230518120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-33.03</TRNAMT>
+                  <FITID>20230518133030</FITID>
+                  <CHECKNUM>000000668127</CHECKNUM>
+                  <REFNUM>668.127</REFNUM>
+                  <MEMO>Compra com Cartão - 18/05 18:55 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230518120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-300.00</TRNAMT>
+                  <FITID>202305181300000</FITID>
+                  <CHECKNUM>016000058415</CHECKNUM>
+                  <REFNUM>600.016.000.058.415</REFNUM>
+                  <MEMO>Transferência enviada - 18/05 12:07 DANIELLE VIANA ATHAYDE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230518120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-500.00</TRNAMT>
+                  <FITID>202305181500000</FITID>
+                  <CHECKNUM>000000051801</CHECKNUM>
+                  <REFNUM>51.801</REFNUM>
+                  <MEMO>Pix - Enviado - 18/05 12:08 Hallan Medeiros</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230519120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-38.96</TRNAMT>
+                  <FITID>20230519138960</FITID>
+                  <CHECKNUM>000000129140</CHECKNUM>
+                  <REFNUM>129.140</REFNUM>
+                  <MEMO>Compra com Cartão - 19/05 08:05 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230519120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202305191100000</FITID>
+                  <CHECKNUM>000000230090</CHECKNUM>
+                  <REFNUM>230.090</REFNUM>
+                  <MEMO>Compra com Cartão - 19/05 08:21 POSTO VILA RICA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230519120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-38.86</TRNAMT>
+                  <FITID>20230519138860</FITID>
+                  <CHECKNUM>000000343851</CHECKNUM>
+                  <REFNUM>343.851</REFNUM>
+                  <MEMO>Compra com Cartão - 19/05 12:10 RAULINO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230519120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-16.99</TRNAMT>
+                  <FITID>20230519116990</FITID>
+                  <CHECKNUM>000000643988</CHECKNUM>
+                  <REFNUM>643.988</REFNUM>
+                  <MEMO>Compra com Cartão - 19/05 12:13 L SANTA VIDA KOBRASO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230519120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-92.88</TRNAMT>
+                  <FITID>20230519192880</FITID>
+                  <CHECKNUM>000000766330</CHECKNUM>
+                  <REFNUM>766.330</REFNUM>
+                  <MEMO>Compra com Cartão - 19/05 18:25 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1000.00</TRNAMT>
+                  <FITID>2023052201000000</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>9.10</TRNAMT>
+                  <FITID>2023052209100</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-40.28</TRNAMT>
+                  <FITID>20230522140280</FITID>
+                  <CHECKNUM>000000145445</CHECKNUM>
+                  <REFNUM>145.445</REFNUM>
+                  <MEMO>Compra com Cartão - 20/05 12:37 RAULINO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-115.13</TRNAMT>
+                  <FITID>202305221115130</FITID>
+                  <CHECKNUM>000000170362</CHECKNUM>
+                  <REFNUM>170.362</REFNUM>
+                  <MEMO>Compra com Cartão - 22/05 19:32 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-40.00</TRNAMT>
+                  <FITID>20230522140000</FITID>
+                  <CHECKNUM>000000273554</CHECKNUM>
+                  <REFNUM>273.554</REFNUM>
+                  <MEMO>Compra com Cartão - 20/05 20:25 TCHE ESPETINHO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-106.44</TRNAMT>
+                  <FITID>202305221106440</FITID>
+                  <CHECKNUM>000000345537</CHECKNUM>
+                  <REFNUM>345.537</REFNUM>
+                  <MEMO>Compra com Cartão - 21/05 12:38 RAFFAELLOS CAFE GRIL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-80.56</TRNAMT>
+                  <FITID>20230522180560</FITID>
+                  <CHECKNUM>000000660283</CHECKNUM>
+                  <REFNUM>660.283</REFNUM>
+                  <MEMO>Compra com Cartão - 21/05 16:44 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.36</TRNAMT>
+                  <FITID>20230522131360</FITID>
+                  <CHECKNUM>000000728416</CHECKNUM>
+                  <REFNUM>728.416</REFNUM>
+                  <MEMO>Compra com Cartão - 22/05 07:53 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-34.66</TRNAMT>
+                  <FITID>20230522134660</FITID>
+                  <CHECKNUM>000000844446</CHECKNUM>
+                  <REFNUM>844.446</REFNUM>
+                  <MEMO>Compra com Cartão - 22/05 12:20 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-13.00</TRNAMT>
+                  <FITID>20230522113000</FITID>
+                  <CHECKNUM>000000946225</CHECKNUM>
+                  <REFNUM>946.225</REFNUM>
+                  <MEMO>Compra com Cartão - 21/05 13:14 ITAGUACU</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-500.00</TRNAMT>
+                  <FITID>202305221500000</FITID>
+                  <CHECKNUM>000000052201</CHECKNUM>
+                  <REFNUM>52.201</REFNUM>
+                  <MEMO>Pix - Enviado - 20/05 10:13 Hallan Medeiros</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-250.00</TRNAMT>
+                  <FITID>202305221250000</FITID>
+                  <CHECKNUM>000000052202</CHECKNUM>
+                  <REFNUM>52.202</REFNUM>
+                  <MEMO>Pix - Enviado - 22/05 14:58 Dilson Sordi Junior</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202305221100000</FITID>
+                  <CHECKNUM>000000052203</CHECKNUM>
+                  <REFNUM>52.203</REFNUM>
+                  <MEMO>Pix - Enviado - 22/05 20:46 Dilson Sordi Junior</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230522120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-114.61</TRNAMT>
+                  <FITID>202305221114610</FITID>
+                  <CHECKNUM>000000021275</CHECKNUM>
+                  <REFNUM>21.275</REFNUM>
+                  <MEMO>Brasilprev - BRASILPREV SEG PREV S.A.</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230523120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>110.00</TRNAMT>
+                  <FITID>202305230110000</FITID>
+                  <CHECKNUM>003402354134</CHECKNUM>
+                  <REFNUM>3.402.354.134</REFNUM>
+                  <MEMO>Pix - Recebido - 23/05 18:06 00070752540068 DANIELLE VI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230523120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-34.87</TRNAMT>
+                  <FITID>20230523134870</FITID>
+                  <CHECKNUM>000000128498</CHECKNUM>
+                  <REFNUM>128.498</REFNUM>
+                  <MEMO>Compra com Cartão - 23/05 07:54 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230523120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-19.90</TRNAMT>
+                  <FITID>20230523119900</FITID>
+                  <CHECKNUM>000000235442</CHECKNUM>
+                  <REFNUM>235.442</REFNUM>
+                  <MEMO>Compra com Cartão - 23/05 09:50 EBN*SPOTIFY</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230523120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-12.23</TRNAMT>
+                  <FITID>20230523112230</FITID>
+                  <CHECKNUM>000000367818</CHECKNUM>
+                  <REFNUM>367.818</REFNUM>
+                  <MEMO>Compra com Cartão - 23/05 18:50 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230523120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-104.11</TRNAMT>
+                  <FITID>202305231104110</FITID>
+                  <CHECKNUM>000000668907</CHECKNUM>
+                  <REFNUM>668.907</REFNUM>
+                  <MEMO>Compra com Cartão - 23/05 19:08 RAIA 2188</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230524120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-29.49</TRNAMT>
+                  <FITID>20230524129490</FITID>
+                  <CHECKNUM>000000129655</CHECKNUM>
+                  <REFNUM>129.655</REFNUM>
+                  <MEMO>Compra com Cartão - 24/05 08:14 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230524120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-32.00</TRNAMT>
+                  <FITID>20230524132000</FITID>
+                  <CHECKNUM>000000242951</CHECKNUM>
+                  <REFNUM>242.951</REFNUM>
+                  <MEMO>Compra com Cartão - 24/05 11:55 ZE MATUTO RESTAURANT</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230524120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-22.55</TRNAMT>
+                  <FITID>20230524122550</FITID>
+                  <CHECKNUM>000000343811</CHECKNUM>
+                  <REFNUM>343.811</REFNUM>
+                  <MEMO>Compra com Cartão - 24/05 12:10 FARMAEXTRA DROGAR</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230524120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-49.15</TRNAMT>
+                  <FITID>20230524149150</FITID>
+                  <CHECKNUM>000000666930</CHECKNUM>
+                  <REFNUM>666.930</REFNUM>
+                  <MEMO>Compra com Cartão - 24/05 18:35 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230524120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-479.20</TRNAMT>
+                  <FITID>202305241479200</FITID>
+                  <CHECKNUM>000000052401</CHECKNUM>
+                  <REFNUM>52.401</REFNUM>
+                  <MEMO>Pagamento de Boleto - PREFEITURA MUNICIPAL DE SAO JOSE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230524120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202305240500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>4.92</TRNAMT>
+                  <FITID>2023052504920</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 24/05/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-35.99</TRNAMT>
+                  <FITID>20230525135990</FITID>
+                  <CHECKNUM>000000128951</CHECKNUM>
+                  <REFNUM>128.951</REFNUM>
+                  <MEMO>Compra com Cartão - 25/05 08:02 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202305251100000</FITID>
+                  <CHECKNUM>000000229757</CHECKNUM>
+                  <REFNUM>229.757</REFNUM>
+                  <MEMO>Compra com Cartão - 25/05 08:15 POSTO VILA RICA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-32.40</TRNAMT>
+                  <FITID>20230525132400</FITID>
+                  <CHECKNUM>000000343896</CHECKNUM>
+                  <REFNUM>343.896</REFNUM>
+                  <MEMO>Compra com Cartão - 25/05 12:11 BOM APETITE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-176.39</TRNAMT>
+                  <FITID>202305251176390</FITID>
+                  <CHECKNUM>000000647611</CHECKNUM>
+                  <REFNUM>647.611</REFNUM>
+                  <MEMO>Compra com Cartão - 25/05 13:13 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-115.80</TRNAMT>
+                  <FITID>202305251115800</FITID>
+                  <CHECKNUM>000000772467</CHECKNUM>
+                  <REFNUM>772.467</REFNUM>
+                  <MEMO>Compra com Cartão - 25/05 20:07 BOKAS</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-11.50</TRNAMT>
+                  <FITID>20230525111500</FITID>
+                  <CHECKNUM>000000052501</CHECKNUM>
+                  <REFNUM>52.501</REFNUM>
+                  <MEMO>Pix - Enviado - 25/05 20:09 Carlos Alberto Kallenberge</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230525120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202305250500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230526120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>5.10</TRNAMT>
+                  <FITID>2023052605100</FITID>
+                  <CHECKNUM>310051060106</CHECKNUM>
+                  <REFNUM>310.051.060.106</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 25/05/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230526120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.40</TRNAMT>
+                  <FITID>20230526136400</FITID>
+                  <CHECKNUM>000000129114</CHECKNUM>
+                  <REFNUM>129.114</REFNUM>
+                  <MEMO>Compra com Cartão - 26/05 08:05 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230526120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-58.00</TRNAMT>
+                  <FITID>20230526158000</FITID>
+                  <CHECKNUM>000000243779</CHECKNUM>
+                  <REFNUM>243.779</REFNUM>
+                  <MEMO>Compra com Cartão - 26/05 12:09 MONTANA GRIL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230526120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-18.00</TRNAMT>
+                  <FITID>20230526118000</FITID>
+                  <CHECKNUM>000000345806</CHECKNUM>
+                  <REFNUM>345.806</REFNUM>
+                  <MEMO>Compra com Cartão - 26/05 12:43 HOT DOG DU PIRU</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230526120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-13.00</TRNAMT>
+                  <FITID>20230526113000</FITID>
+                  <CHECKNUM>000000651901</CHECKNUM>
+                  <REFNUM>651.901</REFNUM>
+                  <MEMO>Compra com Cartão - 26/05 14:25 SHOPPING PARK</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230526120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-127.17</TRNAMT>
+                  <FITID>202305261127170</FITID>
+                  <CHECKNUM>000000762723</CHECKNUM>
+                  <REFNUM>762.723</REFNUM>
+                  <MEMO>Compra com Cartão - 26/05 17:25 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1500.00</TRNAMT>
+                  <FITID>2023052901500000</FITID>
+                  <CHECKNUM>310051313425</CHECKNUM>
+                  <REFNUM>1.310.051.313.425</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>6.99</TRNAMT>
+                  <FITID>2023052906990</FITID>
+                  <CHECKNUM>310051313425</CHECKNUM>
+                  <REFNUM>1.310.051.313.425</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-52.80</TRNAMT>
+                  <FITID>20230529152800</FITID>
+                  <CHECKNUM>000000147570</CHECKNUM>
+                  <REFNUM>147.570</REFNUM>
+                  <MEMO>Compra com Cartão - 27/05 13:12 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-5.00</TRNAMT>
+                  <FITID>2023052915000</FITID>
+                  <CHECKNUM>000000247659</CHECKNUM>
+                  <REFNUM>247.659</REFNUM>
+                  <MEMO>Compra com Cartão - 27/05 13:14 CAMELAO PARKING SAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-83.00</TRNAMT>
+                  <FITID>20230529183000</FITID>
+                  <CHECKNUM>000000340451</CHECKNUM>
+                  <REFNUM>340.451</REFNUM>
+                  <MEMO>Compra com Cartão - 28/05 11:14 FRANGO MIX</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-85.74</TRNAMT>
+                  <FITID>20230529185740</FITID>
+                  <CHECKNUM>000000655964</CHECKNUM>
+                  <REFNUM>655.964</REFNUM>
+                  <MEMO>Compra com Cartão - 28/05 15:32 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-32.28</TRNAMT>
+                  <FITID>20230529132280</FITID>
+                  <CHECKNUM>000000728949</CHECKNUM>
+                  <REFNUM>728.949</REFNUM>
+                  <MEMO>Compra com Cartão - 29/05 08:02 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.42</TRNAMT>
+                  <FITID>20230529131420</FITID>
+                  <CHECKNUM>000000842408</CHECKNUM>
+                  <REFNUM>842.408</REFNUM>
+                  <MEMO>Compra com Cartão - 29/05 11:46 ZE MATUTO RESTAURANT</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-4.81</TRNAMT>
+                  <FITID>2023052914810</FITID>
+                  <CHECKNUM>361600130000</CHECKNUM>
+                  <REFNUM>160.361.600.130.000</REFNUM>
+                  <MEMO>Pagto cartão crédito</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-344.63</TRNAMT>
+                  <FITID>202305291344630</FITID>
+                  <CHECKNUM>361600150000</CHECKNUM>
+                  <REFNUM>160.361.600.150.000</REFNUM>
+                  <MEMO>Pagto cartão crédito</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-71.81</TRNAMT>
+                  <FITID>20230529171810</FITID>
+                  <CHECKNUM>000000052901</CHECKNUM>
+                  <REFNUM>52.901</REFNUM>
+                  <MEMO>Pix - Enviado - 27/05 13:31 Alipay/aliexpress - Pix</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230529120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-323.81</TRNAMT>
+                  <FITID>202305291323810</FITID>
+                  <CHECKNUM>000000025341</CHECKNUM>
+                  <REFNUM>25.341</REFNUM>
+                  <MEMO>BB Seguro Auto - SEGURO AUTO BB/MAPFRE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230530120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-37.08</TRNAMT>
+                  <FITID>20230530137080</FITID>
+                  <CHECKNUM>000000128568</CHECKNUM>
+                  <REFNUM>128.568</REFNUM>
+                  <MEMO>Compra com Cartão - 30/05 07:56 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230530120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-28.90</TRNAMT>
+                  <FITID>20230530128900</FITID>
+                  <CHECKNUM>000000242320</CHECKNUM>
+                  <REFNUM>242.320</REFNUM>
+                  <MEMO>Compra com Cartão - 30/05 11:45 SUSHO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230530120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-82.51</TRNAMT>
+                  <FITID>20230530182510</FITID>
+                  <CHECKNUM>000000365973</CHECKNUM>
+                  <REFNUM>365.973</REFNUM>
+                  <MEMO>Compra com Cartão - 30/05 18:19 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230531120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.47</TRNAMT>
+                  <FITID>20230531131470</FITID>
+                  <CHECKNUM>000000128768</CHECKNUM>
+                  <REFNUM>128.768</REFNUM>
+                  <MEMO>Compra com Cartão - 31/05 07:59 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230531120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.20</TRNAMT>
+                  <FITID>20230531136200</FITID>
+                  <CHECKNUM>000000243452</CHECKNUM>
+                  <REFNUM>243.452</REFNUM>
+                  <MEMO>Compra com Cartão - 31/05 12:04 RESTAURANTE CAMELAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230531120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-300.00</TRNAMT>
+                  <FITID>202305311300000</FITID>
+                  <CHECKNUM>000000351255</CHECKNUM>
+                  <REFNUM>351.255</REFNUM>
+                  <MEMO>Compra com Cartão - 31/05 14:14 CLINICA REVITALLE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230531120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-47.67</TRNAMT>
+                  <FITID>20230531147670</FITID>
+                  <CHECKNUM>000000668551</CHECKNUM>
+                  <REFNUM>668.551</REFNUM>
+                  <MEMO>Compra com Cartão - 31/05 19:02 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230531120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-140.08</TRNAMT>
+                  <FITID>202305311140080</FITID>
+                  <CHECKNUM>000000053101</CHECKNUM>
+                  <REFNUM>53.101</REFNUM>
+                  <MEMO>Pix - Enviado - 31/05 16:18 Secretaria Da Receita Fede</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230531120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202305310500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+            </BANKTRANLIST>
+            <LEDGERBAL>
+               <BALAMT>322.69</BALAMT>
+               <DTASOF>20230531120000[-3:BRT]</DTASOF>
+            </LEDGERBAL>
+         </STMTRS>
+      </STMTTRNRS>
+   </BANKMSGSRSV1>
+</OFX>

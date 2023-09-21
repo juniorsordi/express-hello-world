@@ -1,0 +1,573 @@
+OFXHEADER:100DATA:OFXSGMLVERSION:102SECURITY:NONEENCODING:USASCIICHARSET:1252COMPRESSION:NONEOLDFILEUID:NONENEWFILEUID:NONE<OFX>
+   <SIGNONMSGSRSV1>
+      <SONRS>
+         <STATUS>
+            <CODE>0</CODE>
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <DTSERVER>20230811120000[-3:BRT]</DTSERVER>
+         <LANGUAGE>POR</LANGUAGE>
+         <FI>
+            <ORG>Banco do Brasil</ORG>
+            <FID>1</FID>
+         </FI>
+      </SONRS>
+   </SIGNONMSGSRSV1>
+   <BANKMSGSRSV1>
+      <STMTTRNRS>
+         <TRNUID>1</TRNUID>
+         <STATUS>
+            <CODE>0</CODE>
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <STMTRS>
+            <CURDEF>BRL</CURDEF>
+            <BANKACCTFROM>
+               <BANKID>1</BANKID>
+               <BRANCHID>3616-1</BRANCHID>
+               <ACCTID>15647-7</ACCTID>
+               <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTFROM>
+            <BANKTRANLIST>
+               <DTSTART>20230731120000[-3:BRT]</DTSTART>
+               <DTEND>20230811120000[-3:BRT]</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1.14</TRNAMT>
+                  <FITID>2023080101140</FITID>
+                  <CHECKNUM>010052166920</CHECKNUM>
+                  <REFNUM>1.010.052.166.920</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 31/07/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>200.00</TRNAMT>
+                  <FITID>202308010200000</FITID>
+                  <CHECKNUM>400002433560</CHECKNUM>
+                  <REFNUM>714.400.002.433.560</REFNUM>
+                  <MEMO>Transferência Agendada - 01/08 DILSON SORDI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-34.34</TRNAMT>
+                  <FITID>20230801134340</FITID>
+                  <CHECKNUM>000000130190</CHECKNUM>
+                  <REFNUM>130.190</REFNUM>
+                  <MEMO>Compra com Cartão - 01/08 08:23 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.76</TRNAMT>
+                  <FITID>20230801131760</FITID>
+                  <CHECKNUM>000000244631</CHECKNUM>
+                  <REFNUM>244.631</REFNUM>
+                  <MEMO>Compra com Cartão - 01/08 12:23 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-24.78</TRNAMT>
+                  <FITID>20230801124780</FITID>
+                  <CHECKNUM>000000372001</CHECKNUM>
+                  <REFNUM>372.001</REFNUM>
+                  <MEMO>Compra com Cartão - 01/08 20:00 FARMACIA E DROGARIA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-15.50</TRNAMT>
+                  <FITID>20230801115500</FITID>
+                  <CHECKNUM>000000672113</CHECKNUM>
+                  <REFNUM>672.113</REFNUM>
+                  <MEMO>Compra com Cartão - 01/08 20:01 MINI KALZONE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-200.00</TRNAMT>
+                  <FITID>202308011200000</FITID>
+                  <CHECKNUM>000000080101</CHECKNUM>
+                  <REFNUM>80.101</REFNUM>
+                  <MEMO>Pix - Enviado - 01/08 14:31 Dilson Sordi Junior</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-80.00</TRNAMT>
+                  <FITID>20230801180000</FITID>
+                  <CHECKNUM>000000080102</CHECKNUM>
+                  <REFNUM>80.102</REFNUM>
+                  <MEMO>Pix - Enviado - 01/08 14:32 Cristian Scheffel Biacchi</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-200.00</TRNAMT>
+                  <FITID>202308011200001</FITID>
+                  <CHECKNUM>000000080103</CHECKNUM>
+                  <REFNUM>80.103</REFNUM>
+                  <MEMO>Pix - Enviado - 01/08 14:34 Dilson Sordi Junior</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230801120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202308010500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>90.00</TRNAMT>
+                  <FITID>20230802090000</FITID>
+                  <CHECKNUM>003866605160</CHECKNUM>
+                  <REFNUM>3.866.605.160</REFNUM>
+                  <MEMO>Pix - Recebido - 02/08 16:15 00000646009982 Silvia Sord</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1.31</TRNAMT>
+                  <FITID>2023080201310</FITID>
+                  <CHECKNUM>010052166920</CHECKNUM>
+                  <REFNUM>1.010.052.166.920</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 01/08/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202308020500000</FITID>
+                  <CHECKNUM>810045464536</CHECKNUM>
+                  <REFNUM>1.810.045.464.536</REFNUM>
+                  <MEMO>CDB/RDB</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>87.22</TRNAMT>
+                  <FITID>20230802087220</FITID>
+                  <CHECKNUM>810045464536</CHECKNUM>
+                  <REFNUM>1.810.045.464.536</REFNUM>
+                  <MEMO>CDB/RDB</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1500.00</TRNAMT>
+                  <FITID>2023080201500000</FITID>
+                  <CHECKNUM>810047173576</CHECKNUM>
+                  <REFNUM>3.810.047.173.576</REFNUM>
+                  <MEMO>CDB/RDB</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>188.82</TRNAMT>
+                  <FITID>202308020188820</FITID>
+                  <CHECKNUM>810047173576</CHECKNUM>
+                  <REFNUM>3.810.047.173.576</REFNUM>
+                  <MEMO>CDB/RDB</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-36.80</TRNAMT>
+                  <FITID>20230802136800</FITID>
+                  <CHECKNUM>000000129890</CHECKNUM>
+                  <REFNUM>129.890</REFNUM>
+                  <MEMO>Compra com Cartão - 02/08 08:18 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-24.76</TRNAMT>
+                  <FITID>20230802124760</FITID>
+                  <CHECKNUM>000000244512</CHECKNUM>
+                  <REFNUM>244.512</REFNUM>
+                  <MEMO>Compra com Cartão - 02/08 12:21 BOM APETITE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-88.91</TRNAMT>
+                  <FITID>20230802188910</FITID>
+                  <CHECKNUM>000000356621</CHECKNUM>
+                  <REFNUM>356.621</REFNUM>
+                  <MEMO>Compra com Cartão - 02/08 15:43 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-172.86</TRNAMT>
+                  <FITID>202308021172860</FITID>
+                  <CHECKNUM>000000080201</CHECKNUM>
+                  <REFNUM>80.201</REFNUM>
+                  <MEMO>Pagamento de Boleto - CELESC DISTRIBUICAO SA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230802120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-1148.94</TRNAMT>
+                  <FITID>2023080211148940</FITID>
+                  <CHECKNUM>000000080202</CHECKNUM>
+                  <REFNUM>80.202</REFNUM>
+                  <MEMO>Pix - Enviado - 02/08 16:06 Gol Linhas Aereas</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230803120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.75</TRNAMT>
+                  <FITID>20230803131750</FITID>
+                  <CHECKNUM>000000129816</CHECKNUM>
+                  <REFNUM>129.816</REFNUM>
+                  <MEMO>Compra com Cartão - 03/08 08:16 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230803120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-100.00</TRNAMT>
+                  <FITID>202308031100000</FITID>
+                  <CHECKNUM>000000230834</CHECKNUM>
+                  <REFNUM>230.834</REFNUM>
+                  <MEMO>Compra com Cartão - 03/08 08:33 POSTO VILA RICA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230803120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-79.78</TRNAMT>
+                  <FITID>20230803179780</FITID>
+                  <CHECKNUM>000000343140</CHECKNUM>
+                  <REFNUM>343.140</REFNUM>
+                  <MEMO>Compra com Cartão - 03/08 11:59 TEXANO GRILL</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230803120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-52.00</TRNAMT>
+                  <FITID>20230803152000</FITID>
+                  <CHECKNUM>000000643443</CHECKNUM>
+                  <REFNUM>643.443</REFNUM>
+                  <MEMO>Compra com Cartão - 03/08 12:04 LE BOSS DELICATESSEN</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230803120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-33.04</TRNAMT>
+                  <FITID>20230803133040</FITID>
+                  <CHECKNUM>000000769050</CHECKNUM>
+                  <REFNUM>769.050</REFNUM>
+                  <MEMO>Compra com Cartão - 03/08 19:10 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230803120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-15.00</TRNAMT>
+                  <FITID>20230803115000</FITID>
+                  <CHECKNUM>000000781695</CHECKNUM>
+                  <REFNUM>781.695</REFNUM>
+                  <MEMO>Compra com Cartão - 03/08 12:07 BEIRAMAR PARK</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230804120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>1074.98</TRNAMT>
+                  <FITID>2023080401074980</FITID>
+                  <CHECKNUM>000035738196</CHECKNUM>
+                  <REFNUM>35.738.196</REFNUM>
+                  <MEMO>TED-Crédito em Conta - 341 2937 40985911000130 COOP SOMA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230804120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-49.80</TRNAMT>
+                  <FITID>20230804149800</FITID>
+                  <CHECKNUM>000000130609</CHECKNUM>
+                  <REFNUM>130.609</REFNUM>
+                  <MEMO>Compra com Cartão - 04/08 08:30 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230804120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-48.90</TRNAMT>
+                  <FITID>20230804148900</FITID>
+                  <CHECKNUM>000000264455</CHECKNUM>
+                  <REFNUM>264.455</REFNUM>
+                  <MEMO>Compra com Cartão - 04/08 17:54 BURGER KING</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230804120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-300.00</TRNAMT>
+                  <FITID>202308041300000</FITID>
+                  <CHECKNUM>016000058415</CHECKNUM>
+                  <REFNUM>600.016.000.058.415</REFNUM>
+                  <MEMO>Transferência enviada - 04/08 17:55 DANIELLE VIANA ATHAYDE</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230804120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-150.00</TRNAMT>
+                  <FITID>202308041150000</FITID>
+                  <CHECKNUM>000000080401</CHECKNUM>
+                  <REFNUM>80.401</REFNUM>
+                  <MEMO>Pix - Enviado - 04/08 09:45 Mariana Viana Costa</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>100.00</TRNAMT>
+                  <FITID>202308070100000</FITID>
+                  <CHECKNUM>638000006615</CHECKNUM>
+                  <REFNUM>602.638.000.006.615</REFNUM>
+                  <MEMO>Transferência recebida - 06/08 19:09 MARIA DE L S SORDI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-88.36</TRNAMT>
+                  <FITID>20230807188360</FITID>
+                  <CHECKNUM>000000143362</CHECKNUM>
+                  <REFNUM>143.362</REFNUM>
+                  <MEMO>Compra com Cartão - 05/08 12:02 RESTAURANTE TUTTIFRU</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-150.00</TRNAMT>
+                  <FITID>202308071150000</FITID>
+                  <CHECKNUM>000000244572</CHECKNUM>
+                  <REFNUM>244.572</REFNUM>
+                  <MEMO>Compra com Cartão - 05/08 12:22 POSTO ULTRA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-83.00</TRNAMT>
+                  <FITID>20230807183000</FITID>
+                  <CHECKNUM>000000345248</CHECKNUM>
+                  <REFNUM>345.248</REFNUM>
+                  <MEMO>Compra com Cartão - 05/08 12:34 FARMACIA SAO JOAO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-107.72</TRNAMT>
+                  <FITID>202308071107720</FITID>
+                  <CHECKNUM>000000667567</CHECKNUM>
+                  <REFNUM>667.567</REFNUM>
+                  <MEMO>Compra com Cartão - 06/08 18:46 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-37.45</TRNAMT>
+                  <FITID>20230807137450</FITID>
+                  <CHECKNUM>000000729878</CHECKNUM>
+                  <REFNUM>729.878</REFNUM>
+                  <MEMO>Compra com Cartão - 07/08 08:17 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-49.08</TRNAMT>
+                  <FITID>20230807149080</FITID>
+                  <CHECKNUM>000000869006</CHECKNUM>
+                  <REFNUM>869.006</REFNUM>
+                  <MEMO>Compra com Cartão - 07/08 19:10 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-408.39</TRNAMT>
+                  <FITID>202308071408390</FITID>
+                  <CHECKNUM>000000080701</CHECKNUM>
+                  <REFNUM>80.701</REFNUM>
+                  <MEMO>Pagamento de Boleto - SCHWEITZER CONTABILIDADE LTDA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-601.92</TRNAMT>
+                  <FITID>202308071601920</FITID>
+                  <CHECKNUM>000000080702</CHECKNUM>
+                  <REFNUM>80.702</REFNUM>
+                  <MEMO>Pagamento de Boleto - PJBANK PAGAMENTOS S.A.</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-500.00</TRNAMT>
+                  <FITID>202308071500000</FITID>
+                  <CHECKNUM>000000080703</CHECKNUM>
+                  <REFNUM>80.703</REFNUM>
+                  <MEMO>Pix - Enviado - 07/08 21:11 Hallan Medeiros</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230807120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202308070500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230808120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>2.32</TRNAMT>
+                  <FITID>2023080802320</FITID>
+                  <CHECKNUM>010052166920</CHECKNUM>
+                  <REFNUM>1.010.052.166.920</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 07/08/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230808120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-31.98</TRNAMT>
+                  <FITID>20230808131980</FITID>
+                  <CHECKNUM>000000129766</CHECKNUM>
+                  <REFNUM>129.766</REFNUM>
+                  <MEMO>Compra com Cartão - 08/08 08:16 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230808120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-16.40</TRNAMT>
+                  <FITID>20230808116400</FITID>
+                  <CHECKNUM>000000246700</CHECKNUM>
+                  <REFNUM>246.700</REFNUM>
+                  <MEMO>Compra com Cartão - 08/08 12:58 MASSA VIVA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230808120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-77.47</TRNAMT>
+                  <FITID>20230808177470</FITID>
+                  <CHECKNUM>000000347544</CHECKNUM>
+                  <REFNUM>347.544</REFNUM>
+                  <MEMO>Compra com Cartão - 08/08 13:12 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230809120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-33.31</TRNAMT>
+                  <FITID>20230809133310</FITID>
+                  <CHECKNUM>000000130260</CHECKNUM>
+                  <REFNUM>130.260</REFNUM>
+                  <MEMO>Compra com Cartão - 09/08 08:24 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230809120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-37.19</TRNAMT>
+                  <FITID>20230809137190</FITID>
+                  <CHECKNUM>000000242086</CHECKNUM>
+                  <REFNUM>242.086</REFNUM>
+                  <MEMO>Compra com Cartão - 09/08 11:41 RESTAURANTE LUCIANY</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230809120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-143.00</TRNAMT>
+                  <FITID>202308091143000</FITID>
+                  <CHECKNUM>000000343280</CHECKNUM>
+                  <REFNUM>343.280</REFNUM>
+                  <MEMO>Compra com Cartão - 09/08 12:01 QUEBRA GELO</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230809120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-37.99</TRNAMT>
+                  <FITID>20230809137990</FITID>
+                  <CHECKNUM>000000669731</CHECKNUM>
+                  <REFNUM>669.731</REFNUM>
+                  <MEMO>Compra com Cartão - 09/08 19:22 CAFETERIA JULIANA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230809120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-13.00</TRNAMT>
+                  <FITID>20230809113000</FITID>
+                  <CHECKNUM>000000755325</CHECKNUM>
+                  <REFNUM>755.325</REFNUM>
+                  <MEMO>Compra com Cartão - 09/08 12:02 ITAGUACU</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230809120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>500.00</TRNAMT>
+                  <FITID>202308090500000</FITID>
+                  <CHECKNUM>000000000098</CHECKNUM>
+                  <REFNUM>98</REFNUM>
+                  <MEMO>Resgate BB CDB DI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230810120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>2.83</TRNAMT>
+                  <FITID>2023081002830</FITID>
+                  <CHECKNUM>010052166920</CHECKNUM>
+                  <REFNUM>1.010.052.166.920</REFNUM>
+                  <MEMO>Resgate BB CDB DI - Data balanc.: 09/08/2023</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230810120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-32.20</TRNAMT>
+                  <FITID>20230810132200</FITID>
+                  <CHECKNUM>000000129898</CHECKNUM>
+                  <REFNUM>129.898</REFNUM>
+                  <MEMO>Compra com Cartão - 10/08 08:18 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230810120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-26.36</TRNAMT>
+                  <FITID>20230810126360</FITID>
+                  <CHECKNUM>000000242548</CHECKNUM>
+                  <REFNUM>242.548</REFNUM>
+                  <MEMO>Compra com Cartão - 10/08 11:49 SUSHO SUSHI</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230811120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-34.70</TRNAMT>
+                  <FITID>20230811134700</FITID>
+                  <CHECKNUM>000000130750</CHECKNUM>
+                  <REFNUM>130.750</REFNUM>
+                  <MEMO>Compra com Cartão - 11/08 08:32 SANTISSIMA GULA</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230811120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-41.99</TRNAMT>
+                  <FITID>20230811141990</FITID>
+                  <CHECKNUM>000000243586</CHECKNUM>
+                  <REFNUM>243.586</REFNUM>
+                  <MEMO>Compra com Cartão - 11/08 12:06 ZE MATUTO RESTAURANT</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20230811120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-109.07</TRNAMT>
+                  <FITID>202308111109070</FITID>
+                  <CHECKNUM>000000344849</CHECKNUM>
+                  <REFNUM>344.849</REFNUM>
+                  <MEMO>Compra com Cartão - 11/08 12:27 GIASSI SUPERMERCA</MEMO>
+               </STMTTRN>
+            </BANKTRANLIST>
+            <LEDGERBAL>
+               <BALAMT>33.18</BALAMT>
+               <DTASOF>20230811120000[-3:BRT]</DTASOF>
+            </LEDGERBAL>
+         </STMTRS>
+      </STMTTRNRS>
+   </BANKMSGSRSV1>
+</OFX>

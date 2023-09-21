@@ -1,6 +1,6 @@
 {
   "name": "express-hello-world",
-  "version": "2023 r50",
+  "version": "2023 r51",
   "description": "Expressjs Hello World example to provide faster start deploying on Cyclic platform",
   "main": "server.js",
   "scripts": {
