@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Relatório de arquivo OFX</h5>
+                <p class="card-text">
+
+                    <div class="btn btn-primary" ngf-select="upload($file)">Escolha o arquivo OFX</div>
+                    <br>
+                    <br>
+                    <div ng-if="infoOFX">
+                        <button class="btn btn-primary" type="button" ng-click="exportXLS()">Exportar XLSX</button>
+                        <br>
+                    </div>
+                    <br>
+                    <input type="text" ng-model="filtro1" class="form-control" placeholder="filtro" />
+                    <h1>Seu saldo em
+                        {{ infoOFX.saldo.data }} é de {{ infoOFX.saldo.valor | currency: 'R$ ' }}
+                    </h1>
+                    
+                    <br>
+                    <br>
+                    <div class="table-responsive">
+                        
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Descrição</th>
+                                    <th>Tipo</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in infoOFX.transacoes | filter: filtro1">
+                                    <td>{{ item.dataoperacao }}</td>
+                                    <td>{{ item.descricao }}<br /><small>{{ item.nome }}</small></td>
+                                    <td>{{ item.tipo }}</td>
+                                    <td class="dinheiro {{ (item.valor > 0 ? 'positivo' : 'negativo') }}">{{ item.valor | currency: 'R$ ' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

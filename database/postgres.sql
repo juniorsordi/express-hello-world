@@ -144,14 +144,15 @@ create table financas_conta_bancaria2 (
 	id serial primary key,
 	nome varchar(512),
 	tipo_conta varchar(512),
-	status boolean,
+	status boolean default true,
 	encerrada boolean default false,
 	banco json,
 	saldo_inicial float,
 	data_saldo_inicial timestamp,
 	saldo_atual float,
 	moeda integer,
-	liquidez integer
+	liquidez integer,
+	id_empresa integer references empresa(id)
 ); 
 
 create table financas_bancos (
@@ -179,6 +180,6 @@ create table financas_movimentacao (
 	nro_documento varchar(128),
 	lembrete integer,
 	estornado boolean default false,
-	conciliado boolean default false
+	conciliado boolean default false,
+	id_empresa integer references empresa(id)
 );
-alter table financas_movimentacao add column id_empresa integer;

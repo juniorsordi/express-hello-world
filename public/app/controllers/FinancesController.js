@@ -1,4 +1,4 @@
-app.controller("FinancesController", function ($scope, $routeParams, $resource, APIService, $http, $uibModal, $modal, $ocModal) {
+app.controller("FinancesController", function ($scope, $routeParams, $resource, APIService, $http, $uibModal, $modal, $ocModal, Upload) {
     $scope.versao = "F 1.0.1";
     $scope.form = {};
     $scope.filtro = {};
@@ -399,6 +399,30 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         APIService.putData("/finances/payments", item, function(resp) {
             $scope.loadCashFlow();
         });
+    }
+    ///############################################################################################
+    $scope.testeRelatorioOFX = function() {
+        APIService.getData("/../ofx/upload", function(resp) {
+            $scope.infoOFX = resp.data;
+        })
+    }
+    ///############################################################################################
+    $scope.upload = function (file) {
+        Upload.upload({
+            url: '/api/ofx/upload',
+            data: { file: file }
+        }).then(function (resp) {
+            $scope.infoOFX = resp.data;
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+    };
+    ///############################################################################################
+    $scope.exportXLS = function() {
+        alasql('SELECT * INTO XLSX("exportacao.xlsx",{headers:true}) FROM ?', [$scope.infoOFX.transacoes]);
     }
     ///############################################################################################
     ///############################################################################################

@@ -7,6 +7,12 @@ const createInitials = function (text) {
     return (first + last).toUpperCase();
 };
 
+const formatDateDMY = function(oldDate) {
+    let temp = oldDate.substr(6, 2) + '/' + oldDate.substr(4, 2) + '/' + oldDate.substr(0, 4);
+    return temp;
+}
+
 module.exports = {
-    createInitials
+    createInitials,
+    formatDateDMY
 };

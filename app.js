@@ -6,6 +6,7 @@ const app = express();
 var bodyParser = require('body-parser');
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+var multer = require('multer');
 
 
 // #############################################################################
@@ -25,6 +26,20 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser());
 app.use(session({ secret: 'XASDASDA', saveUninitialized: true, resave: false, cookie: { maxAge: oneDay } }));
 
+var storage = multer.diskStorage({ //multers disk storage settings
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    var datetimestamp = Date.now();
+    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+  }
+});
+
+const upload = multer({ dest: "uploads/" });
+var upload2 = multer({ //multer settings
+  storage: storage
+}).single('file');
 // #############################################################################
 // This configures static hosting for files in /public that have the extensions
 // listed in the array.
@@ -79,6 +94,24 @@ app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
 app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 app.use('/api/v1/finances/accounts', require('./server/routes/financesAccountsRoute'));
 
+app.post('/uploads', function (req, res) {
+  upload(req, res, function (err) {
+    if (err) {
+      res.json({ error_code: 1, err_desc: err });
+      return;
+    }
+    console.log(req.files);
+    res.json({ error_code: 0, err_desc: null, files: req.files });
+  })
+});
+
+app.post("/upload", upload.array("file"), uploadFiles);
+
+function uploadFiles(req, res) {
+  console.log(req.body);
+  console.log(req.files);
+  res.json({ message: "Successfully uploaded files" });
+}
 /*
 app.use('/api/v1/', require('./server/routes/tickets.routes'));
 //*/

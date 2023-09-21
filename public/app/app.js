@@ -12,6 +12,7 @@ var app = angular.module('Sistema', ['ngRoute'
     //, "checklist-model"
     //, 'summernote'
     , 'ngQuill'
+    , 'ngFileUpload'
     //, 'angularUtils.directives.dirPagination'
     //, 'datatables'
     //, 'ui.select'
@@ -46,6 +47,7 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/finances/movimentacoes', { templateUrl: 'app/views/Finances/movimentacoes.html?t=' + date, controller: 'FinancesDashboard' })
         .when('/finance/cashFlow',      { templateUrl: 'app/views/Finances/cashFlow.html?t=' + date, controller: 'FinancesController' })
         .when('/finance/invoices',      { templateUrl: 'app/views/Finances/invoice.html?t=' + date, controller: 'FinancesInvoicesCtrl' })
+        .when('/finance/ofxreport',      { templateUrl: 'app/views/Finances/ofxReport.html?t=' + date, controller: 'FinancesController' })
 
         .when('/tickets',               { templateUrl: 'app/views/Tickets/dashboard.html', controller: 'TicketsCtrl' })
         .when('/tickets/new',           { templateUrl: 'app/views/Tickets/newTicket.html', controller: 'TicketsCtrl' })

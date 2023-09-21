@@ -42,7 +42,10 @@
                             </ul>
 
                             <div class="d-flex align-items-center">
-                                <span>Esforço atual: {{ item.esforco_real | number:2 }} h/{{ item.esforco_estimado | number:2 }} h</span>
+                                <span>
+                                    Esforço atual: {{ item.esforco_real | number:2 }} h/{{ item.esforco_estimado | number:2 }} h <Br>
+                                    Receita: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }} / {{ (item.esforco_estimado * projectInfo.valor_hora) | currency:'R$ ' }}
+                                </span>
                             </div>
                             <div class="dropdown card-options">
                                 <i ng-if="item.id_status_atividade != closed_activity_status" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
