@@ -183,3 +183,22 @@ create table financas_movimentacao (
 	conciliado boolean default false,
 	id_empresa integer references empresa(id)
 );
+
+create table projeto_financeiro_pagamentos (
+	id serial primary key,
+	id_projeto integer not null,
+	id_tarefa integer,
+	esforco_pago float,
+	valor_hora float,
+	total_pago float,
+	data_recebimento timestamp
+);
+
+create table projeto_financeiro_despesas (
+	id serial primary key,
+	id_projeto integer not null,
+	id_tarefa integer,
+	descricao varchar(1024),
+	valor float,
+	data_despesas timestamp
+);

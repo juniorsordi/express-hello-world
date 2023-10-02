@@ -30,8 +30,7 @@
                             <ul class="avatars">
                                 <li>
                                     <a href="#" data-toggle="tooltip" title="{{ item.responsavel.nome }}">
-                                        <img alt="{{ item.responsavel.nome }}" class="avatar"
-                                            ng-src="{{ item.responsavel.foto }}" />
+                                        <img alt="{{ item.responsavel.nome }}" class="avatar" ng-src="{{ item.responsavel.foto }}" />
                                     </a>
                                 </li>
                                 <li ng-repeat="assignee in item.participantes">
@@ -44,13 +43,20 @@
                             <div class="d-flex align-items-center">
                                 <span>
                                     Esforço atual: {{ item.esforco_real | number:2 }} h/{{ item.esforco_estimado | number:2 }} h <Br>
-                                    Receita: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }} / {{ (item.esforco_estimado * projectInfo.valor_hora) | currency:'R$ ' }}
+                                    <span ng-if="!item.pago">
+                                        Receita: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }} / {{ (item.esforco_estimado * projectInfo.valor_hora) | currency:'R$ ' }}
+                                    </span>
+                                    <span ng-if="item.pago">
+                                        Receita Recebida: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }}
+                                    </span>
+                                    
                                 </span>
                             </div>
                             <div class="dropdown card-options">
                                 <i ng-if="item.id_status_atividade != closed_activity_status" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
                                 <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
                                 <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>
+                                <i ng-if="!item.pago" class="align-middle" data-feather="dollar-sign" ng-click="tarefaValorRecebido(item)" title="Pagamento recebido"></i>
                             </div>
                         </div>
                     </div>
@@ -84,8 +90,7 @@
                             <ul class="avatars">
                                 <li>
                                     <a href="#" data-toggle="tooltip" title="{{ item.responsavel.nome }}">
-                                        <img alt="{{ item.responsavel.nome }}" class="avatar"
-                                            ng-src="{{ item.responsavel.foto }}" />
+                                        <img alt="{{ item.responsavel.nome }}" class="avatar" ng-src="{{ item.responsavel.foto }}" />
                                     </a>
                                 </li>
                                 <li ng-repeat="assignee in item.participantes">
@@ -99,8 +104,10 @@
                                 <span>Esforço atual: {{ item.esforco_atual | number:2 }} h/{{ item.esforco_estimado | number:2 }} h</span>
                             </div>
                             <div class="dropdown card-options">
+                                <i ng-if="item.id_status_atividade != closed_activity_status" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
                                 <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
                                 <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>
+                                <i ng-if="!item.pago" class="align-middle" data-feather="dollar-sign" ng-click="tarefaValorRecebido(item)" title="Pagamento recebido"></i>
                             </div>
                         </div>
                     </div>

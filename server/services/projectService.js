@@ -68,6 +68,8 @@ async function getProject(id) {
                 valor_hora,
                 ( 0 ) as percentual_receita,
                 ( 0 ) as percentual_custo,
+                (SELECT sum(total_pago) FROM projeto_financeiro_pagamentos WHERE id_projeto = a.id) as receita_recebida,
+                (SELECT sum(valor) FROM projeto_financeiro_despesas WHERE id_projeto = a.id) as despesa_realizada,
                 (SELECT nome FROM usuario WHERE id = a.id_responsavel) as nome_responsavel,
                 (SELECT foto FROM usuario WHERE id = a.id_responsavel) as foto_responsavel,
                 (SELECT nome FROM empresa_cliente WHERE id = a.id_cliente) as nome_cliente,
@@ -89,6 +91,10 @@ async function getProject(id) {
         var idUser = item.id_responsavel;
         var temp1 = await database.query("SELECT nome, foto, email FROM usuario WHERE id = $1", [idUser]);
         activities[i]['responsavel'] = temp1[0];
+
+        let paymentsTask = await database.query("SELECT * FROM projeto_financeiro_pagamentos WHERE id_tarefa = $1",[item.id]);
+
+        activities[i]['pago'] = (paymentsTask.length > 0 ? true : false);
 
         var persons = await database.query(`SELECT nome, foto, email FROM projeto_atividade_participante a
                 LEFT JOIN usuario b ON (b.id = a.id_usuario)
@@ -185,6 +191,18 @@ async function saveProjectComment(comment) {
     return await database.one(SQL, [comment.project_id, comment.user_id, comment.description]);
 }
 
+async function taskPayment(data) {
+    //let SQL = "SELECT * FROM projeto_atividade_apontamento WHERE id_atividade = $1";
+    //let result = await database.any(SQL, [data.id]);
+    let SQL2 = "INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, $1, $2, $3, $4, $5, now()) RETURNING *";
+    let valor_total = parseFloat(data.esforco_real) * parseFloat(data.valor_hora);
+    let result2 = await database.any(SQL2, [data.id_projeto, data.id, data.esforco_real, data.valor_hora, valor_total]);
+    if(result2) {
+        await database.any("UPDATE projeto_atividade_apontamento SET pago = true WHERE id_atividade = $1", [data.id]);
+    }
+    return result2;
+}
+
 module.exports = {
     listProjects,
     saveProject,
@@ -193,5 +211,6 @@ module.exports = {
     saveNewTask,
     saveTimeEntry,
     saveProjectComment,
+    taskPayment,
     //addTaskProject,
 }

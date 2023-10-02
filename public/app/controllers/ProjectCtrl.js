@@ -36,7 +36,15 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     $scope.initProjectView = function () {
         //$scope.projectInfo = APIService.resourceQuery("/dashboard/projectsYear");
-        $scope.projectInfo = $resource("api/v1/project/:id").get({ id: $routeParams.id });
+        //$scope.projectInfo = $resource("api/v1/project/:id").get({ id: $routeParams.id });
+        APIService.getData("/project/" + $routeParams.id, function(resp) {
+            $scope.projectInfo = resp.data;
+            var temp1 = ($scope.projectInfo.receita_recebida * 100) / $scope.projectInfo.receita_estimada;
+            $scope.projectInfo.percentual_receita = temp1;
+
+            var temp2 = ($scope.projectInfo.despesa_realizada * 100) / $scope.projectInfo.gasto_estimado;
+            $scope.projectInfo.percentual_custo = temp2;
+        });
     }
     ///############################################################################################
     ///############################################################################################
@@ -356,7 +364,12 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
         $scope.initProjectView();
     });
     ///############################################################################################
-    
+    $scope.tarefaValorRecebido = function(item) {
+        item.valor_hora = $scope.projectInfo.valor_hora;
+        APIService.postData("/project/taskPayment", item, function(resp) {
+            $rootScope.$broadcast('updateListTasks');
+        })
+    }
     ///############################################################################################
     ///############################################################################################
     ///############################################################################################

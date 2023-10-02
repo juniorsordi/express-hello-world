@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 var multer = require('multer');
-
+const fileupload = require('express-fileupload');
 
 // #############################################################################
 // Logs all request paths and method
@@ -28,7 +28,7 @@ app.use(session({ secret: 'XASDASDA', saveUninitialized: true, resave: false, co
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
-    cb(null, './uploads/')
+    cb(null, '/tmp/')
   },
   filename: function (req, file, cb) {
     var datetimestamp = Date.now();
@@ -36,10 +36,15 @@ var storage = multer.diskStorage({ //multers disk storage settings
   }
 });
 
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "/tmp" });
 var upload2 = multer({ //multer settings
   storage: storage
 }).single('file');
+
+app.use(fileupload({
+  useTempFiles: true,
+  tempFileDir: "/tmp",
+}))
 // #############################################################################
 // This configures static hosting for files in /public that have the extensions
 // listed in the array.

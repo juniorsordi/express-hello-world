@@ -2,7 +2,7 @@
 <div ng-init="initProjectView()"></div>
 <script src="assets/js/component.fileupload.js"></script>
 <div class="row">
-    <div class="col-lg-6 col-xl-3 d-flex">
+    <div class="col-lg-6 col-xl-4 d-flex">
         <div class="card flex-fill">
             <div class="card-header">
                 <h5 class="card-title mb-0 mt-2" translate>Activity</h5>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-xl-3 d-flex">
+    <div class="col-lg-6 col-xl-4 d-flex">
         <div class="card flex-fill">
             <div class="card-header">
                 <h5 class="card-title mb-0 mt-2" translate>Revenue</h5>
@@ -34,6 +34,7 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-8">
                         <h3 class="d-flex align-items-center mb-0 fw-light">
+                            <small>{{ projectInfo.receita_recebida | currency:'R$ ' }}/</small>
                             {{ projectInfo.receita_estimada | currency:'R$ ' }}
                         </h3>
                     </div>
@@ -48,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-xl-3 d-flex">
+    <div class="col-lg-6 col-xl-4 d-flex">
         <div class="card flex-fill">
             <div class="card-header">
                 <h5 class="card-title mb-0 mt-2" translate>Expenses</h5>
@@ -57,6 +58,7 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-8">
                         <h3 class="d-flex align-items-center mb-0 fw-light">
+                            <small>{{ projectInfo.despesa_realizada | currency:'R$ ' }}/</small>
                             {{ projectInfo.gasto_estimado | currency:'R$ ' }}
                         </h3>
                     </div>
@@ -66,7 +68,7 @@
                 </div>
 
                 <div class="progress progress-sm shadow-sm mb-1">
-                    <div class="progress-bar bg-success" role="progressbar" ng-style="{width: projectInfo.percentual_custo + '%' }"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" ng-style="{width: projectInfo.percentual_custo + '%' }"></div>
                 </div>
             </div>
         </div>
@@ -206,6 +208,12 @@
                         <p class="mb-0">{{ projectInfo.receita_estimada | currency }}</p>
                     </dd>
                 </dl>
+                <dl ng-if="projectInfo.receita_recebida" class="row">
+                    <dt class="col-5 col-xxl-4 mb-0" translate>Payed Revenue</dt>
+                    <dd class="col-7 col-xxl-8 mb-0">
+                        <p class="mb-0">{{ projectInfo.receita_recebida | currency }}</p>
+                    </dd>
+                </dl>
                 <dl class="row">
                     <dt class="col-5 col-xxl-4 mb-0" translate>Estimated Expenses</dt>
                     <dd class="col-7 col-xxl-8 mb-0">
@@ -239,7 +247,7 @@
         </div>
 
         <div class="mb-3 mt-3 mt-xl-0">
-
+            
         </div>
 
         <div class="card">

@@ -210,6 +210,8 @@ app.config(["$translateProvider", function (e) {
             "Value ($)": "Valor (R$)",
             "On Sale?": "Em Promoção?",
             "Sale Price": "Preço Em Promoção",
+            "Payed Revenue": "Receita Recebida",
+            "Estimated Next Payment": "Recebimento Estimado",
             "Created At": "Criado em",
             'Yes': "Sim",
             'No': "Não",

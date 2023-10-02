@@ -145,7 +145,14 @@ router.put("/kanbanProjects/:id", auth, async function (req, res, next) {
     }
 });
 
-
+router.post("/project/taskPayment", auth, async function (req, res, next) {
+    try {
+        res.json(await services.taskPayment(req.body));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
 
 
 

@@ -7,6 +7,8 @@ var xml2js = require('xml2js');
 var ofxParse = require('../infra/ofx2');
 var multer = require('multer');
 const upload = multer({ dest: "uploads/" });
+const AWS = require("aws-sdk");
+const s3 = new AWS.S3()
 
 const controller = require('../controllers/auth');
 const utils = require('../infra/utils');
@@ -80,14 +82,67 @@ router.get("/auth/checkToken", upload.array("file"), async function (req, res, n
     
 });
 
+router.post("/ofx/upload", async function (req, res, next) {
+    let filename = req.files;
+    if (filename.length == 0) {
+        return;
+    }
+    //console.log(filename);
+    //res.json(filename.file.tempFilePath);
+    
+    const file = fs.readFileSync(filename.file.tempFilePath, 'utf8');
+    ofxParse.parse(file).then(ofxData => {
+        let infoSaldo = {
+            valor: ofxData.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.LEDGERBAL.BALAMT,
+            data: utils.formatDateDMY(ofxData.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.LEDGERBAL.DTASOF)
+        };
 
-router.post("/ofx/upload", upload.array("file"), uploadFiles);
+        let resumo = {
+            creditos: 0,
+            debitos: 0
+        };
+
+        let listaTransacoes = ofxData.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN;
+        let transacoes2 = [];
+        let saldoInicial = parseFloat(ofxData.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.LEDGERBAL.BALAMT);
+        let i = 0;
+        listaTransacoes.map(function (item) {
+            if (i == 0) {
+                item.saldo = parseFloat(item.TRNAMT);
+            } else {
+                item.saldo = listaTransacoes[i - 1].saldo + parseFloat(item.TRNAMT);
+            }
+            item.valor = parseFloat(item.TRNAMT);
+            if (item.valor > 0) {
+                resumo.creditos += item.valor;
+            } else {
+                resumo.debitos += item.valor;
+            }
+            item.dataoperacao = item.DTPOSTED.substr(6, 2) + '/' + item.DTPOSTED.substr(4, 2) + '/' + item.DTPOSTED.substr(0, 4);
+
+            transacoes2.push({
+                dataoperacao: item.dataoperacao,
+                descricao: item.MEMO,
+                nome: item.NAME,
+                valor: parseFloat(item.TRNAMT),
+                tipo: (item.TRNTYPE == 'OTHER' ? (item.valor > 0 ? 'CREDITO' : 'DEBITO') : item.TRNTYPE + 'O')
+            });
+            saldoInicial += parseFloat(item.TRNAMT);
+            i++;
+        });
+
+        res.json({ message: "Successfully uploaded files", saldo: infoSaldo, transacoes: transacoes2, resumo });
+    });
+})
+
+router.post("/ofx/upload2", upload.array("file"), uploadFiles);
 
 function uploadFiles(req, res) {
     let filename = req.files;
     if(filename.length == 0) {
         return;
     }
+    
     const file = fs.readFileSync(filename[0].path, 'utf8');
     ofxParse.parse(file).then(ofxData => {
         let infoSaldo = {

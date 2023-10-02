@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Código de Barras</h5>
+                <p class="card-text">
+                    <input type="text" ng-model="codigo" /><button class="btn btn-primary" type="button" ng-click="gerarBarcode()">Gerar</button>
+                    <svg id="barcode" jsbarcode-format="EAN8"></svg>
+                    <img id="barcode" jsbarcode-format="EAN8" />
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
