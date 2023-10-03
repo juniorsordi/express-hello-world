@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sicoob SC - Login</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+        <script src="app/Utils.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            body {
+                background: #ccc !important;
+            }
+            .card {
+                border: 1px solid #28a745;
+            }
+            .card-login {
+                margin-top: 130px;
+                padding: 18px;
+                max-width: 30rem;
+                background-color: #003641 !important;
+            }
+
+            .card-body {
+                background-color: #003641;
+            }
+
+            .card-header {
+                color: #fff;
+                /*background: #ff0000;*/
+                font-family: sans-serif;
+                font-size: 20px;
+                font-weight: 600 !important;
+                margin-top: 10px;
+                border-bottom: 0;
+                background-color: #003641 !important;
+            }
+
+            .input-group-prepend span{
+                width: 50px;
+                background-color: #003641;
+                color: #fff;
+                border:0 !important;
+            }
+
+            input:focus{
+                outline: 0 0 0 0  !important;
+                box-shadow: 0 0 0 0 !important;
+            }
+
+            .login_btn{
+                width: 130px;
+            }
+
+            .login_btn:hover{
+                color: #fff;
+                background-color: #ff0000;
+            }
+
+            .btn-outline-danger {
+                color: #fff;
+                font-size: 18px;
+                background-color: #28a745;
+                background-image: none;
+                border-color: #28a745;
+            }
+
+            .form-control {
+                display: block;
+                width: 100%;
+                height: calc(2.25rem + 2px);
+                padding: 0.375rem 0.75rem;
+                font-size: 1.2rem;
+                line-height: 1.6;
+                color: #28a745;
+                background-color: transparent;
+                background-clip: padding-box;
+                border: 1px solid #28a745;
+                border-radius: 0;
+                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            }
+
+            .input-group-text {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-align: center;
+                align-items: center;
+                padding: 0.375rem 0.75rem;
+                margin-bottom: 0;
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #495057;
+                text-align: center;
+                white-space: nowrap;
+                background-color: #e9ecef;
+                border: 1px solid #ced4da;
+                border-radius: 0;
+            }
+        </style>
+
+        <!--script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js" integrity="sha512-ATReN+hO4MtnEUKPL23NQVpaIp9Lc/7Ke91f9jAAEqwQkzdWzCDiwPi0Q8b2xZGsOA5OUDVPIpqqPqUsucXBVw==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-animate.min.js" integrity="sha512-dlrwHsAkyyqS02613auj/QXOpOLOAQCF8kTjQNoeqRSpAarJGafc4sHLlXTf2ANsYggJnl6ZAKwmncXGc1Eusw==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-route.min.js" integrity="sha512-Bs3EAi5hQciV/Wg1ReXlGbkZchIoKNGrOrISSayU2O2u3meEQ+Tyc3FKMiifNkjXIhMqRDDBSFqW2HVtjdbAzg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-sanitize.min.js" integrity="sha512-DNnzJS0bLZfPhFmQwU+55AAKSbCD+7xH3tuTqapSpWABrZBtt7cja34cdS+b+a30vqoylXUGdMDHVAbFC26MSg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/3.0.0/toaster.min.js" integrity="sha512-amwB9QMDBPhNBT/RZvfuZMXonx2jTtwVU1fJW1OLX7z5gAyWxkjeGFEjcLVGPoyljwqrtQtCrhxmzKHu/HH4Lw==" crossorigin="anonymous"></script>
+
+        <script src="assets/js/angular-upload.min.js"></script>
+
+        <script src="app/app.js"></script-->
+        <script>
+            function logarSistema() {
+                var temp = $("form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/api/sicoob/auth/login",
+                    headers: {
+                        "Content-Type": 'application/x-www-form-urlencoded'
+                    },
+                    data: temp,
+                    success: function (data) { 
+                        //alert(data); 
+                        if(data.success) {
+                            //alert("Acesso permitido");
+                            localStorage.setItem('userSICOOB', JSON.stringify(data));
+                            location.href = "./";
+                        } else {
+                            alert(data.msg);
+                        }
+                    },
+                    error: function (errMsg) {
+                        alert(errMsg);
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body ng-app="Sistema" ng-controller="LoginController">
+        <div class="container">
+            <div class="card card-login mx-auto text-center bg-dark">
+                <div class="card-header mx-auto bg-dark">
+                    <span> <img src="../assets/img/layout_set_logo.png" class="w-75" alt="Logo"> </span><br />
+                    <span class="logo_title mt-5"> Login </span>
+
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="email" class="form-control" placeholder="Email">
+                        </div>
+        
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="password" class="form-control" placeholder="Senha">
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-building"></i></span>
+                            </div>
+                            
+                            <select name="unidade" id="unidade" class="form-control" required="required">
+                                <option value="1">Sede</option>
+                                <option value="2">Filial</option>
+                            </select>
+                            
+                        </div>
+        
+                        <div class="form-group">
+                            <input type="button" onclick="logarSistema()" name="btn" value="Entrar" class="btn btn-outline-danger float-right login_btn">
+                        </div>
+        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

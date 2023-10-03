@@ -84,7 +84,7 @@ router.get("/auth/checkToken", upload.array("file"), async function (req, res, n
 
 router.post("/ofx/upload", async function (req, res, next) {
     let filename = req.files;
-    if (filename.length == 0) {
+    if (filename || filename.length == 0) {
         return;
     }
     //console.log(filename);

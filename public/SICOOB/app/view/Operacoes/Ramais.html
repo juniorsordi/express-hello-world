@@ -1,0 +1,54 @@
+<div>
+    <br>
+    <br>
+    <button type="button" class="btn btn-sm btn-warning" onclick="goto('/')"><i class="fas fa-arrow-left"></i> Voltar</button>
+    <br>
+    <br>
+    <div class="row" ng-init="listarRamais()">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="white_card mb_20">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h1 class="m-0">Ramais</h1>
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <br>
+                                <input type="text" ng-model="filtro" class="form-control" placeholder="Filtro" />
+                    
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Ramal</th>
+                                                <th>Email</th>
+                                                <th>Unidade</th>
+                                                <th>Setor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in listaRamais | filter: filtro">
+                                                <td>{{ item.nome }}</td>
+                                                <td>{{ item.ramal }}</td>
+                                                <td>{{ item.email }}</td>
+                                                <td>{{ item.unidade }}</td>
+                                                <td>{{ item.setor}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</div>

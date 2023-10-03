@@ -91,6 +91,7 @@ app.get('/apiweb/pagamentos', function (req, res) { res.json([]); });
 app.get('/apiweb/filtros', function (req, res) { res.json([]); });
 
 app.use('/api/', require('./server/routes/authRoutes'));
+app.use('/api/sicoob/', require('./server/routes/sicoobRoute'));
 app.use('/api/', require('./server/routes/gamesRoutes'));
 app.use('/api/v1/', require('./server/routes/projectsRoute'));
 app.use('/api/v1/', require('./server/routes/companyRoute'));
