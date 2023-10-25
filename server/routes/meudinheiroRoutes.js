@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require("../middleware/auth");
+const database = require("../infra/postgres");
 
 router.post("/lancamentos/confirmacaoauto", async function (req, res, next) {
     try {
@@ -1589,39 +1590,8 @@ router.post("/cadastros/contas", async function (req, res, next) {
 
 router.get("/cadastros/contas/bancos", async function (req, res, next) {
     try {
-        res.json([{
-            "nome": "Banco do Brasil S.A.",
-            "img": "bb-2",
-            "tipo": [
-                "CONTA CORRENTE",
-                "OUTROS",
-                "INVESTIMENTO"
-            ],
-            "id": 1
-        }, {
-                "nome": "Banco Inter S.A.",
-                "img": "inter",
-                "tipo": [
-                    "CONTA CORRENTE",
-                    "OUTROS",
-                    "INVESTIMENTO"
-                ],
-                "id": "077"
-            }, {
-                "nome": "Nubank",
-                "img": "nubank2",
-                "tipo": [
-                    "CARTAOCREDITO"
-                ],
-                "id": "nubank"
-            }, {
-                "nome": "C6 Bank",
-                "img": "c6-2",
-                "tipo": [
-                    "OUTROS"
-                ],
-                "id": "c6bank"
-            },]);
+        let list = await database.any("SELECT * FROM financas_bancos");
+        res.json(list);
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -1630,6 +1600,8 @@ router.get("/cadastros/contas/bancos", async function (req, res, next) {
 
 router.get("/cadastros/contas/moedas", async function (req, res, next) {
     try {
+        //let list = await database.any("SELECT * FROM financas_bancos");
+        //res.json(list);
         res.json([
             {
                 "id": 1,

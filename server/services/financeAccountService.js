@@ -6,13 +6,19 @@ const moment = require("moment");
 
 const database = require("../infra/postgres");
 //const ofx = require('../infra/ofx');
-
+//, (SELECT json_agg(json_build_object('key', key, 'value', value)) FROM financas_bancos WHERE id = a.banco::int) as banco
 async function getContasBancarias(idEmpresa) {
     let SQL = `SELECT a.* 
+        , (SELECT json_build_object(
+                'nome', nome,
+                'img', img,
+                'bacen', codigo_bacen
+            ) FROM financas_bancos WHERE id = a.banco::int
+        ) as banco
         , coalesce( (select sum(valor_efetivo) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'D'), 0) as total_despesas
         , coalesce( (select sum(valor_efetivo) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'C'), 0) as total_receitas
-        FROM financas_conta_bancaria2 a
-        WHERE status = true and id_empresa = $1
+        FROM financas_conta_bancaria a
+        WHERE id_empresa = $1
         ORDER BY nome asc`;
     const data = await database.any(SQL,[idEmpresa]);
     return data;
@@ -24,8 +30,7 @@ async function getCategorias(idEmpresa) {
 }
 
 async function getMovimentacoesPorConta(idConta, idEmpresa) {
-    console.log([idConta, idEmpresa]);
-    const data = await database.any("SELECT * FROM financas_movimentacao WHERE id_conta_bancaria = $1 AND id_empresa = $2 ORDER BY data_prevista, id ASC", [idConta, idEmpresa]);
+    const data = await database.any("SELECT * FROM financas_movimentacao WHERE id_empresa = $1 ORDER BY data_prevista, id ASC", [idEmpresa]);
     return data;
 }
 
@@ -61,9 +66,11 @@ async function saveAccount(fields) {
 }
 
 async function saveCategory(fields) {
-    let SQL = "INSERT INTO financas_categoria VALUES (DEFAULT, $1, null, $2) returning *";
+    let SQL = "INSERT INTO financas_categoria VALUES (DEFAULT, $1, $2, 1, $3, $4) returning *";
     const info = await database.any(SQL, [
         fields.nome,
+        fields.tipo_operacao,
+        fields.id_pai,
         fields.id_empresa
     ]);
     return info;

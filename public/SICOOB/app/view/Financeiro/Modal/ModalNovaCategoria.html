@@ -1,0 +1,35 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" translate="">Categoria / Centro de Custo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="$hide()">X</button>
+            </div>
+            <div class="modal-body m-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="field0" translate="">Tipo</label>
+                        <div id="field0">
+                            <label class="ui-radio ui-radio-danger">
+                                <input name="radio1" type="radio" value="D" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false">
+                                <span>Despesa</span>
+                            </label>
+                            <label class="ui-radio">
+                                <input name="radio1" type="radio" value="C" ng-model="form.tipo_operacao" aria-invalid="false">
+                                <span>Receita</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <label for="field1">Nome</label> 
+                        <input type="text" class="form-control" id="field1" placeholder="Digite o nome" ng-model="form.nome"> 
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ng-click="$hide()" translate>Fechar</button>
+                <button type="button" class="btn btn-success" ng-click="salvarCategoria(form)" translate>Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

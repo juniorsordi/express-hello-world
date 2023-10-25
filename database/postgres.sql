@@ -163,6 +163,7 @@ create table financas_bancos (
 	codigo_bacen varchar(6)
 );
 
+drop table financas_movimentacao;
 create table financas_movimentacao (
 	id serial primary key,
 	descricao varchar(512) not null,
@@ -174,7 +175,7 @@ create table financas_movimentacao (
 	status integer not null,
 	data_criacao timestamp not null,
 	data_baixa timestamp,
-	id_conta_bancaria integer references financas_conta_bancaria2(id),
+	id_conta_bancaria integer references financas_conta_bancaria(id),
 	id_categoria integer references financas_categoria(id),
 	observacoes text,
 	nro_documento varchar(128),
@@ -201,4 +202,14 @@ create table projeto_financeiro_despesas (
 	descricao varchar(1024),
 	valor float,
 	data_despesas timestamp
+);
+
+create table rh_batida_ponto (
+	id serial primary key,
+	id_usuario integer not null,
+	dia integer,
+	mes integer,
+	ano integer,
+	hora varchar(15),
+	data_cadastro timestamp
 );

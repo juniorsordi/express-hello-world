@@ -57,10 +57,37 @@ router.post("/ofx/upload", async function (req, res, next) {
         return;
     }
     console.log(filename);
+    const file = fs.readFileSync(filename.file.tempFilePath, 'utf8');
     //res.json(filename.file.tempFilePath);
+    try {
+        /*
+        let s3File = await s3.getObject({
+            Bucket: process.env.CYCLIC_BUCKET_NAME,
+            Key: filename.file.name,
+        }).promise()
+
+        res.set('Content-type', s3File.ContentType)
+        res.send(s3File.Body.toString()).end()
+        //*/
+        /*
+        await s3.putObject({
+            Body: file,
+            Bucket: process.env.CYCLIC_BUCKET_NAME,
+            Key: filename.file.name,
+        }).promise()
+        //*/
+    } catch (error) {
+        if (error.code === 'NoSuchKey') {
+            console.log(`No such key ${filename}`)
+            res.sendStatus(404).end()
+        } else {
+            console.log(error)
+            res.sendStatus(500).end()
+        }
+    }
     ///
     try {
-        const file = fs.readFileSync(filename.file.tempFilePath, 'utf8');
+        
         ofxParse.parse(file).then(ofxData => {
             let infoSaldo = {
                 valor: ofxData.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.LEDGERBAL.BALAMT,
@@ -107,8 +134,32 @@ router.post("/ofx/upload", async function (req, res, next) {
         console.log(error);
         res.json(error);
     }
-    
-    //*/
+});
+
+router.get("/ofx/list", async function (req, res, next) {
+    let list = await s3.listObjectsV2({
+        Bucket: process.env.CYCLIC_BUCKET_NAME
+    }).promise();
+    res.json(list);
+});
+
+router.get("/ofx/file/:id", async function (req, res, next) {
+    try {
+        let s3File = await s3.getObject({
+            Bucket: process.env.CYCLIC_BUCKET_NAME,
+            Key: req.params.id,
+        }).promise();
+
+        res.json({ arquivo: s3File.Body.toString() });
+    } catch (error) {
+        if (error.code === 'NoSuchKey') {
+            console.log(`No such key ${req.params.id}`)
+            res.sendStatus(404).end()
+        } else {
+            console.log(error)
+            res.sendStatus(500).end()
+        }
+    }
 });
 
 module.exports = router;

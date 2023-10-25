@@ -15,7 +15,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, APIS
 		finances: true,
 		logistics: false,
 		projects: true,
-		tickets: true
+		tickets: true,
+		rh: true
     };
 
     $scope.languagesList = [

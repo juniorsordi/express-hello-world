@@ -56,9 +56,8 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/ticket/:id',            { templateUrl: 'app/views/Tickets/viewTicket.html', controller: 'TicketsCtrl' })
 
         .when('/contracts',             { templateUrl: 'app/views/Contratos/listaContratos.html', controller: 'ContractsCtrl' })
-        .when('/logistics/newLabel',    { templateUrl: 'app/views/Logistics/createLabel.html', controller: 'LogisticsCtrl' })
-        .when('/logistics/shipper',     { templateUrl: 'app/views/Logistics/shipper.html', controller: 'LogisticsCtrl' })
-        .when('/logistics/warehouse',   { templateUrl: 'app/views/Logistics/warehouse.html', controller: 'LogisticsCtrl' })
+
+        .when('/rh/baterPonto',         { templateUrl: 'app/views/RH/BaterPonto.html', controller: 'RHCtrl' })
 
         .when('/company/users',          { templateUrl: 'app/views/Companies/users.html', controller: 'CompanyUsersCtrl' })
         .when('/company/settings',       { templateUrl: 'app/views/Companies/clientSettings.html', controller: 'ClientCtrl' })

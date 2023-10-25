@@ -518,7 +518,8 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
 
     $scope.init = function () {
         APIService.getData("/finances/dashboard/accounts", function (resp) { 
-            $scope.dashboardAccountsList = resp.data; 
+            $scope.dashboardAccountsList = resp.data;
+
             $("#select-console").selectize({
                 valueField: 'id',
                 labelField: 'nome',
@@ -788,6 +789,13 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
         { id: 2, nome: 'Conta Poupança' },
         { id: 3, nome: 'Conta Salário' },
         { id: 4, nome: 'Cartão Crédito' },
+    ];
+
+    $scope.listaBancos = [
+        { "nome": "Banco do Brasil S.A.", "img": "bb-2", "tipo": ["CONTA CORRENTE", "OUTROS", "INVESTIMENTO"], "id": 1 }, 
+        { "nome": "Banco Inter S.A.", "img": "inter", "tipo": ["CONTA CORRENTE", "OUTROS", "INVESTIMENTO"], "id": "077" }, 
+        { "nome": "Nubank", "img": "nubank2", "tipo": ["CARTAOCREDITO"], "id": "nubank" }, 
+        { "nome": "C6 Bank", "img": "c6-2", "tipo": ["OUTROS"], "id": "c6bank" }
     ];
 
     $scope.salvarContaBancaria = function(form) {

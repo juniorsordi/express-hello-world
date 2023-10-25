@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('Sistema', ['ngRoute', 'ngAnimate', 'ngSanitize', 'lr.upload', 'ngFileUpload']);
+var app = angular.module('Sistema', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ngResource', 'lr.upload', 'ngFileUpload', 'mgcrea.ngStrap', 'ui.bootstrap']);
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 app.config(function ($controllerProvider) {
@@ -21,6 +21,27 @@ app.config(function ($httpProvider) {
 app.run(function ($rootScope, $route, $http, $routeParams) {
 
 });
+///#####################################################################################################
+app.factory("tokenInterceptor", ["$window", "$location", function ($window, $location) {
+    return {
+        request: function (config) {
+            var token = JSON.parse(localStorage.getItem("userSICOOB")).token;
+            if (token && !config.noAuth) {
+                config.headers['x-access-token'] = token;
+            }
+            return config;
+        },
+        response: function (response) {
+            return response;
+        }
+    };
+}]);
+///#####################################################################################################
+app.config(["$httpProvider", function ($httpProvider) {
+    $httpProvider.interceptors.push("tokenInterceptor");
+    //$httpProvider.interceptors.push("authenticationInterceptor");
+    //$httpProvider.interceptors.push("responseErrorInterceptor");
+}]);
 ///#####################################################################################################
 ///#####################################################################################################
 ///#####################################################################################################
@@ -136,7 +157,7 @@ app.directive('myTable', function () {
 app.factory('RestService', function ($http) {
     return {
         getData: function (modulo, metodo, tipo, callback) {
-            $http.get("app/rest/?sc=" + tipo + "&Modulo=" + modulo + "&metodo=" + metodo).success(callback);
+            $http.get("app/rest/?sc=" + tipo + "&Modulo=" + modulo + "&metodo=" + metodo).then(callback);
             //$http.get("http://radio.sc.senac.br/EAD/Projetos/app/rest/?sc=" + tipo + "&Modulo=" + modulo + "&metodo=" + metodo).success(callback);
         },
         postData: function (modulo, metodo, tipo, param, callback) {
@@ -148,7 +169,7 @@ app.factory('RestService', function ($http) {
                 headers: {
                     "Content-Type": 'application/x-www-form-urlencoded'
                 } // set the headers so angular passing info as form data (not request payload)
-            }).success(callback);
+            }).then(callback);
         },
         postData2: function (modulo, metodo, tipo, param, callback) {
             $http({
@@ -159,7 +180,31 @@ app.factory('RestService', function ($http) {
                 headers: {
                     "Content-Type": 'application/x-www-form-urlencoded'
                 } // set the headers so angular passing info as form data (not request payload)
-            }).success(callback);
+            }).then(callback);
+        }
+    }
+});
+///#####################################################################################################
+app.factory('APIService', function ($http, $resource) {
+    const apiBaseURL = "../api/v1";
+    return {
+        getData: function (path, callback) {
+            $http.get(apiBaseURL + path).then(callback);
+        },
+        postData: function (path, param, callback) {
+            $http.post(apiBaseURL + path, param).then(callback);
+        },
+        putData: function (path, param, callback) {
+            $http.put(apiBaseURL + path, param).then(callback);
+        },
+        deleteData: function (path, callback) {
+            $http.delete(apiBaseURL + path).then(callback);
+        },
+        resourceQuery: function (path) {
+            return $resource(apiBaseURL + path).query();
+        },
+        resourceGet: function (path, ID) {
+            return $resource(apiBaseURL + path).get({ id: ID });
         }
     }
 });
@@ -185,6 +230,11 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/operacao/extrato',      { templateUrl: 'app/view/Operacoes/Extrato.html', controller: 'FinancasCtrl' })
 
         .when('/setor/ti',              { templateUrl: 'app/view/Setores/TI.html' })
+
+        .when('/financeiro',                { templateUrl: 'app/view/Financeiro/dashboard.html', controller: 'FinancasDashCtrl' })
+        .when('/financeiro/movimentacoes',  { templateUrl: 'app/view/Financeiro/movimentacoes.html', controller: 'FinancasMovCtrl', title:'Movimentações' })
+        .when('/financeiro/contasbancarias',  { templateUrl: 'app/view/Financeiro/contasBancarias.html', controller: 'FinancasContasCtrl', title:'Movimentações' })
+        .when('/financeiro/categorias',     { templateUrl: 'app/view/Financeiro/categorias.html', controller: 'FinancasCentroCustoCtrl', title:'Movimentações' })
 
         .when('/ti/impressoras',        { templateUrl: 'app/view/Operacoes/Impressoras.html', controller: 'TICtrl' })
 
@@ -366,8 +416,8 @@ app.controller("AppController", function ($scope, RestService) {
     ///############################################################################################
     ///############################################################################################
     $scope.initTelaInicial = function() {
-        $scope.listarAniversariantesMes();
-        $scope.pegarMesAtual();
+        //$scope.listarAniversariantesMes();
+        //$scope.pegarMesAtual();
     }
     ///############################################################################################
     $scope.listarAniversariantesMes = function() {

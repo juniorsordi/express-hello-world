@@ -135,6 +135,22 @@
                 </li>
             </ul>
         </li>
+        <li ng-if="modules.rh" class="sidebar-item">
+            <a data-bs-target="#rh" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <i class="align-middle" data-feather="folder"></i>
+                <span class="align-middle" translate="">RH</span>
+            </a>
+            <ul id="rh" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh/baterPonto">Bater Ponto</a>
+                </li>
+            </ul>
+        </li>
         <li class="sidebar-item">
             <a class="sidebar-link" href="#!/games">
                 <i class="align-middle" data-feather="home"></i>
