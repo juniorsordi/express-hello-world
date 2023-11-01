@@ -1,3 +1,4 @@
+
 /*
 const CyclicDb = require("@cyclic.sh/dynamodb");
 const db = CyclicDb("good-gold-zebra-kiltCyclicDB");
@@ -13,33 +14,18 @@ let leo = await animals.set("leo", {
 let item = await animals.get("leo")
 console.log(item);
 //*/
-const sqlite3 = require('sqlite3').verbose();
-const util    = require('util');
+const sqlite = require("./sqlite");
+const postgres = require("./postgres");
+//const mongo = require("./mongo");
+//const mysql = require("./mariadb");
 
-let db = new sqlite3.Database('./database.db', sqlite3.OPEN_READWRITE, (err) => {
-    if (err) {
-        console.error(err.message);
-    }
-    console.log('Connected to the chatbot database.');
-});
+let database = null;
+if(process.env.DATABASE_TYPE == "sqlite")   { database = sqlite; }
+if(process.env.DATABASE_TYPE == "postgres") { database = postgres; }
+//if(process.env.DATABASE_TYPE == "mongo")    { database = mongo; }
+//if(process.env.DATABASE_TYPE == "mysql")    { database = mysql; }
 
-db.run = util.promisify(db.run);
-db.get = util.promisify(db.get);
-db.all = util.promisify(db.all);
-
-// empty all data from db
-db.clean_db = async function() {
-  await db.run("delete from users");
-  await db.run("delete from members");
-  await db.run("delete from guilds");
-  db.run("vacuum");
-}
-
-// any kind of other function ...
-
-// and then export your module
-
-module.exports = db;
+module.exports = database;
 /*
 let db = new sqlite3.Database('./database.db', (err) => {
     if (err) {

@@ -467,10 +467,39 @@ app.controller("FinancesInvoicesCtrl", function ($scope, $routeParams, $resource
     $scope.init();
 });
 ///#########################################################################################################################
+var modalAccount;
+var modalCategory;
+var modalMovement;
+
 app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
     $scope.form = {};
-    var modalAccount = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceAccount.html', show: false, scope: $scope, });
-    var modalCategory = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceCategory.html', show: false, scope: $scope, });
+
+    modalAccount = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceAccount.html', show: false, scope: $scope, });
+    modalCategory = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceCategory.html', show: false, scope: $scope, });
+    modalMovement = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceMovement.html', show: false, scope: $scope, });
+
+    $scope.myConfigCB = {
+        valueField: 'id',
+        labelField: 'nome',
+        searchField: 'nome',
+        sortField: 'nome',
+        maxItems: 1,
+        //options: resp.data,
+        render: {
+            item: function (item, escape) {
+                return '<div>'
+                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                    + '<span>&nbsp;' + item.nome + '</span> '
+                    + '</div>';
+            },
+            option: function (item, escape) {
+                return '<div>'
+                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                    + '<span>&nbsp;' + item.nome + '</span> '
+                    + '</div>';
+            }
+        },
+    }
 
     $scope.employees = [{ "id": "1", "employee_name": "Albano", "employee_salary": "222", "employee_age": "38", "profile_image": "" }, 
     { "id": "2", "employee_name": "Lemos", "employee_salary": "89", "employee_age": "50", "profile_image": "" }, 
@@ -518,7 +547,12 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
 
     $scope.init = function () {
         APIService.getData("/finances/dashboard/accounts", function (resp) { 
+
             $scope.dashboardAccountsList = resp.data;
+
+            $scope.dashboardAccountsList.forEach(element => {
+                element.banco = JSON.parse(element.banco);
+            });
 
             $("#select-console").selectize({
                 valueField: 'id',
@@ -559,85 +593,6 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
             }
 
             console.log($scope.movimentacoesContaList);
-        });
-        APIService.getData("/cadastros/contas/moedas", function (resp) { 
-            $scope.listaMoedas = resp.data; 
-
-            $scope.configMoedas = {
-                valueField: 'id',
-                labelField: 'nome',
-                searchField: 'nome',
-                maxItems: 1,
-                options: resp.data,
-                render: {
-                    item: function (item, escape) {
-                        return '<div>'
-                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    },
-                    option: function (item, escape) {
-                        return '<div>'
-                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    }
-                },
-            };
-            
-            /*$("#field5b").selectize({
-                valueField: 'id',
-                labelField: 'nome',
-                searchField: 'nome',
-                options: resp.data,
-                render: {
-                    item: function (item, escape) {
-                        return '<div>'
-                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    },
-                    option: function (item, escape) {
-                        return '<div>'
-                            + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    }
-                },
-            });*/
-
-            /*$("#field5").selectize({
-                valueField: 'id',
-                labelField: 'nome',
-                searchField: 'nome',
-                options: $scope.tiposContasBancarias
-            });//*/
-        });
-
-        APIService.getData("/cadastros/contas/bancos", function (resp) {
-            $scope.listaBancos = resp.data; 
-
-            $scope.myConfig = {
-                valueField: 'id',
-                labelField: 'nome',
-                searchField: 'nome',
-                maxItems: 1,
-                options: resp.data,
-                render: {
-                    item: function (item, escape) {
-                        return '<div>'
-                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg"" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    },
-                    option: function (item, escape) {
-                        return '<div>'
-                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg"" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    }
-                },
-            }
         });
         
         $scope.relatorio = {
@@ -756,10 +711,36 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
 
     }
 
-    $scope.filtrarCategorias = function(value) {
-        if (value == 1) { $scope.filtredCategoriesList = $scope.categoriesList.filter(e => e.tipo == 'D'); }
-        if (value == 2) { $scope.filtredCategoriesList = $scope.categoriesList.filter(e => e.tipo == 'C'); }
+    $scope.testeOFX = function() {
+        APIService.getData("/finances/accounts/testeOFX", function (resp) { $scope.ofxList = resp.data; });
     }
+
+    $scope.lancarItem = function(item) {
+        $scope.form.titulo = item.MEMO;
+        if (item.TRNAMT < 0) {
+            $scope.form.tipo_operacao = "1";
+            $scope.form.valor = item.TRNAMT * -1;
+        } else {
+            $scope.form.tipo_operacao = "2";
+            $scope.form.valor = item.TRNAMT;
+        }
+        $scope.filtrarCategorias( parseInt($scope.form.tipo_operacao));
+        
+        let tempData = item.FITID.substr(0, 4) + "-" + item.FITID.substr(4, 2) + "-" + item.FITID.substr(6,2);
+        $scope.form.data_vencimento  = new Date(tempData+"T12:00:00.0Z");
+        
+        console.log($scope.form);
+    }
+
+    $scope.showModalCreateAccount = function()      { modalAccount.show(); }
+    $scope.showModalCreateCategory = function ()    { modalCategory.show(); }
+    $scope.showModalCreateMovement = function ()    { modalMovement.show(); }
+
+    $scope.init();
+});
+///#########################################################################################################################
+app.controller("FinancesAddAccount", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
+    $scope.form = {};
 
     $scope.myConfigCB = {
         valueField: 'id',
@@ -798,11 +779,102 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
         { "nome": "C6 Bank", "img": "c6-2", "tipo": ["OUTROS"], "id": "c6bank" }
     ];
 
+    $scope.people = [
+        { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
+        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
+        { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+        { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
+        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
+        { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
+        { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
+        { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
+        { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
+        { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
+    ];
+
+    $scope.init = function () {
+        console.log("Modal opening");
+        APIService.getData("/cadastros/contas/moedas", function (resp) { 
+                $scope.listaMoedas = resp.data; 
+
+                $scope.configMoedas = {
+                    valueField: 'id',
+                    labelField: 'nome',
+                    searchField: 'nome',
+                    maxItems: 1,
+                    options: $scope.listaMoedas,
+                    render: {
+                        item: function (item, escape) {
+                            return '<div>'
+                                + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                                + '<span>&nbsp;' + item.nome + '</span> '
+                                + '</div>';
+                        },
+                        option: function (item, escape) {
+                            return '<div>'
+                                + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                                + '<span>&nbsp;' + item.nome + '</span> '
+                                + '</div>';
+                        }
+                    },
+                };
+        });
+
+        APIService.getData("/cadastros/contas/bancos", function (resp) {
+                $scope.listaBancos = resp.data; 
+
+                $scope.myConfig = {
+                    valueField: 'id',
+                    labelField: 'nome',
+                    searchField: 'nome',
+                    maxItems: 1,
+                    options: resp.data,
+                    render: {
+                        item: function (item, escape) {
+                            return '<div>'
+                                + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                                + '<span>&nbsp;' + item.nome + '</span> '
+                                + '</div>';
+                        },
+                        option: function (item, escape) {
+                            return '<div>'
+                                + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
+                                + '<span>&nbsp;' + item.nome + '</span> '
+                                + '</div>';
+                        }
+                    },
+                }
+        });
+    }
+
     $scope.salvarContaBancaria = function(form) {
+        console.log(form); return;
         APIService.postData("/finances/accounts", form, function(resp) {
             modalAccount.hide();
             $scope.form = {};
         });
+    }
+
+    $scope.init();
+});
+///#########################################################################################################################
+app.controller("FinancesAddMovement", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
+    $scope.form = {};
+
+    $scope.salvarMovimentacao = function(form) {
+        APIService.postData("/finances/accounts/2/movimentacoes", form, function (resp) {
+            $scope.form = {};
+            $rootScope.$broadcast('updateListTasks');
+        });
+    }
+});
+///#########################################################################################################################
+app.controller("FinancesAddCategory", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
+    $scope.form = {};
+
+    $scope.filtrarCategorias = function(value) {
+        if (value == 1) { $scope.filtredCategoriesList = $scope.categoriesList.filter(e => e.tipo == 'D'); }
+        if (value == 2) { $scope.filtredCategoriesList = $scope.categoriesList.filter(e => e.tipo == 'C'); }
     }
 
     $scope.salvarCategoria = function(form) {
@@ -812,40 +884,9 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
             $scope.init();
         });
     }
-
-    $scope.salvarMovimentacao = function(form) {
-        APIService.postData("/finances/accounts/2/movimentacoes", form, function (resp) {
-            $scope.form = {};
-            $rootScope.$broadcast('updateListTasks');
-        });
-    }
-
-    $scope.testeOFX = function() {
-        APIService.getData("/finances/accounts/testeOFX", function (resp) { $scope.ofxList = resp.data; });
-    }
-
-    $scope.lancarItem = function(item) {
-        $scope.form.titulo = item.MEMO;
-        if (item.TRNAMT < 0) {
-            $scope.form.tipo_operacao = "1";
-            $scope.form.valor = item.TRNAMT * -1;
-        } else {
-            $scope.form.tipo_operacao = "2";
-            $scope.form.valor = item.TRNAMT;
-        }
-        $scope.filtrarCategorias( parseInt($scope.form.tipo_operacao));
-        
-        let tempData = item.FITID.substr(0, 4) + "-" + item.FITID.substr(4, 2) + "-" + item.FITID.substr(6,2);
-        $scope.form.data_vencimento  = new Date(tempData+"T12:00:00.0Z");
-        
-        console.log($scope.form);
-    }
-
-    $scope.showModalCreateAccount = function() { modalAccount.show(); }
-    $scope.showModalCreateCategory = function () { modalCategory.show(); }
-
-    $scope.init();
 });
+///#########################################################################################################################
+///#########################################################################################################################
 ///#########################################################################################################################
 ///#########################################################################################################################
 ///#########################################################################################################################

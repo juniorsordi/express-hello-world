@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const db = require("../infra/database");
+const database = require("../infra/database");
 const sequelize = require("../infra/sequelize");
-const database = require("../infra/postgres");
 
 const Company = sequelize.define('empresa', {
     id: {

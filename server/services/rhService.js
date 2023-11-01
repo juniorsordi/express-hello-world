@@ -4,7 +4,7 @@ var fs = require("fs");
 const moment = require("moment");
 //const ofx = require('ofx-convertjs');
 
-const database = require("../infra/postgres");
+const database = require("../infra/database");
 moment.locale('pt-br');
 
 async function salvarBatidaPonto(fields) {
@@ -35,7 +35,7 @@ async function listarUltimasBatidas(idUser) {
     let SQL = `SELECT * FROM rh_batida_ponto
         WHERE id_usuario = $1
         ORDER BY dia DESC, mes DESC, ano DESC, hora DESC
-        LIMIT 12`;
+        LIMIT 28`;
     const data = await database.any(SQL, [idUser]);
     return data;
 }

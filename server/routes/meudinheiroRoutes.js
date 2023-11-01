@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require("../middleware/auth");
-const database = require("../infra/postgres");
+const database = require("../infra/database");
 
 router.post("/lancamentos/confirmacaoauto", async function (req, res, next) {
     try {

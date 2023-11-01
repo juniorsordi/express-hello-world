@@ -15,7 +15,7 @@ var app = angular.module('Sistema', ['ngRoute'
     , 'ngFileUpload'
     //, 'angularUtils.directives.dirPagination'
     //, 'datatables'
-    //, 'ui.select'
+    , 'ui.select'
     , 'selectize'
     , "pascalprecht.translate"
     , 'ngSanitize']);
@@ -106,8 +106,7 @@ app.factory('loadingInterceptor', function ($rootScope, $q) {
 });
 ///#####################################################################################################
 app.config(["$httpProvider", function ($httpProvider) {
-    //$httpProvider.interceptors.push("tokenInterceptor");
-    //$httpProvider.interceptors.push("authenticationInterceptor");
+    $httpProvider.interceptors.push("tokenInterceptor");
     //$httpProvider.interceptors.push("responseErrorInterceptor");
     $httpProvider.interceptors.push('loadingInterceptor');
 }]);

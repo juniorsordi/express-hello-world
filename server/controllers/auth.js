@@ -1,5 +1,5 @@
 const db = require('../infra/database');
-const postgres = require('../infra/postgres');
+//const postgres = require('../infra/postgres');
 var crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 const utils = require("../infra/utils");
@@ -91,14 +91,15 @@ async function userLoginPG(email, password) {
             return { success: false, msg: 'Email ou senha vazios'};
         }
         let hashPassword = crypto.createHash('sha1');
-        hashPassword.update(password);
+        hashPassword.update(password.trim());
         var tempHash = hashPassword.digest('hex');
         // Validate if user exist in our database
-        const user = await postgres.one("SELECT * FROM usuario WHERE email = $1", [email]);
+        let emailC = email.trim();
+        const user = await db.one("SELECT * FROM usuario WHERE email = $1", [emailC]);
         if (user && (tempHash == user.senha)) {
             // Create token
             const token = jwt.sign(
-                { user_id: user.id, email, foto: user.foto },
+                { user_id: user.id, email: emailC, foto: user.foto },
                 `${process.env.TOKEN_KEY}`,
                 {
                     expiresIn: "24h",

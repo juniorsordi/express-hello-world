@@ -4,17 +4,12 @@ var fs = require("fs");
 const moment = require("moment");
 //const ofx = require('ofx-convertjs');
 
-const database = require("../infra/postgres");
+const database = require("../infra/database");
 //const ofx = require('../infra/ofx');
 //, (SELECT json_agg(json_build_object('key', key, 'value', value)) FROM financas_bancos WHERE id = a.banco::int) as banco
 async function getContasBancarias(idEmpresa) {
     let SQL = `SELECT a.* 
-        , (SELECT json_build_object(
-                'nome', nome,
-                'img', img,
-                'bacen', codigo_bacen
-            ) FROM financas_bancos WHERE id = a.banco::int
-        ) as banco
+        , json_extract(banco, '$') as banco
         , coalesce( (select sum(valor_efetivo) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'D'), 0) as total_despesas
         , coalesce( (select sum(valor_efetivo) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'C'), 0) as total_receitas
         FROM financas_conta_bancaria a
@@ -51,7 +46,7 @@ async function getDashboardCategorias(idConta, idEmpresa) {
 }
 
 async function saveAccount(fields) {
-    let SQL = "INSERT INTO financas_conta_bancaria VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, 0, $8, 1) returning *";
+    let SQL = "INSERT INTO financas_conta_bancaria VALUES (null, $1, $2, $3, $4, $5, $6, $7, 0, $8, 1) returning *";
     const info = await database.any(SQL, [
         fields.nome,
         fields.banco,
@@ -66,7 +61,7 @@ async function saveAccount(fields) {
 }
 
 async function saveCategory(fields) {
-    let SQL = "INSERT INTO financas_categoria VALUES (DEFAULT, $1, $2, 1, $3, $4) returning *";
+    let SQL = "INSERT INTO financas_categoria VALUES (null, $1, $2, 1, $3, $4) returning *";
     const info = await database.any(SQL, [
         fields.nome,
         fields.tipo_operacao,
@@ -97,7 +92,7 @@ async function saveAccountMoviment(fields, idEmpresa) {
         valor_efetivo = null;
         situacao = 0;
     }
-    let SQL = `INSERT INTO financas_movimentacao VALUES (DEFAULT, 
+    let SQL = `INSERT INTO financas_movimentacao VALUES (null, 
         $1, $2, $3, $4, $5, $6, $7, now(), $8, $9, $10, null, null, null, false, false, $11
     ) returning *`;
     //console.log(SQL);
