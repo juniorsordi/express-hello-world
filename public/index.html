@@ -128,8 +128,20 @@
 	<script src="app/controllers/RHCtrl.js"></script>
 	<!-- endinject -->
 </head>
-<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky"
-	data-preloader="disable" ng-controller="AppController" ng-init="initApp()">
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" data-preloader="disable" ng-controller="AppController" ng-init="initApp()">
+
+	<div id="loading" class="modal bs-example-modal-sm in" role="dialog" style="display: block; padding-right: 17px; z-index: 10100;" ng-show="carregando">
+		<div class="modal-backdrop in" style="height: 697px;"></div>
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content" style="border-radius: 10px;text-align: center;">
+				<h1> 
+					<span ng-bind-html="mensagem!=null?mensagem:'Carregando'"></span> ...
+					<i class="fa fa-spinner fa-spin"></i>
+				</h1>
+			</div>
+		</div>
+	</div>
+
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
@@ -349,12 +361,15 @@
 							</div>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-flag dropdown-toggle" href="#" id="languageDropdown"
-								data-bs-toggle="dropdown">
-								<img src="assets/img/flags/br.png" alt="Portuguese" />
-							</a>
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-								<a class="dropdown-item" href="#">
+							<a class="nav-flag dropdown-toggle" href="#" id="languageDropdown" data-bs-toggle="dropdown">
+                                <img ng-src="assets/img/flags/{{ currentLang.flag }}" alt="Portuguese" />
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                                <a ng-repeat="country in languagesList" class="dropdown-item" href="#" ng-click="changeLocale(country.locale)">
+                                    <img ng-src="assets/img/flags/{{ country.flag }}" alt="{{ country.name }}" width="20" class="align-middle me-1" />
+                                    <span class="align-middle" translate>{{ country.name }}</span>
+                                </a>
+								<!--a class="dropdown-item" href="#">
 									<img src="assets/img/flags/us.png" alt="English" width="20"
 										class="align-middle me-1" />
 									<span class="align-middle" translate>English</span>
@@ -378,7 +393,7 @@
 									<img src="assets/img/flags/nl.png" alt="Dutch" width="20"
 										class="align-middle me-1" />
 									<span class="align-middle" translate>Dutch</span>
-								</a>
+								</a-->
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -392,12 +407,12 @@
 								<span class="text-dark">{{ Usuario.nome }}</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="#!/profile"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+								<a class="dropdown-item" href="#!/profile"><i class="align-middle me-1" data-feather="user"></i> <span translate>Profile</span></a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i><span translate>Analytics</span></a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#!/settings">Settings & Privacy</a>
-								<a class="dropdown-item" href="">Help</a>
-								<a class="dropdown-item" href="" ng-click="deslogar()">Sign out</a>
+								<a class="dropdown-item" href="#!/settings" translate>Settings & Privacy</a>
+								<a class="dropdown-item" href="" translate>Help</a>
+								<a class="dropdown-item" href="" ng-click="deslogar()" translate>Sign out</a>
 							</div>
 						</li>
 					</ul>

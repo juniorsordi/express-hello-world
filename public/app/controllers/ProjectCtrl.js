@@ -519,6 +519,48 @@ app.controller("KanbanViewCtrl", function ($scope, $resource, $routeParams, APIS
     };
 });
 ///#####################################################################################################
+app.controller("G4FCtrl", function ($scope, $rootScope, $resource, $routeParams, APIService, $modal) {
+    $scope.form = {
+        num_os: 'OS573',
+        sistema: 'SGI',
+        solicitante: 'Rafael Queiroz Gonçalves',
+        unidade: 'DTI',
+        tecnologia: 'JAVA',
+        detalhamentos: [],
+        analista: $rootScope.Usuario.name,
+        profissional_alocado: 1,
+        tempo_gasto: 4,
+        tempo_gasto_medida: 'Hora(s)',
+    }
+
+    $scope.salvar = function() {
+        /*
+        var object = { '1536135941922': 'true', '1536135962942': 'false', '1536135986966': 'false', '1536135989968': 'true' };
+        var array = Object
+                .entries($scope.form)
+                .map(pair => Object.fromEntries([pair]));
+
+        let result = [];
+        array.map(function([key, value]) {
+            result.push(value);
+        });
+        //*/
+        APIService.postData("/controleMudanca", $scope.form, function(resp) {
+
+        });
+        //let result = array.map(([key, value]) => ({ [key]: value }));
+        //console.log(Object.values());
+    }
+
+    $scope.addDetalhamento = function() {
+        $modal({
+            title: 'My Title',
+            templateUrl: 'app/views/Projects/ControleMudancas/cadastro_detalhamento_modal.html',
+            show: true,
+            scope: $scope,
+        });
+    }
+});
 ///#####################################################################################################
 ///#####################################################################################################
 ///#####################################################################################################

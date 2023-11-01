@@ -97,6 +97,7 @@ app.use('/api/v1/', require('./server/routes/projectsRoute'));
 app.use('/api/v1/', require('./server/routes/companyRoute'));
 app.use('/api/v1/', require('./server/routes/financesRoute'));
 app.use('/api/v1/', require('./server/routes/rhRoutes'));
+app.use('/api/v1/', require('./server/routes/controleMudancaRoute'));
 app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
 app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 app.use('/api/v1/finances/accounts', require('./server/routes/financesAccountsRoute'));

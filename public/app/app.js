@@ -24,9 +24,6 @@ app.config(function ($controllerProvider) {
     app.controller = $controllerProvider.register;
 });
 ///////////////////////////////////////////////////////////////////
-app.run(function ($rootScope, $route, $http, $routeParams) {
-
-});
 ///#####################################################################################################
 ///#####################################################################################################
 var date = new Date().getTime().toString();
@@ -57,6 +54,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
         .when('/contracts',             { templateUrl: 'app/views/Contratos/listaContratos.html', controller: 'ContractsCtrl' })
 
+        .when('/g4f/controle_mudancas', { templateUrl: 'app/views/Projects/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl' })
+
         .when('/rh/baterPonto',         { templateUrl: 'app/views/RH/BaterPonto.html', controller: 'RHCtrl' })
 
         .when('/company/users',          { templateUrl: 'app/views/Companies/users.html', controller: 'CompanyUsersCtrl' })
@@ -84,11 +83,39 @@ app.factory("tokenInterceptor", ["$window", "$location", function ($window, $loc
     };
 }]);
 ///#####################################################################################################
+app.factory('loadingInterceptor', function ($rootScope, $q) {
+	  return {
+	    request: function (config) {
+	    	$rootScope.stackDeCarga = $rootScope.stackDeCarga + 1;
+	    	$rootScope.carregando = !config.ignoreLoading;
+	    	return config;
+	    },
+	    response: function (response) {
+	    	$rootScope.stackDeCarga = $rootScope.stackDeCarga - 1;
+	    	if ($rootScope.stackDeCarga == 0) {
+	    		$rootScope.carregando = false;
+	    	}
+	    	return response;
+	    },
+	    responseError: function (rejection) {
+	    	$rootScope.stackDeCarga = $rootScope.stackDeCarga - 1;
+	    	$rootScope.carregando = false;
+	    	return $q.reject(rejection);
+	    }
+	  };
+});
+///#####################################################################################################
 app.config(["$httpProvider", function ($httpProvider) {
-    $httpProvider.interceptors.push("tokenInterceptor");
+    //$httpProvider.interceptors.push("tokenInterceptor");
     //$httpProvider.interceptors.push("authenticationInterceptor");
     //$httpProvider.interceptors.push("responseErrorInterceptor");
+    $httpProvider.interceptors.push('loadingInterceptor');
 }]);
+///#####################################################################################################
+app.run(function ($rootScope, $route, $http, $routeParams) {
+    $rootScope.carregando = false;
+    $rootScope.stackDeCarga = 0;
+});
 ///#####################################################################################################
 var myModal;
 
