@@ -15,16 +15,18 @@
                                 <th>Dia</th>
                                 <th>Mes</th>
                                 <th>Ano</th>
-                                <th>Hora</th>
-                                <th>Data Cadastro</th>
+                                <th>Hora Entrada</th>
+                                <th>Hora Saida</th>
+                                <th>Tempo</th>
                             </tr>
                         </thead>
                         <tr ng-repeat="user in listaPonto">
                             <td>{{ user.dia }}</td>
                             <td>{{ user.mes }}</td>
                             <td>{{ user.ano }}</td>
-                            <td>{{ user.hora }}</td>
-                            <td>{{ user.data_cadastro }}</td>
+                            <td>{{ user.entrada }}</td>
+                            <td>{{ user.saida }}</td>
+                            <td>{{ user.dif }}</td>
                         </tr>
                     </table>
                 </p>

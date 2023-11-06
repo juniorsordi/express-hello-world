@@ -6,7 +6,7 @@ const service = require('../services/rhService');
 
 router.post("/rh/ponto/bater", async function (req, res, next) {
     try {
-        let id_usuario = 1;
+        let id_usuario = req.cookies.IDUser;
         let info = await service.salvarBatidaPonto({ id_usuario });
         res.status(200).json(info);
     } catch (err) {
@@ -17,7 +17,7 @@ router.post("/rh/ponto/bater", async function (req, res, next) {
 
 router.get("/rh/ponto/ultimos", async function (req, res, next) {
     try {
-        let id_usuario = 1;
+        let id_usuario = req.cookies.IDUser;
         let info = await service.listarUltimasBatidas(id_usuario);
         res.status(200).json(info);
     } catch (err) {
@@ -25,6 +25,5 @@ router.get("/rh/ponto/ultimos", async function (req, res, next) {
         next(err);
     }
 });
-
 
 module.exports = router;

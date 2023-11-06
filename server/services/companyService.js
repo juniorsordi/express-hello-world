@@ -5,7 +5,7 @@ const database = require("../infra/database");
 async function getCompanyClients(idEmpresa) {
     try {
         let SQL = `SELECT * FROM empresa_cliente WHERE id_empresa = $1`
-        return await database.all(SQL, [idEmpresa]);
+        return await database.any(SQL, [idEmpresa]);
     } catch (err) {
         console.log(err);
     }

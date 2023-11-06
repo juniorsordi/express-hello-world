@@ -7,10 +7,9 @@ create table usuario (
 	id_tipo_login integer,
 	is_admin integer,
 	ativo boolean,
-	id_empresa integer
+	id_empresa integer references empresa (id)
 );
 
-drop table projeto CASCADE;
 create table projeto (
 	id serial primary key,
 	nome varchar(512),
@@ -83,7 +82,6 @@ create table empresa_cliente (
 	id_empresa integer references empresa(id)
 );
 
-drop table projeto_atividade_participante cascade;
 create table projeto_atividade_participante (
 	id serial primary key,
 	id_atividade integer references projeto_atividade(id),
@@ -96,7 +94,7 @@ create table projeto_situacao (
 	cor varchar(128),
 	visivel integer,
 	encerra boolean,
-	id_empresa integer,
+	id_empresa integer references empresa (id),
 	datahora timestamp
 );
 
@@ -104,7 +102,7 @@ create table projeto_tipo (
 	id serial primary key,
 	nome varchar(256),
 	ativo integer,
-	id_empresa integer,
+	id_empresa integer references empresa (id),
 	data_cadastro timestamp
 );
 
@@ -115,7 +113,6 @@ create table projeto_comentario (
 	comentario text,
 	data_cadastro timestamp
 );
-
 
 create table financas_conta_bancaria (
 	id serial primary key,
@@ -163,7 +160,6 @@ create table financas_bancos (
 	codigo_bacen varchar(6)
 );
 
-drop table financas_movimentacao;
 create table financas_movimentacao (
 	id serial primary key,
 	descricao varchar(512) not null,
@@ -187,7 +183,7 @@ create table financas_movimentacao (
 
 create table projeto_financeiro_pagamentos (
 	id serial primary key,
-	id_projeto integer not null,
+	id_projeto integer not null references projeto (id),
 	id_tarefa integer,
 	esforco_pago float,
 	valor_hora float,
@@ -197,7 +193,7 @@ create table projeto_financeiro_pagamentos (
 
 create table projeto_financeiro_despesas (
 	id serial primary key,
-	id_projeto integer not null,
+	id_projeto integer not null references projeto (id),
 	id_tarefa integer,
 	descricao varchar(1024),
 	valor float,
@@ -206,10 +202,20 @@ create table projeto_financeiro_despesas (
 
 create table rh_batida_ponto (
 	id serial primary key,
-	id_usuario integer not null,
+	id_usuario integer not null references usuario (id),
 	dia integer,
 	mes integer,
 	ano integer,
 	hora varchar(15),
+	data_cadastro timestamp
+);
+
+create table sistema_notificacao (
+	id serial primary key,
+	id_usuario integer not null references usuario (id),
+	tipo_notificacao integer not null,
+	titulo varchar(256),
+	texto varchar(2048),
+	lido integer,
 	data_cadastro timestamp
 );

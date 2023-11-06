@@ -22,17 +22,26 @@ async function connect() {
 }
 //*/
 let config = {};
+let localhost = true;
 
 config.database = {};
 config.database.application_name = "financial-RW";
-config.database.user = process.env.DATABASE_USER || 'postgres';
-config.database.database = process.env.DATABASE_DB || 'backstage';
-config.database.password = process.env.DATABASE_PW || '123456';
-config.database.host = process.env.DATABASE_HOST || 'localhost';
 config.database.port = process.env.DATABASE_PORT || 5432;
 config.database.max = 10;
 config.database.idleTimeoutMillis = 8000;
 config.database.poolSize = 5;
+
+if(localhost) {
+    config.database.user = process.env.DATABASE_USER_LOCAL || 'postgres';
+    config.database.database = process.env.DATABASE_DB_LOCAL || 'backstage';
+    config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
+    config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
+} else {
+    config.database.user = process.env.DATABASE_USER || 'postgres';
+    config.database.database = process.env.DATABASE_DB || 'backstage';
+    config.database.password = process.env.DATABASE_PW || '123456';
+    config.database.host = process.env.DATABASE_HOST || 'localhost';
+}
 
 const options = {
     pgFormatting: true,

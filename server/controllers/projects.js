@@ -10,12 +10,12 @@ async function dashboardRanking(idEmpresa) {
                 join usuario b on (b.id = a.id_usuario and b.id_empresa = ?)
                 where a.data_apontamento between ? and DATETIME('now')
                 group by b.nome`;
-    const data = await db.all(SQL, [idEmpresa, startDate]);
+    const data = await db.any(SQL, [idEmpresa, startDate]);
     return data;
 }
 
 async function dashboardProjects(idEmpresa) {
-    const data = await db.all(`SELECT b.descricao as situacao, ifnull(count(p.id),0) as total FROM projeto p
+    const data = await db.any(`SELECT b.descricao as situacao, ifnull(count(p.id),0) as total FROM projeto p
         LEFT JOIN projeto_situacao b ON (b.id = p.id_situacao)
         WHERE p.id_situacao is not null AND p.id_empresa = ?
         group by b.descricao`, [idEmpresa]);
@@ -23,7 +23,7 @@ async function dashboardProjects(idEmpresa) {
 }
 
 async function dashboardProjectsByYear(idEmpresa) {
-    const data = await db.all(`SELECT DATE('%Y',termino_real) as ano, ifnull(count(id),0) as total FROM projeto
+    const data = await db.any(`SELECT DATE('%Y',termino_real) as ano, ifnull(count(id),0) as total FROM projeto
             where  termino_real is not null and DATE('%Y',termino_real) > 2019 and id_situacao = 3 AND id_empresa = ?
             group by DATE('%Y',termino_real)
             order by 1`, [idEmpresa]);
@@ -32,7 +32,7 @@ async function dashboardProjectsByYear(idEmpresa) {
 
 async function dashboardGraphByType(idEmpresa, year) {
     //var year = moment().format('YYYY');
-    const data = await db.all(`SELECT (select descricao from projeto_tipo where id = c.id_tipo_projeto) as tipo_projeto, ifnull(sum(esforco),0) as total from projeto_atividade_apontamento a
+    const data = await db.any(`SELECT (select descricao from projeto_tipo where id = c.id_tipo_projeto) as tipo_projeto, ifnull(sum(esforco),0) as total from projeto_atividade_apontamento a
             left join projeto_atividade b on (b.id = a.id_atividade)
             left join projeto c on (c.id = b.id_projeto)
             WHERE strftime('%Y',a.data_apontamento) = ? AND c.id_empresa = ?
@@ -43,7 +43,7 @@ async function dashboardGraphByType(idEmpresa, year) {
 
 async function dashboardGraphByClient(idEmpresa, year) {
     //var year = moment().format('YYYY');
-    const data = await db.all(`SELECT (select nome_cliente from empresa_cliente where id = c.id_cliente) as cliente, ifnull(sum(esforco ),0) as total from projeto_atividade_apontamento a
+    const data = await db.any(`SELECT (select nome_cliente from empresa_cliente where id = c.id_cliente) as cliente, ifnull(sum(esforco ),0) as total from projeto_atividade_apontamento a
             left join projeto_atividade b on (b.id = a.id_atividade)
             left join projeto c on (c.id = b.id_projeto)
             WHERE strftime('%Y',a.data_apontamento) = ? and c.id_empresa = ?
@@ -53,12 +53,12 @@ async function dashboardGraphByClient(idEmpresa, year) {
 }
 
 async function dashboardProjectsFinished(idEmpresa) {
-    const data = await db.all("SELECT '1' FROM dual");
+    const data = await db.any("SELECT '1' FROM dual");
     return data;
 }
 
 async function listProjects(idEmpresa) {
-    const data = await db.all(`SELECT a.*,
+    const data = await db.any(`SELECT a.*,
         b.descricao as nome_situacao,
         b.cor as cor_situacao
     FROM projeto a
@@ -66,7 +66,7 @@ async function listProjects(idEmpresa) {
         WHERE a.id_empresa = ? AND b.visivel = 1`, [idEmpresa]);
     var i = 0;
     for(const project of data) {
-        const users = await db.all(`SELECT b.id, b.nome, b.email, b.foto from projeto a
+        const users = await db.any(`SELECT b.id, b.nome, b.email, b.foto from projeto a
         left join usuario b on (b.id = a.id_responsavel)
         where a.id = ?
         union
@@ -80,10 +80,10 @@ async function listProjects(idEmpresa) {
 }
 
 async function listKanbanProjects(idEmpresa, idProjeto) {
-    const data = await db.all(`SELECT * FROM projeto_atividade_situacao WHERE id_empresa = ? AND ativo = 1 ORDER BY ordem ASC`, [idEmpresa]);
+    const data = await db.any(`SELECT * FROM projeto_atividade_situacao WHERE id_empresa = ? AND ativo = 1 ORDER BY ordem ASC`, [idEmpresa]);
     var i = 0;
     for (const situacao of data) {
-        const atividades = await db.all(`SELECT a.*, b.nome as nome_usuario, b.foto FROM projeto_atividade a
+        const atividades = await db.any(`SELECT a.*, b.nome as nome_usuario, b.foto FROM projeto_atividade a
         LEFT JOIN usuario b ON (b.id = a.id_responsavel)
         WHERE id_projeto = ? AND id_status_atividade = ?`, [idProjeto, situacao.id]);
         data[i]['cards'] = atividades;
@@ -97,7 +97,7 @@ async function updateKanbanAtividade(idAtividade, idSituacao) {
 }
 
 async function getProject(id) {
-    const data = await db.all(`SELECT
+    const data = await db.any(`SELECT
                 a.*,
                 DATE(a.inicio_estimado,  '%d/%m/%Y') as inicio_estimado2,
                 DATE(a.termino_estimado,  '%d/%m/%Y') as termino_estimado2,
@@ -124,16 +124,16 @@ async function getProject(id) {
             LEFT JOIN projeto_tipo b ON (b.id = a.id_tipo_projeto)
             LEFT JOIN projeto_situacao c ON (c.id = a.id_situacao)
             WHERE a.id = ?`,[id]);
-    var participants = await db.all(`SELECT nome, foto, email FROM projeto_atividade_participante a LEFT JOIN usuario b ON (b.id = a.id_usuario) WHERE id_projeto = ?`,[id]);
-    var activities = await db.all(`SELECT * FROM projeto_atividade WHERE id_projeto = ?`,[id]);
+    var participants = await db.any(`SELECT nome, foto, email FROM projeto_atividade_participante a LEFT JOIN usuario b ON (b.id = a.id_usuario) WHERE id_projeto = ?`,[id]);
+    var activities = await db.any(`SELECT * FROM projeto_atividade WHERE id_projeto = ?`,[id]);
     data[0]['atividades'] = activities;
     var i = 0;
     for (const item of activities) {
         var idUser = item.id_responsavel;
-        var temp1 = await db.all("SELECT nome, foto, email FROM usuario WHERE id = ?", [idUser]);
+        var temp1 = await db.any("SELECT nome, foto, email FROM usuario WHERE id = ?", [idUser]);
         activities[i]['responsavel'] = temp1[0];
 
-        var persons = await db.all(`SELECT nome, foto, email FROM projeto_atividade_participante a
+        var persons = await db.any(`SELECT nome, foto, email FROM projeto_atividade_participante a
                 LEFT JOIN usuario b ON (b.id = a.id_usuario)
                 WHERE id_atividade = ?`,[item.id]);
         activities[i]['participantes'] = persons;
@@ -142,16 +142,16 @@ async function getProject(id) {
     data[0]['participantes'] = participants;
     const financies = getFinancesInfo(id, data[0].valor_hora);
     data[0]['financies'] = financies;
-    let cashflow = await db.all("SELECT * FROM projeto_financeiro WHERE id_projeto = ?", [id]);
+    let cashflow = await db.any("SELECT * FROM projeto_financeiro WHERE id_projeto = ?", [id]);
     data[0]['cashflow'] = cashflow;
-    var timeEntries = await db.all(`SELECT a.*, 
+    var timeEntries = await db.any(`SELECT a.*, 
         (SELECT titulo FROM projeto_atividade WHERE id = a.id_atividade ) as atividade_titulo,
         (SELECT nome FROM usuario WHERE id = a.id_usuario ) as nome_responsavel,
         (SELECT foto FROM usuario WHERE id = a.id_usuario ) as foto_responsavel
         FROM projeto_atividade_apontamento a
         where id_atividade in (select id from projeto_atividade where id_projeto = ${id})`);
     data[0]['timeEntries'] = timeEntries;
-    var comments = await db.all(`SELECT nome, foto, email, comentario, a.data_cadastro FROM projeto_comentario a
+    var comments = await db.any(`SELECT nome, foto, email, comentario, a.data_cadastro FROM projeto_comentario a
         LEFT JOIN usuario b ON (b.id = a.id_usuario)
         WHERE a.id_projeto = ?`,[id]);
     data[0]['comments'] = comments;
@@ -192,10 +192,10 @@ async function saveProject(data, user) {
 async function saveTimeEntry(data) {
     if (data.observacao == null) { data.observacao = ""; }
     let SQL = "INSERT INTO projeto_atividade_apontamento VALUES (null, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'), 0)";
-    let result = await db.all(SQL, [data.id_atividade, data.id_usuario, data.data, data.horas, data.observacao]);
+    let result = await db.one(SQL, [data.id_atividade, data.id_usuario, data.data, data.horas, data.observacao]);
     console.log(result);
     if(result) {
-        const atividade = await db.all("SELECT * FROM projeto_atividade WHERE id = ?", [data.id_atividade]);
+        const atividade = await db.any("SELECT * FROM projeto_atividade WHERE id = ?", [data.id_atividade]);
         let EsforcoAtual = atividade[0]['esforco_atual'] + data.horas;
         let Perc_Completo = (EsforcoAtual * 100) / atividade[0]['esforco_estimado'];
         ///
@@ -206,7 +206,7 @@ async function saveTimeEntry(data) {
 }
 
 async function updateProjectTimeEntries(id_atividade) {
-    const result = await db.all(`SELECT 
+    const result = await db.any(`SELECT 
             avg(percentual_completo) as andamento_projeto, 
             sum(esforco_atual) as esforco_atual,
             sum(esforco_estimado) as esforco_estimado,
@@ -235,12 +235,12 @@ async function saveNewTask(data, project_id, user_id) {
 }
 
 async function getFinancesInfo(id, valor_hora) {
-    const nonPaidEntries = await db.all(`SELECT sum(esforco) as totalHoras
+    const nonPaidEntries = await db.any(`SELECT sum(esforco) as totalHoras
             , (sum(esforco) * ${valor_hora}) as totalDinheiro
         FROM projeto_atividade_apontamento 
         where id_atividade in (select id from projeto_atividade where id_projeto = ${id})
         and pago = 0`);
-    const paidEntries = await db.all(`SELECT 
+    const paidEntries = await db.any(`SELECT 
             sum(esforco) as totalHoras 
             , (sum(esforco) * ${valor_hora}) as totalDinheiro
         FROM projeto_atividade_apontamento 
@@ -254,14 +254,14 @@ async function getFinancesInfo(id, valor_hora) {
 }
 
 async function getActivity(id) {
-    const data = await db.all(`SELECT * FROM projeto_atividade WHERE id = ?`,[id]);
+    const data = await db.any(`SELECT * FROM projeto_atividade WHERE id = ?`,[id]);
     var i = 0;//*
     for (const item of data) {
         var idUser = item.id_responsavel;
-        var temp1 = await db.all("SELECT nome, foto, email FROM usuario WHERE id = ?", [idUser]);
+        var temp1 = await db.any("SELECT nome, foto, email FROM usuario WHERE id = ?", [idUser]);
         data[i]['responsavel'] = temp1[0];
 
-        var persons = await db.all(`SELECT nome, foto, email FROM projeto_atividade_participante a
+        var persons = await db.any(`SELECT nome, foto, email FROM projeto_atividade_participante a
                 LEFT JOIN usuario b ON (b.id = a.id_usuario)
                 WHERE id_atividade = ?`, [item.id]);
         data[i]['participantes'] = persons;
@@ -271,14 +271,14 @@ async function getActivity(id) {
 }
 
 async function getActivitiesUser(idEmpresa) {
-    const data = await db.all(`SELECT a.*, b.nome as nome_usuario FROM usuario_tarefa a 
+    const data = await db.any(`SELECT a.*, b.nome as nome_usuario FROM usuario_tarefa a 
     JOIN usuario b ON (b.id = a.id_usuario AND b.id_empresa = ?)
     ORDER BY inicio_estimado ASC`,[idEmpresa]);
     return data;
 }
 
 async function saveActivityTimeEntry(fields) {
-    let data = await db.get("INSERT INTO usuario_tarefa_apontamento VALUES (null, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now')) RETURNING *",
+    let data = await db.one("INSERT INTO usuario_tarefa_apontamento VALUES (null, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now')) RETURNING *",
         [fields.id_atividade, fields.id_usuario, fields.data, fields.esforco, fields.observacao]);
     if(data) {
         await db.run("UPDATE usuario_tarefa SET esforco_real = esforco_real + ? WHERE id = ?",[fields.esforco, fields.id_atividade]);

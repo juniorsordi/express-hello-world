@@ -1,4 +1,4 @@
-const postgres = require('../infra/postgres');
+const database = require('../infra/database');
 var crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 const utils = require("../infra/utils");
@@ -15,7 +15,7 @@ async function userLogin(email, password) {
         var tempHash = hashPassword.digest('hex');
         // Validate if user exist in our database
         //const tempUser = await db1.query("SELECT * FROM usuario WHERE email = ?", [email]);
-        const user = await postgres.one("SELECT * FROM usuario WHERE email = $1 AND id_empresa = 2", [email]);
+        const user = await database.one("SELECT * FROM usuario WHERE email = $1 AND id_empresa = 2", [email]);
 
         if (user && (tempHash == user.senha)) {
             // Create token

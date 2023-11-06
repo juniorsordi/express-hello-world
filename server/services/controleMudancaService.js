@@ -7,7 +7,7 @@ const database = require("../infra/database");
 async function listarControleMudancas() {
     try {
         let SQL = `SELECT * FROM controle_mudancas`;
-        return await database.all(SQL);
+        return await database.any(SQL);
     } catch (err) {
         console.log(err);
     }
@@ -17,7 +17,7 @@ async function salvarControleMudanca(fields) {
     try {
         //return fields;
         let SQL = `INSERT INTO controle_mudancas VALUES (null, ?,?,?,?,?,?,?,null,?,?,?,1,DateTime('now', 'localtime'),?)`;
-        return await database.all(SQL, [fields.num_os,fields.sistema,fields.solicitante,fields.unidade,fields.analista,fields.tipo,
+        return await database.any(SQL, [fields.num_os,fields.sistema,fields.solicitante,fields.unidade,fields.analista,fields.tipo,
             fields.descricao,fields.tecnologia,fields.profissional_alocado,fields.tempo_gasto,fields.tempo_gasto_medida]);
     } catch (err) {
         console.log(err);
@@ -27,9 +27,9 @@ async function salvarControleMudanca(fields) {
 async function pegarControleMudancas(id) {
     try {
         let SQL = `SELECT * FROM controle_mudancas WHERE id = ?`;
-        let info = await database.all(SQL,[id]);
+        let info = await database.any(SQL,[id]);
 
-        let detalhamentos = await database.all("SELECT * FROM controle_mudancas_detalhamento WHERE id_controle_mudancas = ?", [id]);
+        let detalhamentos = await database.any("SELECT * FROM controle_mudancas_detalhamento WHERE id_controle_mudancas = ?", [id]);
         info[0].detalhamentos = detalhamentos;
 
         return info;

@@ -2,13 +2,13 @@ require('dotenv').config();
 const express = require('express')
 const path = require("path");
 const cors = require("cors");
-const app = express();
 var bodyParser = require('body-parser');
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 var multer = require('multer');
 const fileupload = require('express-fileupload');
 
+const app = express();
 // #############################################################################
 // Logs all request paths and method
 app.use(function (req, res, next) {
@@ -24,7 +24,7 @@ app.use(cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser());
-app.use(session({ secret: 'XASDASDA', saveUninitialized: true, resave: false, cookie: { maxAge: oneDay } }));
+app.use(session({ secret: 'XASDASDA', saveUninitialized: false, resave: false, cookie: { maxAge: oneDay } }));
 
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
@@ -101,6 +101,7 @@ app.use('/api/v1/', require('./server/routes/controleMudancaRoute'));
 app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
 app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 app.use('/api/v1/finances/accounts', require('./server/routes/financesAccountsRoute'));
+app.use('/api/v1/sistema', require('./server/routes/sistemaRoute'));
 
 app.post('/uploads', function (req, res) {
   upload(req, res, function (err) {

@@ -4,7 +4,7 @@ var crypto = require('crypto');
 
 
 async function getAllTickets() {
-    const data = await db.query(`SELECT a.*, b.nome as userName FROM ticket a
+    const data = await db.any(`SELECT a.*, b.nome as userName FROM ticket a
         LEFT JOIN usuario b ON (b.id = a.user_id)
         ORDER BY a.id DESC
         LIMIT 0, 15`);
@@ -12,10 +12,10 @@ async function getAllTickets() {
 }
 
 async function getTicketByID(id) {
-    const data = await db.query(`SELECT a.*, b.nome as userName FROM ticket a
+    const data = await db.any(`SELECT a.*, b.nome as userName FROM ticket a
         LEFT JOIN usuario b ON (b.id = a.user_id)
         WHERE a.id = ?`,[id]);
-    const events = await db.query(`SELECT a.*, b.nome as userName, b.email FROM ticket_event a
+    const events = await db.any(`SELECT a.*, b.nome as userName, b.email FROM ticket_event a
     LEFT JOIN usuario b ON (b.id = a.user_id)
     WHERE ticket_id = ? 
     ORDER BY id ASC`,[id]);
@@ -26,7 +26,7 @@ async function getTicketByID(id) {
 async function saveTicketEvent(data, id) {
     console.log(data);
     //return data;
-    return db.query("INSERT INTO ticket_event VALUES (null, ?, now(), ?, ?)",[id, data.event, data.user_id]);
+    return db.one("INSERT INTO ticket_event VALUES (null, ?, now(), ?, ?)",[id, data.event, data.user_id]);
 }
 
 async function userLogin(email, password) {
@@ -40,7 +40,7 @@ async function userLogin(email, password) {
         hashPassword.update(password);
         var tempHash = hashPassword.digest('hex');
         // Validate if user exist in our database
-        const tempUser = await db.query("SELECT * FROM usuario WHERE email = ?", [email]);
+        const tempUser = await db.one("SELECT * FROM usuario WHERE email = ?", [email]);
         const user = tempUser[0];
         if (user && (tempHash == user.password)) {
             // Create token
@@ -63,7 +63,7 @@ async function userLogin(email, password) {
 }
 
 async function getDashboardStatusTickets() {
-    const data = await db.query(`SELECT b.name as status, b.color, count(a.id) as total  from ticket a
+    const data = await db.any(`SELECT b.name as status, b.color, count(a.id) as total  from ticket a
         left join ticket_status b on(b.id = a.status_id and b.active = 1)
         group by b.name
         ORDER BY b.id`);
@@ -71,7 +71,7 @@ async function getDashboardStatusTickets() {
 }
 
 async function getDashboardLastTickets() {
-    const data = await db.query(`SELECT a.*, b.nome as userName FROM ticket a
+    const data = await db.any(`SELECT a.*, b.nome as userName FROM ticket a
         LEFT JOIN usuario b ON (b.id = a.user_id)
         ORDER BY a.id DESC
         LIMIT 0, 15`);

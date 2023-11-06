@@ -29,6 +29,8 @@ router.post("/auth/login", async function (req, res, next) {
             //
             res.cookie("user", user, { maxAge: 86400000 });
             res.cookie("IDUser", user.id, { maxAge: 86400000 });
+            res.cookie("IDEmpresa", user.id_empresa, { maxAge: 86400000 });
+            res.cookie("token", user.token, { maxAge: 86400000 });
             //*/
             req.session.loggedin = true;
             req.session.userID = user.id;
@@ -66,12 +68,8 @@ router.get("/test/seq", async function (req, res, next) {
     res.status(200).json(resp);
 });
 
-router.get("/test/manifestXML", async function (req, res, next) {
-    res.status(200).json(await controller.processManifestXML());
-});
-
 router.get("/auth/checkToken", upload.array("file"), async function (req, res, next) {
-    let token = req.cookies.access_token;
+    let token = req.cookies.token;
     
     try {
         const decoded = jwt.verify(token, process.env.TOKEN_KEY);
@@ -257,9 +255,7 @@ function uploadFiles(req, res) {
 
 router.get("/ofx/upload", async function (req, res, next) {
     /*
-    
     const data = ofx.toJson(file);
-
     const infoSaldo = {
         valor: data.OFX.BANKMSGSRSV1.LEDGERBAL.BALAMT,
         data: utils.formatDateDMY(data.OFX.BANKMSGSRSV1.LEDGERBAL.DTASOF)

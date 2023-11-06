@@ -6,7 +6,7 @@ var moment = require("moment");
 async function listProjects(idEmpresa) {
     try {
         let SQL = `SELECT * FROM projeto WHERE id_empresa = $1 ORDER BY nome ASC`;
-       return await database.all(SQL,[idEmpresa]);
+       return await database.any(SQL,[idEmpresa]);
     } catch (err) {
         console.log(err);
     }
@@ -60,11 +60,11 @@ async function saveProject(data, user) {
 }
 
 async function getProject(id) {
-    const data = await database.all(`SELECT
+    const data = await database.any(`SELECT
                 a.*,
                 a.inicio_estimado as inicio_estimado2,
                 a.termino_estimado as termino_estimado2,
-                b.descricao as tipo_projeto,
+                b.nome as tipo_projeto,
                 valor_hora,
                 ( 0 ) as percentual_receita,
                 ( 0 ) as percentual_custo,
@@ -77,26 +77,26 @@ async function getProject(id) {
                 (SELECT sum(esforco) FROM projeto_atividade_apontamento where id_atividade IN (SELECT id from projeto_atividade WHERE id_projeto = a.id) and pago = false) as unpaidHours,
                 (SELECT sum(esforco) FROM projeto_atividade_apontamento where id_atividade IN (SELECT id from projeto_atividade WHERE id_projeto = a.id) and pago = true) as paidHours,
                 ((SELECT sum(esforco) FROM projeto_atividade_apontamento where id_atividade IN (SELECT id from projeto_atividade WHERE id_projeto = a.id) and pago = false) * a.valor_hora) as expected_payment,
-                c.descricao as nome_situacao
+                c.nome as nome_situacao
             FROM projeto a
             LEFT JOIN projeto_tipo b ON (b.id = a.id_categoria)
             LEFT JOIN projeto_situacao c ON (c.id = a.id_status)
             WHERE a.id = $1`, [id]);
     //var participants = await database.query(`SELECT nome, foto, email FROM projeto_atividade_participante a LEFT JOIN usuario b ON (b.id = a.id_usuario) WHERE id_projeto = $1`, [id]);
-    var activities = await database.all(`SELECT * FROM projeto_atividade WHERE id_projeto = $1 ORDER BY id ASC, etapa ASC`, [id]);
+    var activities = await database.any(`SELECT * FROM projeto_atividade WHERE id_projeto = $1 ORDER BY id ASC, etapa ASC`, [id]);
     data[0]['atividades'] = activities;
     if (data[0]['expected_payment'] == null) { data[0]['expected_payment'] = 0; }
     var i = 0;
     for (const item of activities) {
         var idUser = item.id_responsavel;
-        var temp1 = await database.all("SELECT nome, foto, email FROM usuario WHERE id = $1", [idUser]);
+        var temp1 = await database.any("SELECT nome, foto, email FROM usuario WHERE id = $1", [idUser]);
         activities[i]['responsavel'] = temp1[0];
 
-        let paymentsTask = await database.all("SELECT * FROM projeto_financeiro_pagamentos WHERE id_tarefa = $1",[item.id]);
+        let paymentsTask = await database.any("SELECT * FROM projeto_financeiro_pagamentos WHERE id_tarefa = $1",[item.id]);
 
         activities[i]['pago'] = (paymentsTask.length > 0 ? true : false);
 
-        var persons = await database.all(`SELECT nome, foto, email FROM projeto_atividade_participante a
+        var persons = await database.any(`SELECT nome, foto, email FROM projeto_atividade_participante a
                 LEFT JOIN usuario b ON (b.id = a.id_usuario)
                 WHERE id_atividade = $1`, [item.id]);
         activities[i]['participantes'] = persons;
@@ -107,7 +107,7 @@ async function getProject(id) {
     //data[0]['financies'] = financies;
     //let cashflow = await database.query("SELECT * FROM projeto_financeiro WHERE id_projeto = $1", [id]);
     //data[0]['cashflow'] = cashflow;
-    var timeEntries = await database.all(`SELECT a.*, 
+    var timeEntries = await database.any(`SELECT a.*, 
         (SELECT titulo FROM projeto_atividade WHERE id = a.id_atividade ) as atividade_titulo,
         (SELECT nome FROM usuario WHERE id = a.id_usuario ) as nome_responsavel,
         (SELECT foto FROM usuario WHERE id = a.id_usuario ) as foto_responsavel
@@ -115,7 +115,7 @@ async function getProject(id) {
         where id_atividade in (select id from projeto_atividade where id_projeto = ${id})`);
     data[0]['timeEntries'] = timeEntries;
     //*
-    var comments = await database.all(`SELECT nome, foto, email, comentario, a.data_cadastro FROM projeto_comentario a
+    var comments = await database.any(`SELECT nome, foto, email, comentario, a.data_cadastro FROM projeto_comentario a
         LEFT JOIN usuario b ON (b.id = a.id_usuario)
         WHERE a.id_projeto = $1`, [id]);
     data[0]['comments'] = comments;
@@ -129,7 +129,7 @@ async function updateProject(id, params) {
         sql.push(field.field + " = " + field.value);
     }
     let updSQL = "UPDATE projeto SET " + sql.join(",") + " WHERE id = ?";
-    const data = await database.any(updSQL, [id]);
+    const data = await database.one(updSQL, [id]);
     return data;
 }
 
@@ -144,7 +144,7 @@ async function saveNewTask(data, project_id, user_id) {
 async function saveTimeEntry(data) {
     if (data.observacao == null) { data.observacao = ""; }
     let SQL = "INSERT INTO projeto_atividade_apontamento VALUES (null, $1, $2, $3, $4, $5, DateTime('now','localtime'), DateTime('now','localtime'), false) returning *";
-    let result = await database.any(SQL, [data.id_atividade, 
+    let result = await database.one(SQL, [data.id_atividade, 
         data.id_usuario, 
         data.horas, 
         data.observacao,
@@ -158,7 +158,7 @@ async function saveTimeEntry(data) {
         ///
         idProjeto = atividade[0].id_projeto;
         let SQL2 = "UPDATE projeto_atividade SET esforco_atual = $1,  percentual_completo = $2 WHERE id = $3";
-        await database.any(SQL2, [EsforcoAtual, Perc_Completo, data.id_atividade]);
+        await database.one(SQL2, [EsforcoAtual, Perc_Completo, data.id_atividade]);
 
         updateProjectTimeEntries(data.id_atividade, idProjeto);
         return result;
@@ -182,7 +182,7 @@ async function updateProjectTimeEntries(id_atividade, id_projeto) {
                         esforco_estimado = $2,
                         percentual_completo = $3
                     WHERE id = $4`;
-        await database.any(SQL2, [EsforcoAtual, esforco_estimado, Percentual, IDProjeto]);
+        await database.one(SQL2, [EsforcoAtual, esforco_estimado, Percentual, IDProjeto]);
     }
 }
 
@@ -196,9 +196,9 @@ async function taskPayment(data) {
     //let result = await database.any(SQL, [data.id]);
     let SQL2 = "INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, $1, $2, $3, $4, $5, now()) RETURNING *";
     let valor_total = parseFloat(data.esforco_real) * parseFloat(data.valor_hora);
-    let result2 = await database.any(SQL2, [data.id_projeto, data.id, data.esforco_real, data.valor_hora, valor_total]);
+    let result2 = await database.one(SQL2, [data.id_projeto, data.id, data.esforco_real, data.valor_hora, valor_total]);
     if(result2) {
-        await database.any("UPDATE projeto_atividade_apontamento SET pago = true WHERE id_atividade = $1", [data.id]);
+        await database.one("UPDATE projeto_atividade_apontamento SET pago = true WHERE id_atividade = $1", [data.id]);
     }
     return result2;
 }
