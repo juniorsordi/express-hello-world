@@ -21,6 +21,29 @@ db.clean_db = async function() {
   await db.run("delete from guilds");
   db.run("vacuum");
 }
+
+/*
+let db = new sqlite3.Database('./database.db', (err) => {
+    if (err) {
+        console.error(err.message);
+    }
+    console.log('Connected to the chinook database.');
+});
+
+async function query(sql, params) {
+    const row = await db.get(sql, params, (err, row) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        return row;
+
+    });
+    return row;
+}
+
+module.exports = db
+//*/
+
 // any kind of other function ...
 // and then export your module
 module.exports = db;

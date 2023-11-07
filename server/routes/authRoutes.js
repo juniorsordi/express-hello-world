@@ -7,8 +7,8 @@ var xml2js = require('xml2js');
 var ofxParse = require('../infra/ofx2');
 var multer = require('multer');
 const upload = multer({ dest: "uploads/" });
-const AWS = require("aws-sdk");
-const s3 = new AWS.S3()
+//const AWS = require("aws-sdk");
+//const s3 = new AWS.S3();
 
 const controller = require('../controllers/auth');
 const utils = require('../infra/utils');

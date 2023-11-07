@@ -71,8 +71,8 @@ async function getProject(id) {
                 valor_hora,
                 ( 0 ) as percentual_receita,
                 ( 0 ) as percentual_custo,
-                (SELECT sum(total_pago) FROM projeto_financeiro_pagamentos WHERE id_projeto = a.id) as receita_recebida,
-                (SELECT sum(valor) FROM projeto_financeiro_despesas WHERE id_projeto = a.id) as despesa_realizada,
+                coalesce((SELECT sum(total_pago) FROM projeto_financeiro_pagamentos WHERE id_projeto = a.id),0) as receita_recebida,
+                coalesce((SELECT sum(valor) FROM projeto_financeiro_despesas WHERE id_projeto = a.id),0) as despesa_realizada,
                 (SELECT nome FROM usuario WHERE id = a.id_responsavel) as nome_responsavel,
                 (SELECT foto FROM usuario WHERE id = a.id_responsavel) as foto_responsavel,
                 (SELECT nome FROM empresa_cliente WHERE id = a.id_cliente) as nome_cliente,
@@ -87,7 +87,7 @@ async function getProject(id) {
             WHERE a.id = $1`, [id]);
     //return data;
     if(data) {
-        //var participants = await database.any(`SELECT nome, foto, email FROM projeto_atividade_participante a LEFT JOIN usuario b ON (b.id = a.id_usuario) WHERE id_projeto = $1`, [id]);
+        
         var activities = await database.any(`SELECT * FROM projeto_atividade WHERE id_projeto = $1 ORDER BY id ASC, etapa ASC`, [id]);
         data[0]['atividades'] = activities;
         if (data[0]['expected_payment'] == null) { data[0]['expected_payment'] = 0; }
@@ -98,7 +98,6 @@ async function getProject(id) {
             activities[i]['responsavel'] = temp1[0];
 
             let paymentsTask = await database.any("SELECT * FROM projeto_financeiro_pagamentos WHERE id_tarefa = $1", [item.id]);
-
             activities[i]['pago'] = (paymentsTask.length > 0 ? true : false);
 
             var persons = await database.any(`SELECT nome, foto, email FROM projeto_atividade_participante a
@@ -107,7 +106,10 @@ async function getProject(id) {
             activities[i]['participantes'] = persons;
             i++;
         }
-        //data[0]['participantes'] = participants;
+        var participants = await database.any(`SELECT nome, foto, email FROM projeto_atividade_participante a 
+        LEFT JOIN usuario b ON (b.id = a.id_usuario) 
+        WHERE id_atividade IN (SELECT id_atividade FROM projeto_atividade WHERE id_projeto = $1)`, [id]);
+        data[0]['participantes'] = participants;
         //const financies = getFinancesInfo(id, data[0].valor_hora);
         //data[0]['financies'] = financies;
         //let cashflow = await database.query("SELECT * FROM projeto_financeiro WHERE id_projeto = $1", [id]);

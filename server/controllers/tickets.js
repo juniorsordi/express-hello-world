@@ -17,7 +17,7 @@ async function getTicketByID(id) {
         WHERE a.id = ?`,[id]);
     const events = await db.any(`SELECT a.*, b.nome as userName, b.email FROM ticket_event a
     LEFT JOIN usuario b ON (b.id = a.user_id)
-    WHERE ticket_id = ? 
+    WHERE ticket_id = $1 
     ORDER BY id ASC`,[id]);
     data[0]['events'] = events;
     return data;
@@ -26,7 +26,7 @@ async function getTicketByID(id) {
 async function saveTicketEvent(data, id) {
     console.log(data);
     //return data;
-    return db.one("INSERT INTO ticket_event VALUES (null, ?, now(), ?, ?)",[id, data.event, data.user_id]);
+    return db.one("INSERT INTO ticket_event VALUES (null, $!, now(), $2, $3)",[id, data.event, data.user_id]);
 }
 
 async function userLogin(email, password) {

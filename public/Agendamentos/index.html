@@ -29,13 +29,13 @@
 		}
         //*/
 	</script>
-    <script src="vendors/simplebar/simplebar.min.js"></script>
+    <script src="lib/vendors/simplebar/simplebar.min.js"></script>
     <script src="assets/js/config.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
-    <link href="vendors/simplebar/simplebar.min.css" rel="stylesheet">
+    <link href="lib/vendors/simplebar/simplebar.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
     <link href="assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
@@ -2569,38 +2569,47 @@
         </div>
     </main>
 
-    <script src="vendors/popper/popper.min.js"></script>
-    <script src="vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="vendors/anchorjs/anchor.min.js"></script>
-    <script src="vendors/is/is.min.js"></script>
-    <script src="vendors/fontawesome/all.min.js"></script>
-    <script src="vendors/lodash/lodash.min.js"></script>
+    <script src="lib/vendors/popper/popper.min.js"></script>
+    <script src="lib/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/vendors/anchorjs/anchor.min.js"></script>
+    <script src="lib/vendors/is/is.min.js"></script>
+    <script src="lib/vendors/fontawesome/all.min.js"></script>
+    <script src="lib/vendors/lodash/lodash.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="vendors/list.js/list.min.js"></script>
-    <script src="vendors/feather-icons/feather.min.js"></script>
-    <script src="vendors/dayjs/dayjs.min.js"></script>
+    <script src="lib/vendors/list.js/list.min.js"></script>
+    <script src="lib/vendors/feather-icons/feather.min.js"></script>
+    <script src="lib/vendors/dayjs/dayjs.min.js"></script>
+    <script src="lib/vendors/echarts/echarts.min.js"></script>
+
     <script src="assets/js/phoenix.js"></script>
-    <script src="vendors/echarts/echarts.min.js"></script>
     <script src="assets/js/ecommerce-dashboard.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/chart.js"></script>
+    <script src="../assets/js/bootbox.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js"></script>
-
-    <script src="assets/js/angular.min.js"></script>
-	<script src="assets/js/angular-animate.min.js"></script>
-	<script src="assets/js/angular-sanitize.min.js"></script>
-	<script src="assets/js/angular-route.min.js"></script>
-	<script src="lib/js/ui-bootstrap-tpls.js"></script>
-	<script src="assets/js/angular-locale_pt-br.js"></script>
-	<script src="assets/js/angular-input-masks-standalone.min.js"></script>
-	<script src="lib/js/angular-strap.min.js"></script>
-	<script src="lib/js/angular-strap.tpl.min.js"></script>
-	<!--script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script-->
-	<script src="lib/js/angular-upload.min.js"></script>
-	<script src="lib/js/angular-translate.min.js"></script>
-
-
+    <script src="../assets/js/angular/angular.min.js"></script>
+    <script src="../assets/js/angular/angular-route.min.js"></script>
+    <script src="../assets/js/angular/angular-animate.min.js"></script>
+    <script src="../assets/js/angular/angular-aria.min.js"></script>
+    <script src="../assets/js/angular/angular-cookies.min.js"></script>
+    <script src="../assets/js/angular/angular-filter.js"></script>
+    <script src="../assets/js/angular/angular-input-masks-standalone.min.js"></script>
+    <script src="../assets/js/angular/angular-loader.min.js"></script>
+    <script src="../assets/js/angular/angular-locale_pt-br.js"></script>
+    <script src="../assets/js/angular/angular-message-format.min.js"></script>
+    <script src="../assets/js/angular/angular-messages.min.js"></script>
+    <script src="../assets/js/angular/angular-parse-ext.min.js"></script>
+    <script src="../assets/js/angular/angular-resource.min.js"></script>
+    <script src="../assets/js/angular/angular-sanitize.min.js"></script>
+    <script src="../assets/js/angular/angular-strap.min.js"></script>
+    <script src="../assets/js/angular/angular-strap.tpl.min.js"></script>
+    <script src="../assets/js/angular/angular-touch.min.js"></script>
+    <script src="../assets/js/angular/angular-translate.min.js"></script>
+    <script src="../assets/js/angular/angular-upload.min.js"></script>
+    <script src="../assets/js/angular/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-flatpickr/3.6.6/ng-flatpickr.min.js"></script>
+    <script src="../assets/js/angular/angular-selectize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
 
 	<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.0/tinymce.min.js"></script>
@@ -2611,8 +2620,8 @@
 	<script src="app/directives.js"></script>
 	<script src="app/translations.js"></script>
 	<script src="app/controllers/SistemaCtrl.js"></script>
-	<script src="app/controllers/AgendamentoCtrl.js"></script>
-	<script src="app/controllers/ProfissionalCtrl.js"></script>
+	<!--script src="app/controllers/AgendamentoCtrl.js"></script>
+	<script src="app/controllers/ProfissionalCtrl.js"></script-->
 
     <script>
         $("a.nav-link").click(function() {

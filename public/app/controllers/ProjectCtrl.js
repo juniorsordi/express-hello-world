@@ -520,6 +520,13 @@ app.controller("KanbanViewCtrl", function ($scope, $resource, $routeParams, APIS
 });
 ///#####################################################################################################
 app.controller("G4FCtrl", function ($scope, $rootScope, $resource, $routeParams, APIService, $modal) {
+
+    $scope.listarControleCadastrados = function() {
+        APIService.getData("/controleMudanca/", function(resp) {
+            $scope.listaControleMudancas = resp.data;
+        });
+    }
+
     $scope.form = {
         num_os: 'OS573',
         sistema: 'SGI',

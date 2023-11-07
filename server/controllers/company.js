@@ -57,25 +57,34 @@ async function getCompanyActivityStatus(id) {
     return data;
 }
 
+async function getCompanyProjectTypes(id) {
+    const data = await database.any(`SELECT * FROM projeto_tipo WHERE id_empresa = $1`, [id]);
+    return data;
+}
+
 async function saveCompanyClient(fields, idEmpresa) {
-    const data = await database.any("INSERT INTO empresa_cliente (nome_cliente, logo, id_empresa, ativo) VALUES (?, ?, ?, 1)", [fields.nome_cliente, fields.logo, idEmpresa]);
+    const data = await database.any("INSERT INTO empresa_cliente (nome_cliente, logo, id_empresa, ativo) VALUES ($1, $2, $3, 1)", [fields.nome_cliente, fields.logo, idEmpresa]);
     return data;
 }
 
 async function saveCompanyCategory(fields, idEmpresa) {
-    const data = await database.any("INSERT INTO empresa_categoria (descricao, id_empresa) VALUES (?, ?)", [fields.label, idEmpresa]);
+    const data = await database.any("INSERT INTO empresa_categoria (descricao, id_empresa) VALUES ($1, $2)", [fields.label, idEmpresa]);
     return data;
 }
 
 async function saveCompanyStatus(fields, idEmpresa) {
-    const data = await database.any("INSERT INTO projeto_situacao VALUES (null, ?, ?, null, 1, 0, DATETIME('now'))", [idEmpresa, fields.label]);
+    const data = await database.any("INSERT INTO projeto_situacao VALUES (DEFAULT, $1, null, 1, false, $2, NOW())", [fields.label, idEmpresa]);
+    return data;
+}
+
+async function saveCompanyProjectTypes(fields, idEmpresa) {
+    const data = await database.any("INSERT INTO projeto_tipo VALUES (DEFAULT, $1, 1, $2, NOW())", [fields.nome, idEmpresa]);
     return data;
 }
 
 async function getAllCompanies() {
     await sequelize.sync();
     const empresas = await Company.findAll();
-    console.log(empresas);
     return empresas['empresa'].dataValues;
 }
 
@@ -95,6 +104,7 @@ module.exports = {
     saveCompanyClient,
     saveCompanyCategory,
     saveCompanyStatus,
+    saveCompanyProjectTypes,
     getAllCompanies,
     createCompany
 }

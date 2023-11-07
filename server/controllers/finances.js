@@ -123,7 +123,7 @@ async function updatePayments(params, tipo, id) {
     let tabela = "";
     if (tipo == '1') { tabela = "financas_contas_receber"; }
     if (tipo == '2') { tabela = "financas_contas_pagar"; }
-    let updSQL = "UPDATE " + tabela +" SET " + sql.join(",") + " WHERE id = ?";
+    let updSQL = "UPDATE " + tabela +" SET " + sql.join(",") + " WHERE id = $1";
     const data = await db.run(updSQL, [id]);
     return data;
 }

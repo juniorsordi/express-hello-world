@@ -1,9 +1,4 @@
-var crypto = require('crypto');
-const jwt = require("jsonwebtoken");
-var fs = require("fs");
 const moment = require("moment");
-//const ofx = require('ofx-convertjs');
-
 const database = require("../infra/database");
 //const ofx = require('../infra/ofx');
 //, (SELECT json_agg(json_build_object('key', key, 'value', value)) FROM financas_bancos WHERE id = a.banco::int) as banco

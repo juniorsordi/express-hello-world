@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const utils = require('../infra/utils');
 const service = require('../services/controleMudancaService');
 
-router.get("/controlMudanca", async function (req, res, next) {
+router.get("/", async function (req, res, next) {
     try {
         let info = await service.listarControleMudancas();
         res.status(200).json(info);
@@ -14,7 +14,7 @@ router.get("/controlMudanca", async function (req, res, next) {
     }
 });
 
-router.get("/controleMudanca/:id", async function (req, res, next) {
+router.get("/:id", async function (req, res, next) {
     try {
         let info = await service.pegarControleMudancas(req.params.id);
         if(req.query.download == 0) {
@@ -29,7 +29,7 @@ router.get("/controleMudanca/:id", async function (req, res, next) {
     }
 });
 
-router.post("/controleMudanca", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
     try {
         res.json(await service.salvarControleMudanca(req.body));
     } catch (err) {

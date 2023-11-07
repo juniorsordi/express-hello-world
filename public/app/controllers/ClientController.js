@@ -10,6 +10,7 @@ app.controller("ClientCtrl", function ($scope, $resource, APIService, $modal, $t
         $scope.arrClients = APIService.resourceQuery("/company/clients");
         $scope.arrCategories = APIService.resourceQuery("/company/categories");
         $scope.arrStatus = APIService.resourceQuery("/company/status");
+        $scope.arrProjectType = APIService.resourceQuery("/company/project_type");
         $scope.form = {};
     }
 
@@ -29,6 +30,33 @@ app.controller("ClientCtrl", function ($scope, $resource, APIService, $modal, $t
                         var resp = $("#categoryName").val();
                         if (resp.length > 0 && resp != "") {
                             APIService.postData("/company/categories", { label: resp }, function (resp) {
+                                $scope.init();
+                            });
+                        } else {
+                            console.log("ERRO");
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    $scope.addNewProjectType = function() {
+        bootbox.dialog({
+            closeButton: true,
+            title: "Novo Tipo de Projeto",
+            message: "Digite o nome do Tipo de Projeto<br><input id='categoryName' class='form-control' />",
+            buttons: {
+                cancel: {
+                    label: 'Cancelar'
+                },
+                success: {
+                    label: "Salvar",
+                    className: 'btn-success',
+                    callback: function () {
+                        var resp = $("#categoryName").val();
+                        if (resp.length > 0 && resp != "") {
+                            APIService.postData("/company/project_type", { nome: resp }, function (resp) {
                                 $scope.init();
                             });
                         } else {

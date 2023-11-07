@@ -91,17 +91,28 @@ app.get('/apiweb/pagamentos', function (req, res) { res.json([]); });
 app.get('/apiweb/filtros', function (req, res) { res.json([]); });
 
 app.use('/api/', require('./server/routes/authRoutes'));
+
 app.use('/api/sicoob/', require('./server/routes/sicoobRoute'));
+
 app.use('/api/', require('./server/routes/gamesRoutes'));
+
+app.use('/api/', require('./server/routes/agendamentoRoutes'));
+
 app.use('/api/v1/', require('./server/routes/projectsRoute'));
-app.use('/api/v1/', require('./server/routes/companyRoute'));
+app.use("/api/v1/controleMudanca", require("./server/routes/controleMudancaRoute"));
+
 app.use('/api/v1/', require('./server/routes/financesRoute'));
-app.use('/api/v1/', require('./server/routes/rhRoutes'));
-app.use('/api/v1/', require('./server/routes/controleMudancaRoute'));
-app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
-app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 app.use('/api/v1/finances/accounts', require('./server/routes/financesAccountsRoute'));
-app.use('/api/v1/sistema', require('./server/routes/sistemaRoute'));
+
+app.use('/api/v1/', require('./server/routes/rhRoutes'));
+
+app.use("/api/v1/company", require("./server/routes/companyRoute"));
+app.use("/api/v1/sistema", require("./server/routes/sistemaRoute"));
+
+//app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
+//app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
+
+
 
 app.post('/uploads', function (req, res) {
   upload(req, res, function (err) {

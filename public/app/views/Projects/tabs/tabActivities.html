@@ -94,8 +94,9 @@
                                     </a>
                                 </li>
                                 <li ng-repeat="assignee in item.participantes">
-                                    <a href="#" data-toggle="tooltip" title="{{ assignee.nome }}">
-                                        <img alt="{{ assignee.nome }}" class="avatar" ng-src="{{ assignee.foto }}" />
+                                    <a href="" data-toggle="tooltip" title="{{ assignee.nome }}">
+                                        <img ng-if="assignee.foto == null" alt="{{ assignee.nome }}" class="avatar" ng-src="assets/images/users/avatar-{{ $index+1 }}.jpg" />
+                                        <img ng-if="assignee.foto != null" alt="{{ assignee.nome }}" class="avatar" ng-src="{{ assignee.foto }}" />
                                     </a>
                                 </li>
                             </ul>

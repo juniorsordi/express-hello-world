@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cyclic-software/express-hello-world#readme",
   "dependencies": {
+    "@cyclic.sh/dynamodb": "^0.0.35",
     "aws-sdk": "^2.1468.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",

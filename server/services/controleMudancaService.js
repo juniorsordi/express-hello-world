@@ -26,10 +26,10 @@ async function salvarControleMudanca(fields) {
 
 async function pegarControleMudancas(id) {
     try {
-        let SQL = `SELECT * FROM controle_mudancas WHERE id = ?`;
+        let SQL = `SELECT * FROM controle_mudancas WHERE id = $1`;
         let info = await database.any(SQL,[id]);
 
-        let detalhamentos = await database.any("SELECT * FROM controle_mudancas_detalhamento WHERE id_controle_mudancas = ?", [id]);
+        let detalhamentos = await database.any("SELECT * FROM controle_mudancas_detalhamento WHERE id_controle_mudancas = $1", [id]);
         info[0].detalhamentos = detalhamentos;
 
         return info;

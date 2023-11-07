@@ -216,7 +216,7 @@ create if not exists table financas_conta_bancaria_saldo (
 	data_saldo timestamp,
 	saldo float,
 	data_cadastros timestamp
-}
+);
 
 create table sistema_notificacao (
 	id serial primary key,
@@ -225,5 +225,53 @@ create table sistema_notificacao (
 	titulo varchar(256),
 	texto varchar(2048),
 	lido integer,
+	data_cadastro timestamp
+);
+
+alter table projeto add constraint fk_projeto_tipo foreign key (id_categoria) references projeto_tipo (id);
+alter table projeto add constraint fk_empresa_cliente foreign key (id_cliente) references empresa_cliente (id);
+alter table projeto add constraint fk_empresa foreign key (id_empresa) references empresa (id);
+alter table projeto add constraint fk_projeto_situacao foreign key (id_status) references projeto_situacao (id);
+
+alter table usuario add constraint fk_empresa foreign key (id_empresa) references empresa (id);
+
+CREATE TABLE ticket (
+	id serial primary key,
+	id_usuario integer references usuario(id),
+	id_responsavel integer references usuario(id),
+	id_situacao integer,
+	titulo varchar(1024),
+	descricao text,
+	data_cadastro timestamp not null,
+	data_encerramento timestamp
+);
+
+CREATE TABLE controle_mudancas (
+	id serial primary key,
+	numero_os text not null,
+	sistema text,
+	solicitante text,
+	unidade text,
+	analista_responsavel text,
+	tipo_demanda text,
+	descricao text,
+	detalhamento text,
+	tecnologia text,
+	total_alocados integer,
+	tempo_gasto float,
+	aprovado integer,
+	data_cadastro timestamp,
+	tempo_gasto_medida text
+);
+
+CREATE TABLE controle_mudancas_detalhamento (
+	id serial primary key,
+	id_controle_mudancas integer references controle_mudancas (id),
+	nome_detalhamento text,
+	detalhamento text,
+	passo_passo text,
+	descricao text,
+	tipo text,
+	interface text,
 	data_cadastro timestamp
 );

@@ -154,12 +154,6 @@ router.post("/project/taskPayment", auth, async function (req, res, next) {
     }
 });
 
-
-
-
-
-
-
 router.get("/activity/:id", auth, async function (req, res, next) {
     try {
         res.json(await controller.getActivity(req.params.id));

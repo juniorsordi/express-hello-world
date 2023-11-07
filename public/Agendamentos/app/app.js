@@ -9,6 +9,7 @@ var app = angular.module('app', [
     , 'ui.utils.masks'
     //, "textAngular"
     , 'ui.tinymce'
+    , "oc.lazyLoad"
 ]);
 ///////////////////////////////////////////////////////////////////
 app.config(function ($controllerProvider) {
@@ -74,7 +75,7 @@ function toggleNavBar() {
 
 ///#####################################################################################################
 var date = new Date().getTime().toString();
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     $routeProvider
         .when('/',              { templateUrl: 'app/views/ideia1.html', title: '' })
         //.when('/login',     { templateUrl: 'app/views/login.html', title: '', controller: 'LoginCtrl' })
@@ -84,13 +85,13 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/dash',          { templateUrl: 'app/views/dashboard.html', title: '' })
 
         .when('/prestador/:id',             { templateUrl: 'app/views/usuario/view_prestador.html'+'?t='+ date, title: '' })
-        .when('/usuario/agenda',            { templateUrl: 'app/views/usuario/agenda.html' + '?t=' + date, title: '', controller: 'AgendamentoCtrl' })
-        .when('/usuario/agendamento',       { templateUrl: 'app/views/usuario/add_agendamento.html' + '?t=' + date, title: '', controller: 'AgendamentoCtrl' })
+        .when('/usuario/agenda',            { templateUrl: 'app/views/usuario/agenda.html' + '?t=' + date, title: '', controller: 'AgendamentoCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Agendamento', files: ['app/controllers/AgendamentoCtrl.js'] }]); }]} })
+        .when('/usuario/agendamento',       { templateUrl: 'app/views/usuario/add_agendamento.html' + '?t=' + date, title: '', controller: 'AgendamentoCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Agendamento', files: ['app/controllers/AgendamentoCtrl.js'] }]); }]} })
         .when('/usuario/historico',         { templateUrl: 'app/views/usuario/historico.html' + '?t=' + date, title: '' })
 
-        .when('/pro/financeiro',            { templateUrl: 'app/views/profissional/listagem_receitas.html' + '?t=' + date, title: '', controller: 'ProfissionalCtrl' })
-        .when('/pro/agenda_dia',            { templateUrl: 'app/views/profissional/lista_agendamentos_dia.html' + '?t=' + date, title: '', controller: 'ProfissionalCtrl' })
-        .when('/pro/apontamento/:id',       { templateUrl: 'app/views/profissional/view_agendamento.html' + '?t=' + date, title: '', controller: 'ProfissionalCtrl' })
+        .when('/pro/financeiro',            { templateUrl: 'app/views/profissional/listagem_receitas.html' + '?t=' + date, title: '', controller: 'ProfissionalCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Profissional', files: ['app/controllers/ProfissionalCtrl.js'] }]); }]} })
+        .when('/pro/agenda_dia',            { templateUrl: 'app/views/profissional/lista_agendamentos_dia.html' + '?t=' + date, title: '', controller: 'ProfissionalCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Profissional', files: ['app/controllers/ProfissionalCtrl.js'] }]); }]} })
+        .when('/pro/apontamento/:id',       { templateUrl: 'app/views/profissional/view_agendamento.html' + '?t=' + date, title: '', controller: 'ProfissionalCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Profissional', files: ['app/controllers/ProfissionalCtrl.js'] }]); }]} })
 
         .when('/perfil_profissional',       { templateUrl: 'app/views/profissional/prestador_perfil.html'+'?t='+ date, title: '', controller: 'PerfilProfCtrl' })
         .when('/sistema/cadastro',          { templateUrl: 'app/views/profissional/cad_prestador.html'+'?t='+ date, title: '', controller: 'SistemaCtrl' })

@@ -15,7 +15,7 @@ async function listarNotificacoesNaoLidas(idUser) {
 
 async function inserirNotificacao(fields) { }
 
-async function listarMensagensUsuario() { }
+async function listarMensagensUsuario(idUser) { }
 
 async function inserirMensagemUsuario(fields) { }
 

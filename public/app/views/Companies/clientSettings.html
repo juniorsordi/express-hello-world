@@ -45,16 +45,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in arrCategories">
+                        <tr ng-repeat="item in arrProjectType">
                             <th scope="row">{{ $index+1 }}</th>
-                            <td>{{ item.label }}</td>
+                            <td>{{ item.nome }}</td>
                             <td>
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-				<button class="btn btn-primary" type="button" ng-click="addNewCategory()"><i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span></button>
+				<button class="btn btn-primary" type="button" ng-click="addNewProjectType()"><i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span></button>
 				<br>
             </div>
             <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="padding: 15px;">
@@ -93,7 +93,7 @@
                     <tbody>
                         <tr ng-repeat="item in arrStatus">
                             <th scope="row">{{ $index+1 }}</th>
-                            <td>{{ item.label }}</td>
+                            <td>{{ item.nome }}</td>
                             <td>
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </td>
@@ -116,7 +116,7 @@
                     <tbody>
                         <tr ng-repeat="item in arrStatus">
                             <th scope="row">{{ $index+1 }}</th>
-                            <td>{{ item.label }}</td>
+                            <td>{{ item.nome }}</td>
                             <td>
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </td>
