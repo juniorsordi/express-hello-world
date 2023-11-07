@@ -1,0 +1,84 @@
+<div>
+    <div ng-init="initViewUserDetail()">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card">
+                    <div class="card-header">
+                        {{ item.nome }}
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-row flex-wrap">
+                            <img src="{{ item.foto }}" class="img-lg rounded" alt="profile image">
+                            <div class="ml-4" style="padding-left: 20px;">
+                                <h6>{{ item.nome }}</h6>
+                                <p class="mt-2 text-success font-weight-bold">{{ item.area }}</p>
+                                <p>
+                                    <span ng-repeat="star in stars track by $index">
+                                        <i ng-if="$index < item.rating" class="fa fa-star" style="color: #f5c71a;"></i>
+                                        <i ng-if="$index >= item.rating" class="fa fa-star-o"></i>
+                                    </span>
+                                    {{ item.rating }}/{{ max }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Histórico</h5>
+                        <p class="card-text">
+                            <div class="table-responsive">
+                                <table class="table table-light">
+                                    <tbody>
+                                        <tr>
+                                            <td>Sessão #1</td>
+                                            <td>
+                                                10/02/2023<br>
+                                                10:00
+                                            </td>
+                                            <td>
+                                                Descrição da sessão.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sessão #2</td>
+                                            <td>
+                                                12/02/2023<br>
+                                                10:00
+                                            </td>
+                                            <td>
+                                                Descrição da sessão.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sessão #3</td>
+                                            <td>
+                                                14/02/2023<br>
+                                                10:00
+                                            </td>
+                                            <td>
+                                                Descrição da sessão.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sessão #4</td>
+                                            <td>
+                                                26/02/2023<br>
+                                                10:00
+                                            </td>
+                                            <td>
+                                                Descrição da sessão.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

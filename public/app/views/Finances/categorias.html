@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Categorias / Centro de Custo</h5>
+                <p class="card-text">
+                    <select select2 ng-model="filtro.tipo">
+                        <option value="">Todos</option>
+                        <option value="D">Débito</option>
+                        <option value="C">Crédito</option>
+                    </select>
+                    <button class="btn btn-secondary" type="button" ng-click="novaCategoriaModal()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="" ng-repeat="item in categoriesList | filter: filtro">
+                                    <td scope="row">{{ item.nome }}</td>
+                                    <td>{{ (item.tipo == 'C' ? 'Crédito' : 'Débito') }}</td>
+                                    <td width="6%">
+                                        <button class="btn btn-secondary btn-sm" title="Adicionar Categoria Filha" ng-click="addCategoriaFilho(item)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button class="btn btn-danger btn-sm" title="Remover Categoria" ng-click="delCategoria(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

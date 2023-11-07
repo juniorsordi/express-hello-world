@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-12" ng-init="initProViewAgendamento()">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item_agendamento.nome_cliente }}</h5>
+                        <p class="card-text">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="{{ item_agendamento.foto_cliente }}" alt="" style="max-height: 256px;max-width: 256px;" />
+                                        </td>
+                                        <td>
+                                            Email: {{ item_agendamento.email_cliente }}<br>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+                <p></p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Receituário</h5>
+                        <p class="card-text">
+                            <table class="table table-bordered table-strip">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Descrição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>01/03/2023</td>
+                                        <td>
+                                            Dorflex, 1 cp ao dia
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">Histórico</h5>
+                        <p class="card-text">
+                            <div class="timeline-vertical timeline-with-details">
+                                <div ng-repeat="item in item_agendamento.historico" class="timeline-item position-relative">
+                                    <div class="row g-md-3">
+                                        <div class="col-12 col-md-auto d-flex">
+                                            <div class="timeline-item-date order-1 order-md-0 me-md-4">
+                                                <p class="fs--2 fw-semi-bold text-600 text-end">{{ item.data_cadastro | Timestamp:0 }}<br class="d-none d-md-block"> {{ item.data_cadastro.substr(10,15) }}</p>
+                                            </div>
+                                            <div class="timeline-item-bar position-md-relative me-3 me-md-0 border-400">
+                                                <div class="icon-item icon-item-sm rounded-7 shadow-none bg-primary-100">
+                                                    <span class="fa-solid fa-chess text-primary-600 fs--2 dark__text-primary-300"></span>
+                                                    <!-- <span class="fa-solid fa-chess text-primary-600 fs--2 dark__text-primary-300"></span> Font Awesome fontawesome.com -->
+                                                </div>
+                                                <span ng-if="$index < item_agendamento.historico.length-1" class="timeline-bar border-end border-dashed border-400"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="timeline-item-content ps-6 ps-md-3">
+                                                <h5 class="fs--1 lh-sm">Atendimento #{{ $index + 1 }}</h5>
+                                                <p class="fs--1">por <a class="fw-semi-bold" href="#!">Shantinon Mekalan</a></p>
+                                                <p class="fs--1 text-800 mb-5" ng-bind-html="item.historico"></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <span class=" pull-right" ng-click="excluirHistorico(item)" style="font-size: 12px;"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <textarea ui-tinymce="tinymceOptions" ng-model="form.historico"></textarea>
+                            <button class="btn btn-success text-white" type="button" ng-click="salvarHistorico(form)"><i class="fa fa-save" aria-hidden="true"></i> <span translate="">Save</span></button>
+                        </p>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        /*
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
+        editimage_cors_hosts: ['picsum.photos'],
+        menubar: 'file edit view insert format tools table help',
+        toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+        toolbar_sticky: true,
+    });
+    //*/
+</script>
+</div>

@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-12" ng-init="initViewPrestador()">
+        <div class="card">
+            <div class="card-header">
+                {{ item.nome }}
+            </div>
+            <div class="card-body">
+                <div class="d-flex flex-row flex-wrap">
+                    <img src="{{ item.foto }}" class="img-lg rounded" alt="profile image">
+                    <div class="ml-4" style="padding-left: 20px;">
+                        <p class="mt-2 text-success font-weight-bold">{{ item.area }}</p>
+                        <p>
+                            <span ng-repeat="star in stars track by $index">
+                                <i ng-if="$index < item.rating" class="fa fa-star" style="color: #f5c71a;"></i>
+                                <i ng-if="$index >= item.rating" class="fa fa-star"></i>
+                            </span>
+                            {{ item.rating | number:1 }}/{{ max | number:1 }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Produtos/Serviços</h5>
+                <p class="card-text">
+                    <div ng-repeat="produto in item.produtos | filter: { ativo: '1' }" class="row">
+                        <div class="col-md-4">{{ produto.nome }}</div>
+                        <div class="col-md-4"><b>{{ produto.valor | currency:'R$ '}}</b></div>
+                        <div class="col-md-4" align="center">
+                            <a href="#!/usuario/agendamento?produto={{ produto.id }}&prestador={{ item.id }}" class="btn btn-primary" type="button">Agendar</a>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

@@ -8,10 +8,18 @@ const database = require("../infra/database");
 //const ofx = require('../infra/ofx');
 //, (SELECT json_agg(json_build_object('key', key, 'value', value)) FROM financas_bancos WHERE id = a.banco::int) as banco
 async function getContasBancarias(idEmpresa) {
+    var startDate = moment().startOf('month').format('YYYY-MM-DD');
+    var hoje = moment().format('YYYY-MM-DD');
+    var endData = moment().endOf('month').format('YYYY-MM-DD');
     let SQL = `SELECT a.* 
-        , json_extract(banco, '$') as banco
-        , coalesce( (select sum(valor_efetivo) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'D'), 0) as total_despesas
-        , coalesce( (select sum(valor_efetivo) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'C'), 0) as total_receitas
+        , (SELECT json_build_object(
+                'nome', nome,
+                'img', img,
+                'bacen', codigo_bacen
+            ) FROM financas_bancos WHERE id = a.banco::int
+        ) as banco
+        , coalesce( (select sum(valor) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'D' AND data_prevista between '${startDate}' AND '${endData}'), 0) as total_despesas
+        , coalesce( (select sum(valor) from financas_movimentacao where id_conta_bancaria = a.id and tipo = 'C' AND data_prevista between '${startDate}' AND '${endData}'), 0) as total_receitas
         FROM financas_conta_bancaria a
         WHERE id_empresa = $1
         ORDER BY nome asc`;
@@ -35,23 +43,26 @@ async function getDashboardCategorias(idConta, idEmpresa) {
         WHERE b.id_empresa = $2 AND b.id_conta_bancaria = $1 and b.tipo = 'D'
         GROUP by a.nome
         ORDER BY a.nome`;
+    var startDate = moment().startOf('month').format('YYYY-MM-DD');
+    var endData = moment().endOf('month').format('YYYY-MM-DD');
     let SQL = `SELECT 
             a.nome
-            , coalesce( (select sum(valor) from financas_movimentacao where id_categoria = a.id AND id_conta_bancaria = $1 and tipo = 'D'), 0) as total 
+            , coalesce( (select sum(valor) from financas_movimentacao where id_categoria = a.id and tipo = 'D' AND data_prevista between '${startDate}' AND '${endData}'), 0) as total 
         FROM financas_categoria a
-        WHERE id_empresa = $2 AND a.tipo = 'D'
+        WHERE id_empresa = $1 AND a.tipo = 'D'
         ORDER BY a.nome`;
-    const data = await database.any(SQL, [idConta, idEmpresa]);
+    const data = await database.any(SQL, [idEmpresa]);
     return data;
 }
 
 async function saveAccount(fields) {
-    let SQL = "INSERT INTO financas_conta_bancaria VALUES (null, $1, $2, $3, $4, $5, $6, $7, 0, $8, 1) returning *";
-    const info = await database.any(SQL, [
+    //return fields;
+    let SQL = "INSERT INTO financas_conta_bancaria VALUES (default, $1, $2, $3, $4, $5, $6, $7, 0, $8, 1) returning *";
+    const info = await database.one(SQL, [
         fields.nome,
-        fields.banco,
+        fields.banco.id,
         fields.agencia,
-        fields.conta,
+        fields.numero_conta,
         fields.tipo_conta,
         fields.limite,
         fields.saldo_inicial,
@@ -61,12 +72,12 @@ async function saveAccount(fields) {
 }
 
 async function saveCategory(fields) {
-    let SQL = "INSERT INTO financas_categoria VALUES (null, $1, $2, 1, $3, $4) returning *";
-    const info = await database.any(SQL, [
+    let SQL = "INSERT INTO financas_categoria VALUES (DEFAULT, $1, $2, $3, $4, 1) returning *";
+    const info = await database.one(SQL, [
         fields.nome,
-        fields.tipo_operacao,
         fields.id_pai,
-        fields.id_empresa
+        fields.id_empresa,
+        fields.tipo_operacao
     ]);
     return info;
 }
@@ -92,13 +103,12 @@ async function saveAccountMoviment(fields, idEmpresa) {
         valor_efetivo = null;
         situacao = 0;
     }
-    let SQL = `INSERT INTO financas_movimentacao VALUES (null, 
+    let SQL = `INSERT INTO financas_movimentacao VALUES (DEFAULT, 
         $1, $2, $3, $4, $5, $6, $7, now(), $8, $9, $10, null, null, null, false, false, $11
     ) returning *`;
     //console.log(SQL);
-    //return fields;
     return await database.one(SQL, [fields.titulo, fields.data_vencimento, valor, valor_previsto, valor_efetivo, tipo_operacao, 
-        situacao, data_baixa, fields.id_conta_bancaria, fields.id_categoria, idEmpresa]);
+        situacao, data_baixa, fields.conta.id, fields.id_categoria, idEmpresa]);
 }
 
 async function testeOFX(idEmpresa) {

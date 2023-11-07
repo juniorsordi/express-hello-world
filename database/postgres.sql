@@ -210,6 +210,14 @@ create table rh_batida_ponto (
 	data_cadastro timestamp
 );
 
+create if not exists table financas_conta_bancaria_saldo (
+	id serial primary key,
+	id_conta integer references financas_conta_bancaria (id),
+	data_saldo timestamp,
+	saldo float,
+	data_cadastros timestamp
+}
+
 create table sistema_notificacao (
 	id serial primary key,
 	id_usuario integer not null references usuario (id),

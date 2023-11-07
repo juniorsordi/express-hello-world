@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-12" ng-controller="ProfissionalCtrl" ng-init="agendamentosDiaPro()">
+        <style>
+            .item-agenda {
+                background-color: white;
+                border-radius: 15px;
+                margin-bottom: 10px;
+            }
+            .item-agenda .data { font-size: 10px;}
+            .item-agenda .horario { font-size: 32px;}
+        </style>
+
+        <h2 align="center">Profissional - Próximos Agendamentos</h2>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-5 grid-margin">
+                <h4 align="center">Hoje</h4>
+                <div class="row">
+                    <div ng-repeat="item in arrAgendamentos" class="col-md-12 item-agenda">
+                        <table width="100%">
+                            <tr>
+                                <td width="15%" align="center">
+                                    <span class="data">{{ item.data.substr(0,10) |  date: "dd ' de ' MMMM ' de ' yyyy" }}</span><br>
+                                    <span class="horario">{{ item.horario }}</span>
+                                </td>
+                                <td style="padding-left: 10px;">
+                                    {{ item.nome_cliente }}<br>
+                                    {{ item.nome_produto }}
+                                </td>
+                                <td width="10%" align="center" ng-click="abrirAgendamento(item)" style="cursor: pointer;">
+                                    <i class="fa fa-chevron-right"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div ng-if="arrAgendamentos.length == 0" class="col-md-12" align="center">
+                        <br>
+                        <br>
+                        <h5>Sem Agendamentos</h5>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1" style="border-left: 1px solid black;"></div>
+            <div class="col-md-5 grid-margin">
+                <h4 align="center">Amanhã</h4>
+                <div class="row">
+                    <div ng-repeat="item in arrAgendamentos2" class="col-md-12 item-agenda">
+                        <table width="100%">
+                            <tr>
+                                <td width="15%" align="center">
+                                    <span class="data">{{ item.data.substr(0,10) |  date: "dd ' de ' MMMM ' de ' yyyy" }}</span><br>
+                                    <span class="horario">{{ item.horario }}</span>
+                                </td>
+                                <td style="padding-left: 10px;">
+                                    {{ item.nome_cliente }}<br>
+                                    {{ item.nome_produto }}
+                                </td>
+                                <td width="10%" align="center">
+                                    <i class="icon-bubbles"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div ng-if="arrAgendamentos2.length == 0" class="col-md-12" align="center">
+                        <br>
+                        <br>
+                        <h5>Sem Agendamentos</h5>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

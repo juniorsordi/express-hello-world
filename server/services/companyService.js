@@ -14,7 +14,7 @@ async function getCompanyClients(idEmpresa) {
 async function saveCompanyClient(fields, idEmpresa) {
     try {
         let SQL = `INSERT INTO empresa_cliente (nome, logo, ativo, id_empresa) VALUES ($1, $2, true, $3)`;
-        return await database.run(SQL, [fields.nome_cliente, fields.logo, idEmpresa]);
+        return await database.none(SQL, [fields.nome_cliente, fields.logo, idEmpresa]);
     } catch (err) {
         console.log(err);
     }

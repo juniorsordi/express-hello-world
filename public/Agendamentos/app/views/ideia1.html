@@ -1,0 +1,52 @@
+<div class="row">
+    <style>
+        .badge .badge-phoenix .badge-phoenix-secondary .active {
+            background-color: darkkhaki;
+        }
+    </style>
+    <div class="col-md-12" ng-init="initEntradaUsuario()">
+        <h3 align="center">Listagem de Profissionais</h3>
+        <br>
+        <div class="row">
+            <div class="col-md-2" align="center">
+                <span class="badge badge-phoenix {{ (!filtro.id_area ? 'badge-phoenix-primary' : 'badge-phoenix-secondary') }}" style="cursor: pointer;" ng-click="limparFiltro()">Todas áreas</span>
+            </div>
+            <div ng-repeat="area in listaAreas" class="col-md-2" align="center">
+                <span class="badge badge-phoenix {{ (filtro.id_area == area.id ? 'badge-phoenix-primary' : 'badge-phoenix-secondary') }}" style="cursor: pointer;" ng-click="filtrarSetor(area)">{{ area.nome_area }}</span>
+            </div>
+        </div>
+        <br>
+        <input type="text" class="form-control" ng-model="filtro.nome" placeholder="Pesquisa" />
+        <br>
+        <div class="row">
+            <div ng-repeat="item in listaPrestadores | filter: filtro" class="col-md-4 grid-margin stretch-card">
+                <div class="card" ng-click="viewPrestador(item)">
+                    <div class="card-body">
+                        <div class="d-flex flex-row flex-wrap">
+                            <img ng-if="item.foto.length > 0" ng-src="../{{ item.foto }}" class="img-lg rounded" alt="profile image" height="72">
+                            <img ng-if="item.foto.length == 0" src="assets/img/no-photo-facebook-1.jpg" class="img-lg rounded" alt="profile image">
+                            <div class="ml-4" style="padding-left: 20px;">
+                                <h6>{{ item.titulo }}</h6>
+                                <p class="mt-2 text-success font-weight-bold">{{ item.area }}</p>
+                                <p>
+                                    <span ng-repeat="star in stars track by $index">
+                                        <i ng-if="$index < item.rating" class="fa fa-star" style="color: #f5c71a;"></i>
+                                        <i ng-if="$index >= item.rating" class="fa fa-star"></i>
+                                    </span>
+                                    {{ item.rating | number:1 }}/{{ max | number:1 }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("span .badge .badge-phoenix .badge-phoenix-secondary").click(function() {
+            console.log(this);
+            $("span .badge .badge-phoenix .badge-phoenix-secondary").removeClass('badge-phoenix-primary');
+            $(this).toggleClass('badge-phoenix-primary');
+        });
+    </script>
+</div>

@@ -1,0 +1,143 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Meu Perfil</h5>
+                <p class="card-text">
+                    <form name="form1" id="form1">
+                        Email: <input type="email" ng-model="user.email" readonly class="form-control" disabled /><br>
+                        Nome: <input type="text" ng-model="user.nome" class="form-control" required /><br>
+                        Foto: <div><img src="{{ user.foto }}" alt="" class="img img-thumbnail"></div><br>
+                    </form>
+                    <button class="btn btn-success" type="button" ng-disabled="form1.$invalid"> <i class="fa fa-save" aria-hidden="true"></i> <span translate>Save</span> </button>
+                </p>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Dados Pessoais</h5>
+                <p class="card-text">
+                    <form name="form2">
+                        CPF: <input type="text" ng-model="user.dados.cpf" ui-br-cpf-mask class="form-control" required /><br>
+                        CEP: <input type="text" ng-model="user.dados.cep" class="form-control" required /><br>
+                        Endereço: <input type="text" ng-model="user.dados.endereco" class="form-control" /><br>
+                        Numero: <input type="text" ng-model="user.dados.numero" class="form-control" /><br>
+                        Complemento: <input type="text" ng-model="user.dados.complemento" class="form-control" /><br>
+                        Bairro: <input type="text" ng-model="user.dados.bairro" class="form-control" /><br>
+                        Cidade: <input type="text" ng-model="user.dados.cidade" class="form-control" /><br>
+                        Estado: <input type="text" ng-model="user.dados.estado" class="form-control" /><br>
+                    </form>
+                    <button class="btn btn-success" type="button" ng-disabled="form2.$invalid"> <i class="fa fa-save" aria-hidden="true"></i> <span translate>Save</span> </button>
+                </p>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dados Profissionais</h5>
+                        <p class="card-text">
+                            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                                <div class="form-group">
+                                    <label>Área de Atuação: </label>
+                                    <select ng-model="user.id_area" ng-options="item.id as item.nome_area for item in arrAreas" class="form-control">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                        <label>Produtos/Serviços Cadastrados: </label>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                        <th>Descrição</th>
+                                                        <th>Valor</th>
+                                                        <th>Situação</th>
+                                                        <th width="4%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in arrProdutos">
+                                                        <td>{{ item.nome }}</td>
+                                                        <td>{{ item.descricao }}</td>
+                                                        <td>{{ item.valor | currency:'R$ ' }}</td>
+                                                        <td>
+                                                            <span ng-if="item.ativo == 1" class="badge badge-phoenix badge-phoenix-success" style="color: white !important;">Ativo</span>
+                                                            <span ng-if="item.ativo == 0" class="badge badge-phoenix badge-phoenix-danger" style="color: white !important;">Inativo</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="clicavel" ng-click="mudarStatusProduto(item)">
+                                                                <i ng-if="item.ativo == 1" class="fa fa-adjust" aria-hidden="true" title="Inativar Produto" ></i>
+                                                                <i ng-if="item.ativo == 0" class="fa fa-arrow-circle-up" aria-hidden="true" title="Ativar Produto"></i>
+                                                            </span>
+                                                            &nbsp;&nbsp;
+                                                            <span class="clicavel" ng-click="excluirProduto(item)">
+                                                                <i class="fa fa-trash" aria-hidden="true" title="Excluir Produto"></i>
+                                                            </span>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable1" >
+                                                <i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span>
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Cadastro de Produto</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Nome</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" placeholder="Nome do Produto/Serviço" ng-model="form.nome" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Descrição</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" placeholder="Descrição do Produto/Serviço" ng-model="form.descricao" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Valor</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" placeholder="Valor do Produto/Serviço" ui-money-mask="2" ng-model="form.valor" />
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" translate>Close</button>
+                                                        <button type="button" class="btn btn-primary" ng-click="salvarProduto(form)" translate="">Save</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br><br><br>

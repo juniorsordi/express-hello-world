@@ -16,17 +16,17 @@ async function dashboardRanking(idEmpresa) {
 }
 
 async function dashboardProjects(idEmpresa) {
-    const data = await database.any(`SELECT b.descricao as situacao, coalesce(count(p.id),0) as total FROM projeto p
+    const data = await database.any(`SELECT b.nome as situacao, coalesce(count(p.id),0) as total FROM projeto p
         LEFT JOIN projeto_situacao b ON (b.id = p.id_status)
         WHERE p.id_status is not null AND p.id_empresa = $1
-        group by b.descricao`, [idEmpresa]);
+        group by b.nome`, [idEmpresa]);
     return data;
 }
 
 async function dashboardProjectsByYear(idEmpresa) {
-    const data = await database.any(`SELECT substr(termino_estimado,0,4) as ano, coalesce(count(id),0) as total FROM projeto
-            where  termino_estimado is not null and substr(termino_estimado,0,4) > '2019' and id_status = 3 AND id_empresa = $1
-            group by substr(termino_estimado,0,4)
+    const data = await database.any(`SELECT to_char(termino_estimado, 'YYYY') as ano, coalesce(count(id),0) as total FROM projeto
+            where  termino_estimado is not null and to_char(termino_estimado, 'YYYY') > '2019' and id_status = 3 AND id_empresa = $1
+            group by to_char(termino_estimado, 'YYYY')
             order by $1`, [idEmpresa]);
     return data;
 }
@@ -39,7 +39,7 @@ async function dashboardGraphByType(idEmpresa, year) {
             from projeto_atividade_apontamento a
             left join projeto_atividade b on (b.id = a.id_atividade)
             left join projeto c on (c.id = b.id_projeto)
-            WHERE substr(a.data_apontamento, 0,4) = $1 AND c.id_empresa = $2
+            WHERE to_char(c.termino_estimado, 'YYYY') = $1 AND c.id_empresa = $2
             group by c.id_categoria 
             order by 2 DESC`, [year, idEmpresa]);
     return data;
@@ -52,7 +52,7 @@ async function dashboardGraphByClient(idEmpresa, year) {
                 coalesce(sum(esforco),0) as total from projeto_atividade_apontamento a
             left join projeto_atividade b on (b.id = a.id_atividade)
             left join projeto c on (c.id = b.id_projeto)
-            WHERE substr(a.data_apontamento, 0, 4) = $1 and c.id_empresa = $2
+            WHERE to_char(c.termino_estimado, 'YYYY') = $1 and c.id_empresa = $2
             group by c.id_cliente 
             order by 2 DESC`, [year, idEmpresa]);
     return data;

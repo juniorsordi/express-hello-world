@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="col-md-12">
+        <style>
+            .pricing-table .pricing-card .pricing-card-body {
+                padding: 20px 24px 18px 20px;
+                min-height: 350px;
+            }
+        </style>
+        <div ng-show="step == 1">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container text-center pt-5">
+                        <h4 class="mb-3 mt-5" translate="">Plans</h4>
+                        <p class="w-75 mx-auto mb-5"></p>
+                        <div class="row pricing-table">
+                            <div class="col-md-3 col-xl-4 grid-margin stretch-card pricing-card">
+                                <div class="card border-primary border pricing-card-body">
+                                    <div class="text-center pricing-card-head">
+                                        <h3>Free</h3>
+                                        <p translate>Basic Plan</p>
+                                        <h1 class="font-weight-normal mb-4" translate>Free</h1>
+                                    </div>
+                                    <ul class="list-unstyled plan-features">
+                                        <li>Agendar horarios com diversos tipos de profissionais</li>
+                                        <li>Descontos exclusivos</li>
+                                        <li>Agilidade e facilidade em localizar profissionais proximos</li>
+                                    </ul>
+                                    <div class="wrapper">
+                                    </div>
+                                    <p class="mt-3 mb-0 plan-cost text-gray" translate>Free</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xl-4 grid-margin stretch-card pricing-card">
+                                <div class="card border border-success pricing-card-body">
+                                    <div class="text-center pricing-card-head">
+                                        <h3 class="text-success">Professional</h3>
+                                        <p translate>For Business People</p>
+                                        <h2 class="font-weight-normal mb-4">R$ 200,00</h2>
+                                    </div>
+                                    <ul class="list-unstyled plan-features">
+                                        <li>Gerenciar seus agendamentos</li>
+                                        <li>Disponibilizar sua agenda para os clientes fazerem seus agendamentos de forma inteligente</li>
+                                    </ul>
+                                    <div class="wrapper">
+                                        <span ng-show="user.prestador == 1 && user.empresa == 0">Você já assina esse plano</span>
+                                        <span ng-show="user.empresa == 1 && user.prestador == 1">Você precisa desvincular a conta da empresa</span>
+                                    </div>
+                                    <p class="mt-3 mb-0 plan-cost text-success">
+                                        <button ng-disabled="user.prestador == 1 || user.empresa == 1" ng-click="setSelectedPlan(2);" class="btn btn-success">Assinar</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xl-4 grid-margin stretch-card pricing-card">
+                                <div class="card border border-success pricing-card-body">
+                                    <div class="text-center pricing-card-head">
+                                        <h3 class="text-success">Enterprise</h3>
+                                        <p translate>For Companies</p>
+                                        <h2 class="font-weight-normal mb-4">R$ 500,00</h2>
+                                    </div>
+                                    <ul class="list-unstyled plan-features">
+                                        <li>Gerenciar seus agendamentos</li>
+                                        <li>Disponibilizar sua agenda para os clientes fazerem seus agendamentos de forma inteligente</li>
+                                        <li>Gerenciamento de todas atividades da empresa</li>
+                                    </ul>
+                                    <div class="wrapper">
+                                        <span ng-show="user.empresa == 1">Você já faz parte de uma empresa que assina esse plano</span>
+                                    </div>
+                                    <p class="mt-3 mb-0 plan-cost text-success">
+                                        <button ng-disabled="user.empresa == 1 && user.prestador == 1" ng-click="planSelected.id = 3;" class="btn btn-success">Assinar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="step == 2">
+            Passo 2
+            <div class="card">
+                <div class="card-body">
+                    <div class="container text-center pt-5">
+                        <h4 class="mb-3 mt-5" translate="">Subscription</h4>
+                        <p class="w-75 mx-auto mb-5"></p>
+                        <div class="row">
+                            <br>
+                            <br>
+                            <h2 translate align="center">{{ plan.label }}</h2>
+                            <Br>
+                            <Br>
+                                <div id="Terms">
+                                    <b>Termos e Condições</b><br>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, est quas inventore earum eos ipsa velit possimus, dicta, ullam consectetur dolore quasi repellendus omnis eum vitae minus in id eius!
+                                </div>
+                            <Br>
+                            <Br>
+                            <Br>
+                                <div><span translate style="font-weight: bold;">Price</span>: {{ plan.price | currency: 'R$ ' }}</div>
+                            <Br>
+                            <Br>
+                            <Br>
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col-md-6" align="center">
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <button class="btn btn-primary" type="button" translate ng-click="acceptedTerms()">Accept</button>
+                                        <button class="btn btn-warning" type="button" translate>Decline</button>
+                                    </div>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="step == 3">
+            Passo 3
+            <h2 align="center" translate>Form of payment</h2>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-lg-6">
+                    <div class="card" style="min-height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title" align="center" translate>Bank slip</h5>
+                            <p class="card-text" align="center">
+                                <br>
+                                <br>
+                                <button class="btn btn-info" type="button" ng-disabled="!paymentBankSlip" translate ng-click="choosePayment(1)">Choose</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-2"></div>
+                <div class="col-lg-6">
+                    <div class="card" style="min-height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title" align="center" translate>Pix</h5>
+                            <p class="card-text" align="center">
+                                <br>
+                                <br>
+                                <button class="btn btn-info" type="button" ng-disabled="!paymentPix" translate ng-click="choosePayment(2)">Choose</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <br>
+            <br>
+            <button ng-click="resetPayment()">Reset</button>
+            <div>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only" translate>Loading...</span>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div ng-show="step == 4">
+            Passo 4<br>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Resumo</h3>
+                    <p class="card-text">
+                        <span translate>Plan</span>: {{ plan.label }}<br>
+                        <span translate>Accepted Terms</span>: {{ planSelected.acceptedTerms | Booleano }}<br>
+                        <span translate>Form of payment</span>: {{ (planSelected.paymentMethod == 1 ? 'Boleto' : 'Pix') }}<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="btn-group" role="group" aria-label="Button group">
+                <button class="btn btn-primary" ng-disabled="step == 1" ng-click="decrementStep()"> <i class="fa fa-chevron-left" aria-hidden="true"></i> </button>
+                <button class="btn btn-primary" ng-disabled="step == 4" ng-click="incrementStep()"> <i class="fa fa-chevron-right" aria-hidden="true"></i> </button>
+                <button class="btn btn-primary" ng-show="step == 4" ng-click="confirmPlan()"> <i class="fa fa-check" aria-hidden="true"></i> </button>
+            </div>
+        </div>
+        <pre>
+            {{ step }}<br>
+        </pre>
+    </div>
+</div>

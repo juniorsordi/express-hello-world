@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2 align="center" translate>Form of payment</h2>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <div class="card" style="min-height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title" align="center" translate>Bank slip</h5>
+                        <p class="card-text" align="center">
+                            <br>
+                            <br>
+                            <button class="btn btn-info" type="button" ng-disabled="!paymentBankSlip" translate ng-click="choosePayment(1)">Choose</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="min-height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title" align="center" translate>Pix</h5>
+                        <p class="card-text" align="center">
+                            <br>
+                            <br>
+                            <button class="btn btn-info" type="button" ng-disabled="!paymentPix" translate ng-click="choosePayment(2)">Choose</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <br>
+        <br>
+        <button ng-click="resetPayment()">REset</button>
+        <div>
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only" translate>Loading...</span>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</div>

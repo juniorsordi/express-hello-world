@@ -23,7 +23,7 @@ async function importofx(idEmpresa) {
 }
 
 async function relatorioOFX(idEmpresa) {
-    let lista = await db.any("SELECT * FROM financas_ofx WHERE id_empresa = ? ORDER BY data_transacao ASC", [idEmpresa]);
+    let lista = await db.any("SELECT * FROM financas_ofx WHERE id_empresa = $1 ORDER BY data_transacao ASC", [idEmpresa]);
     let saldo_inicial = lista[0].valor;
     let saldo_final = saldo_inicial;
     let memoria_calculo = 0;
@@ -47,7 +47,7 @@ async function getDashboardAcounts(idEmpresa) {
     const data = await db.any(`SELECT nome as conta,
         (SELECT ifnull(sum(valor),0) FROM financas_contas_pagar WHERE forma_pagamento = a.id) as expenses
         , (SELECT ifnull(sum(valor),0) FROM financas_contas_receber WHERE forma_pagamento = a.id) as incomes
-        FROM financas_forma_pagamento a WHERE id_empresa = ?
+        FROM financas_forma_pagamento a WHERE id_empresa = $1
         ORDER BY 1 ASC;`, [idEmpresa]);
     return data;
 }
@@ -55,35 +55,35 @@ async function getDashboardAcounts(idEmpresa) {
 async function getDashboardAcountsIncome(idEmpresa) {
     const data = await db.any(`SELECT nome as conta,
         (SELECT ifnull(sum(valor),0) FROM financas_contas_receber WHERE forma_pagamento = a.id) as total
-        FROM financas_forma_pagamento a WHERE id_empresa = ?
+        FROM financas_forma_pagamento a WHERE id_empresa = $1
         ORDER BY 1 ASC;`, [idEmpresa]);
     return data;
 }
 
 async function getContasPagar(idEmpresa) {
-    const data = await db.any("SELECT * FROM financas_contas_pagar WHERE id_empresa = ? ORDER BY data_vencimento ASC", [idEmpresa]);
+    const data = await db.any("SELECT * FROM financas_contas_pagar WHERE id_empresa = $1 ORDER BY data_vencimento ASC", [idEmpresa]);
     return data;
 }
 
 async function getContasReceber(idEmpresa) {
-    const data = await db.any("SELECT * FROM financas_contas_receber WHERE id_empresa = ? ORDER BY data_vencimento ASC", [idEmpresa]);
+    const data = await db.any("SELECT * FROM financas_contas_receber WHERE id_empresa = $1 ORDER BY data_vencimento ASC", [idEmpresa]);
     return data;
 }
 
 async function getFormaspagamento(idEmpresa) {
-    const data = await db.any("SELECT * FROM financas_forma_pagamento WHERE id_empresa = ? AND ativo = 1 ORDER BY nome ASC", [idEmpresa]);
+    const data = await db.any("SELECT * FROM financas_conta_bancaria WHERE id_empresa = $1 AND ativo = 1 ORDER BY nome ASC", [idEmpresa]);
     return data;
 }
 
 async function getCategoriasFinancas(idEmpresa) {
-    const data = await db.any("SELECT * FROM financas_categoria WHERE id_empresa = ? ORDER BY nome ASC", [idEmpresa]);
+    const data = await db.any("SELECT * FROM financas_categoria WHERE id_empresa = $1 ORDER BY nome ASC", [idEmpresa]);
     return data;
 }
 
 async function getCategoriasReportCards(idEmpresa, conta) {
     const data = await db.any(`SELECT a.nome, sum(b.valor) as total FROM financas_categoria a
         JOIN financas_contas_pagar b ON (b.id_categoria_financeiro = a.id)
-        WHERE b.id_empresa = ? AND b.forma_pagamento = ?
+        WHERE b.id_empresa = $1 AND b.forma_pagamento = $2
         GROUP by a.nome`, [idEmpresa, conta]);
     return data;
 }
@@ -92,18 +92,16 @@ async function getCashFlow(idEmpresa, params) {
     let filtro = "";
     if(params) {
         let { inicio, termino, conta } = params;
-        filtro = ` AND data_vencimento BETWEEN '${inicio}' AND '${termino}'`;
+        filtro = ` AND data_prevista BETWEEN '${inicio}' AND '${termino}' `;
         if(conta) {
-            filtro += ` AND forma_pagamento = ${conta}`;
+            filtro += ` AND id_conta_bancaria = ${conta} `;
         }
     }
     const data = await db.any(`
-        SELECT a.*, (a.valor) as valor2, strftime('%d/%m/%Y', a.data_vencimento) as data_vencimento2, '1' as type FROM financas_contas_receber a WHERE id_empresa = ? ${filtro}
-        UNION 
-        SELECT b.*, (b.valor * -1) as valor2, strftime('%d/%m/%Y', b.data_vencimento) as data_vencimento2, '2' as type FROM financas_contas_pagar b WHERE id_empresa = ? ${filtro}
-        ORDER BY data_vencimento ASC
+        SELECT a.*, (a.valor) as valor2, a.data_prevista as data_vencimento2 FROM financas_movimentacao a WHERE id_empresa = $1 ${filtro}
+        ORDER BY data_prevista ASC
         
-    `, [idEmpresa, idEmpresa]);
+    `, [idEmpresa]);
     return data;
 }
 

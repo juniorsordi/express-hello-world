@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-12" ng-init="listarAcademias()">
+        <h2 align="center">Catalogo de Academias</h2>
+        <div class="row">
+            <div ng-repeat="gym in arrAcademias" class="col-md-4" style="padding-bottom: 10px;">
+                <div class="card">
+                    <img class="card-img-top" ng-src="{{ gym.capa }}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ gym.nome }}</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate in accusamus nemo ullam? Velit, 
+                            harum eligendi fugiat nisi ipsum sed. Natus illo autem ad? Cupiditate dignissimos omnis dolorem quisquam ad!
+                            <br>
+                            <center>
+                                <button class="btn btn-outline-primary" type="button">Matricular</button>
+                            </center>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

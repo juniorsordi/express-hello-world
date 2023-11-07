@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-12" ng-init="initSubsctription()">
+        <h3 translate align="center">Subscription</h3>
+        <br>
+        <br>
+        <h2 translate align="center">{{ plan.label }}</h2>
+        <Br>
+        <Br>
+            <div id="Terms">
+                <b>Termos e Condições</b><br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, est quas inventore earum eos ipsa velit possimus, dicta, ullam consectetur dolore quasi repellendus omnis eum vitae minus in id eius!
+            </div>
+        <Br>
+            <span translate style="font-weight: bold;">Price</span>: {{ plan.price | currency: 'R$ ' }}
+        <Br>
+        <Br>
+        <Br>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-6" align="center">
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-primary" type="button" translate onclick="goto('/plans/accepted')">Accept</button>
+                    <button class="btn btn-warning" type="button" translate>Decline</button>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        
+    </div>
+</div>

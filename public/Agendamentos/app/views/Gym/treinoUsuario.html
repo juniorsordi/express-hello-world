@@ -1,0 +1,145 @@
+<div class="row">
+    <style>
+        .pull-right {
+            float: right;
+        }
+        .list-group-item .active {
+            background-color: aqua;
+        }
+        .dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175)}.dropdown-menu.pull-right{right:0;left:auto}.dropdown-menu .divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}.dropdown-menu>li>a{display:block;padding:3px 20px;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap}.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{color:#262626;text-decoration:none;background-color:#f5f5f5}.dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{color:#fff;text-decoration:none;background-color:#337ab7;outline:0}.dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{color:#777}.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{text-decoration:none;cursor:not-allowed;background-color:transparent;background-image:none;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}.open>.dropdown-menu{display:block}.open>a{outline:0}.dropdown-menu-right{right:0;left:auto}.dropdown-menu-left{right:auto;left:0}.dropdown-header{display:block;padding:3px 20px;font-size:12px;line-height:1.42857143;color:#777;white-space:nowrap}.dropdown-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:990}.pull-right>.dropdown-menu{right:0;left:auto}.dropup .caret,.navbar-fixed-bottom .dropdown .caret{content:"";border-top:0;border-bottom:4px dashed;border-bottom:4px solid\9}.dropup .dropdown-menu,.navbar-fixed-bottom .dropdown .dropdown-menu{top:auto;bottom:100%;margin-bottom:2px}@media (min-width:768px){.navbar-right .dropdown-menu{right:0;left:auto}.navbar-right .dropdown-menu-left{right:auto;left:0}}
+    </style>
+    <div class="col-md-12">
+        <Br>
+        <h2 align="center">Gerenciamento de Treinos</h2>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Dados</h5>
+                <p class="card-text">
+                    <div class="row">
+                        <div class="col">
+                            Nome: 
+                            <input type="text" ng-model="form.nome" 
+                                typeahead-on-select="onSelectUsuario($item, $model, $label, $event)"
+                                uib-typeahead="user.nome as user.nome for user in usuarios($viewValue)" class="form-control">
+                        </div>
+                        <div class="col">
+                            Instrutor:  <input type="text" class="form-control" ng-model="form.instrutor" /><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Treino: 
+                            <select class="form-control" ng-model="form.treino" ng-options="item as item.nome for item in treinos"></select><br>
+                        </div>
+                        <div class="col">
+                            Sessoes: <input type="text" class="form-control" ng-model="form.treino.max_sessoes" /><br>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Serie</h3>
+                <!--ul class="list-group list-group-flush">
+                    <li ng-repeat="item in arrTreinos" class="list-group-item" style="cursor: pointer;" ng-click="showExercises(item)">
+                        <span>{{ item.label }}</span>
+                        <span class="pull-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                    </li>
+                </ul>
+                <hr-->
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action {{ (selectedIdx == $index ? 'active' : '') }}" ng-repeat="item in form.treino.series" href="" ng-click="showExercises(item, $index)">
+                        <span>{{ item.serie }}</span>
+                        <span class="pull-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                    </a>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="button" ng-click="addSerie()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Série</button>
+            </div>
+            <div class="col-md-8">
+                <div ng-show="exercises">
+                    <br>
+                    <h4 align="center">Série {{ treinoLabel }}</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Exercicios</h5>
+                            <p class="card-text">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="row">
+                                                    <div class="col-8">Exercicio</div>
+                                                    <div class="col-4">Equip</div>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in exercises">
+                                            <td>
+                                                <div class="row" style="padding: 6px;">
+                                                    <div class="col-8"><b>{{ item.nome_exercicio | uppercase }}</b></div>
+                                                    <div class="col-4">{{ item.nro_equipamento }}</div>
+                                                </div>
+                                                <div class="row" style="padding: 6px;">
+                                                    <div class="col">
+                                                        Séries: {{ item.qtde_series }}
+                                                    </div>
+                                                    <div class="col">
+                                                        Rep: {{ item.repeticoes }}
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="padding: 6px;">
+                                                    <div class="col">
+                                                        Peso: {{ item.peso_inicial }} Kg
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <div id="cadastro">
+                                    <div class="row">
+                                        <div class="col-md-3">Exercicio:</div>
+                                        <div class="col-md-9"><input type="text" ng-model="form2.nome_exercicio"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">Numero Equipamento:</div>
+                                        <div class="col-md-9"><input type="number" max="99" min="1" step="1" ng-model="form2.nro_equipamento"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">Series:</div>
+                                        <div class="col-md-9"><input type="number" max="99" min="1" step="1" ng-model="form2.qtde_series"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">Repetições:</div>
+                                        <div class="col-md-9"><input type="text" ng-model="form2.repeticoes"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">Peso Inicial:</div>
+                                        <div class="col-md-9"><input type="number" ng-model="form2.peso_inicial"></div>
+                                    </div>
+                                    <button class="btn btn-success" type="button" ng-click="addExercicio(form2)"><span translate>Save</span></button>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        $("a .list-group-item .list-group-item-action").click(function() {
+            //console.log(this);
+            //$("a .list-group-item .list-group-item-action").removeClass('active');            
+            //$(this).addClass('active');
+        });
+    </script>
+</div>

@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-12" ng-init="initProFinanceiro()">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Financeiro</h5>
+                <p class="card-text">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" style="font-size: 12px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col" width="8%">Valor</th>
+                                    <th scope="col">Vencimento</th>
+                                    <th scope="col" width="8%">Situação</th>
+                                    <th scope="col" width="2%">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in arrFinanceiro">
+                                    <td scope="row">{{ item.mes_referencia }}/{{ item.ano_referencia }}</td>
+                                    <td>{{ item.valor | currency: 'R$ ' }}</td>
+                                    <td>{{ item.data_vencimento | Timestamp:0 }}</td>
+                                    <td>{{ (item.status == 3 ? 'Pago' : 'Em Aberto') }}</td>
+                                    <td>
+                                        <a href="{{ item.link_boleto }}" target="_blank" style="font-size: 16px;"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</div>
