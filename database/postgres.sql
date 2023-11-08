@@ -9,6 +9,8 @@ create table usuario (
 	ativo boolean,
 	id_empresa integer references empresa (id)
 );
+INSERT INTO usuario (id, nome, email, senha, foto, id_tipo_login, is_admin, ativo, id_empresa) VALUES(1, 'Dilson Sordi Junior', 'dilson@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/img/users/dilson_sordi_junior.jpg', 1, 1, true, 1);
+INSERT INTO usuario (id, nome, email, senha, foto, id_tipo_login, is_admin, ativo, id_empresa) VALUES(2, 'Cristian Scheffel Biacchi', 'csbiacchi@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/img/users/cristian_scheffel_biacchi.jpg', 1, 1, true, 1);
 
 create table projeto (
 	id serial primary key,
@@ -210,7 +212,7 @@ create table rh_batida_ponto (
 	data_cadastro timestamp
 );
 
-create if not exists table financas_conta_bancaria_saldo (
+create table financas_conta_bancaria_saldo (
 	id serial primary key,
 	id_conta integer references financas_conta_bancaria (id),
 	data_saldo timestamp,
@@ -246,6 +248,21 @@ CREATE TABLE ticket (
 	data_encerramento timestamp
 );
 
+CREATE TABLE ticket_evento (
+  id serial primary key,
+  id_ticket integer references ticket (id),
+  id_usuario integer references usuario(id),
+  evento text,
+  data_cadastro timestamp NOT NULL
+);
+
+create table ticket_status (
+	id serial primary key,
+	nome varchar(256),
+	cor varchar(128),
+	ativo integer
+);
+
 CREATE TABLE controle_mudancas (
 	id serial primary key,
 	numero_os text not null,
@@ -275,3 +292,13 @@ CREATE TABLE controle_mudancas_detalhamento (
 	interface text,
 	data_cadastro timestamp
 );
+
+create table agendamento_prestador_produto (
+	id serial primary key,
+	id_prestador integer references agendamento_prestador (id),
+	nome text,
+	descricao text,
+	valor float,
+	ativo integer
+);
+
