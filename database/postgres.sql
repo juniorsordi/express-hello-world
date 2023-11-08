@@ -302,3 +302,14 @@ create table agendamento_prestador_produto (
 	ativo integer
 );
 
+create table agendamento_prestador_compromisso (
+	id serial primary key,
+	id_prestador integer references agendamento_prestador (id),
+	id_produto integer references agendamento_prestador_produto (id),
+	id_usuario_solicitante integer references usuario (id),
+	descricao text,
+	data date,
+	horario time,
+	id_status integer,
+	data_cadastro timestamp
+);

@@ -143,8 +143,10 @@
 				$routeProvider
 
 				//.when('/',                    { templateUrl: 'app/views/dashboard.html?t=' + date, controller: 'AppController' })
-				.when('/controle_mudancas', 	{ templateUrl: 'app/views/Projects/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'g4f', files: ['app/controllers/ProjectCtrl.js'] }]); }]} })
-				.when('/', 						{ templateUrl: 'app/views/RH/BaterPonto.html', controller: 'RHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'rh', files: ['app/controllers/RHCtrl.js'] }]); }]} })
+				.when('/controle_mudancas', 		{ templateUrl: 'app/views/Projects/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'g4f', files: ['app/controllers/ProjectCtrl.js'] }]); }]} })
+				.when('/controle_mudancas/novo', 	{ templateUrl: 'app/views/Projects/ControleMudancas/cadastro_controle_mudanca.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'g4f', files: ['app/controllers/ProjectCtrl.js'] }]); }]} })
+				.when('/', 							{ templateUrl: 'app/views/RH/Dashboard.html', controller: 'RHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'rh', files: ['app/controllers/RHCtrl.js'] }]); }]} })
+				.when('/ponto', 					{ templateUrl: 'app/views/RH/BaterPonto.html', controller: 'RHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'rh', files: ['app/controllers/RHCtrl.js'] }]); }]} })
 			});
 			///###########################################################################################################
 			///###########################################################################################################

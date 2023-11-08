@@ -43,7 +43,25 @@ async function listarUltimasBatidas(idUser) {
     return data;
 }
 
+async function calculoBancoHorasUsuario(idUser) {
+    let mesAtual = moment().format("MM");
+    let SQL1 = `SELECT distinct dia, mes, ano FROM rh_batida_ponto WHERE mes = $1 AND id_usuario = $2;`;
+    const data = await database.any(SQL1, [mesAtual, idUser]);
+    var i = 0;
+    for (const element of data) {
+        let SQL2 = `SELECT 
+                        (age(max((ano || '-'||mes||'-'||dia||' '||hora)::timestamp), min((ano||'-'||mes||'-'||dia||' '||hora)::timestamp))  - interval '1 hour')::time as dif 
+                FROM rh_batida_ponto a
+                WHERE ano = $1 AND mes = $2 and dia = $3 and id_usuario = $4`
+        let temp = await database.one(SQL2,[element.ano, element.mes, element.dia, idUser]);
+        let temp2 = await database.one(`SELECT (AGE('2000-01-01 ${temp.dif}','2000-01-01 08:00:00')) as temp1`);
+        element.saldo = temp2.temp1;
+    }
+    return data;
+}
+
 module.exports = {
     salvarBatidaPonto,
-    listarUltimasBatidas
+    listarUltimasBatidas,
+    calculoBancoHorasUsuario,
 }

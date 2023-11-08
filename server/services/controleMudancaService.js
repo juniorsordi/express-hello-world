@@ -1,6 +1,3 @@
-var crypto = require('crypto');
-const jwt = require("jsonwebtoken");
-var fs = require("fs");
 const moment = require("moment");
 const database = require("../infra/database");
 
@@ -15,8 +12,9 @@ async function listarControleMudancas() {
 
 async function salvarControleMudanca(fields) {
     try {
-        //return fields;
-        let SQL = `INSERT INTO controle_mudancas VALUES (null, ?,?,?,?,?,?,?,null,?,?,?,1,DateTime('now', 'localtime'),?)`;
+        if(fields.descricao == null) { fields.descricao = ""; }
+        
+        let SQL = `INSERT INTO controle_mudancas VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, null, $8, $9, $10, 1, NOW(), $11)`;
         return await database.any(SQL, [fields.num_os,fields.sistema,fields.solicitante,fields.unidade,fields.analista,fields.tipo,
             fields.descricao,fields.tecnologia,fields.profissional_alocado,fields.tempo_gasto,fields.tempo_gasto_medida]);
     } catch (err) {

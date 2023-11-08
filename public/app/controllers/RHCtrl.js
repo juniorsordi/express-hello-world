@@ -6,6 +6,12 @@ app.controller('RHCtrl', function ($scope, $rootScope, $routeParams, APIService,
         })
     }
 
+    $scope.initDashboard = function() {
+        APIService.getData("/rh/dashboard", function(resp) {
+            $scope.dadosDashboard = resp.data;
+        })
+    }
+
     $scope.registrarBatidaPonto = function() {
         APIService.postData("/rh/ponto/bater", {}, function(resp) {
             $scope.listarUltimasBatidas();

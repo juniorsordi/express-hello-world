@@ -4,20 +4,36 @@
             <div class="card-body">
                 <h5 class="card-title">Controle de Mudanças</h5>
                 <p class="card-text">
+                    <a class="btn btn-primary btn-sm " href="#!/controle_mudancas/novo" role="button"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                    
                     <div class="table-responsive">
-                        <table class="table table-primary">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">Column 1</th>
-                                    <th scope="col">Column 2</th>
-                                    <th scope="col">Column 3</th>
+                                    <th scope="col">OS</th>
+                                    <th scope="col">Sistema</th>
+                                    <th scope="col">Unidade</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Tecnologia</th>
+                                    <th scope="col">Total Pessoas Alocadas</th>
+                                    <th scope="col">Tempo Gasto</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="" ng-repeat="item in listaControleMudancas">
-                                    <td scope="row">{{ item }}</td>
-                                    <td>R1C2</td>
-                                    <td>R1C3</td>
+                                    <td scope="row">{{ item.numero_os }}</td>
+                                    <td>{{ item.sistema }}</td>
+                                    <td>{{ item.unidade }}</td>
+                                    <td>{{ item.tipo_demanda }}</td>
+                                    <td>{{ item.tecnologia }}</td>
+                                    <td>{{ item.total_alocados }}</td>
+                                    <td>{{ item.tempo_gasto }} {{ item.tempo_gasto_medida }}</td>
+                                    <td width="5%">
+                                        <i class="fa fa-info-circle" aria-hidden="true" title="Ver detalhamento"></i>
+                                        <i class="fa fa-plus-square" aria-hidden="true" title="Adicionar detalhamento"></i>
+                                        <i class="fa fa-file-word-o" aria-hidden="true" title="Gerar Arquivo Word"></i>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
