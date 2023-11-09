@@ -108,7 +108,7 @@ async function getProject(id) {
         }
         var participants = await database.any(`SELECT nome, foto, email FROM projeto_atividade_participante a 
         LEFT JOIN usuario b ON (b.id = a.id_usuario) 
-        WHERE id_atividade IN (SELECT id_atividade FROM projeto_atividade WHERE id_projeto = $1)`, [id]);
+        WHERE id_atividade IN (SELECT id FROM projeto_atividade WHERE id_projeto = $1)`, [id]);
         data[0]['participantes'] = participants;
         //const financies = getFinancesInfo(id, data[0].valor_hora);
         //data[0]['financies'] = financies;

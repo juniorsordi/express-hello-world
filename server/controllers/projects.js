@@ -63,16 +63,16 @@ async function listProjects(idEmpresa) {
         b.cor as cor_situacao
     FROM projeto a
     LEFT JOIN projeto_situacao b ON (b.id = a.id_situacao)
-        WHERE a.id_empresa = ? AND b.visivel = 1`, [idEmpresa]);
+        WHERE a.id_empresa = $1 AND b.visivel = 1`, [idEmpresa]);
     var i = 0;
     for(const project of data) {
         const users = await db.any(`SELECT b.id, b.nome, b.email, b.foto from projeto a
         left join usuario b on (b.id = a.id_responsavel)
-        where a.id = ?
+        where a.id = $1
         union
         select b.id, b.nome, b.email, b.foto from projeto_atividade_participante a
         left join usuario b on (b.id = a.id_usuario)
-        where a.id_projeto = ?`, [project.id, project.id]);
+        where a.id_projeto = $2`, [project.id, project.id]);
         data[i]['participantes'] = users;
         i++;
     }
@@ -80,12 +80,12 @@ async function listProjects(idEmpresa) {
 }
 
 async function listKanbanProjects(idEmpresa, idProjeto) {
-    const data = await db.any(`SELECT * FROM projeto_atividade_situacao WHERE id_empresa = ? AND ativo = 1 ORDER BY ordem ASC`, [idEmpresa]);
+    const data = await db.any(`SELECT * FROM projeto_atividade_situacao WHERE id_empresa = $1 AND ativo = 1 ORDER BY ordem ASC`, [idEmpresa]);
     var i = 0;
     for (const situacao of data) {
         const atividades = await db.any(`SELECT a.*, b.nome as nome_usuario, b.foto FROM projeto_atividade a
         LEFT JOIN usuario b ON (b.id = a.id_responsavel)
-        WHERE id_projeto = ? AND id_status_atividade = ?`, [idProjeto, situacao.id]);
+        WHERE id_projeto = $1 AND id_status_atividade = $2`, [idProjeto, situacao.id]);
         data[i]['cards'] = atividades;
         i++;
     }
@@ -93,7 +93,7 @@ async function listKanbanProjects(idEmpresa, idProjeto) {
 }
 
 async function updateKanbanAtividade(idAtividade, idSituacao) {
-    return await db.run(`UPDATE projeto_atividade SET id_status_atividade = ? WHERE id = ?`, [idSituacao, idAtividade]);
+    return await db.none(`UPDATE projeto_atividade SET id_status_atividade = $1 WHERE id = $2`, [idSituacao, idAtividade]);
 }
 
 async function getProject(id) {
@@ -254,16 +254,16 @@ async function getFinancesInfo(id, valor_hora) {
 }
 
 async function getActivity(id) {
-    const data = await db.any(`SELECT * FROM projeto_atividade WHERE id = ?`,[id]);
+    const data = await db.any(`SELECT * FROM projeto_atividade WHERE id = $1`,[id]);
     var i = 0;//*
     for (const item of data) {
         var idUser = item.id_responsavel;
-        var temp1 = await db.any("SELECT nome, foto, email FROM usuario WHERE id = ?", [idUser]);
+        var temp1 = await db.any("SELECT nome, foto, email FROM usuario WHERE id = $1", [idUser]);
         data[i]['responsavel'] = temp1[0];
 
         var persons = await db.any(`SELECT nome, foto, email FROM projeto_atividade_participante a
                 LEFT JOIN usuario b ON (b.id = a.id_usuario)
-                WHERE id_atividade = ?`, [item.id]);
+                WHERE id_atividade = $1`, [item.id]);
         data[i]['participantes'] = persons;
         i++;
     }//*/

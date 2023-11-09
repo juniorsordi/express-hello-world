@@ -655,6 +655,61 @@ app.directive('selectize2', function () {
 });
 ///#####################################################################################################
 ///#####################################################################################################
+app.factory('RestService', function ($http) {
+    return {
+        getData: function (path, callback) {
+            $http.get("/../api" + path).then(callback);
+        },
+        postData: function (path, param, callback) {
+            $http.post("/../api" + path, param).then(callback);
+        },
+        putData: function (path, param, callback) {
+            $http.put("/../api" + path, param).then(callback);
+        },
+        deleteData: function (path, callback) {
+            $http.delete("/../api" + path).then(callback);
+        }
+    }
+});
+///#####################################################################################################
+app.factory('PagSeguroService', function($http) {
+    return {
+        post: function(url, param, callback) {
+            $http({
+                method: 'POST',
+                url: url,
+                data: param, // pass in data as strings
+                headers: {
+                    'Authorization': 'Bearer 14114BD04646725884AAEFAA263B4606'
+                } // set the headers so angular passing info as form data (not request payload)
+            }).then(callback);
+        }
+    }
+});
+///#####################################################################################################
+///#####################################################################################################
+app.directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' +
+            '<li ng-repeat="star in stars" ng-class="star">' +
+            '<i class="fa fa-star"></i>' +
+            '</li>' +
+            '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '='
+        },
+        link: function (scope, elem, attrs) {
+            scope.stars = [];
+            for (var i = 0; i < scope.max; i++) {
+                scope.stars.push({
+                    filled: i < scope.ratingValue
+                });
+            }
+        }
+    }
+});
 ///#####################################################################################################
 ///#####################################################################################################
 ///#####################################################################################################

@@ -14,7 +14,7 @@
                 <div class="col-lg-3 colStyle" id="{{col.id}}" kanban-board-drop="over" ng-repeat="col in kanbanRest">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{col.descricao}}</h5>
+                            <h5 class="card-title">{{col.nome}}</h5>
                             <p class="card-text">
                                 <div class="row">
                                     <div ng-repeat="card in col.cards" class="col-md-12"  draggable="true" kanban-board-dragg="card" style="border: 1px solid #ccc;border-left: 2px solid blue;height: 100px;margin: 3px;">

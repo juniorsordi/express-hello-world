@@ -22,6 +22,16 @@ router.get("/agendamento/prestadores", auth, async function (req, res, next) {
     }
 });
 
+router.get("/agendamento/prestador/:id", auth, async function (req, res, next) {
+    try {
+        let lista = await service.getAgendamentoPrestadorByID(req.params.id);
+        res.json(lista);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.get("/agendamento/areas", auth, async function (req, res, next) {
     try {
         let lista = await service.getAgendamentoAreas();
@@ -32,7 +42,16 @@ router.get("/agendamento/areas", auth, async function (req, res, next) {
     }
 });
 
-router.get("/agendamento/usuario/agenda?id=1", auth, async function (req, res, next) {
+router.get("/agendamento/usuario/agenda", auth, async function (req, res, next) {
+    try {
+        res.json([req.query]);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/agendamento/usuario/agenda/passados", auth, async function (req, res, next) {
     try {
         res.json([]);
     } catch (err) {
@@ -41,13 +60,21 @@ router.get("/agendamento/usuario/agenda?id=1", auth, async function (req, res, n
     }
 });
 
-router.get("/agendamento/usuario/agenda/passados?id=1", auth, async function (req, res, next) {
+router.get("/gym/list", auth, async function (req, res, next) {
     try {
-        res.json([]);
+        res.json(await service.getAcademiasAtivas());
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
     }
 });
+
+/// /agendamento/user/rating
+/// /agendamento/time_grid
+/// /sistema/prestador/
+/// 
+/// 
+/// 
+/// 
 
 module.exports = router;

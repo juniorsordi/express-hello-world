@@ -1,0 +1,12 @@
+INSERT INTO public.empresa (id, nome, logo, id_tipo_login, servidor_ad, ativo) VALUES(1, 'DSJ Consultoria e Desenvolvimento', NULL, 1, NULL, true);
+INSERT INTO public.agendamento_areas (id, nome, data_cadastro) VALUES(1, 'Informática/TI', '2023-10-30 21:52:00.927');
+INSERT INTO public.agendamento_areas (id, nome, data_cadastro) VALUES(2, 'Terapia Capilar', '2023-10-30 21:52:02.367');
+INSERT INTO public.agendamento_areas (id, nome, data_cadastro) VALUES(3, 'Massoterapeuta', '2023-10-30 21:52:03.215');
+INSERT INTO public.agendamento_areas (id, nome, data_cadastro) VALUES(4, 'Manicure/Pedicure', '2023-10-30 21:52:03.990');
+INSERT INTO public.empresa_cliente (id, nome, logo, ativo, id_empresa) VALUES(1, 'Espaço dos Saberes', 'https://espacosaberfloripa.com.br/site/wp-content/uploads/2022/06/espaco-dos-sabores-logo.png', true, 1);
+INSERT INTO public.empresa_cliente (id, nome, logo, ativo, id_empresa) VALUES(2, 'DSJ Sistemas', NULL, true, 1);
+INSERT INTO public.empresa_cliente (id, nome, logo, ativo, id_empresa) VALUES(3, 'DLHouse', NULL, true, 1);
+INSERT INTO public.empresa_cliente (id, nome, logo, ativo, id_empresa) VALUES(4, 'Superlative', NULL, true, 1);
+INSERT INTO public.empresa_cliente (id, nome, logo, ativo, id_empresa) VALUES(5, 'Condoplay', NULL, true, 1);
+INSERT INTO usuario (id, nome, email, senha, foto, id_tipo_login, is_admin, ativo, id_empresa) VALUES(1, 'Dilson Sordi Junior', 'dilson@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/img/users/dilson_sordi_junior.jpg', 1, 1, true, 1);
+INSERT INTO usuario (id, nome, email, senha, foto, id_tipo_login, is_admin, ativo, id_empresa) VALUES(2, 'Cristian Scheffel Biacchi', 'csbiacchi@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/img/users/cristian_scheffel_biacchi.jpg', 1, 1, true, 1);
