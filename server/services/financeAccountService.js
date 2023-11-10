@@ -98,11 +98,14 @@ async function saveAccountMoviment(fields, idEmpresa) {
         valor_efetivo = null;
         situacao = 0;
     }
+
     let SQL = `INSERT INTO financas_movimentacao VALUES (DEFAULT, 
         $1, $2, $3, $4, $5, $6, $7, now(), $8, $9, $10, null, null, null, false, false, $11
     ) returning *`;
+
     //console.log(SQL);
-    return await database.one(SQL, [fields.titulo, fields.data_vencimento, valor, valor_previsto, valor_efetivo, tipo_operacao, 
+
+    return await database.one(SQL, [fields.titulo, fields.data_vencimento, valor, valor_previsto, valor_efetivo, fields.tipo_operacao, 
         situacao, data_baixa, fields.conta.id, fields.id_categoria, idEmpresa]);
 }
 

@@ -12,11 +12,11 @@
                             <label for="field0" translate="">Type</label>
                             <div id="field0">
                                 <label class="ui-radio ui-radio-danger">
-                                    <input name="radio1" type="radio" value="1" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false"> 
+                                    <input name="radio1" type="radio" value="D" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false"> 
                                     <span>Despesa</span>
                                 </label>
                                 <label class="ui-radio">
-                                    <input name="radio1" type="radio" value="2" ng-model="form.tipo_operacao" aria-invalid="false" > 
+                                    <input name="radio1" type="radio" value="C" ng-model="form.tipo_operacao" aria-invalid="false" > 
                                     <span>Receita</span>
                                 </label>
                             </div>
@@ -27,8 +27,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="field3" translate="">Value</label>
-                            <input type="text" id="field3" class="form-control" ng-model="form.valor"
-                                ui-money-mask="2" />
+                            <input type="text" id="field3" class="form-control" ng-model="form.valor"  ui-money-mask="2" />
                         </div>
                         <div class="mb-3">
                             <label for="field4" translate="">Due Date</label>
@@ -36,15 +35,27 @@
                         </div>
                         <div class="mb-3">
                             <label for="field5" translate="">Category</label>
-                            <select id="field5" class="form-control" ng-model="form.id_categoria" ng-options="item.id as item.nome for item in financesCategoriesList">
+                            <select id="field5" class="form-control" ng-model="form.id_categoria" ng-options="item.id as item.nome for item in categoriesList | filter: { tipo: form.tipo_operacao }">
                                 <option value=""></option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="field5" translate="">Payment Type</label>
-                            <select id="field5" class="form-control" ng-model="form.tipo_pagamento" ng-options="item.id as item.nome for item in paymentTypesList">
+                            <select id="field5" class="form-control" ng-model="form.conta.nome" ng-options="item.id as item.nome for item in accountsList">
                                 <option value=""></option>
                             </select>
+                            <ui-select id="field2" ng-model="form.conta" theme="selectize" title="Selecione o banco...">
+                                <ui-select-match placeholder="Selecione o banco...">
+                                    <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ $select.selected.banco.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                    {{$select.selected.nome}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="item in accountsList | filter: $select.search">
+                                    <div>
+                                        <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ item.banco.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                        <span>&nbsp;{{ item.nome | highlight: $select.search }}</span>
+                                    </div>
+                                </ui-select-choices>
+                            </ui-select>
                         </div>
                     </div>
                 </div>
@@ -52,7 +63,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ng-click="$hide()"
                     translate>Close</button>
-                <button type="button" class="btn btn-success" ng-click="saveFinanceMovement(form);$hide()"
+                <button type="button" class="btn btn-success" ng-click="salvarMovimentacao(form);"
                     translate>Save</button>
             </div>
         </div>

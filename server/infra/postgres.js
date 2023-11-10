@@ -22,7 +22,7 @@ async function connect() {
 }
 //*/
 let config = {};
-let localhost = process.env.DATABASE_LOCAL;
+let localhost = true;//process.env.DATABASE_LOCAL;
 
 config.database = {};
 config.database.application_name = "financial-RW";
@@ -37,10 +37,11 @@ if(localhost) {
     config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
     config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
 } else {
-    config.database.user = process.env.DATABASE_USER || 'postgres';
-    config.database.database = process.env.DATABASE_DB || 'backstage';
-    config.database.password = process.env.DATABASE_PW || '123456';
-    config.database.host = process.env.DATABASE_HOST || 'localhost';
+    console.log("Using database on host: " + process.env.DATABASE_HOST_NEON);
+    config.database.user = process.env.DATABASE_USER_NEON || "postgres";
+    config.database.database = process.env.DATABASE_DB_NEON || "backstage";
+    config.database.password = process.env.DATABASE_PW_NEON || "123456";
+    config.database.host = process.env.DATABASE_HOST_NEON || "localhost";
 }
 
 const options = {

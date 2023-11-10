@@ -40,12 +40,12 @@
                             <label for="field2">Banco</label> 
                             <ui-select id="field2" ng-model="form.banco" theme="selectize" title="Selecione o banco...">
                                 <ui-select-match placeholder="Selecione o banco...">
-                                    <img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ $select.selected.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                    <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ $select.selected.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
                                     {{$select.selected.nome}}
                                 </ui-select-match>
                                 <ui-select-choices repeat="item in listaBancos | filter: $select.search">
                                     <div>
-                                        <img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ item.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                        <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ item.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
                                         <span>&nbsp;{{ item.nome | highlight: $select.search }}</span>
                                     </div>
                                 </ui-select-choices>

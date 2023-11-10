@@ -551,9 +551,10 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
             $scope.dashboardAccountsList = resp.data;
 
             $scope.dashboardAccountsList.forEach(element => {
-                element.banco = JSON.parse(element.banco);
+                //element.banco = JSON.parse(element.banco);
             });
 
+            /*
             $("#select-console").selectize({
                 valueField: 'id',
                 labelField: 'nome',
@@ -575,6 +576,7 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
                     }
                 },
             });
+            //*/
         });
         APIService.getData("/finances/report/categoryCards", function (resp) { $scope.dashboardCategoryCards = resp.data; });
         APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
@@ -861,7 +863,11 @@ app.controller("FinancesAddAccount", function ($scope, $rootScope, $routeParams,
 app.controller("FinancesAddMovement", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
     $scope.form = {};
 
+    APIService.getData("/finances/accounts/categories", function (resp) { $scope.categoriesList = resp.data; });
+    APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
+
     $scope.salvarMovimentacao = function(form) {
+        console.log(form);
         APIService.postData("/finances/accounts/2/movimentacoes", form, function (resp) {
             $scope.form = {};
             $rootScope.$broadcast('updateListTasks');

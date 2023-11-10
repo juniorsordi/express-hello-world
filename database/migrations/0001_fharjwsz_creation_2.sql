@@ -5,7 +5,7 @@
 -- Dumped from database version 10.4
 -- Dumped by pg_dump version 15.3
 
--- Started on 2023-11-10 14:56:18
+-- Started on 2023-11-10 14:59:45
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,18 +20,16 @@ SET row_security = off;
 
 --
 -- TOC entry 6 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA public;
 
 
-ALTER SCHEMA public OWNER TO postgres;
-
 --
 -- TOC entry 3223 (class 0 OID 0)
 -- Dependencies: 6
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON SCHEMA public IS 'standard public schema';
@@ -41,7 +39,7 @@ SET default_tablespace = '';
 
 --
 -- TOC entry 196 (class 1259 OID 16385)
--- Name: agendamento_areas; Type: TABLE; Schema: public; Owner: postgres
+-- Name: agendamento_areas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.agendamento_areas (
@@ -51,11 +49,9 @@ CREATE TABLE public.agendamento_areas (
 );
 
 
-ALTER TABLE public.agendamento_areas OWNER TO postgres;
-
 --
 -- TOC entry 197 (class 1259 OID 16391)
--- Name: agendamento_areas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: agendamento_areas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.agendamento_areas_id_seq
@@ -67,12 +63,10 @@ CREATE SEQUENCE public.agendamento_areas_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.agendamento_areas_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3226 (class 0 OID 0)
+-- TOC entry 3224 (class 0 OID 0)
 -- Dependencies: 197
--- Name: agendamento_areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: agendamento_areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.agendamento_areas_id_seq OWNED BY public.agendamento_areas.id;
@@ -80,7 +74,7 @@ ALTER SEQUENCE public.agendamento_areas_id_seq OWNED BY public.agendamento_areas
 
 --
 -- TOC entry 198 (class 1259 OID 16393)
--- Name: agendamento_prestador; Type: TABLE; Schema: public; Owner: postgres
+-- Name: agendamento_prestador; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.agendamento_prestador (
@@ -95,11 +89,9 @@ CREATE TABLE public.agendamento_prestador (
 );
 
 
-ALTER TABLE public.agendamento_prestador OWNER TO postgres;
-
 --
 -- TOC entry 257 (class 1259 OID 16846)
--- Name: agendamento_prestador_compromisso; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.agendamento_prestador_compromisso (
@@ -115,11 +107,9 @@ CREATE TABLE public.agendamento_prestador_compromisso (
 );
 
 
-ALTER TABLE public.agendamento_prestador_compromisso OWNER TO fharjwsz;
-
 --
 -- TOC entry 256 (class 1259 OID 16844)
--- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.agendamento_prestador_compromisso_id_seq
@@ -131,12 +121,10 @@ CREATE SEQUENCE public.agendamento_prestador_compromisso_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.agendamento_prestador_compromisso_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3228 (class 0 OID 0)
+-- TOC entry 3225 (class 0 OID 0)
 -- Dependencies: 256
--- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.agendamento_prestador_compromisso_id_seq OWNED BY public.agendamento_prestador_compromisso.id;
@@ -144,7 +132,7 @@ ALTER SEQUENCE public.agendamento_prestador_compromisso_id_seq OWNED BY public.a
 
 --
 -- TOC entry 199 (class 1259 OID 16399)
--- Name: agendamento_prestador_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: agendamento_prestador_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.agendamento_prestador_id_seq
@@ -156,12 +144,10 @@ CREATE SEQUENCE public.agendamento_prestador_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.agendamento_prestador_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3229 (class 0 OID 0)
+-- TOC entry 3226 (class 0 OID 0)
 -- Dependencies: 199
--- Name: agendamento_prestador_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: agendamento_prestador_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.agendamento_prestador_id_seq OWNED BY public.agendamento_prestador.id;
@@ -169,7 +155,7 @@ ALTER SEQUENCE public.agendamento_prestador_id_seq OWNED BY public.agendamento_p
 
 --
 -- TOC entry 255 (class 1259 OID 16830)
--- Name: agendamento_prestador_produto; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.agendamento_prestador_produto (
@@ -182,11 +168,9 @@ CREATE TABLE public.agendamento_prestador_produto (
 );
 
 
-ALTER TABLE public.agendamento_prestador_produto OWNER TO fharjwsz;
-
 --
 -- TOC entry 254 (class 1259 OID 16828)
--- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.agendamento_prestador_produto_id_seq
@@ -198,12 +182,10 @@ CREATE SEQUENCE public.agendamento_prestador_produto_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.agendamento_prestador_produto_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3230 (class 0 OID 0)
+-- TOC entry 3227 (class 0 OID 0)
 -- Dependencies: 254
--- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.agendamento_prestador_produto_id_seq OWNED BY public.agendamento_prestador_produto.id;
@@ -211,7 +193,7 @@ ALTER SEQUENCE public.agendamento_prestador_produto_id_seq OWNED BY public.agend
 
 --
 -- TOC entry 251 (class 1259 OID 16803)
--- Name: controle_mudancas; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.controle_mudancas (
@@ -233,11 +215,9 @@ CREATE TABLE public.controle_mudancas (
 );
 
 
-ALTER TABLE public.controle_mudancas OWNER TO fharjwsz;
-
 --
 -- TOC entry 253 (class 1259 OID 16814)
--- Name: controle_mudancas_detalhamento; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.controle_mudancas_detalhamento (
@@ -253,11 +233,9 @@ CREATE TABLE public.controle_mudancas_detalhamento (
 );
 
 
-ALTER TABLE public.controle_mudancas_detalhamento OWNER TO fharjwsz;
-
 --
 -- TOC entry 252 (class 1259 OID 16812)
--- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.controle_mudancas_detalhamento_id_seq
@@ -269,12 +247,10 @@ CREATE SEQUENCE public.controle_mudancas_detalhamento_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.controle_mudancas_detalhamento_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3231 (class 0 OID 0)
+-- TOC entry 3228 (class 0 OID 0)
 -- Dependencies: 252
--- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.controle_mudancas_detalhamento_id_seq OWNED BY public.controle_mudancas_detalhamento.id;
@@ -282,7 +258,7 @@ ALTER SEQUENCE public.controle_mudancas_detalhamento_id_seq OWNED BY public.cont
 
 --
 -- TOC entry 250 (class 1259 OID 16801)
--- Name: controle_mudancas_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.controle_mudancas_id_seq
@@ -294,12 +270,10 @@ CREATE SEQUENCE public.controle_mudancas_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.controle_mudancas_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3232 (class 0 OID 0)
+-- TOC entry 3229 (class 0 OID 0)
 -- Dependencies: 250
--- Name: controle_mudancas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.controle_mudancas_id_seq OWNED BY public.controle_mudancas.id;
@@ -307,7 +281,7 @@ ALTER SEQUENCE public.controle_mudancas_id_seq OWNED BY public.controle_mudancas
 
 --
 -- TOC entry 200 (class 1259 OID 16401)
--- Name: empresa; Type: TABLE; Schema: public; Owner: postgres
+-- Name: empresa; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.empresa (
@@ -320,11 +294,9 @@ CREATE TABLE public.empresa (
 );
 
 
-ALTER TABLE public.empresa OWNER TO postgres;
-
 --
 -- TOC entry 201 (class 1259 OID 16407)
--- Name: empresa_categoria; Type: TABLE; Schema: public; Owner: postgres
+-- Name: empresa_categoria; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.empresa_categoria (
@@ -334,11 +306,9 @@ CREATE TABLE public.empresa_categoria (
 );
 
 
-ALTER TABLE public.empresa_categoria OWNER TO postgres;
-
 --
 -- TOC entry 202 (class 1259 OID 16413)
--- Name: empresa_categoria_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: empresa_categoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.empresa_categoria_id_seq
@@ -350,12 +320,10 @@ CREATE SEQUENCE public.empresa_categoria_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.empresa_categoria_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3235 (class 0 OID 0)
+-- TOC entry 3230 (class 0 OID 0)
 -- Dependencies: 202
--- Name: empresa_categoria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: empresa_categoria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.empresa_categoria_id_seq OWNED BY public.empresa_categoria.id;
@@ -363,7 +331,7 @@ ALTER SEQUENCE public.empresa_categoria_id_seq OWNED BY public.empresa_categoria
 
 --
 -- TOC entry 203 (class 1259 OID 16415)
--- Name: empresa_cliente; Type: TABLE; Schema: public; Owner: postgres
+-- Name: empresa_cliente; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.empresa_cliente (
@@ -375,11 +343,9 @@ CREATE TABLE public.empresa_cliente (
 );
 
 
-ALTER TABLE public.empresa_cliente OWNER TO postgres;
-
 --
 -- TOC entry 204 (class 1259 OID 16421)
--- Name: empresa_cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: empresa_cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.empresa_cliente_id_seq
@@ -391,12 +357,10 @@ CREATE SEQUENCE public.empresa_cliente_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.empresa_cliente_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3237 (class 0 OID 0)
+-- TOC entry 3231 (class 0 OID 0)
 -- Dependencies: 204
--- Name: empresa_cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: empresa_cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.empresa_cliente_id_seq OWNED BY public.empresa_cliente.id;
@@ -404,7 +368,7 @@ ALTER SEQUENCE public.empresa_cliente_id_seq OWNED BY public.empresa_cliente.id;
 
 --
 -- TOC entry 205 (class 1259 OID 16423)
--- Name: empresa_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: empresa_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.empresa_id_seq
@@ -416,12 +380,10 @@ CREATE SEQUENCE public.empresa_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.empresa_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3238 (class 0 OID 0)
+-- TOC entry 3232 (class 0 OID 0)
 -- Dependencies: 205
--- Name: empresa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: empresa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.empresa_id_seq OWNED BY public.empresa.id;
@@ -429,7 +391,7 @@ ALTER SEQUENCE public.empresa_id_seq OWNED BY public.empresa.id;
 
 --
 -- TOC entry 206 (class 1259 OID 16425)
--- Name: financas_bancos; Type: TABLE; Schema: public; Owner: postgres
+-- Name: financas_bancos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.financas_bancos (
@@ -441,11 +403,9 @@ CREATE TABLE public.financas_bancos (
 );
 
 
-ALTER TABLE public.financas_bancos OWNER TO postgres;
-
 --
 -- TOC entry 207 (class 1259 OID 16431)
--- Name: financas_bancos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: financas_bancos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.financas_bancos_id_seq
@@ -457,12 +417,10 @@ CREATE SEQUENCE public.financas_bancos_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.financas_bancos_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3240 (class 0 OID 0)
+-- TOC entry 3233 (class 0 OID 0)
 -- Dependencies: 207
--- Name: financas_bancos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: financas_bancos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.financas_bancos_id_seq OWNED BY public.financas_bancos.id;
@@ -470,7 +428,7 @@ ALTER SEQUENCE public.financas_bancos_id_seq OWNED BY public.financas_bancos.id;
 
 --
 -- TOC entry 208 (class 1259 OID 16433)
--- Name: financas_categoria; Type: TABLE; Schema: public; Owner: postgres
+-- Name: financas_categoria; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.financas_categoria (
@@ -483,11 +441,9 @@ CREATE TABLE public.financas_categoria (
 );
 
 
-ALTER TABLE public.financas_categoria OWNER TO postgres;
-
 --
 -- TOC entry 209 (class 1259 OID 16439)
--- Name: financas_categoria_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: financas_categoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.financas_categoria_id_seq
@@ -499,12 +455,10 @@ CREATE SEQUENCE public.financas_categoria_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.financas_categoria_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3242 (class 0 OID 0)
+-- TOC entry 3234 (class 0 OID 0)
 -- Dependencies: 209
--- Name: financas_categoria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: financas_categoria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.financas_categoria_id_seq OWNED BY public.financas_categoria.id;
@@ -512,7 +466,7 @@ ALTER SEQUENCE public.financas_categoria_id_seq OWNED BY public.financas_categor
 
 --
 -- TOC entry 210 (class 1259 OID 16441)
--- Name: financas_conta_bancaria; Type: TABLE; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.financas_conta_bancaria (
@@ -530,11 +484,9 @@ CREATE TABLE public.financas_conta_bancaria (
 );
 
 
-ALTER TABLE public.financas_conta_bancaria OWNER TO postgres;
-
 --
 -- TOC entry 211 (class 1259 OID 16447)
--- Name: financas_conta_bancaria2; Type: TABLE; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria2; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.financas_conta_bancaria2 (
@@ -553,11 +505,9 @@ CREATE TABLE public.financas_conta_bancaria2 (
 );
 
 
-ALTER TABLE public.financas_conta_bancaria2 OWNER TO postgres;
-
 --
 -- TOC entry 212 (class 1259 OID 16454)
--- Name: financas_conta_bancaria2_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria2_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.financas_conta_bancaria2_id_seq
@@ -569,12 +519,10 @@ CREATE SEQUENCE public.financas_conta_bancaria2_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.financas_conta_bancaria2_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3245 (class 0 OID 0)
+-- TOC entry 3235 (class 0 OID 0)
 -- Dependencies: 212
--- Name: financas_conta_bancaria2_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria2_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.financas_conta_bancaria2_id_seq OWNED BY public.financas_conta_bancaria2.id;
@@ -582,7 +530,7 @@ ALTER SEQUENCE public.financas_conta_bancaria2_id_seq OWNED BY public.financas_c
 
 --
 -- TOC entry 213 (class 1259 OID 16456)
--- Name: financas_conta_bancaria_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.financas_conta_bancaria_id_seq
@@ -594,12 +542,10 @@ CREATE SEQUENCE public.financas_conta_bancaria_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.financas_conta_bancaria_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3246 (class 0 OID 0)
+-- TOC entry 3236 (class 0 OID 0)
 -- Dependencies: 213
--- Name: financas_conta_bancaria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.financas_conta_bancaria_id_seq OWNED BY public.financas_conta_bancaria.id;
@@ -607,7 +553,7 @@ ALTER SEQUENCE public.financas_conta_bancaria_id_seq OWNED BY public.financas_co
 
 --
 -- TOC entry 214 (class 1259 OID 16458)
--- Name: financas_conta_bancaria_saldo; Type: TABLE; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.financas_conta_bancaria_saldo (
@@ -619,11 +565,9 @@ CREATE TABLE public.financas_conta_bancaria_saldo (
 );
 
 
-ALTER TABLE public.financas_conta_bancaria_saldo OWNER TO postgres;
-
 --
 -- TOC entry 215 (class 1259 OID 16461)
--- Name: financas_conta_bancaria_saldo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.financas_conta_bancaria_saldo_id_seq
@@ -635,12 +579,10 @@ CREATE SEQUENCE public.financas_conta_bancaria_saldo_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.financas_conta_bancaria_saldo_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3248 (class 0 OID 0)
+-- TOC entry 3237 (class 0 OID 0)
 -- Dependencies: 215
--- Name: financas_conta_bancaria_saldo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.financas_conta_bancaria_saldo_id_seq OWNED BY public.financas_conta_bancaria_saldo.id;
@@ -648,7 +590,7 @@ ALTER SEQUENCE public.financas_conta_bancaria_saldo_id_seq OWNED BY public.finan
 
 --
 -- TOC entry 216 (class 1259 OID 16463)
--- Name: financas_movimentacao; Type: TABLE; Schema: public; Owner: postgres
+-- Name: financas_movimentacao; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.financas_movimentacao (
@@ -673,11 +615,9 @@ CREATE TABLE public.financas_movimentacao (
 );
 
 
-ALTER TABLE public.financas_movimentacao OWNER TO postgres;
-
 --
 -- TOC entry 217 (class 1259 OID 16471)
--- Name: financas_movimentacao_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: financas_movimentacao_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.financas_movimentacao_id_seq
@@ -689,12 +629,10 @@ CREATE SEQUENCE public.financas_movimentacao_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.financas_movimentacao_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3250 (class 0 OID 0)
+-- TOC entry 3238 (class 0 OID 0)
 -- Dependencies: 217
--- Name: financas_movimentacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: financas_movimentacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.financas_movimentacao_id_seq OWNED BY public.financas_movimentacao.id;
@@ -702,7 +640,7 @@ ALTER SEQUENCE public.financas_movimentacao_id_seq OWNED BY public.financas_movi
 
 --
 -- TOC entry 241 (class 1259 OID 16704)
--- Name: hours; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: hours; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.hours (
@@ -716,11 +654,9 @@ CREATE TABLE public.hours (
 );
 
 
-ALTER TABLE public.hours OWNER TO fharjwsz;
-
 --
 -- TOC entry 240 (class 1259 OID 16702)
--- Name: hours_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: hours_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.hours_id_seq
@@ -732,12 +668,10 @@ CREATE SEQUENCE public.hours_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.hours_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3251 (class 0 OID 0)
+-- TOC entry 3239 (class 0 OID 0)
 -- Dependencies: 240
--- Name: hours_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: hours_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.hours_id_seq OWNED BY public.hours.id;
@@ -745,7 +679,7 @@ ALTER SEQUENCE public.hours_id_seq OWNED BY public.hours.id;
 
 --
 -- TOC entry 262 (class 1259 OID 18570)
--- Name: migrations; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.migrations (
@@ -756,11 +690,9 @@ CREATE TABLE public.migrations (
 );
 
 
-ALTER TABLE public.migrations OWNER TO fharjwsz;
-
 --
 -- TOC entry 261 (class 1259 OID 18564)
--- Name: pgmigrations; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: pgmigrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.pgmigrations (
@@ -770,11 +702,9 @@ CREATE TABLE public.pgmigrations (
 );
 
 
-ALTER TABLE public.pgmigrations OWNER TO fharjwsz;
-
 --
 -- TOC entry 260 (class 1259 OID 18562)
--- Name: pgmigrations_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: pgmigrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.pgmigrations_id_seq
@@ -786,12 +716,10 @@ CREATE SEQUENCE public.pgmigrations_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.pgmigrations_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3252 (class 0 OID 0)
+-- TOC entry 3240 (class 0 OID 0)
 -- Dependencies: 260
--- Name: pgmigrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: pgmigrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.pgmigrations_id_seq OWNED BY public.pgmigrations.id;
@@ -799,7 +727,7 @@ ALTER SEQUENCE public.pgmigrations_id_seq OWNED BY public.pgmigrations.id;
 
 --
 -- TOC entry 218 (class 1259 OID 16473)
--- Name: projeto; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto (
@@ -823,11 +751,9 @@ CREATE TABLE public.projeto (
 );
 
 
-ALTER TABLE public.projeto OWNER TO postgres;
-
 --
 -- TOC entry 219 (class 1259 OID 16479)
--- Name: projeto_atividade; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_atividade; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_atividade (
@@ -848,11 +774,9 @@ CREATE TABLE public.projeto_atividade (
 );
 
 
-ALTER TABLE public.projeto_atividade OWNER TO postgres;
-
 --
 -- TOC entry 220 (class 1259 OID 16485)
--- Name: projeto_atividade_apontamento; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_atividade_apontamento (
@@ -868,11 +792,9 @@ CREATE TABLE public.projeto_atividade_apontamento (
 );
 
 
-ALTER TABLE public.projeto_atividade_apontamento OWNER TO postgres;
-
 --
 -- TOC entry 221 (class 1259 OID 16491)
--- Name: projeto_atividade_apontamento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_atividade_apontamento_id_seq
@@ -884,12 +806,10 @@ CREATE SEQUENCE public.projeto_atividade_apontamento_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_atividade_apontamento_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3256 (class 0 OID 0)
+-- TOC entry 3241 (class 0 OID 0)
 -- Dependencies: 221
--- Name: projeto_atividade_apontamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_atividade_apontamento_id_seq OWNED BY public.projeto_atividade_apontamento.id;
@@ -897,7 +817,7 @@ ALTER SEQUENCE public.projeto_atividade_apontamento_id_seq OWNED BY public.proje
 
 --
 -- TOC entry 222 (class 1259 OID 16493)
--- Name: projeto_atividade_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_atividade_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_atividade_id_seq
@@ -909,12 +829,10 @@ CREATE SEQUENCE public.projeto_atividade_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_atividade_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3257 (class 0 OID 0)
+-- TOC entry 3242 (class 0 OID 0)
 -- Dependencies: 222
--- Name: projeto_atividade_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_atividade_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_atividade_id_seq OWNED BY public.projeto_atividade.id;
@@ -922,7 +840,7 @@ ALTER SEQUENCE public.projeto_atividade_id_seq OWNED BY public.projeto_atividade
 
 --
 -- TOC entry 223 (class 1259 OID 16495)
--- Name: projeto_atividade_participante; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_atividade_participante (
@@ -932,11 +850,9 @@ CREATE TABLE public.projeto_atividade_participante (
 );
 
 
-ALTER TABLE public.projeto_atividade_participante OWNER TO postgres;
-
 --
 -- TOC entry 224 (class 1259 OID 16498)
--- Name: projeto_atividade_participante_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_atividade_participante_id_seq
@@ -948,12 +864,10 @@ CREATE SEQUENCE public.projeto_atividade_participante_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_atividade_participante_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3259 (class 0 OID 0)
+-- TOC entry 3243 (class 0 OID 0)
 -- Dependencies: 224
--- Name: projeto_atividade_participante_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_atividade_participante_id_seq OWNED BY public.projeto_atividade_participante.id;
@@ -961,7 +875,7 @@ ALTER SEQUENCE public.projeto_atividade_participante_id_seq OWNED BY public.proj
 
 --
 -- TOC entry 259 (class 1259 OID 16872)
--- Name: projeto_atividade_situacao; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_atividade_situacao (
@@ -973,11 +887,9 @@ CREATE TABLE public.projeto_atividade_situacao (
 );
 
 
-ALTER TABLE public.projeto_atividade_situacao OWNER TO fharjwsz;
-
 --
 -- TOC entry 258 (class 1259 OID 16870)
--- Name: projeto_atividade_situacao_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_atividade_situacao_id_seq
@@ -989,12 +901,10 @@ CREATE SEQUENCE public.projeto_atividade_situacao_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_atividade_situacao_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3260 (class 0 OID 0)
+-- TOC entry 3244 (class 0 OID 0)
 -- Dependencies: 258
--- Name: projeto_atividade_situacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_atividade_situacao_id_seq OWNED BY public.projeto_atividade_situacao.id;
@@ -1002,7 +912,7 @@ ALTER SEQUENCE public.projeto_atividade_situacao_id_seq OWNED BY public.projeto_
 
 --
 -- TOC entry 225 (class 1259 OID 16500)
--- Name: projeto_comentario; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_comentario; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_comentario (
@@ -1014,11 +924,9 @@ CREATE TABLE public.projeto_comentario (
 );
 
 
-ALTER TABLE public.projeto_comentario OWNER TO postgres;
-
 --
 -- TOC entry 226 (class 1259 OID 16506)
--- Name: projeto_comentario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_comentario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_comentario_id_seq
@@ -1030,12 +938,10 @@ CREATE SEQUENCE public.projeto_comentario_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_comentario_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3262 (class 0 OID 0)
+-- TOC entry 3245 (class 0 OID 0)
 -- Dependencies: 226
--- Name: projeto_comentario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_comentario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_comentario_id_seq OWNED BY public.projeto_comentario.id;
@@ -1043,7 +949,7 @@ ALTER SEQUENCE public.projeto_comentario_id_seq OWNED BY public.projeto_comentar
 
 --
 -- TOC entry 227 (class 1259 OID 16508)
--- Name: projeto_financeiro_despesas; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_despesas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_financeiro_despesas (
@@ -1056,11 +962,9 @@ CREATE TABLE public.projeto_financeiro_despesas (
 );
 
 
-ALTER TABLE public.projeto_financeiro_despesas OWNER TO postgres;
-
 --
 -- TOC entry 228 (class 1259 OID 16514)
--- Name: projeto_financeiro_despesas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_despesas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_financeiro_despesas_id_seq
@@ -1072,12 +976,10 @@ CREATE SEQUENCE public.projeto_financeiro_despesas_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_financeiro_despesas_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3264 (class 0 OID 0)
+-- TOC entry 3246 (class 0 OID 0)
 -- Dependencies: 228
--- Name: projeto_financeiro_despesas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_despesas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_financeiro_despesas_id_seq OWNED BY public.projeto_financeiro_despesas.id;
@@ -1085,7 +987,7 @@ ALTER SEQUENCE public.projeto_financeiro_despesas_id_seq OWNED BY public.projeto
 
 --
 -- TOC entry 229 (class 1259 OID 16516)
--- Name: projeto_financeiro_pagamentos; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_pagamentos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_financeiro_pagamentos (
@@ -1099,11 +1001,9 @@ CREATE TABLE public.projeto_financeiro_pagamentos (
 );
 
 
-ALTER TABLE public.projeto_financeiro_pagamentos OWNER TO postgres;
-
 --
 -- TOC entry 230 (class 1259 OID 16519)
--- Name: projeto_financeiro_pagamentos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_pagamentos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_financeiro_pagamentos_id_seq
@@ -1115,12 +1015,10 @@ CREATE SEQUENCE public.projeto_financeiro_pagamentos_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_financeiro_pagamentos_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3266 (class 0 OID 0)
+-- TOC entry 3247 (class 0 OID 0)
 -- Dependencies: 230
--- Name: projeto_financeiro_pagamentos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_pagamentos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_financeiro_pagamentos_id_seq OWNED BY public.projeto_financeiro_pagamentos.id;
@@ -1128,7 +1026,7 @@ ALTER SEQUENCE public.projeto_financeiro_pagamentos_id_seq OWNED BY public.proje
 
 --
 -- TOC entry 231 (class 1259 OID 16521)
--- Name: projeto_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_id_seq
@@ -1140,12 +1038,10 @@ CREATE SEQUENCE public.projeto_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3267 (class 0 OID 0)
+-- TOC entry 3248 (class 0 OID 0)
 -- Dependencies: 231
--- Name: projeto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_id_seq OWNED BY public.projeto.id;
@@ -1153,7 +1049,7 @@ ALTER SEQUENCE public.projeto_id_seq OWNED BY public.projeto.id;
 
 --
 -- TOC entry 232 (class 1259 OID 16523)
--- Name: projeto_situacao; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_situacao; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_situacao (
@@ -1167,11 +1063,9 @@ CREATE TABLE public.projeto_situacao (
 );
 
 
-ALTER TABLE public.projeto_situacao OWNER TO postgres;
-
 --
 -- TOC entry 233 (class 1259 OID 16526)
--- Name: projeto_situacao_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_situacao_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_situacao_id_seq
@@ -1183,12 +1077,10 @@ CREATE SEQUENCE public.projeto_situacao_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_situacao_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3269 (class 0 OID 0)
+-- TOC entry 3249 (class 0 OID 0)
 -- Dependencies: 233
--- Name: projeto_situacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_situacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_situacao_id_seq OWNED BY public.projeto_situacao.id;
@@ -1196,7 +1088,7 @@ ALTER SEQUENCE public.projeto_situacao_id_seq OWNED BY public.projeto_situacao.i
 
 --
 -- TOC entry 234 (class 1259 OID 16528)
--- Name: projeto_tipo; Type: TABLE; Schema: public; Owner: postgres
+-- Name: projeto_tipo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projeto_tipo (
@@ -1208,11 +1100,9 @@ CREATE TABLE public.projeto_tipo (
 );
 
 
-ALTER TABLE public.projeto_tipo OWNER TO postgres;
-
 --
 -- TOC entry 235 (class 1259 OID 16531)
--- Name: projeto_tipo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projeto_tipo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.projeto_tipo_id_seq
@@ -1224,12 +1114,10 @@ CREATE SEQUENCE public.projeto_tipo_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.projeto_tipo_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3271 (class 0 OID 0)
+-- TOC entry 3250 (class 0 OID 0)
 -- Dependencies: 235
--- Name: projeto_tipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projeto_tipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.projeto_tipo_id_seq OWNED BY public.projeto_tipo.id;
@@ -1237,7 +1125,7 @@ ALTER SEQUENCE public.projeto_tipo_id_seq OWNED BY public.projeto_tipo.id;
 
 --
 -- TOC entry 236 (class 1259 OID 16533)
--- Name: rh_batida_ponto; Type: TABLE; Schema: public; Owner: postgres
+-- Name: rh_batida_ponto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.rh_batida_ponto (
@@ -1251,11 +1139,9 @@ CREATE TABLE public.rh_batida_ponto (
 );
 
 
-ALTER TABLE public.rh_batida_ponto OWNER TO postgres;
-
 --
 -- TOC entry 237 (class 1259 OID 16536)
--- Name: rh_batida_ponto_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: rh_batida_ponto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.rh_batida_ponto_id_seq
@@ -1267,12 +1153,10 @@ CREATE SEQUENCE public.rh_batida_ponto_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.rh_batida_ponto_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3273 (class 0 OID 0)
+-- TOC entry 3251 (class 0 OID 0)
 -- Dependencies: 237
--- Name: rh_batida_ponto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: rh_batida_ponto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.rh_batida_ponto_id_seq OWNED BY public.rh_batida_ponto.id;
@@ -1280,7 +1164,7 @@ ALTER SEQUENCE public.rh_batida_ponto_id_seq OWNED BY public.rh_batida_ponto.id;
 
 --
 -- TOC entry 243 (class 1259 OID 16712)
--- Name: sistema_notificacao; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sistema_notificacao (
@@ -1294,11 +1178,9 @@ CREATE TABLE public.sistema_notificacao (
 );
 
 
-ALTER TABLE public.sistema_notificacao OWNER TO fharjwsz;
-
 --
 -- TOC entry 242 (class 1259 OID 16710)
--- Name: sistema_notificacao_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.sistema_notificacao_id_seq
@@ -1310,12 +1192,10 @@ CREATE SEQUENCE public.sistema_notificacao_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.sistema_notificacao_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3274 (class 0 OID 0)
+-- TOC entry 3252 (class 0 OID 0)
 -- Dependencies: 242
--- Name: sistema_notificacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.sistema_notificacao_id_seq OWNED BY public.sistema_notificacao.id;
@@ -1323,7 +1203,7 @@ ALTER SEQUENCE public.sistema_notificacao_id_seq OWNED BY public.sistema_notific
 
 --
 -- TOC entry 245 (class 1259 OID 16753)
--- Name: ticket; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: ticket; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ticket (
@@ -1338,11 +1218,9 @@ CREATE TABLE public.ticket (
 );
 
 
-ALTER TABLE public.ticket OWNER TO fharjwsz;
-
 --
 -- TOC entry 247 (class 1259 OID 16774)
--- Name: ticket_evento; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ticket_evento (
@@ -1354,11 +1232,9 @@ CREATE TABLE public.ticket_evento (
 );
 
 
-ALTER TABLE public.ticket_evento OWNER TO fharjwsz;
-
 --
 -- TOC entry 246 (class 1259 OID 16772)
--- Name: ticket_evento_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.ticket_evento_id_seq
@@ -1370,12 +1246,10 @@ CREATE SEQUENCE public.ticket_evento_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.ticket_evento_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3275 (class 0 OID 0)
+-- TOC entry 3253 (class 0 OID 0)
 -- Dependencies: 246
--- Name: ticket_evento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.ticket_evento_id_seq OWNED BY public.ticket_evento.id;
@@ -1383,7 +1257,7 @@ ALTER SEQUENCE public.ticket_evento_id_seq OWNED BY public.ticket_evento.id;
 
 --
 -- TOC entry 244 (class 1259 OID 16751)
--- Name: ticket_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: ticket_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.ticket_id_seq
@@ -1395,12 +1269,10 @@ CREATE SEQUENCE public.ticket_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.ticket_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3276 (class 0 OID 0)
+-- TOC entry 3254 (class 0 OID 0)
 -- Dependencies: 244
--- Name: ticket_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: ticket_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.ticket_id_seq OWNED BY public.ticket.id;
@@ -1408,7 +1280,7 @@ ALTER SEQUENCE public.ticket_id_seq OWNED BY public.ticket.id;
 
 --
 -- TOC entry 249 (class 1259 OID 16795)
--- Name: ticket_status; Type: TABLE; Schema: public; Owner: fharjwsz
+-- Name: ticket_status; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ticket_status (
@@ -1419,11 +1291,9 @@ CREATE TABLE public.ticket_status (
 );
 
 
-ALTER TABLE public.ticket_status OWNER TO fharjwsz;
-
 --
 -- TOC entry 248 (class 1259 OID 16793)
--- Name: ticket_status_id_seq; Type: SEQUENCE; Schema: public; Owner: fharjwsz
+-- Name: ticket_status_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.ticket_status_id_seq
@@ -1435,12 +1305,10 @@ CREATE SEQUENCE public.ticket_status_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.ticket_status_id_seq OWNER TO fharjwsz;
-
 --
--- TOC entry 3277 (class 0 OID 0)
+-- TOC entry 3255 (class 0 OID 0)
 -- Dependencies: 248
--- Name: ticket_status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fharjwsz
+-- Name: ticket_status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.ticket_status_id_seq OWNED BY public.ticket_status.id;
@@ -1448,7 +1316,7 @@ ALTER SEQUENCE public.ticket_status_id_seq OWNED BY public.ticket_status.id;
 
 --
 -- TOC entry 238 (class 1259 OID 16538)
--- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+-- Name: usuario; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.usuario (
@@ -1464,11 +1332,9 @@ CREATE TABLE public.usuario (
 );
 
 
-ALTER TABLE public.usuario OWNER TO postgres;
-
 --
 -- TOC entry 239 (class 1259 OID 16544)
--- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.usuario_id_seq
@@ -1480,12 +1346,10 @@ CREATE SEQUENCE public.usuario_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.usuario_id_seq OWNER TO postgres;
-
 --
--- TOC entry 3279 (class 0 OID 0)
+-- TOC entry 3256 (class 0 OID 0)
 -- Dependencies: 239
--- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
@@ -1493,7 +1357,7 @@ ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
 
 --
 -- TOC entry 2890 (class 2604 OID 16546)
--- Name: agendamento_areas id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: agendamento_areas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_areas ALTER COLUMN id SET DEFAULT nextval('public.agendamento_areas_id_seq'::regclass);
@@ -1501,7 +1365,7 @@ ALTER TABLE ONLY public.agendamento_areas ALTER COLUMN id SET DEFAULT nextval('p
 
 --
 -- TOC entry 2891 (class 2604 OID 16547)
--- Name: agendamento_prestador id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: agendamento_prestador id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador ALTER COLUMN id SET DEFAULT nextval('public.agendamento_prestador_id_seq'::regclass);
@@ -1509,7 +1373,7 @@ ALTER TABLE ONLY public.agendamento_prestador ALTER COLUMN id SET DEFAULT nextva
 
 --
 -- TOC entry 2923 (class 2604 OID 16849)
--- Name: agendamento_prestador_compromisso id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_compromisso ALTER COLUMN id SET DEFAULT nextval('public.agendamento_prestador_compromisso_id_seq'::regclass);
@@ -1517,7 +1381,7 @@ ALTER TABLE ONLY public.agendamento_prestador_compromisso ALTER COLUMN id SET DE
 
 --
 -- TOC entry 2922 (class 2604 OID 16833)
--- Name: agendamento_prestador_produto id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_produto ALTER COLUMN id SET DEFAULT nextval('public.agendamento_prestador_produto_id_seq'::regclass);
@@ -1525,7 +1389,7 @@ ALTER TABLE ONLY public.agendamento_prestador_produto ALTER COLUMN id SET DEFAUL
 
 --
 -- TOC entry 2920 (class 2604 OID 16806)
--- Name: controle_mudancas id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.controle_mudancas ALTER COLUMN id SET DEFAULT nextval('public.controle_mudancas_id_seq'::regclass);
@@ -1533,7 +1397,7 @@ ALTER TABLE ONLY public.controle_mudancas ALTER COLUMN id SET DEFAULT nextval('p
 
 --
 -- TOC entry 2921 (class 2604 OID 16817)
--- Name: controle_mudancas_detalhamento id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.controle_mudancas_detalhamento ALTER COLUMN id SET DEFAULT nextval('public.controle_mudancas_detalhamento_id_seq'::regclass);
@@ -1541,7 +1405,7 @@ ALTER TABLE ONLY public.controle_mudancas_detalhamento ALTER COLUMN id SET DEFAU
 
 --
 -- TOC entry 2892 (class 2604 OID 16548)
--- Name: empresa id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: empresa id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa ALTER COLUMN id SET DEFAULT nextval('public.empresa_id_seq'::regclass);
@@ -1549,7 +1413,7 @@ ALTER TABLE ONLY public.empresa ALTER COLUMN id SET DEFAULT nextval('public.empr
 
 --
 -- TOC entry 2893 (class 2604 OID 16549)
--- Name: empresa_categoria id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: empresa_categoria id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa_categoria ALTER COLUMN id SET DEFAULT nextval('public.empresa_categoria_id_seq'::regclass);
@@ -1557,7 +1421,7 @@ ALTER TABLE ONLY public.empresa_categoria ALTER COLUMN id SET DEFAULT nextval('p
 
 --
 -- TOC entry 2894 (class 2604 OID 16550)
--- Name: empresa_cliente id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: empresa_cliente id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa_cliente ALTER COLUMN id SET DEFAULT nextval('public.empresa_cliente_id_seq'::regclass);
@@ -1565,7 +1429,7 @@ ALTER TABLE ONLY public.empresa_cliente ALTER COLUMN id SET DEFAULT nextval('pub
 
 --
 -- TOC entry 2895 (class 2604 OID 16551)
--- Name: financas_bancos id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: financas_bancos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_bancos ALTER COLUMN id SET DEFAULT nextval('public.financas_bancos_id_seq'::regclass);
@@ -1573,7 +1437,7 @@ ALTER TABLE ONLY public.financas_bancos ALTER COLUMN id SET DEFAULT nextval('pub
 
 --
 -- TOC entry 2896 (class 2604 OID 16552)
--- Name: financas_categoria id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: financas_categoria id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_categoria ALTER COLUMN id SET DEFAULT nextval('public.financas_categoria_id_seq'::regclass);
@@ -1581,7 +1445,7 @@ ALTER TABLE ONLY public.financas_categoria ALTER COLUMN id SET DEFAULT nextval('
 
 --
 -- TOC entry 2897 (class 2604 OID 16553)
--- Name: financas_conta_bancaria id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria ALTER COLUMN id SET DEFAULT nextval('public.financas_conta_bancaria_id_seq'::regclass);
@@ -1589,7 +1453,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria ALTER COLUMN id SET DEFAULT next
 
 --
 -- TOC entry 2898 (class 2604 OID 16554)
--- Name: financas_conta_bancaria2 id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria2 id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria2 ALTER COLUMN id SET DEFAULT nextval('public.financas_conta_bancaria2_id_seq'::regclass);
@@ -1597,7 +1461,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria2 ALTER COLUMN id SET DEFAULT nex
 
 --
 -- TOC entry 2900 (class 2604 OID 16555)
--- Name: financas_conta_bancaria_saldo id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria_saldo ALTER COLUMN id SET DEFAULT nextval('public.financas_conta_bancaria_saldo_id_seq'::regclass);
@@ -1605,7 +1469,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria_saldo ALTER COLUMN id SET DEFAUL
 
 --
 -- TOC entry 2901 (class 2604 OID 16556)
--- Name: financas_movimentacao id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: financas_movimentacao id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_movimentacao ALTER COLUMN id SET DEFAULT nextval('public.financas_movimentacao_id_seq'::regclass);
@@ -1613,7 +1477,7 @@ ALTER TABLE ONLY public.financas_movimentacao ALTER COLUMN id SET DEFAULT nextva
 
 --
 -- TOC entry 2915 (class 2604 OID 16707)
--- Name: hours id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: hours id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.hours ALTER COLUMN id SET DEFAULT nextval('public.hours_id_seq'::regclass);
@@ -1621,7 +1485,7 @@ ALTER TABLE ONLY public.hours ALTER COLUMN id SET DEFAULT nextval('public.hours_
 
 --
 -- TOC entry 2925 (class 2604 OID 18567)
--- Name: pgmigrations id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: pgmigrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.pgmigrations ALTER COLUMN id SET DEFAULT nextval('public.pgmigrations_id_seq'::regclass);
@@ -1629,7 +1493,7 @@ ALTER TABLE ONLY public.pgmigrations ALTER COLUMN id SET DEFAULT nextval('public
 
 --
 -- TOC entry 2904 (class 2604 OID 16557)
--- Name: projeto id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto ALTER COLUMN id SET DEFAULT nextval('public.projeto_id_seq'::regclass);
@@ -1637,7 +1501,7 @@ ALTER TABLE ONLY public.projeto ALTER COLUMN id SET DEFAULT nextval('public.proj
 
 --
 -- TOC entry 2905 (class 2604 OID 16558)
--- Name: projeto_atividade id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_atividade id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade ALTER COLUMN id SET DEFAULT nextval('public.projeto_atividade_id_seq'::regclass);
@@ -1645,7 +1509,7 @@ ALTER TABLE ONLY public.projeto_atividade ALTER COLUMN id SET DEFAULT nextval('p
 
 --
 -- TOC entry 2906 (class 2604 OID 16559)
--- Name: projeto_atividade_apontamento id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_apontamento ALTER COLUMN id SET DEFAULT nextval('public.projeto_atividade_apontamento_id_seq'::regclass);
@@ -1653,7 +1517,7 @@ ALTER TABLE ONLY public.projeto_atividade_apontamento ALTER COLUMN id SET DEFAUL
 
 --
 -- TOC entry 2907 (class 2604 OID 16560)
--- Name: projeto_atividade_participante id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_participante ALTER COLUMN id SET DEFAULT nextval('public.projeto_atividade_participante_id_seq'::regclass);
@@ -1661,7 +1525,7 @@ ALTER TABLE ONLY public.projeto_atividade_participante ALTER COLUMN id SET DEFAU
 
 --
 -- TOC entry 2924 (class 2604 OID 16875)
--- Name: projeto_atividade_situacao id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_situacao ALTER COLUMN id SET DEFAULT nextval('public.projeto_atividade_situacao_id_seq'::regclass);
@@ -1669,7 +1533,7 @@ ALTER TABLE ONLY public.projeto_atividade_situacao ALTER COLUMN id SET DEFAULT n
 
 --
 -- TOC entry 2908 (class 2604 OID 16561)
--- Name: projeto_comentario id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_comentario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_comentario ALTER COLUMN id SET DEFAULT nextval('public.projeto_comentario_id_seq'::regclass);
@@ -1677,7 +1541,7 @@ ALTER TABLE ONLY public.projeto_comentario ALTER COLUMN id SET DEFAULT nextval('
 
 --
 -- TOC entry 2909 (class 2604 OID 16562)
--- Name: projeto_financeiro_despesas id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_despesas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_financeiro_despesas ALTER COLUMN id SET DEFAULT nextval('public.projeto_financeiro_despesas_id_seq'::regclass);
@@ -1685,7 +1549,7 @@ ALTER TABLE ONLY public.projeto_financeiro_despesas ALTER COLUMN id SET DEFAULT 
 
 --
 -- TOC entry 2910 (class 2604 OID 16563)
--- Name: projeto_financeiro_pagamentos id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_pagamentos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_financeiro_pagamentos ALTER COLUMN id SET DEFAULT nextval('public.projeto_financeiro_pagamentos_id_seq'::regclass);
@@ -1693,7 +1557,7 @@ ALTER TABLE ONLY public.projeto_financeiro_pagamentos ALTER COLUMN id SET DEFAUL
 
 --
 -- TOC entry 2911 (class 2604 OID 16564)
--- Name: projeto_situacao id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_situacao id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_situacao ALTER COLUMN id SET DEFAULT nextval('public.projeto_situacao_id_seq'::regclass);
@@ -1701,7 +1565,7 @@ ALTER TABLE ONLY public.projeto_situacao ALTER COLUMN id SET DEFAULT nextval('pu
 
 --
 -- TOC entry 2912 (class 2604 OID 16565)
--- Name: projeto_tipo id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: projeto_tipo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_tipo ALTER COLUMN id SET DEFAULT nextval('public.projeto_tipo_id_seq'::regclass);
@@ -1709,7 +1573,7 @@ ALTER TABLE ONLY public.projeto_tipo ALTER COLUMN id SET DEFAULT nextval('public
 
 --
 -- TOC entry 2913 (class 2604 OID 16566)
--- Name: rh_batida_ponto id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: rh_batida_ponto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.rh_batida_ponto ALTER COLUMN id SET DEFAULT nextval('public.rh_batida_ponto_id_seq'::regclass);
@@ -1717,7 +1581,7 @@ ALTER TABLE ONLY public.rh_batida_ponto ALTER COLUMN id SET DEFAULT nextval('pub
 
 --
 -- TOC entry 2916 (class 2604 OID 16715)
--- Name: sistema_notificacao id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sistema_notificacao ALTER COLUMN id SET DEFAULT nextval('public.sistema_notificacao_id_seq'::regclass);
@@ -1725,7 +1589,7 @@ ALTER TABLE ONLY public.sistema_notificacao ALTER COLUMN id SET DEFAULT nextval(
 
 --
 -- TOC entry 2917 (class 2604 OID 16756)
--- Name: ticket id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: ticket id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket ALTER COLUMN id SET DEFAULT nextval('public.ticket_id_seq'::regclass);
@@ -1733,7 +1597,7 @@ ALTER TABLE ONLY public.ticket ALTER COLUMN id SET DEFAULT nextval('public.ticke
 
 --
 -- TOC entry 2918 (class 2604 OID 16777)
--- Name: ticket_evento id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket_evento ALTER COLUMN id SET DEFAULT nextval('public.ticket_evento_id_seq'::regclass);
@@ -1741,7 +1605,7 @@ ALTER TABLE ONLY public.ticket_evento ALTER COLUMN id SET DEFAULT nextval('publi
 
 --
 -- TOC entry 2919 (class 2604 OID 16798)
--- Name: ticket_status id; Type: DEFAULT; Schema: public; Owner: fharjwsz
+-- Name: ticket_status id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket_status ALTER COLUMN id SET DEFAULT nextval('public.ticket_status_id_seq'::regclass);
@@ -1749,7 +1613,7 @@ ALTER TABLE ONLY public.ticket_status ALTER COLUMN id SET DEFAULT nextval('publi
 
 --
 -- TOC entry 2914 (class 2604 OID 16567)
--- Name: usuario id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: usuario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usuario_id_seq'::regclass);
@@ -1758,7 +1622,7 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 --
 -- TOC entry 3151 (class 0 OID 16385)
 -- Dependencies: 196
--- Data for Name: agendamento_areas; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: agendamento_areas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.agendamento_areas VALUES (1, 'Informática/TI', '2023-10-30 21:52:00.927');
@@ -1770,7 +1634,7 @@ INSERT INTO public.agendamento_areas VALUES (4, 'Manicure/Pedicure', '2023-10-30
 --
 -- TOC entry 3153 (class 0 OID 16393)
 -- Dependencies: 198
--- Data for Name: agendamento_prestador; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: agendamento_prestador; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.agendamento_prestador VALUES (1, 1, 'DSJ Consultoria', 'DSJ Consultoria', 'assets/img/avatars/avatar.jpg', 4, '2023-10-30 21:57:28.715', 1);
@@ -1779,7 +1643,7 @@ INSERT INTO public.agendamento_prestador VALUES (1, 1, 'DSJ Consultoria', 'DSJ C
 --
 -- TOC entry 3212 (class 0 OID 16846)
 -- Dependencies: 257
--- Data for Name: agendamento_prestador_compromisso; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: agendamento_prestador_compromisso; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -1787,7 +1651,7 @@ INSERT INTO public.agendamento_prestador VALUES (1, 1, 'DSJ Consultoria', 'DSJ C
 --
 -- TOC entry 3210 (class 0 OID 16830)
 -- Dependencies: 255
--- Data for Name: agendamento_prestador_produto; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: agendamento_prestador_produto; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.agendamento_prestador_produto VALUES (1, 1, 'Desenvolvimento Node.JS', 'Desenvolvimento Node.JS', 75, 1);
@@ -1796,7 +1660,7 @@ INSERT INTO public.agendamento_prestador_produto VALUES (1, 1, 'Desenvolvimento 
 --
 -- TOC entry 3206 (class 0 OID 16803)
 -- Dependencies: 251
--- Data for Name: controle_mudancas; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: controle_mudancas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.controle_mudancas VALUES (1, 'OS573', 'SGI', 'Rafael Queiroz Gonçalves', 'DTI', 'Dilson Sordi Junior', 'Manutenção', 'ESIPROC-2852
@@ -1868,7 +1732,7 @@ Verificar se a correção aplicada à tarefa pai se aplica a assinatura via GOVB
 --
 -- TOC entry 3208 (class 0 OID 16814)
 -- Dependencies: 253
--- Data for Name: controle_mudancas_detalhamento; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: controle_mudancas_detalhamento; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.controle_mudancas_detalhamento VALUES (1, 1, 'Pesquisar Responsáveis', 'Funcionalidade alterada para incluir “Cargo” 
@@ -1880,7 +1744,7 @@ Exclusão', NULL, '2023-10-30 14:18:00');
 --
 -- TOC entry 3155 (class 0 OID 16401)
 -- Dependencies: 200
--- Data for Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: empresa; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.empresa VALUES (1, 'DSJ Consultoria e Desenvolvimento', NULL, 1, NULL, true);
@@ -1889,7 +1753,7 @@ INSERT INTO public.empresa VALUES (1, 'DSJ Consultoria e Desenvolvimento', NULL,
 --
 -- TOC entry 3156 (class 0 OID 16407)
 -- Dependencies: 201
--- Data for Name: empresa_categoria; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: empresa_categoria; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -1897,7 +1761,7 @@ INSERT INTO public.empresa VALUES (1, 'DSJ Consultoria e Desenvolvimento', NULL,
 --
 -- TOC entry 3158 (class 0 OID 16415)
 -- Dependencies: 203
--- Data for Name: empresa_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: empresa_cliente; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.empresa_cliente VALUES (1, 'Espaço dos Saberes', 'https://espacosaberfloripa.com.br/site/wp-content/uploads/2022/06/espaco-dos-sabores-logo.png', true, 1);
@@ -1910,7 +1774,7 @@ INSERT INTO public.empresa_cliente VALUES (5, 'Condoplay', NULL, true, 1);
 --
 -- TOC entry 3161 (class 0 OID 16425)
 -- Dependencies: 206
--- Data for Name: financas_bancos; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: financas_bancos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.financas_bancos VALUES (1, 'Banco do Brasil S.A.', 'bb-2', '["CONTA CORRENTE","OUTROS","INVESTIMENTO"]', '001');
@@ -1929,7 +1793,7 @@ INSERT INTO public.financas_bancos VALUES (7, 'Banco ItauBank S.A.', 'itau', '["
 --
 -- TOC entry 3163 (class 0 OID 16433)
 -- Dependencies: 208
--- Data for Name: financas_categoria; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: financas_categoria; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.financas_categoria VALUES (26, 'Saúde', NULL, 1, 'D', 1);
@@ -1967,7 +1831,7 @@ INSERT INTO public.financas_categoria VALUES (30, 'Alimentação / Restaurante',
 --
 -- TOC entry 3165 (class 0 OID 16441)
 -- Dependencies: 210
--- Data for Name: financas_conta_bancaria; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: financas_conta_bancaria; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.financas_conta_bancaria VALUES (1, 'Conta Corrente', '1', '3616-1', '15647-7', 1, NULL, 0, 0, 1, 1);
@@ -1981,7 +1845,7 @@ INSERT INTO public.financas_conta_bancaria VALUES (10, 'Cartão Itau', '7', NULL
 --
 -- TOC entry 3166 (class 0 OID 16447)
 -- Dependencies: 211
--- Data for Name: financas_conta_bancaria2; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: financas_conta_bancaria2; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.financas_conta_bancaria2 VALUES (3, 'Conta NuBank', 'CONTA CORRENTE', true, false, '{
@@ -2011,7 +1875,7 @@ INSERT INTO public.financas_conta_bancaria2 VALUES (2, 'Conta BB', 'CONTA CORREN
 --
 -- TOC entry 3169 (class 0 OID 16458)
 -- Dependencies: 214
--- Data for Name: financas_conta_bancaria_saldo; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: financas_conta_bancaria_saldo; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.financas_conta_bancaria_saldo VALUES (1, 9, '2023-11-01 00:00:00', 0, '2023-11-03 11:25:00.818');
@@ -2020,7 +1884,7 @@ INSERT INTO public.financas_conta_bancaria_saldo VALUES (1, 9, '2023-11-01 00:00
 --
 -- TOC entry 3171 (class 0 OID 16463)
 -- Dependencies: 216
--- Data for Name: financas_movimentacao; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: financas_movimentacao; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.financas_movimentacao VALUES (14, 'Angeloni', '2023-11-02', -117.86, -117.86, -117.86, 'D', 1, '2023-11-03 11:57:13.178', '2023-11-02 03:00:00', 2, 16, NULL, NULL, NULL, false, false, 1);
@@ -2049,7 +1913,7 @@ INSERT INTO public.financas_movimentacao VALUES (23, 'Bokas', '2023-11-03', 97.2
 --
 -- TOC entry 3196 (class 0 OID 16704)
 -- Dependencies: 241
--- Data for Name: hours; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: hours; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.hours VALUES (1, 1, 1, 11, 2023, '2023-11-01 08:23:00', '2023-11-01 11:32:00');
@@ -2059,7 +1923,7 @@ INSERT INTO public.hours VALUES (2, 1, 1, 11, 2023, '2023-11-01 12:33:00', '2023
 --
 -- TOC entry 3217 (class 0 OID 18570)
 -- Dependencies: 262
--- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -2067,7 +1931,7 @@ INSERT INTO public.hours VALUES (2, 1, 1, 11, 2023, '2023-11-01 12:33:00', '2023
 --
 -- TOC entry 3216 (class 0 OID 18564)
 -- Dependencies: 261
--- Data for Name: pgmigrations; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: pgmigrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -2075,7 +1939,7 @@ INSERT INTO public.hours VALUES (2, 1, 1, 11, 2023, '2023-11-01 12:33:00', '2023
 --
 -- TOC entry 3173 (class 0 OID 16473)
 -- Dependencies: 218
--- Data for Name: projeto; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto VALUES (2, 'Gerenciamento de Projetos', 'Gerenciamento de Projetos baseado no site artia', '2023-01-01', '2023-12-31', 1300, 19, 1.4615384615384615, 1, 1, 2, 2, 1, 20, 26900, 7400.3928888888886, 1);
@@ -2086,7 +1950,7 @@ INSERT INTO public.projeto VALUES (1, 'Testes de Psicopedagogia', 'Testes de Psi
 --
 -- TOC entry 3174 (class 0 OID 16479)
 -- Dependencies: 219
--- Data for Name: projeto_atividade; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_atividade; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_atividade VALUES (14, 3, 'Outubro 2023', '', 2, '2023-10-01', '2023-10-31', 110, 12.17, 11.063636363636364, 1, 1, '2023-11-03', '2023-11-03');
@@ -2110,7 +1974,7 @@ INSERT INTO public.projeto_atividade VALUES (1, 1, 'Desenvolvimento Plataforma W
 --
 -- TOC entry 3175 (class 0 OID 16485)
 -- Dependencies: 220
--- Data for Name: projeto_atividade_apontamento; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_atividade_apontamento; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_atividade_apontamento VALUES (1, 1, 1, 6, '', '2023-05-11', '2023-08-28', '2023-08-28', false);
@@ -2165,7 +2029,7 @@ INSERT INTO public.projeto_atividade_apontamento VALUES (50, 13, 1, 0.01, '', '2
 --
 -- TOC entry 3178 (class 0 OID 16495)
 -- Dependencies: 223
--- Data for Name: projeto_atividade_participante; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_atividade_participante; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_atividade_participante VALUES (1, 10, 2);
@@ -2174,7 +2038,7 @@ INSERT INTO public.projeto_atividade_participante VALUES (1, 10, 2);
 --
 -- TOC entry 3214 (class 0 OID 16872)
 -- Dependencies: 259
--- Data for Name: projeto_atividade_situacao; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: projeto_atividade_situacao; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_atividade_situacao VALUES (1, 'Não Iniciado', 1, 1, 1);
@@ -2186,7 +2050,7 @@ INSERT INTO public.projeto_atividade_situacao VALUES (4, 'Cancelado', 1, 1, 4);
 --
 -- TOC entry 3180 (class 0 OID 16500)
 -- Dependencies: 225
--- Data for Name: projeto_comentario; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_comentario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_comentario VALUES (1, 2, 1, '<p>Teste 1</p>', '2023-08-29 10:46:56.274427');
@@ -2196,7 +2060,7 @@ INSERT INTO public.projeto_comentario VALUES (2, 3, 1, '<p>Teste 1</p>', '2023-1
 --
 -- TOC entry 3182 (class 0 OID 16508)
 -- Dependencies: 227
--- Data for Name: projeto_financeiro_despesas; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_financeiro_despesas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -2204,7 +2068,7 @@ INSERT INTO public.projeto_comentario VALUES (2, 3, 1, '<p>Teste 1</p>', '2023-1
 --
 -- TOC entry 3184 (class 0 OID 16516)
 -- Dependencies: 229
--- Data for Name: projeto_financeiro_pagamentos; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_financeiro_pagamentos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_financeiro_pagamentos VALUES (1, 5, 18, 40, 46, 1840, '2023-09-25 10:31:55.578');
@@ -2215,7 +2079,7 @@ INSERT INTO public.projeto_financeiro_pagamentos VALUES (3, 5, 12, 24.25, 46, 11
 --
 -- TOC entry 3187 (class 0 OID 16523)
 -- Dependencies: 232
--- Data for Name: projeto_situacao; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_situacao; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_situacao VALUES (1, 'Na Fila', 'bg-warning', 1, NULL, 1, '2023-08-29 10:51:55.776');
@@ -2228,7 +2092,7 @@ INSERT INTO public.projeto_situacao VALUES (5, 'Congelado', NULL, 1, false, 1, '
 --
 -- TOC entry 3189 (class 0 OID 16528)
 -- Dependencies: 234
--- Data for Name: projeto_tipo; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: projeto_tipo; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.projeto_tipo VALUES (1, 'Desenvolvimento', 1, 1, '2023-08-29 11:13:34.108');
@@ -2239,7 +2103,7 @@ INSERT INTO public.projeto_tipo VALUES (3, 'Game Development', 1, 1, '2023-11-07
 --
 -- TOC entry 3191 (class 0 OID 16533)
 -- Dependencies: 236
--- Data for Name: rh_batida_ponto; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: rh_batida_ponto; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.rh_batida_ponto VALUES (2, 1, 6, 11, 2023, '10:32:35', '2023-11-06 10:32:35');
@@ -2273,7 +2137,7 @@ INSERT INTO public.rh_batida_ponto VALUES (26, 1, 10, 11, 2023, '08:41:00', '202
 --
 -- TOC entry 3198 (class 0 OID 16712)
 -- Dependencies: 243
--- Data for Name: sistema_notificacao; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: sistema_notificacao; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.sistema_notificacao VALUES (1, 1, 1, 'Login', 'Usuário 1 logou do ip 0.0.0.0', 0, '2023-11-06 13:57:55.071');
@@ -2282,7 +2146,7 @@ INSERT INTO public.sistema_notificacao VALUES (1, 1, 1, 'Login', 'Usuário 1 log
 --
 -- TOC entry 3200 (class 0 OID 16753)
 -- Dependencies: 245
--- Data for Name: ticket; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: ticket; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -2290,7 +2154,7 @@ INSERT INTO public.sistema_notificacao VALUES (1, 1, 1, 'Login', 'Usuário 1 log
 --
 -- TOC entry 3202 (class 0 OID 16774)
 -- Dependencies: 247
--- Data for Name: ticket_evento; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: ticket_evento; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -2298,7 +2162,7 @@ INSERT INTO public.sistema_notificacao VALUES (1, 1, 1, 'Login', 'Usuário 1 log
 --
 -- TOC entry 3204 (class 0 OID 16795)
 -- Dependencies: 249
--- Data for Name: ticket_status; Type: TABLE DATA; Schema: public; Owner: fharjwsz
+-- Data for Name: ticket_status; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -2306,7 +2170,7 @@ INSERT INTO public.sistema_notificacao VALUES (1, 1, 1, 'Login', 'Usuário 1 log
 --
 -- TOC entry 3193 (class 0 OID 16538)
 -- Dependencies: 238
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.usuario VALUES (1, 'Dilson Sordi Junior', 'dilson@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/img/users/dilson_sordi_junior.jpg', 1, 1, true, 1);
@@ -2314,297 +2178,297 @@ INSERT INTO public.usuario VALUES (2, 'Cristian Bianchi', 'cbianchi@sc.senac.br'
 
 
 --
--- TOC entry 3280 (class 0 OID 0)
+-- TOC entry 3257 (class 0 OID 0)
 -- Dependencies: 197
--- Name: agendamento_areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: agendamento_areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.agendamento_areas_id_seq', 1, false);
 
 
 --
--- TOC entry 3281 (class 0 OID 0)
+-- TOC entry 3258 (class 0 OID 0)
 -- Dependencies: 256
--- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.agendamento_prestador_compromisso_id_seq', 1, false);
 
 
 --
--- TOC entry 3282 (class 0 OID 0)
+-- TOC entry 3259 (class 0 OID 0)
 -- Dependencies: 199
--- Name: agendamento_prestador_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: agendamento_prestador_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.agendamento_prestador_id_seq', 1, false);
 
 
 --
--- TOC entry 3283 (class 0 OID 0)
+-- TOC entry 3260 (class 0 OID 0)
 -- Dependencies: 254
--- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.agendamento_prestador_produto_id_seq', 1, true);
 
 
 --
--- TOC entry 3284 (class 0 OID 0)
+-- TOC entry 3261 (class 0 OID 0)
 -- Dependencies: 252
--- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.controle_mudancas_detalhamento_id_seq', 1, false);
 
 
 --
--- TOC entry 3285 (class 0 OID 0)
+-- TOC entry 3262 (class 0 OID 0)
 -- Dependencies: 250
--- Name: controle_mudancas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.controle_mudancas_id_seq', 5, true);
 
 
 --
--- TOC entry 3286 (class 0 OID 0)
+-- TOC entry 3263 (class 0 OID 0)
 -- Dependencies: 202
--- Name: empresa_categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: empresa_categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.empresa_categoria_id_seq', 1, false);
 
 
 --
--- TOC entry 3287 (class 0 OID 0)
+-- TOC entry 3264 (class 0 OID 0)
 -- Dependencies: 204
--- Name: empresa_cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: empresa_cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.empresa_cliente_id_seq', 5, true);
 
 
 --
--- TOC entry 3288 (class 0 OID 0)
+-- TOC entry 3265 (class 0 OID 0)
 -- Dependencies: 205
--- Name: empresa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: empresa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.empresa_id_seq', 1, true);
 
 
 --
--- TOC entry 3289 (class 0 OID 0)
+-- TOC entry 3266 (class 0 OID 0)
 -- Dependencies: 207
--- Name: financas_bancos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: financas_bancos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.financas_bancos_id_seq', 1, false);
 
 
 --
--- TOC entry 3290 (class 0 OID 0)
+-- TOC entry 3267 (class 0 OID 0)
 -- Dependencies: 209
--- Name: financas_categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: financas_categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.financas_categoria_id_seq', 30, true);
 
 
 --
--- TOC entry 3291 (class 0 OID 0)
+-- TOC entry 3268 (class 0 OID 0)
 -- Dependencies: 212
--- Name: financas_conta_bancaria2_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria2_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.financas_conta_bancaria2_id_seq', 3, true);
 
 
 --
--- TOC entry 3292 (class 0 OID 0)
+-- TOC entry 3269 (class 0 OID 0)
 -- Dependencies: 213
--- Name: financas_conta_bancaria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.financas_conta_bancaria_id_seq', 10, true);
 
 
 --
--- TOC entry 3293 (class 0 OID 0)
+-- TOC entry 3270 (class 0 OID 0)
 -- Dependencies: 215
--- Name: financas_conta_bancaria_saldo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.financas_conta_bancaria_saldo_id_seq', 1, true);
 
 
 --
--- TOC entry 3294 (class 0 OID 0)
+-- TOC entry 3271 (class 0 OID 0)
 -- Dependencies: 217
--- Name: financas_movimentacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: financas_movimentacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.financas_movimentacao_id_seq', 23, true);
 
 
 --
--- TOC entry 3295 (class 0 OID 0)
+-- TOC entry 3272 (class 0 OID 0)
 -- Dependencies: 240
--- Name: hours_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: hours_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.hours_id_seq', 2, true);
 
 
 --
--- TOC entry 3296 (class 0 OID 0)
+-- TOC entry 3273 (class 0 OID 0)
 -- Dependencies: 260
--- Name: pgmigrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: pgmigrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.pgmigrations_id_seq', 1, false);
 
 
 --
--- TOC entry 3297 (class 0 OID 0)
+-- TOC entry 3274 (class 0 OID 0)
 -- Dependencies: 221
--- Name: projeto_atividade_apontamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_atividade_apontamento_id_seq', 50, true);
 
 
 --
--- TOC entry 3298 (class 0 OID 0)
+-- TOC entry 3275 (class 0 OID 0)
 -- Dependencies: 222
--- Name: projeto_atividade_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_atividade_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_atividade_id_seq', 16, true);
 
 
 --
--- TOC entry 3299 (class 0 OID 0)
+-- TOC entry 3276 (class 0 OID 0)
 -- Dependencies: 224
--- Name: projeto_atividade_participante_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_atividade_participante_id_seq', 1, true);
 
 
 --
--- TOC entry 3300 (class 0 OID 0)
+-- TOC entry 3277 (class 0 OID 0)
 -- Dependencies: 258
--- Name: projeto_atividade_situacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_atividade_situacao_id_seq', 4, true);
 
 
 --
--- TOC entry 3301 (class 0 OID 0)
+-- TOC entry 3278 (class 0 OID 0)
 -- Dependencies: 226
--- Name: projeto_comentario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_comentario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_comentario_id_seq', 2, true);
 
 
 --
--- TOC entry 3302 (class 0 OID 0)
+-- TOC entry 3279 (class 0 OID 0)
 -- Dependencies: 228
--- Name: projeto_financeiro_despesas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_despesas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_financeiro_despesas_id_seq', 1, false);
 
 
 --
--- TOC entry 3303 (class 0 OID 0)
+-- TOC entry 3280 (class 0 OID 0)
 -- Dependencies: 230
--- Name: projeto_financeiro_pagamentos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_pagamentos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_financeiro_pagamentos_id_seq', 1, true);
 
 
 --
--- TOC entry 3304 (class 0 OID 0)
+-- TOC entry 3281 (class 0 OID 0)
 -- Dependencies: 231
--- Name: projeto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_id_seq', 3, true);
 
 
 --
--- TOC entry 3305 (class 0 OID 0)
+-- TOC entry 3282 (class 0 OID 0)
 -- Dependencies: 233
--- Name: projeto_situacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_situacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_situacao_id_seq', 5, true);
 
 
 --
--- TOC entry 3306 (class 0 OID 0)
+-- TOC entry 3283 (class 0 OID 0)
 -- Dependencies: 235
--- Name: projeto_tipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projeto_tipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.projeto_tipo_id_seq', 3, true);
 
 
 --
--- TOC entry 3307 (class 0 OID 0)
+-- TOC entry 3284 (class 0 OID 0)
 -- Dependencies: 237
--- Name: rh_batida_ponto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: rh_batida_ponto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.rh_batida_ponto_id_seq', 26, true);
 
 
 --
--- TOC entry 3308 (class 0 OID 0)
+-- TOC entry 3285 (class 0 OID 0)
 -- Dependencies: 242
--- Name: sistema_notificacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.sistema_notificacao_id_seq', 1, true);
 
 
 --
--- TOC entry 3309 (class 0 OID 0)
+-- TOC entry 3286 (class 0 OID 0)
 -- Dependencies: 246
--- Name: ticket_evento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.ticket_evento_id_seq', 1, false);
 
 
 --
--- TOC entry 3310 (class 0 OID 0)
+-- TOC entry 3287 (class 0 OID 0)
 -- Dependencies: 244
--- Name: ticket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: ticket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.ticket_id_seq', 1, false);
 
 
 --
--- TOC entry 3311 (class 0 OID 0)
+-- TOC entry 3288 (class 0 OID 0)
 -- Dependencies: 248
--- Name: ticket_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fharjwsz
+-- Name: ticket_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.ticket_status_id_seq', 1, false);
 
 
 --
--- TOC entry 3312 (class 0 OID 0)
+-- TOC entry 3289 (class 0 OID 0)
 -- Dependencies: 239
--- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.usuario_id_seq', 2, true);
@@ -2612,7 +2476,7 @@ SELECT pg_catalog.setval('public.usuario_id_seq', 2, true);
 
 --
 -- TOC entry 2928 (class 2606 OID 16569)
--- Name: agendamento_areas agendamento_areas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: agendamento_areas agendamento_areas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_areas
@@ -2621,7 +2485,7 @@ ALTER TABLE ONLY public.agendamento_areas
 
 --
 -- TOC entry 2988 (class 2606 OID 16854)
--- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_compromisso
@@ -2630,7 +2494,7 @@ ALTER TABLE ONLY public.agendamento_prestador_compromisso
 
 --
 -- TOC entry 2930 (class 2606 OID 16571)
--- Name: agendamento_prestador agendamento_prestador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: agendamento_prestador agendamento_prestador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador
@@ -2639,7 +2503,7 @@ ALTER TABLE ONLY public.agendamento_prestador
 
 --
 -- TOC entry 2986 (class 2606 OID 16838)
--- Name: agendamento_prestador_produto agendamento_prestador_produto_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto agendamento_prestador_produto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_produto
@@ -2648,7 +2512,7 @@ ALTER TABLE ONLY public.agendamento_prestador_produto
 
 --
 -- TOC entry 2984 (class 2606 OID 16822)
--- Name: controle_mudancas_detalhamento controle_mudancas_detalhamento_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento controle_mudancas_detalhamento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.controle_mudancas_detalhamento
@@ -2657,7 +2521,7 @@ ALTER TABLE ONLY public.controle_mudancas_detalhamento
 
 --
 -- TOC entry 2982 (class 2606 OID 16811)
--- Name: controle_mudancas controle_mudancas_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas controle_mudancas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.controle_mudancas
@@ -2666,7 +2530,7 @@ ALTER TABLE ONLY public.controle_mudancas
 
 --
 -- TOC entry 2934 (class 2606 OID 16573)
--- Name: empresa_categoria empresa_categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: empresa_categoria empresa_categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa_categoria
@@ -2675,7 +2539,7 @@ ALTER TABLE ONLY public.empresa_categoria
 
 --
 -- TOC entry 2936 (class 2606 OID 16575)
--- Name: empresa_cliente empresa_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: empresa_cliente empresa_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa_cliente
@@ -2684,7 +2548,7 @@ ALTER TABLE ONLY public.empresa_cliente
 
 --
 -- TOC entry 2932 (class 2606 OID 16577)
--- Name: empresa empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: empresa empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa
@@ -2693,7 +2557,7 @@ ALTER TABLE ONLY public.empresa
 
 --
 -- TOC entry 2938 (class 2606 OID 16579)
--- Name: financas_bancos financas_bancos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_bancos financas_bancos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_bancos
@@ -2702,7 +2566,7 @@ ALTER TABLE ONLY public.financas_bancos
 
 --
 -- TOC entry 2940 (class 2606 OID 16581)
--- Name: financas_categoria financas_categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_categoria financas_categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_categoria
@@ -2711,7 +2575,7 @@ ALTER TABLE ONLY public.financas_categoria
 
 --
 -- TOC entry 2944 (class 2606 OID 16583)
--- Name: financas_conta_bancaria2 financas_conta_bancaria2_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria2 financas_conta_bancaria2_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria2
@@ -2720,7 +2584,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria2
 
 --
 -- TOC entry 2942 (class 2606 OID 16585)
--- Name: financas_conta_bancaria financas_conta_bancaria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria financas_conta_bancaria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria
@@ -2729,7 +2593,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria
 
 --
 -- TOC entry 2946 (class 2606 OID 16587)
--- Name: financas_conta_bancaria_saldo financas_conta_bancaria_saldo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo financas_conta_bancaria_saldo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria_saldo
@@ -2738,7 +2602,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria_saldo
 
 --
 -- TOC entry 2948 (class 2606 OID 16589)
--- Name: financas_movimentacao financas_movimentacao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_movimentacao financas_movimentacao_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_movimentacao
@@ -2747,7 +2611,7 @@ ALTER TABLE ONLY public.financas_movimentacao
 
 --
 -- TOC entry 2972 (class 2606 OID 16709)
--- Name: hours hours_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: hours hours_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.hours
@@ -2756,7 +2620,7 @@ ALTER TABLE ONLY public.hours
 
 --
 -- TOC entry 2994 (class 2606 OID 18577)
--- Name: migrations migrations_name_key; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: migrations migrations_name_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.migrations
@@ -2765,7 +2629,7 @@ ALTER TABLE ONLY public.migrations
 
 --
 -- TOC entry 2996 (class 2606 OID 18575)
--- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.migrations
@@ -2774,7 +2638,7 @@ ALTER TABLE ONLY public.migrations
 
 --
 -- TOC entry 2992 (class 2606 OID 18569)
--- Name: pgmigrations pgmigrations_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: pgmigrations pgmigrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.pgmigrations
@@ -2783,7 +2647,7 @@ ALTER TABLE ONLY public.pgmigrations
 
 --
 -- TOC entry 2954 (class 2606 OID 16591)
--- Name: projeto_atividade_apontamento projeto_atividade_apontamento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento projeto_atividade_apontamento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_apontamento
@@ -2792,7 +2656,7 @@ ALTER TABLE ONLY public.projeto_atividade_apontamento
 
 --
 -- TOC entry 2956 (class 2606 OID 16593)
--- Name: projeto_atividade_participante projeto_atividade_participante_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante projeto_atividade_participante_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_participante
@@ -2801,7 +2665,7 @@ ALTER TABLE ONLY public.projeto_atividade_participante
 
 --
 -- TOC entry 2952 (class 2606 OID 16595)
--- Name: projeto_atividade projeto_atividade_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade projeto_atividade_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade
@@ -2810,7 +2674,7 @@ ALTER TABLE ONLY public.projeto_atividade
 
 --
 -- TOC entry 2990 (class 2606 OID 16880)
--- Name: projeto_atividade_situacao projeto_atividade_situacao_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao projeto_atividade_situacao_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_situacao
@@ -2819,7 +2683,7 @@ ALTER TABLE ONLY public.projeto_atividade_situacao
 
 --
 -- TOC entry 2958 (class 2606 OID 16597)
--- Name: projeto_comentario projeto_comentario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_comentario projeto_comentario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_comentario
@@ -2828,7 +2692,7 @@ ALTER TABLE ONLY public.projeto_comentario
 
 --
 -- TOC entry 2960 (class 2606 OID 16599)
--- Name: projeto_financeiro_despesas projeto_financeiro_despesas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_despesas projeto_financeiro_despesas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_financeiro_despesas
@@ -2837,7 +2701,7 @@ ALTER TABLE ONLY public.projeto_financeiro_despesas
 
 --
 -- TOC entry 2962 (class 2606 OID 16601)
--- Name: projeto_financeiro_pagamentos projeto_financeiro_pagamentos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_financeiro_pagamentos projeto_financeiro_pagamentos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_financeiro_pagamentos
@@ -2846,7 +2710,7 @@ ALTER TABLE ONLY public.projeto_financeiro_pagamentos
 
 --
 -- TOC entry 2950 (class 2606 OID 16603)
--- Name: projeto projeto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto projeto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto
@@ -2855,7 +2719,7 @@ ALTER TABLE ONLY public.projeto
 
 --
 -- TOC entry 2964 (class 2606 OID 16605)
--- Name: projeto_situacao projeto_situacao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_situacao projeto_situacao_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_situacao
@@ -2864,7 +2728,7 @@ ALTER TABLE ONLY public.projeto_situacao
 
 --
 -- TOC entry 2966 (class 2606 OID 16607)
--- Name: projeto_tipo projeto_tipo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_tipo projeto_tipo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_tipo
@@ -2873,7 +2737,7 @@ ALTER TABLE ONLY public.projeto_tipo
 
 --
 -- TOC entry 2968 (class 2606 OID 16609)
--- Name: rh_batida_ponto rh_batida_ponto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rh_batida_ponto rh_batida_ponto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.rh_batida_ponto
@@ -2882,7 +2746,7 @@ ALTER TABLE ONLY public.rh_batida_ponto
 
 --
 -- TOC entry 2974 (class 2606 OID 16720)
--- Name: sistema_notificacao sistema_notificacao_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao sistema_notificacao_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sistema_notificacao
@@ -2891,7 +2755,7 @@ ALTER TABLE ONLY public.sistema_notificacao
 
 --
 -- TOC entry 2978 (class 2606 OID 16782)
--- Name: ticket_evento ticket_evento_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento ticket_evento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket_evento
@@ -2900,7 +2764,7 @@ ALTER TABLE ONLY public.ticket_evento
 
 --
 -- TOC entry 2976 (class 2606 OID 16761)
--- Name: ticket ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket
@@ -2909,7 +2773,7 @@ ALTER TABLE ONLY public.ticket
 
 --
 -- TOC entry 2980 (class 2606 OID 16800)
--- Name: ticket_status ticket_status_pkey; Type: CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket_status ticket_status_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket_status
@@ -2918,7 +2782,7 @@ ALTER TABLE ONLY public.ticket_status
 
 --
 -- TOC entry 2970 (class 2606 OID 16611)
--- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.usuario
@@ -2927,7 +2791,7 @@ ALTER TABLE ONLY public.usuario
 
 --
 -- TOC entry 3026 (class 2606 OID 16855)
--- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_id_prestador_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_id_prestador_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_compromisso
@@ -2936,7 +2800,7 @@ ALTER TABLE ONLY public.agendamento_prestador_compromisso
 
 --
 -- TOC entry 3027 (class 2606 OID 16860)
--- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_id_produto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_id_produto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_compromisso
@@ -2945,7 +2809,7 @@ ALTER TABLE ONLY public.agendamento_prestador_compromisso
 
 --
 -- TOC entry 3028 (class 2606 OID 16865)
--- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_id_usuario_solicitante_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_compromisso agendamento_prestador_compromisso_id_usuario_solicitante_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_compromisso
@@ -2954,7 +2818,7 @@ ALTER TABLE ONLY public.agendamento_prestador_compromisso
 
 --
 -- TOC entry 3025 (class 2606 OID 16839)
--- Name: agendamento_prestador_produto agendamento_prestador_produto_id_prestador_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: agendamento_prestador_produto agendamento_prestador_produto_id_prestador_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.agendamento_prestador_produto
@@ -2963,7 +2827,7 @@ ALTER TABLE ONLY public.agendamento_prestador_produto
 
 --
 -- TOC entry 3024 (class 2606 OID 16823)
--- Name: controle_mudancas_detalhamento controle_mudancas_detalhamento_id_controle_mudancas_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: controle_mudancas_detalhamento controle_mudancas_detalhamento_id_controle_mudancas_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.controle_mudancas_detalhamento
@@ -2972,7 +2836,7 @@ ALTER TABLE ONLY public.controle_mudancas_detalhamento
 
 --
 -- TOC entry 2997 (class 2606 OID 16612)
--- Name: empresa_categoria empresa_categoria_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: empresa_categoria empresa_categoria_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa_categoria
@@ -2981,7 +2845,7 @@ ALTER TABLE ONLY public.empresa_categoria
 
 --
 -- TOC entry 2998 (class 2606 OID 16617)
--- Name: empresa_cliente empresa_cliente_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: empresa_cliente empresa_cliente_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.empresa_cliente
@@ -2990,7 +2854,7 @@ ALTER TABLE ONLY public.empresa_cliente
 
 --
 -- TOC entry 2999 (class 2606 OID 16622)
--- Name: financas_categoria financas_categoria_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_categoria financas_categoria_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_categoria
@@ -2999,7 +2863,7 @@ ALTER TABLE ONLY public.financas_categoria
 
 --
 -- TOC entry 3000 (class 2606 OID 16627)
--- Name: financas_conta_bancaria financas_conta_bancaria_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria financas_conta_bancaria_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria
@@ -3008,7 +2872,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria
 
 --
 -- TOC entry 3001 (class 2606 OID 16632)
--- Name: financas_conta_bancaria_saldo financas_conta_bancaria_saldo_id_conta_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_conta_bancaria_saldo financas_conta_bancaria_saldo_id_conta_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_conta_bancaria_saldo
@@ -3017,7 +2881,7 @@ ALTER TABLE ONLY public.financas_conta_bancaria_saldo
 
 --
 -- TOC entry 3002 (class 2606 OID 16637)
--- Name: financas_movimentacao financas_movimentacao_id_categoria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_movimentacao financas_movimentacao_id_categoria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_movimentacao
@@ -3026,7 +2890,7 @@ ALTER TABLE ONLY public.financas_movimentacao
 
 --
 -- TOC entry 3003 (class 2606 OID 16642)
--- Name: financas_movimentacao financas_movimentacao_id_conta_bancaria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_movimentacao financas_movimentacao_id_conta_bancaria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_movimentacao
@@ -3035,7 +2899,7 @@ ALTER TABLE ONLY public.financas_movimentacao
 
 --
 -- TOC entry 3004 (class 2606 OID 16647)
--- Name: financas_movimentacao financas_movimentacao_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: financas_movimentacao financas_movimentacao_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.financas_movimentacao
@@ -3044,7 +2908,7 @@ ALTER TABLE ONLY public.financas_movimentacao
 
 --
 -- TOC entry 3005 (class 2606 OID 16736)
--- Name: projeto fk_empresa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto fk_empresa; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto
@@ -3053,7 +2917,7 @@ ALTER TABLE ONLY public.projeto
 
 --
 -- TOC entry 3018 (class 2606 OID 16746)
--- Name: usuario fk_empresa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: usuario fk_empresa; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.usuario
@@ -3062,7 +2926,7 @@ ALTER TABLE ONLY public.usuario
 
 --
 -- TOC entry 3006 (class 2606 OID 16731)
--- Name: projeto fk_empresa_cliente; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto fk_empresa_cliente; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto
@@ -3071,7 +2935,7 @@ ALTER TABLE ONLY public.projeto
 
 --
 -- TOC entry 3007 (class 2606 OID 16741)
--- Name: projeto fk_projeto_situacao; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto fk_projeto_situacao; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto
@@ -3080,7 +2944,7 @@ ALTER TABLE ONLY public.projeto
 
 --
 -- TOC entry 3008 (class 2606 OID 16726)
--- Name: projeto fk_projeto_tipo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto fk_projeto_tipo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto
@@ -3089,7 +2953,7 @@ ALTER TABLE ONLY public.projeto
 
 --
 -- TOC entry 3012 (class 2606 OID 16652)
--- Name: projeto_atividade_apontamento projeto_atividade_apontamento_id_atividade_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento projeto_atividade_apontamento_id_atividade_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_apontamento
@@ -3098,7 +2962,7 @@ ALTER TABLE ONLY public.projeto_atividade_apontamento
 
 --
 -- TOC entry 3013 (class 2606 OID 16657)
--- Name: projeto_atividade_apontamento projeto_atividade_apontamento_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_apontamento projeto_atividade_apontamento_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_apontamento
@@ -3107,7 +2971,7 @@ ALTER TABLE ONLY public.projeto_atividade_apontamento
 
 --
 -- TOC entry 3010 (class 2606 OID 16662)
--- Name: projeto_atividade projeto_atividade_id_projeto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade projeto_atividade_id_projeto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade
@@ -3116,7 +2980,7 @@ ALTER TABLE ONLY public.projeto_atividade
 
 --
 -- TOC entry 3011 (class 2606 OID 16667)
--- Name: projeto_atividade projeto_atividade_id_responsavel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade projeto_atividade_id_responsavel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade
@@ -3125,7 +2989,7 @@ ALTER TABLE ONLY public.projeto_atividade
 
 --
 -- TOC entry 3014 (class 2606 OID 16672)
--- Name: projeto_atividade_participante projeto_atividade_participante_id_atividade_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante projeto_atividade_participante_id_atividade_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_participante
@@ -3134,7 +2998,7 @@ ALTER TABLE ONLY public.projeto_atividade_participante
 
 --
 -- TOC entry 3015 (class 2606 OID 16677)
--- Name: projeto_atividade_participante projeto_atividade_participante_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_atividade_participante projeto_atividade_participante_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_participante
@@ -3143,7 +3007,7 @@ ALTER TABLE ONLY public.projeto_atividade_participante
 
 --
 -- TOC entry 3029 (class 2606 OID 16881)
--- Name: projeto_atividade_situacao projeto_atividade_situacao_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: projeto_atividade_situacao projeto_atividade_situacao_id_empresa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_atividade_situacao
@@ -3152,7 +3016,7 @@ ALTER TABLE ONLY public.projeto_atividade_situacao
 
 --
 -- TOC entry 3016 (class 2606 OID 16682)
--- Name: projeto_comentario projeto_comentario_id_projeto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_comentario projeto_comentario_id_projeto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_comentario
@@ -3161,7 +3025,7 @@ ALTER TABLE ONLY public.projeto_comentario
 
 --
 -- TOC entry 3017 (class 2606 OID 16687)
--- Name: projeto_comentario projeto_comentario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto_comentario projeto_comentario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto_comentario
@@ -3170,7 +3034,7 @@ ALTER TABLE ONLY public.projeto_comentario
 
 --
 -- TOC entry 3009 (class 2606 OID 16692)
--- Name: projeto projeto_id_responsavel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: projeto projeto_id_responsavel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projeto
@@ -3179,7 +3043,7 @@ ALTER TABLE ONLY public.projeto
 
 --
 -- TOC entry 3019 (class 2606 OID 16721)
--- Name: sistema_notificacao sistema_notificacao_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: sistema_notificacao sistema_notificacao_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sistema_notificacao
@@ -3188,7 +3052,7 @@ ALTER TABLE ONLY public.sistema_notificacao
 
 --
 -- TOC entry 3022 (class 2606 OID 16783)
--- Name: ticket_evento ticket_evento_id_ticket_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento ticket_evento_id_ticket_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket_evento
@@ -3197,7 +3061,7 @@ ALTER TABLE ONLY public.ticket_evento
 
 --
 -- TOC entry 3023 (class 2606 OID 16788)
--- Name: ticket_evento ticket_evento_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket_evento ticket_evento_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket_evento
@@ -3206,7 +3070,7 @@ ALTER TABLE ONLY public.ticket_evento
 
 --
 -- TOC entry 3020 (class 2606 OID 16767)
--- Name: ticket ticket_id_responsavel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket ticket_id_responsavel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket
@@ -3215,222 +3079,14 @@ ALTER TABLE ONLY public.ticket
 
 --
 -- TOC entry 3021 (class 2606 OID 16762)
--- Name: ticket ticket_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: fharjwsz
+-- Name: ticket ticket_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ticket
     ADD CONSTRAINT ticket_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id);
 
 
---
--- TOC entry 3224 (class 0 OID 0)
--- Dependencies: 6
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE USAGE ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- TOC entry 3225 (class 0 OID 0)
--- Dependencies: 196
--- Name: TABLE agendamento_areas; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.agendamento_areas TO fharjwsz;
-
-
---
--- TOC entry 3227 (class 0 OID 0)
--- Dependencies: 198
--- Name: TABLE agendamento_prestador; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.agendamento_prestador TO fharjwsz;
-
-
---
--- TOC entry 3233 (class 0 OID 0)
--- Dependencies: 200
--- Name: TABLE empresa; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.empresa TO fharjwsz;
-
-
---
--- TOC entry 3234 (class 0 OID 0)
--- Dependencies: 201
--- Name: TABLE empresa_categoria; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.empresa_categoria TO fharjwsz;
-
-
---
--- TOC entry 3236 (class 0 OID 0)
--- Dependencies: 203
--- Name: TABLE empresa_cliente; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.empresa_cliente TO fharjwsz;
-
-
---
--- TOC entry 3239 (class 0 OID 0)
--- Dependencies: 206
--- Name: TABLE financas_bancos; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.financas_bancos TO fharjwsz;
-
-
---
--- TOC entry 3241 (class 0 OID 0)
--- Dependencies: 208
--- Name: TABLE financas_categoria; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.financas_categoria TO fharjwsz;
-
-
---
--- TOC entry 3243 (class 0 OID 0)
--- Dependencies: 210
--- Name: TABLE financas_conta_bancaria; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.financas_conta_bancaria TO fharjwsz;
-
-
---
--- TOC entry 3244 (class 0 OID 0)
--- Dependencies: 211
--- Name: TABLE financas_conta_bancaria2; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.financas_conta_bancaria2 TO fharjwsz;
-
-
---
--- TOC entry 3247 (class 0 OID 0)
--- Dependencies: 214
--- Name: TABLE financas_conta_bancaria_saldo; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.financas_conta_bancaria_saldo TO fharjwsz;
-
-
---
--- TOC entry 3249 (class 0 OID 0)
--- Dependencies: 216
--- Name: TABLE financas_movimentacao; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.financas_movimentacao TO fharjwsz;
-
-
---
--- TOC entry 3253 (class 0 OID 0)
--- Dependencies: 218
--- Name: TABLE projeto; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto TO fharjwsz;
-
-
---
--- TOC entry 3254 (class 0 OID 0)
--- Dependencies: 219
--- Name: TABLE projeto_atividade; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_atividade TO fharjwsz;
-
-
---
--- TOC entry 3255 (class 0 OID 0)
--- Dependencies: 220
--- Name: TABLE projeto_atividade_apontamento; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_atividade_apontamento TO fharjwsz;
-
-
---
--- TOC entry 3258 (class 0 OID 0)
--- Dependencies: 223
--- Name: TABLE projeto_atividade_participante; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_atividade_participante TO fharjwsz;
-
-
---
--- TOC entry 3261 (class 0 OID 0)
--- Dependencies: 225
--- Name: TABLE projeto_comentario; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_comentario TO fharjwsz;
-
-
---
--- TOC entry 3263 (class 0 OID 0)
--- Dependencies: 227
--- Name: TABLE projeto_financeiro_despesas; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_financeiro_despesas TO fharjwsz;
-
-
---
--- TOC entry 3265 (class 0 OID 0)
--- Dependencies: 229
--- Name: TABLE projeto_financeiro_pagamentos; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_financeiro_pagamentos TO fharjwsz;
-
-
---
--- TOC entry 3268 (class 0 OID 0)
--- Dependencies: 232
--- Name: TABLE projeto_situacao; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_situacao TO fharjwsz;
-
-
---
--- TOC entry 3270 (class 0 OID 0)
--- Dependencies: 234
--- Name: TABLE projeto_tipo; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.projeto_tipo TO fharjwsz;
-
-
---
--- TOC entry 3272 (class 0 OID 0)
--- Dependencies: 236
--- Name: TABLE rh_batida_ponto; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.rh_batida_ponto TO fharjwsz;
-
-
---
--- TOC entry 3278 (class 0 OID 0)
--- Dependencies: 238
--- Name: TABLE usuario; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT ALL ON TABLE public.usuario TO fharjwsz;
-
-
--- Completed on 2023-11-10 14:56:19
+-- Completed on 2023-11-10 14:59:45
 
 --
 -- PostgreSQL database dump complete
