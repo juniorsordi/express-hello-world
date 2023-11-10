@@ -5,6 +5,8 @@
   width: 100%;
   height: 350px;
 }
+.finances-positive-value { color: blue; }
+.finances-negative-value { color: red; }
         </style>
         <br>
         <div class="card">
@@ -24,9 +26,7 @@
                     </div>
                      &nbsp;<br>
                     
-                    
-                    
-                    <table id="example" class="display" width="100%"></table>
+                    <!--table id="example" class="display" width="100%"></table-->
                     <table class="table table-bordered" id="datatable_1">
                         <thead>
                             <tr>
@@ -38,10 +38,10 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="item in incomesList">
-                                <td>{{ item.titulo }}</td>
-                                <td>{{ item.data_vencimento2 }}</td>
+                                <td>{{ item.descricao }}</td>
+                                <td>{{ item.data_vencimento2 | date }}</td>
                                 <td>
-                                    <span ng-class="item.type == 1 ? 'finances-positive-value' : 'finances-negative-value'">{{ item.valor | currency:'R$ ' }}</span>
+                                    <span ng-class="item.tipo == 'C' ? 'finances-positive-value' : 'finances-negative-value'">{{ item.valor | currency:'R$ ' }}</span>
                                 </td>
                                 <td>
                                     {{ item.pago | boolean }}

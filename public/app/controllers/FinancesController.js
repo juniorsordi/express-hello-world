@@ -867,9 +867,10 @@ app.controller("FinancesAddMovement", function ($scope, $rootScope, $routeParams
     APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
 
     $scope.salvarMovimentacao = function(form) {
-        console.log(form);
+        //console.log(form);
         APIService.postData("/finances/accounts/2/movimentacoes", form, function (resp) {
             $scope.form = {};
+            modalMovement.hide();
             $rootScope.$broadcast('updateListTasks');
         });
     }

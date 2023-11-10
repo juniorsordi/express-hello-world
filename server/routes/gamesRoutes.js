@@ -1,10 +1,13 @@
 
 const express = require('express');
 const router = express.Router();
+const moment = require("moment");
 
 router.get("/games", async function (req, res, next) {
     try {
-        fetch("https://api.rawg.io/api/games?key=353f4de2e4f54a26812a5ee816408273&dates=2023-06-22,2023-08-22&page_size=12")
+        let hoje = moment().format("YYYY-MM-DD");
+        let oldDate = moment().add(-15, "days").format("YYYY-MM-DD");
+        fetch(`https://api.rawg.io/api/games?key=353f4de2e4f54a26812a5ee816408273&dates=${oldDate},${hoje}&page_size=15`)
             .then(response => response.json())
             .then(response => {
                 res.json(response.results);

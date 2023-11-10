@@ -28,7 +28,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $rootScope.Usuario = $scope.loggedUser;
 
     $scope.initApp = function () {
-        console.log($location.host);
+        //console.log($location.host);
         if($location.host() == 'localhost') {
             $scope.Usuario = $scope.loggedUser;
             $scope.lang = $window.navigator.language || $window.navigator.userLanguage;

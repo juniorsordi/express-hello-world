@@ -83,7 +83,7 @@ async function saveAccountMoviment(fields, idEmpresa) {
     let diff = moment(fields.data_vencimento).diff(hoje, 'days');
     let valor = fields.valor;
     let tipo_operacao = 'D';
-    if(fields.tipo_operacao == 1) {
+    if(fields.tipo_operacao == 'D') {
         valor = valor * -1;
     } else {
         tipo_operacao = 'C';
