@@ -1,10 +1,10 @@
-create table migrations (
+create table if not exists migrations (
 	id serial primary key,
 	file text,
 	date_creation TIMESTAMP DEFAULT NOW()
 );
 
-create table empresa (
+create table if not exists empresa (
 	id serial primary key,
 	nome varchar(512) not null,
 	logo varchar(1024),
@@ -13,14 +13,14 @@ create table empresa (
 	ativo boolean
 );
 
-create table empresa_categoria (
+create table if not exists empresa_categoria (
 	id serial primary key,
 	descricao varchar(1024),
 	id_empresa integer references empresa(id)
 );
 
 
-create table empresa_cliente (
+create table if not exists empresa_cliente (
 	id serial primary key,
 	nome varchar(1024),
 	logo varchar(1024),
@@ -28,7 +28,7 @@ create table empresa_cliente (
 	id_empresa integer references empresa(id)
 );
 
-create table usuario (
+create table if not exists usuario (
 	id serial primary key,
 	nome varchar(512),
 	email varchar(512),
@@ -40,7 +40,7 @@ create table usuario (
 	id_empresa integer references empresa (id)
 );
 
-create table projeto (
+create table if not exists projeto (
 	id serial primary key,
 	nome varchar(512),
 	descricao text,
@@ -60,7 +60,7 @@ create table projeto (
 	id_empresa integer
 );
 
-create table projeto_atividade (
+create table if not exists projeto_atividade (
 	id serial primary key,
 	id_projeto integer references projeto(id),
 	titulo varchar(512),
@@ -77,7 +77,7 @@ create table projeto_atividade (
 	atualizado_em date
 );
 
-create table projeto_atividade_apontamento (
+create table if not exists projeto_atividade_apontamento (
 	id serial primary key,
 	id_atividade integer references projeto_atividade(id),
 	id_usuario integer references usuario(id),
@@ -89,13 +89,13 @@ create table projeto_atividade_apontamento (
 	pago boolean
 );
 
-create table projeto_atividade_participante (
+create table if not exists projeto_atividade_participante (
 	id serial primary key,
 	id_atividade integer references projeto_atividade(id),
 	id_usuario integer references usuario(id)
 );
 
-create table projeto_situacao (
+create table if not exists projeto_situacao (
 	id serial primary key,
 	nome varchar(256),
 	cor varchar(128),
@@ -105,7 +105,7 @@ create table projeto_situacao (
 	datahora timestamp
 );
 
-create table projeto_tipo (
+create table if not exists projeto_tipo (
 	id serial primary key,
 	nome varchar(256),
 	ativo integer,
@@ -113,7 +113,7 @@ create table projeto_tipo (
 	data_cadastro timestamp
 );
 
-create table projeto_comentario (
+create table if not exists projeto_comentario (
 	id serial primary key,
 	id_projeto integer references projeto(id),
 	id_usuario integer references usuario(id),
@@ -121,7 +121,7 @@ create table projeto_comentario (
 	data_cadastro timestamp
 );
 
-create table financas_conta_bancaria (
+create table if not exists financas_conta_bancaria (
 	id serial primary key,
 	nome varchar(512),
 	banco varchar(6),
@@ -135,7 +135,7 @@ create table financas_conta_bancaria (
 	ativo integer
 );
 
-create table financas_categoria (
+create table if not exists financas_categoria (
 	id serial primary key,
 	nome varchar(512),
 	tipo varchar(1),
@@ -144,7 +144,7 @@ create table financas_categoria (
 	id_empresa integer references empresa(id)
 );
 
-create table financas_conta_bancaria2 (
+create table if not exists financas_conta_bancaria2 (
 	id serial primary key,
 	nome varchar(512),
 	tipo_conta varchar(512),
@@ -159,7 +159,7 @@ create table financas_conta_bancaria2 (
 	id_empresa integer references empresa(id)
 ); 
 
-create table financas_bancos (
+create table if not exists financas_bancos (
 	id serial primary key,
 	nome varchar(512),
 	img varchar(512),
@@ -167,7 +167,7 @@ create table financas_bancos (
 	codigo_bacen varchar(6)
 );
 
-create table financas_movimentacao (
+create table if not exists financas_movimentacao (
 	id serial primary key,
 	descricao varchar(512) not null,
 	data_prevista date not null,
@@ -188,7 +188,7 @@ create table financas_movimentacao (
 	id_empresa integer references empresa(id)
 );
 
-create table projeto_financeiro_pagamentos (
+create table if not exists projeto_financeiro_pagamentos (
 	id serial primary key,
 	id_projeto integer not null references projeto (id),
 	id_tarefa integer,
@@ -198,7 +198,7 @@ create table projeto_financeiro_pagamentos (
 	data_recebimento timestamp
 );
 
-create table projeto_financeiro_despesas (
+create table if not exists projeto_financeiro_despesas (
 	id serial primary key,
 	id_projeto integer not null references projeto (id),
 	id_tarefa integer,
@@ -207,7 +207,7 @@ create table projeto_financeiro_despesas (
 	data_despesas timestamp
 );
 
-create table rh_batida_ponto (
+create table if not exists rh_batida_ponto (
 	id serial primary key,
 	id_usuario integer not null references usuario (id),
 	dia integer,
@@ -217,7 +217,7 @@ create table rh_batida_ponto (
 	data_cadastro timestamp
 );
 
-create table financas_conta_bancaria_saldo (
+create table if not exists financas_conta_bancaria_saldo (
 	id serial primary key,
 	id_conta integer references financas_conta_bancaria (id),
 	data_saldo timestamp,
@@ -225,7 +225,7 @@ create table financas_conta_bancaria_saldo (
 	data_cadastros timestamp
 );
 
-create table sistema_notificacao (
+create table if not exists sistema_notificacao (
 	id serial primary key,
 	id_usuario integer not null references usuario (id),
 	tipo_notificacao integer not null,
@@ -235,14 +235,7 @@ create table sistema_notificacao (
 	data_cadastro timestamp
 );
 
-alter table projeto add constraint fk_projeto_tipo foreign key (id_categoria) references projeto_tipo (id);
-alter table projeto add constraint fk_empresa_cliente foreign key (id_cliente) references empresa_cliente (id);
-alter table projeto add constraint fk_empresa foreign key (id_empresa) references empresa (id);
-alter table projeto add constraint fk_projeto_situacao foreign key (id_status) references projeto_situacao (id);
-
-alter table usuario add constraint fk_empresa foreign key (id_empresa) references empresa (id);
-
-CREATE TABLE ticket (
+CREATE TABLE if not exists ticket (
 	id serial primary key,
 	id_usuario integer references usuario(id),
 	id_responsavel integer references usuario(id),
@@ -253,7 +246,7 @@ CREATE TABLE ticket (
 	data_encerramento timestamp
 );
 
-CREATE TABLE ticket_evento (
+CREATE TABLE if not exists ticket_evento (
   id serial primary key,
   id_ticket integer references ticket (id),
   id_usuario integer references usuario(id),
@@ -261,14 +254,14 @@ CREATE TABLE ticket_evento (
   data_cadastro timestamp NOT NULL
 );
 
-create table ticket_status (
+create table if not exists ticket_status (
 	id serial primary key,
 	nome varchar(256),
 	cor varchar(128),
 	ativo integer
 );
 
-CREATE TABLE controle_mudancas (
+CREATE TABLE if not exists controle_mudancas (
 	id serial primary key,
 	numero_os text not null,
 	sistema text,
@@ -286,7 +279,7 @@ CREATE TABLE controle_mudancas (
 	tempo_gasto_medida text
 );
 
-CREATE TABLE controle_mudancas_detalhamento (
+CREATE TABLE if not exists controle_mudancas_detalhamento (
 	id serial primary key,
 	id_controle_mudancas integer references controle_mudancas (id),
 	nome_detalhamento text,
@@ -298,13 +291,13 @@ CREATE TABLE controle_mudancas_detalhamento (
 	data_cadastro timestamp
 );
 
-create table agendamento_areas (
+create table if not exists agendamento_areas (
 	id serial primary key,
 	nome varchar(512),
 	data_cadastro timestamp
 );
 
-create table agendamento_prestador (
+create table if not exists agendamento_prestador (
 	id serial primary key,
 	id_area integer references agendamento_areas (id),
 	titulo text,
@@ -315,7 +308,7 @@ create table agendamento_prestador (
 	ativo integer
 );
 
-create table agendamento_prestador_produto (
+create table if not exists agendamento_prestador_produto (
 	id serial primary key,
 	id_prestador integer references agendamento_prestador (id),
 	nome text,
@@ -324,7 +317,7 @@ create table agendamento_prestador_produto (
 	ativo integer
 );
 
-create table agendamento_prestador_compromisso (
+create table if not exists agendamento_prestador_compromisso (
 	id serial primary key,
 	id_prestador integer references agendamento_prestador (id),
 	id_produto integer references agendamento_prestador_produto (id),
@@ -336,7 +329,7 @@ create table agendamento_prestador_compromisso (
 	data_cadastro timestamp
 );
 
-create table projeto_atividade_situacao (
+create table if not exists projeto_atividade_situacao (
 	id serial primary key,
 	nome varchar(512),
 	ativo integer,
