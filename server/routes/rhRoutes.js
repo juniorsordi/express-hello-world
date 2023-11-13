@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const utils = require('../infra/utils');
 const service = require('../services/rhService');
 
-router.post("/rh/ponto/bater", async function (req, res, next) {
+router.post("/ponto/bater", async function (req, res, next) {
     try {
         let id_usuario = req.cookies.IDUser;
         let info = await service.salvarBatidaPonto({ id_usuario });
@@ -15,7 +15,7 @@ router.post("/rh/ponto/bater", async function (req, res, next) {
     }
 });
 
-router.get("/rh/ponto/ultimos", async function (req, res, next) {
+router.get("/ponto/ultimos", async function (req, res, next) {
     try {
         let id_usuario = req.cookies.IDUser;
         let info = await service.listarUltimasBatidas(id_usuario);
@@ -26,7 +26,7 @@ router.get("/rh/ponto/ultimos", async function (req, res, next) {
     }
 });
 
-router.get("/rh/dashboard", async function (req, res, next) {
+router.get("/dashboard", async function (req, res, next) {
     try {
         let id_usuario = req.cookies.IDUser;
         let info = await service.calculoBancoHorasUsuario(id_usuario);

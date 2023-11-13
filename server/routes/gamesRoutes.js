@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const moment = require("moment");
 
-router.get("/games", async function (req, res, next) {
+router.get("/", async function (req, res, next) {
     try {
         let hoje = moment().format("YYYY-MM-DD");
         let oldDate = moment().add(-15, "days").format("YYYY-MM-DD");
@@ -21,7 +21,7 @@ router.get("/games", async function (req, res, next) {
     }
 });
 
-router.get("/gamesPlatform", async function (req, res, next) {
+router.get("/gamesByPlatform", async function (req, res, next) {
     try {
         fetch("https://api.rawg.io/api/games?key=353f4de2e4f54a26812a5ee816408273&ordering=-released&page_size=50&platforms="+req.query.id)
             .then(response => response.json())
@@ -37,7 +37,7 @@ router.get("/gamesPlatform", async function (req, res, next) {
     }
 });
 
-router.get("/games/platforms", async function (req, res, next) {
+router.get("/platforms", async function (req, res, next) {
     try {
         fetch("https://api.rawg.io/api/platforms?key=353f4de2e4f54a26812a5ee816408273&page_size=10")
             .then(response => response.json())

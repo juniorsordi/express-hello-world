@@ -31,7 +31,7 @@ app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
 
         .when('/',                      { templateUrl: 'app/views/dashboard.html?t=' + date, controller: 'AppController' })
-        .when('/projects/dashboard',    { templateUrl: 'app/views/Projects/dashboard.html?t=' + date, controller: 'ProjectCtrl' })
+        .when('/projects/dashboard',    { templateUrl: 'app/views/Projects/dashboard.html?t=' + date, controller: 'ProjectDashboardCtrl' })
         .when('/projects',              { templateUrl: 'app/views/Projects/projects.html?t=' + date, controller: 'ProjectCtrl' })
         .when('/projects/kanban',       { templateUrl: 'app/views/Projects/kanban.html?t=' + date, controller: 'KanbanViewCtrl' })
         .when('/projects/activities',   { templateUrl: 'app/views/Projects/activities.html?t=' + date, controller: 'UserTasksCtrl' })

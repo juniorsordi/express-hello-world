@@ -1,4 +1,4 @@
-app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APIService, $window, $resource, $modal, $translate) {
+app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APIService, $modal) {
     $scope.versao = "1.0.1";
     $scope.form = {};
 
@@ -20,16 +20,11 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     $scope.criarListaAnos();
 
     ///############################################################################################
-    $scope.initDashboard = function () {
-        $scope.arrRanking = APIService.resourceQuery("/dashboard/ranking");
-        $scope.arrProjetosSituacao = APIService.resourceQuery("/dashboard/projects");
-        $scope.arrProjetosAno = APIService.resourceQuery("/dashboard/projectsYear");
-        $scope.gerarGraficosDashboard();
-        $scope.gerarGraficoProjetosEntreguesPorAno();
-    }
-    ///############################################################################################
     $scope.initProjectsView = function () {
-        $scope.projectsList = APIService.resourceQuery("/projects/:id");
+        APIService.getData("/project", function(resp) {
+            $scope.projectsList = resp.data;
+        })
+        //$scope.projectsList = APIService.resourceQuery("/project/:id");
         $scope.arrStatus = APIService.resourceQuery("/company/status");
         $scope.filtro = {};
     }
@@ -201,7 +196,61 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
         $scope.gerarGraficosDashboard();
     }
     ///############################################################################################
+
+    $scope.archiveProject = function() {
+        var fields = [
+            {
+                field: 'id_situacao',
+                value: 7
+            }
+        ]
+        APIService.putData("/project/" + $routeParams.id, fields, function(resp) {
+
+        });
+    }
     ///############################################################################################
+    $scope.postProjectComment = function(form) {
+        form.project_id = $routeParams.id;
+        APIService.postData("/project/comment", form, function(resp) {
+            $scope.initProjectView();
+            $scope.form = {};
+        })
+    }
+    ///############################################################################################
+    $scope.$on("updateListTasks", function () {
+        $scope.initProjectView();
+    });
+    ///############################################################################################
+    $scope.tarefaValorRecebido = function(item) {
+        item.valor_hora = $scope.projectInfo.valor_hora;
+        APIService.postData("/project/taskPayment", item, function(resp) {
+            $rootScope.$broadcast('updateListTasks');
+        })
+    }
+    ///############################################################################################
+    ///############################################################################################
+    ///############################################################################################
+    ///############################################################################################
+    ///############################################################################################
+    ///############################################################################################
+
+});
+///#####################################################################################################
+app.controller("ProjectDashboardCtrl", function ($scope, APIService) { 
+    $scope.versao = "1.0.1";
+    $scope.form = {};
+    $scope.ano_selecionado = 2023;
+
+    ///############################################################################################
+    $scope.initDashboard = function () {
+        $scope.arrRanking = APIService.resourceQuery("/project/dashboard/ranking");
+        $scope.arrProjetosSituacao = APIService.resourceQuery("/project/dashboard/projects");
+        $scope.arrProjetosAno = APIService.resourceQuery("/project/dashboard/projectsYear");
+        $scope.gerarGraficosDashboard();
+        $scope.gerarGraficoProjetosEntreguesPorAno();
+    }
+    ///############################################################################################
+        ///############################################################################################
     $scope.Highcharts3DPie = function (id, dados2, labelSeries) {
         Highcharts.chart(id, {
             chart: {
@@ -305,7 +354,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     ///############################################################################################
     $scope.gerarGraficosDashboard = function () {
-        APIService.getData(`/dashboard/graphByType?ano=${$scope.ano_selecionado}`, function (res) {
+        APIService.getData(`/project/dashboard/graphByType?ano=${$scope.ano_selecionado}`, function (res) {
             var temp01 = res.data;
             var dados2 = [];
             for (var i = 0; i < temp01.length; i++) {
@@ -315,7 +364,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
             //*/
         });
 
-        APIService.getData(`/dashboard/graphByClient?ano=${$scope.ano_selecionado}`, function (res) {
+        APIService.getData(`/project/dashboard/graphByClient?ano=${$scope.ano_selecionado}`, function (res) {
             var temp01 = res.data;
             var dados2 = [];
             for (var i = 0; i < temp01.length; i++) {
@@ -327,7 +376,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     $scope.gerarGraficoProjetosEntreguesPorAno = function () {
         ///
-        APIService.getData(`/dashboard/projectsYear`, function (res) {
+        APIService.getData(`/project/dashboard/projectsYear`, function (res) {
             var temp01 = res.data;
             var cats = [];
             var values = [];
@@ -340,46 +389,11 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
         });
     }
     ///############################################################################################
-    $scope.archiveProject = function() {
-        var fields = [
-            {
-                field: 'id_situacao',
-                value: 7
-            }
-        ]
-        APIService.putData("/project/" + $routeParams.id, fields, function(resp) {
-
-        });
-    }
-    ///############################################################################################
-    $scope.postProjectComment = function(form) {
-        form.project_id = $routeParams.id;
-        APIService.postData("/project/comment", form, function(resp) {
-            $scope.initProjectView();
-            $scope.form = {};
-        })
-    }
-    ///############################################################################################
-    $scope.$on("updateListTasks", function () {
-        $scope.initProjectView();
-    });
-    ///############################################################################################
-    $scope.tarefaValorRecebido = function(item) {
-        item.valor_hora = $scope.projectInfo.valor_hora;
-        APIService.postData("/project/taskPayment", item, function(resp) {
-            $rootScope.$broadcast('updateListTasks');
-        })
-    }
     ///############################################################################################
     ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
-
-});
+})
 ///#####################################################################################################
-app.controller("NewProjectCtrl", function ($scope, $rootScope, $resource, APIService) {
+app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
 
     $scope.form = {
         nome: "Testes de Psicopedagogia",
@@ -424,7 +438,7 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, $resource, APISer
     $scope.init();
 });
 ///#####################################################################################################
-app.controller("ProjectActivityCtrl", function ($scope, $resource, $routeParams, APIService) {
+app.controller("ProjectActivityCtrl", function ($scope, $routeParams, APIService) {
 
     $scope.init = function() {
         APIService.getData("/company/activity_status", function(resp) { $scope.arrActivityStatus = resp.data; });
@@ -436,7 +450,7 @@ app.controller("ProjectActivityCtrl", function ($scope, $resource, $routeParams,
     $scope.init();
 });
 ///#####################################################################################################
-app.controller("UserTasksCtrl", function ($scope, $rootScope, $resource, $routeParams, $modal, APIService) {
+app.controller("UserTasksCtrl", function ($scope, $rootScope, $modal, APIService) {
     $scope.form = {};
 
     ///############################################################################################
@@ -481,7 +495,7 @@ app.controller("UserTasksCtrl", function ($scope, $rootScope, $resource, $routeP
     ///############################################################################################
 });
 ///#####################################################################################################
-app.controller("KanbanViewCtrl", function ($scope, $resource, $routeParams, APIService) {
+app.controller("KanbanViewCtrl", function ($scope, APIService) {
 
     $scope.id_projeto = 1;
     ///############################################################################################
@@ -495,13 +509,13 @@ app.controller("KanbanViewCtrl", function ($scope, $resource, $routeParams, APIS
                 //{ name: "Concluido", id: "5", cards: [] }
             ]
         };
-        $scope.kanbanRest = APIService.resourceQuery("/kanbanProjects/" + $scope.id_projeto);
+        $scope.kanbanRest = APIService.resourceQuery("/project/kanban/" + $scope.id_projeto);
     }
     ///############################################################################################
     $scope.onDrop = function (data, targetColId) {
         console.log([data.id, targetColId]);
-        APIService.putData("/kanbanProjects/" + $scope.id_projeto, { id_atividade: data.id, id_situacao: targetColId }, function (resp) {
-            $scope.kanbanRest = APIService.resourceQuery("/kanbanProjects/" + $scope.id_projeto);
+        APIService.putData("/project/kanban/" + $scope.id_projeto, { id_atividade: data.id, id_situacao: targetColId }, function (resp) {
+            $scope.kanbanRest = APIService.resourceQuery("/project/kanban/" + $scope.id_projeto);
         });
         /*
         boardService.canMoveTask(data.ColumnId, targetColId)
@@ -519,7 +533,7 @@ app.controller("KanbanViewCtrl", function ($scope, $resource, $routeParams, APIS
     };
 });
 ///#####################################################################################################
-app.controller("G4FCtrl", function ($scope, $rootScope, $resource, $routeParams, APIService, $modal) {
+app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
 
     $scope.listarControleCadastrados = function() {
         APIService.getData("/controleMudanca/", function(resp) {

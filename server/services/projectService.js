@@ -1,7 +1,4 @@
-var crypto = require('crypto');
-const jwt = require("jsonwebtoken");
 const database = require("../infra/postgres");
-const database2 = require("../infra/postgres2");
 var moment = require("moment");
 
 async function listProjects(idEmpresa) {
@@ -167,7 +164,7 @@ async function saveTimeEntry(data) {
         ///
         idProjeto = atividade[0].id_projeto;
         let SQL2 = "UPDATE projeto_atividade SET esforco_real = $1,  percentual_completo = $2 WHERE id = $3";
-        await database.one(SQL2, [EsforcoAtual, Perc_Completo, data.id_atividade]);
+        await database.none(SQL2, [EsforcoAtual, Perc_Completo, data.id_atividade]);
 
         updateProjectTimeEntries(data.id_atividade, idProjeto);
         return result;
@@ -191,7 +188,7 @@ async function updateProjectTimeEntries(id_atividade, id_projeto) {
                         esforco_estimado = $2,
                         percentual_completo = $3
                     WHERE id = $4`;
-        await database.one(SQL2, [EsforcoAtual, esforco_estimado, Percentual, IDProjeto]);
+        await database.none(SQL2, [EsforcoAtual, esforco_estimado, Percentual, IDProjeto]);
     }
 }
 

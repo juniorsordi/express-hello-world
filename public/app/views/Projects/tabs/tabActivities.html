@@ -42,12 +42,12 @@
 
                             <div class="d-flex align-items-center">
                                 <span>
-                                    Esforço atual: {{ item.esforco_atual | number:2 }} h/{{ item.esforco_estimado | number:2 }} h <Br>
+                                    Esforço atual: {{ item.esforco_real | number:2 }} h/{{ item.esforco_estimado | number:2 }} h <Br>
                                     <span ng-if="!item.pago">
-                                        Receita: {{ (item.esforco_atual * projectInfo.valor_hora) | currency:'R$ ' }} / {{ (item.esforco_estimado * projectInfo.valor_hora) | currency:'R$ ' }}
+                                        Receita: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }} / {{ (item.esforco_estimado * projectInfo.valor_hora) | currency:'R$ ' }}
                                     </span>
                                     <span ng-if="item.pago">
-                                        Receita Recebida: {{ (item.esforco_atual * projectInfo.valor_hora) | currency:'R$ ' }}
+                                        Receita Recebida: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }}
                                     </span>
                                     
                                 </span>
