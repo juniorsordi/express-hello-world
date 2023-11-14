@@ -61,17 +61,11 @@ async function getClient() {
 	config.database = {};
 	let localhost = process.env.DATABASE_LOCAL;
 	config.database.port = process.env.DATABASE_PORT || 5432;
-	if(localhost) {
-		config.database.database = process.env.DATABASE_DB_LOCAL || "teste";
-		config.database.user = process.env.DATABASE_USER_LOCAL || 'postgres';
-		config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
-		config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
-	} else {
-		config.database.database = process.env.DATABASE_DB || "teste";
-		config.database.user = process.env.DATABASE_USER || 'postgres';
-		config.database.password = process.env.DATABASE_PW || '123456';
-		config.database.host = process.env.DATABASE_HOST || 'localhost';
-	}
+	config.database.database = process.env.DATABASE_DB || "teste";
+	config.database.user = process.env.DATABASE_USER || 'postgres';
+	config.database.password = process.env.DATABASE_PW || '123456';
+	config.database.host = process.env.DATABASE_HOST || 'localhost';
+
     try {
         const client = new Client(config.database);
         //console.log(client);

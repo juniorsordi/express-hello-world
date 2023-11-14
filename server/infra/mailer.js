@@ -6,8 +6,8 @@ const send = async function (email) {
         host: 'email-smtp.us-east-1.amazonaws.com',
         port: 587,
         auth: {
-            user: "AKIAWGP3CHEY7WXXGWHT",
-            pass: "BOkp8D+1DHEY4jKRghabjpuVg3b7u/diJl1hVbZQB7eo"
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_TOKEN
         }
     });
     const mailOptions = {
