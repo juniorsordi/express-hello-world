@@ -35,15 +35,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="field5" translate="">Category</label>
-                            <select id="field5" class="form-control" ng-model="form.id_categoria" ng-options="item.id as item.nome for item in categoriesList | filter: { tipo: form.tipo_operacao }">
-                                <option value=""></option>
-                            </select>
+                            <ui-select id="field5b" ng-model="form.id_categoria" theme="selectize" title="Choose a person">
+                                    <ui-select-match placeholder="Selecione a Categoria">
+                                        {{$select.selected.nome}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in categoriesListFiltered | filter: $select.search">
+                                        <div>
+                                            <span>&nbsp;{{ item.nome | highlight: $select.search }}</span>
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
                         </div>
                         <div class="mb-3">
-                            <label for="field5" translate="">Payment Type</label>
-                            <select id="field5" class="form-control" ng-model="form.conta.nome" ng-options="item.id as item.nome for item in accountsList">
-                                <option value=""></option>
-                            </select>
+                            <label for="field5" translate="">Account</label>
                             <ui-select id="field2" ng-model="form.conta" theme="selectize" title="Selecione o banco...">
                                 <ui-select-match placeholder="Selecione o banco...">
                                     <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ $select.selected.banco.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />

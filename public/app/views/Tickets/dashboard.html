@@ -11,7 +11,7 @@
 								<div class="row task">
 									<div ng-repeat="statusItem in arrStatusDash" class="col-xl-2 col-sm-4 col-6">
 										<div class="card">
-											<div class="card-body bg-{{ statusItem.color }}">
+											<div class="card-body bg-{{ statusItem.cor }}">
 												<h5 class="card-title text-white count">{{ statusItem.total }}</h5>
 												<p class="card-text text-white">{{ statusItem.status }}</p>
 											</div>
@@ -31,17 +31,17 @@
 						<thead>
 							<tr>
 								<th scope="col">#</th>
-								<th scope="col" width="50%">Tile</th>
-								<th scope="col">Creation Date</th>
-								<th scope="col">User</th>
+								<th scope="col" width="50%" translate>Title</th>
+								<th scope="col" translate>Creation Date</th>
+								<th scope="col" translate>User</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="ticket in arrLastTickets">
 								<th scope="row" ng-click="showTicket(ticket.id)">{{ ticket.id }}</th>
-								<td>{{ ticket.title }}</td>
-								<td>{{ ticket.creation_date | date:'MMMM, dd yyyy' }}</td>
-								<td>{{ ticket.userName }}</td>
+								<td>{{ ticket.titulo }}</td>
+								<td>{{ ticket.data_cadastro | date:'MMMM, dd yyyy' }}</td>
+								<td>{{ ticket.username }}</td>
 							</tr>
 						</tbody>
 					</table>

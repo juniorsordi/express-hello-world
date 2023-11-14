@@ -223,6 +223,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     $scope.tarefaValorRecebido = function(item) {
         item.valor_hora = $scope.projectInfo.valor_hora;
+        //console.log(item); return;
         APIService.postData("/project/taskPayment", item, function(resp) {
             $rootScope.$broadcast('updateListTasks');
         })

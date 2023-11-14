@@ -18,29 +18,14 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- TOC entry 6 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
---
-
 CREATE SCHEMA public;
 
-
---
--- TOC entry 3223 (class 0 OID 0)
--- Dependencies: 6
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
---
 
 COMMENT ON SCHEMA public IS 'standard public schema';
 
 
 SET default_tablespace = '';
 
---
--- TOC entry 196 (class 1259 OID 16385)
--- Name: agendamento_areas; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.agendamento_areas (
     id integer NOT NULL,
@@ -48,11 +33,6 @@ CREATE TABLE public.agendamento_areas (
     data_cadastro timestamp without time zone
 );
 
-
---
--- TOC entry 197 (class 1259 OID 16391)
--- Name: agendamento_areas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
 
 CREATE SEQUENCE public.agendamento_areas_id_seq
     AS integer
@@ -63,19 +43,8 @@ CREATE SEQUENCE public.agendamento_areas_id_seq
     CACHE 1;
 
 
---
--- TOC entry 3224 (class 0 OID 0)
--- Dependencies: 197
--- Name: agendamento_areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.agendamento_areas_id_seq OWNED BY public.agendamento_areas.id;
 
-
---
--- TOC entry 198 (class 1259 OID 16393)
--- Name: agendamento_prestador; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.agendamento_prestador (
     id integer NOT NULL,
@@ -88,11 +57,6 @@ CREATE TABLE public.agendamento_prestador (
     ativo integer
 );
 
-
---
--- TOC entry 257 (class 1259 OID 16846)
--- Name: agendamento_prestador_compromisso; Type: TABLE; Schema: public; Owner: -
---
 
 CREATE TABLE public.agendamento_prestador_compromisso (
     id integer NOT NULL,
@@ -107,11 +71,6 @@ CREATE TABLE public.agendamento_prestador_compromisso (
 );
 
 
---
--- TOC entry 256 (class 1259 OID 16844)
--- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
 CREATE SEQUENCE public.agendamento_prestador_compromisso_id_seq
     AS integer
     START WITH 1
@@ -121,19 +80,8 @@ CREATE SEQUENCE public.agendamento_prestador_compromisso_id_seq
     CACHE 1;
 
 
---
--- TOC entry 3225 (class 0 OID 0)
--- Dependencies: 256
--- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
 ALTER SEQUENCE public.agendamento_prestador_compromisso_id_seq OWNED BY public.agendamento_prestador_compromisso.id;
 
-
---
--- TOC entry 199 (class 1259 OID 16399)
--- Name: agendamento_prestador_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
 
 CREATE SEQUENCE public.agendamento_prestador_id_seq
     AS integer
@@ -997,6 +945,7 @@ CREATE TABLE public.projeto_financeiro_pagamentos (
     esforco_pago double precision,
     valor_hora double precision,
     total_pago double precision,
+    total_liquido double precision,
     data_recebimento timestamp without time zone
 );
 
@@ -1910,48 +1859,9 @@ INSERT INTO public.financas_movimentacao VALUES (22, 'Pix Jorge', '2023-11-01', 
 INSERT INTO public.financas_movimentacao VALUES (23, 'Bokas', '2023-11-03', 97.299999999999997, 97.299999999999997, 97.299999999999997, 'D', 1, '2023-11-10 13:41:25.021957', '2023-11-03 03:00:00', 1, 30, NULL, NULL, NULL, false, false, 1);
 
 
---
--- TOC entry 3196 (class 0 OID 16704)
--- Dependencies: 241
--- Data for Name: hours; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.hours VALUES (1, 1, 1, 11, 2023, '2023-11-01 08:23:00', '2023-11-01 11:32:00');
-INSERT INTO public.hours VALUES (2, 1, 1, 11, 2023, '2023-11-01 12:33:00', '2023-11-01 17:59:00');
-
-
---
--- TOC entry 3217 (class 0 OID 18570)
--- Dependencies: 262
--- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 3216 (class 0 OID 18564)
--- Dependencies: 261
--- Data for Name: pgmigrations; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 3173 (class 0 OID 16473)
--- Dependencies: 218
--- Data for Name: projeto; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.projeto VALUES (2, 'Gerenciamento de Projetos', 'Gerenciamento de Projetos baseado no site artia', '2023-01-01', '2023-12-31', 1300, 19, 1.4615384615384615, 1, 1, 2, 2, 1, 20, 26900, 7400.3928888888886, 1);
-INSERT INTO public.projeto VALUES (3, 'Consultoria Destra', 'Consultoria Destra', '2022-05-01', '2023-12-31', 200, 38.460000000000001, 19.23, 1, 2, 4, 2, 1, 46, 20700, 11526.282333333333, 1);
-INSERT INTO public.projeto VALUES (1, 'Testes de Psicopedagogia', 'Testes de Psicopedagogia utilizando uma planilha de excel como exemplo para os calculos e entrada de campos.', '2023-05-10', '2023-12-31', 750, 78, 10.4, 1, 1, 1, 2, 1, 20, 8800, 2493.4363333333331, 1);
-
-
---
--- TOC entry 3174 (class 0 OID 16479)
--- Dependencies: 219
--- Data for Name: projeto_atividade; Type: TABLE DATA; Schema: public; Owner: -
---
+INSERT INTO public.projeto VALUES (2, 'Gerenciamento de Projetos', 'Gerenciamento de Projetos baseado no site artia', '2023-01-01', '2023-12-31', 1300, 19, 1.46, 1, 1, 2, 2, 1, 20, 26900, 7400.39, 1);
+INSERT INTO public.projeto VALUES (3, 'Consultoria Destra', 'Consultoria Destra', '2022-05-01', '2023-12-31', 200, 38.46, 19.23, 1, 2, 4, 2, 1, 46, 20700, 11526.28, 1);
+INSERT INTO public.projeto VALUES (1, 'Testes de Psicopedagogia', 'Testes de Psicopedagogia utilizando uma planilha de excel como exemplo para os calculos e entrada de campos.', '2023-05-10', '2023-12-31', 750, 78, 10.4, 1, 1, 1, 2, 1, 20, 8800, 2493.43, 1);
 
 INSERT INTO public.projeto_atividade VALUES (14, 3, 'Outubro 2023', '', 2, '2023-10-01', '2023-10-31', 110, 12.17, 11.063636363636364, 1, 1, '2023-11-03', '2023-11-03');
 INSERT INTO public.projeto_atividade VALUES (13, 3, 'Julho 2023', '', 0, '2023-07-01', '2023-07-31', 45, 2.0399999999999996, 4.5333333333333323, 1, 1, '2023-09-06', '2023-09-06');
@@ -1969,13 +1879,6 @@ INSERT INTO public.projeto_atividade VALUES (6, 1, 'Teste GAN', NULL, 6, '2023-0
 INSERT INTO public.projeto_atividade VALUES (7, 1, 'Teste DNOI', NULL, 7, '2023-06-30', '2023-07-05', 40, 6, 15, 2, 1, '2023-08-28', '2023-08-28');
 INSERT INTO public.projeto_atividade VALUES (8, 1, 'Teste DNEI', NULL, 8, '2023-07-05', '2023-07-10', 40, 7, 17.5, 2, 1, '2023-08-28', '2023-08-28');
 INSERT INTO public.projeto_atividade VALUES (1, 1, 'Desenvolvimento Plataforma WEB (Frontend + Backend)', 'Desenvolvimento Plataforma WEB (Frontend + Backend)', 1, '2023-05-10', '2023-05-30', 70, 18, 25.714285714285715, 3, 1, '2023-08-28', '2023-08-28');
-
-
---
--- TOC entry 3175 (class 0 OID 16485)
--- Dependencies: 220
--- Data for Name: projeto_atividade_apontamento; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO public.projeto_atividade_apontamento VALUES (1, 1, 1, 6, '', '2023-05-11', '2023-08-28', '2023-08-28', false);
 INSERT INTO public.projeto_atividade_apontamento VALUES (2, 1, 1, 6, 'AngularJS + PHP 7', '2023-05-11', '2023-08-28', '2023-08-28', false);
@@ -2026,61 +1929,19 @@ INSERT INTO public.projeto_atividade_apontamento VALUES (49, 14, 1, 6, '', '2023
 INSERT INTO public.projeto_atividade_apontamento VALUES (50, 13, 1, 0.01, '', '2023-07-10', '2023-11-03', '2023-11-03', false);
 
 
---
--- TOC entry 3178 (class 0 OID 16495)
--- Dependencies: 223
--- Data for Name: projeto_atividade_participante; Type: TABLE DATA; Schema: public; Owner: -
---
-
 INSERT INTO public.projeto_atividade_participante VALUES (1, 10, 2);
-
-
---
--- TOC entry 3214 (class 0 OID 16872)
--- Dependencies: 259
--- Data for Name: projeto_atividade_situacao; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO public.projeto_atividade_situacao VALUES (1, 'Não Iniciado', 1, 1, 1);
 INSERT INTO public.projeto_atividade_situacao VALUES (2, 'Em Execução', 1, 1, 2);
 INSERT INTO public.projeto_atividade_situacao VALUES (3, 'Finalizado', 1, 1, 3);
 INSERT INTO public.projeto_atividade_situacao VALUES (4, 'Cancelado', 1, 1, 4);
 
-
---
--- TOC entry 3180 (class 0 OID 16500)
--- Dependencies: 225
--- Data for Name: projeto_comentario; Type: TABLE DATA; Schema: public; Owner: -
---
-
 INSERT INTO public.projeto_comentario VALUES (1, 2, 1, '<p>Teste 1</p>', '2023-08-29 10:46:56.274427');
 INSERT INTO public.projeto_comentario VALUES (2, 3, 1, '<p>Teste 1</p>', '2023-11-03 10:46:04.960116');
-
-
---
--- TOC entry 3182 (class 0 OID 16508)
--- Dependencies: 227
--- Data for Name: projeto_financeiro_despesas; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 3184 (class 0 OID 16516)
--- Dependencies: 229
--- Data for Name: projeto_financeiro_pagamentos; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO public.projeto_financeiro_pagamentos VALUES (1, 5, 18, 40, 46, 1840, '2023-09-25 10:31:55.578');
 INSERT INTO public.projeto_financeiro_pagamentos VALUES (2, 5, 13, 41.049999999999997, 46, 1888.3, '2023-09-25 10:43:24.817');
 INSERT INTO public.projeto_financeiro_pagamentos VALUES (3, 5, 12, 24.25, 46, 1115.5, '2023-09-25 10:45:41.863');
-
-
---
--- TOC entry 3187 (class 0 OID 16523)
--- Dependencies: 232
--- Data for Name: projeto_situacao; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO public.projeto_situacao VALUES (1, 'Na Fila', 'bg-warning', 1, NULL, 1, '2023-08-29 10:51:55.776');
 INSERT INTO public.projeto_situacao VALUES (2, 'Em Andamento', 'bg-primary', 1, NULL, 1, '2023-08-29 10:51:56.68');
@@ -2088,23 +1949,9 @@ INSERT INTO public.projeto_situacao VALUES (3, 'Finalizado', 'bg-success', 1, tr
 INSERT INTO public.projeto_situacao VALUES (4, 'Cancelado', 'bg-danger', 1, true, 1, '2023-08-29 10:52:41.745');
 INSERT INTO public.projeto_situacao VALUES (5, 'Congelado', NULL, 1, false, 1, '2023-11-07 17:10:38.065534');
 
-
---
--- TOC entry 3189 (class 0 OID 16528)
--- Dependencies: 234
--- Data for Name: projeto_tipo; Type: TABLE DATA; Schema: public; Owner: -
---
-
 INSERT INTO public.projeto_tipo VALUES (1, 'Desenvolvimento', 1, 1, '2023-08-29 11:13:34.108');
 INSERT INTO public.projeto_tipo VALUES (2, 'Consultoria', 1, 1, '2023-08-29 11:13:34.94');
 INSERT INTO public.projeto_tipo VALUES (3, 'Game Development', 1, 1, '2023-11-07 17:08:42.042053');
-
-
---
--- TOC entry 3191 (class 0 OID 16533)
--- Dependencies: 236
--- Data for Name: rh_batida_ponto; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO public.rh_batida_ponto VALUES (2, 1, 6, 11, 2023, '10:32:35', '2023-11-06 10:32:35');
 INSERT INTO public.rh_batida_ponto VALUES (3, 1, 1, 11, 2023, '08:23:00', '2023-11-06 11:23:12.169');
@@ -2133,136 +1980,37 @@ INSERT INTO public.rh_batida_ponto VALUES (24, 1, 9, 11, 2023, '12:44:00', '2023
 INSERT INTO public.rh_batida_ponto VALUES (25, 1, 9, 11, 2023, '17:58:09', '2023-11-09 17:58:09');
 INSERT INTO public.rh_batida_ponto VALUES (26, 1, 10, 11, 2023, '08:41:00', '2023-11-10 10:34:56.556');
 
-
---
--- TOC entry 3198 (class 0 OID 16712)
--- Dependencies: 243
--- Data for Name: sistema_notificacao; Type: TABLE DATA; Schema: public; Owner: -
---
-
 INSERT INTO public.sistema_notificacao VALUES (1, 1, 1, 'Login', 'Usuário 1 logou do ip 0.0.0.0', 0, '2023-11-06 13:57:55.071');
-
-
---
--- TOC entry 3200 (class 0 OID 16753)
--- Dependencies: 245
--- Data for Name: ticket; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 3202 (class 0 OID 16774)
--- Dependencies: 247
--- Data for Name: ticket_evento; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 3204 (class 0 OID 16795)
--- Dependencies: 249
--- Data for Name: ticket_status; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 3193 (class 0 OID 16538)
--- Dependencies: 238
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO public.usuario VALUES (1, 'Dilson Sordi Junior', 'dilson@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/img/users/dilson_sordi_junior.jpg', 1, 1, true, 1);
 INSERT INTO public.usuario VALUES (2, 'Cristian Bianchi', 'cbianchi@sc.senac.br', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'assets/images/users/avatar-1.jpg', 1, 1, true, 1);
 
-
---
--- TOC entry 3257 (class 0 OID 0)
--- Dependencies: 197
--- Name: agendamento_areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.agendamento_areas_id_seq', 1, false);
 
-
---
--- TOC entry 3258 (class 0 OID 0)
--- Dependencies: 256
--- Name: agendamento_prestador_compromisso_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.agendamento_prestador_compromisso_id_seq', 1, false);
 
 
---
--- TOC entry 3259 (class 0 OID 0)
--- Dependencies: 199
--- Name: agendamento_prestador_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.agendamento_prestador_id_seq', 1, false);
 
-
---
--- TOC entry 3260 (class 0 OID 0)
--- Dependencies: 254
--- Name: agendamento_prestador_produto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.agendamento_prestador_produto_id_seq', 1, true);
 
 
---
--- TOC entry 3261 (class 0 OID 0)
--- Dependencies: 252
--- Name: controle_mudancas_detalhamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.controle_mudancas_detalhamento_id_seq', 1, false);
 
-
---
--- TOC entry 3262 (class 0 OID 0)
--- Dependencies: 250
--- Name: controle_mudancas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.controle_mudancas_id_seq', 5, true);
 
 
---
--- TOC entry 3263 (class 0 OID 0)
--- Dependencies: 202
--- Name: empresa_categoria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.empresa_categoria_id_seq', 1, false);
 
-
---
--- TOC entry 3264 (class 0 OID 0)
--- Dependencies: 204
--- Name: empresa_cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.empresa_cliente_id_seq', 5, true);
 
 
---
--- TOC entry 3265 (class 0 OID 0)
--- Dependencies: 205
--- Name: empresa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
 SELECT pg_catalog.setval('public.empresa_id_seq', 1, true);
 
-
---
--- TOC entry 3266 (class 0 OID 0)
--- Dependencies: 207
--- Name: financas_bancos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
 
 SELECT pg_catalog.setval('public.financas_bancos_id_seq', 1, false);
 

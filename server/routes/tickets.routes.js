@@ -4,7 +4,6 @@ const auth = require("../middleware/auth");
 const controller = require('../controllers/tickets');
 var mailer = require("../infra/mailer");
 
-
 router.get("/dashboard/status", auth, async function (req, res, next) {
     try {
         res.json(await controller.getDashboardStatusTickets());
@@ -23,7 +22,7 @@ router.get("/dashboard/lastTickets", auth, async function (req, res, next) {
     }
 });
 
-router.get("/tickets/list", auth, async function (req, res, next) {
+router.get("/list", auth, async function (req, res, next) {
     try {
         res.json(await controller.getAllTickets());
     } catch (err) {
@@ -32,7 +31,7 @@ router.get("/tickets/list", auth, async function (req, res, next) {
     }
 });
 
-router.get("/ticket/:id", auth, async function (req, res, next) {
+router.get("/:id", auth, async function (req, res, next) {
     try {
         res.json(await controller.getTicketByID(req.params.id));
     } catch (err) {
@@ -41,7 +40,17 @@ router.get("/ticket/:id", auth, async function (req, res, next) {
     }
 });
 
-router.post("/ticket/:id/event", auth, async function (req, res, next) {
+router.post("/", auth, async function (req, res, next) {
+    try {
+        req.body.user_id = req.cookies.IDUser;
+        res.json(await controller.saveTicket(req.body, req.params.id));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.post("/:id/event", auth, async function (req, res, next) {
     try {
         req.body.user_id = req.cookies.IDUser;
         res.json(await controller.saveTicketEvent(req.body, req.params.id));
@@ -63,6 +72,6 @@ router.get("/test/email", async function (req, res, next) {
     };
     var resp = await mailer.send(email);
     res.json(resp);
-});
+});//*/
 
 module.exports = router;

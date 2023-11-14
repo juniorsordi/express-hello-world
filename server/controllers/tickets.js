@@ -1,32 +1,32 @@
-const db = require("../mariadb");
+const db = require("../infra/database");
 const jwt = require("jsonwebtoken");
 var crypto = require('crypto');
 
-
 async function getAllTickets() {
     const data = await db.any(`SELECT a.*, b.nome as userName FROM ticket a
-        LEFT JOIN usuario b ON (b.id = a.user_id)
-        ORDER BY a.id DESC
-        LIMIT 0, 15`);
+        LEFT JOIN usuario b ON (b.id = a.id_usuario)
+        ORDER BY a.id DESC`);
     return data;
 }
 
 async function getTicketByID(id) {
-    const data = await db.any(`SELECT a.*, b.nome as userName FROM ticket a
-        LEFT JOIN usuario b ON (b.id = a.user_id)
-        WHERE a.id = ?`,[id]);
-    const events = await db.any(`SELECT a.*, b.nome as userName, b.email FROM ticket_event a
-    LEFT JOIN usuario b ON (b.id = a.user_id)
-    WHERE ticket_id = $1 
+    const data = await db.any(`SELECT a.*, b.nome as userName, b.email FROM ticket a
+        LEFT JOIN usuario b ON (b.id = a.id_usuario)
+        WHERE a.id = $1`,[id]);
+    const events = await db.any(`SELECT a.*, b.nome as userName, b.email FROM ticket_evento a
+    LEFT JOIN usuario b ON (b.id = a.id_usuario)
+    WHERE id_ticket = $1 
     ORDER BY id ASC`,[id]);
-    data[0]['events'] = events;
+    data[0]['eventos'] = events;
     return data;
 }
 
 async function saveTicketEvent(data, id) {
-    console.log(data);
-    //return data;
-    return db.one("INSERT INTO ticket_event VALUES (null, $!, now(), $2, $3)",[id, data.event, data.user_id]);
+    return db.one("INSERT INTO ticket_evento VALUES (DEFAULT, $1, $2, $3, now()) RETURNING *",[id, data.user_id, data.event]);
+}
+
+async function saveTicket(fields) {
+    return db.one("INSERT INTO ticket VALUES (DEFAULT, $1, null, 1, $2, $3, now(), null) RETURNING *",[ fields.user_id, fields.titulo, fields.event]);
 }
 
 async function userLogin(email, password) {
@@ -40,7 +40,7 @@ async function userLogin(email, password) {
         hashPassword.update(password);
         var tempHash = hashPassword.digest('hex');
         // Validate if user exist in our database
-        const tempUser = await db.one("SELECT * FROM usuario WHERE email = ?", [email]);
+        const tempUser = await db.one("SELECT * FROM usuario WHERE email = $1", [email]);
         const user = tempUser[0];
         if (user && (tempHash == user.password)) {
             // Create token
@@ -63,18 +63,17 @@ async function userLogin(email, password) {
 }
 
 async function getDashboardStatusTickets() {
-    const data = await db.any(`SELECT b.name as status, b.color, count(a.id) as total  from ticket a
-        left join ticket_status b on(b.id = a.status_id and b.active = 1)
-        group by b.name
+    const data = await db.any(`SELECT b.nome as status, b.cor, count(a.id) as total  from ticket a
+        left join ticket_status b on(b.id = a.id_situacao and b.ativo = 1)
+        group by b.nome, b.cor, b.id
         ORDER BY b.id`);
     return data;
 }
 
 async function getDashboardLastTickets() {
     const data = await db.any(`SELECT a.*, b.nome as userName FROM ticket a
-        LEFT JOIN usuario b ON (b.id = a.user_id)
-        ORDER BY a.id DESC
-        LIMIT 0, 15`);
+        LEFT JOIN usuario b ON (b.id = a.id_usuario)
+        ORDER BY a.id DESC`);
     return data;
 }
 
@@ -85,5 +84,6 @@ module.exports = {
     getTicketByID,
     saveTicketEvent,
     getDashboardStatusTickets,
-    getDashboardLastTickets
+    getDashboardLastTickets,
+    saveTicket,
 }

@@ -200,11 +200,15 @@ async function saveProjectComment(comment) {
 async function taskPayment(data) {
     //let SQL = "SELECT * FROM projeto_atividade_apontamento WHERE id_atividade = $1";
     //let result = await database.any(SQL, [data.id]);
+    let idEmpresa = 1;
     let SQL2 = "INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, $1, $2, $3, $4, $5, now()) RETURNING *";
     let valor_total = parseFloat(data.esforco_real) * parseFloat(data.valor_hora);
-    let result2 = await database.any(SQL2, [data.id_projeto, data.id, data.esforco_real, data.valor_hora, valor_total]);
+    let result2 = await database.one(SQL2, [data.id_projeto, data.id, data.esforco_real, data.valor_hora, valor_total]);
     if(result2) {
-        await database.one("UPDATE projeto_atividade_apontamento SET pago = true WHERE id_atividade = $1", [data.id]);
+        await database.none("UPDATE projeto_atividade_apontamento SET pago = true WHERE id_atividade = $1", [data.id]);
+        let valorEstimado = data.esforco_real * data.valor_hora;
+        let idContaPadrao = 1;
+        await database.none(`INSERT INTO financas_movimentacao VALUES (DEFAULT, 'Pagamento Atividade ${data.titulo}', now(), $1, $2, null, 'C', 0, now(), null, $3, 23, null, null, null, false, false, $4)`,[valorEstimado, valorEstimado, idContaPadrao, idEmpresa]);
     }
     return result2;
 }

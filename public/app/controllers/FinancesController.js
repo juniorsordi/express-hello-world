@@ -4,39 +4,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     $scope.filtro = {};
 
     ///############################################################################################
-    var columnDefs1 = [
-        { name: 'firstName' },
-        { name: 'lastName' },
-        { name: 'company' },
-        { name: 'gender' }
-    ];
-
-    var data1 = [
-        {
-            "firstName": "Cox",
-            "lastName": "Carney",
-            "company": "Enormo",
-            "gender": "male"
-        },
-        {
-            "firstName": "Lorraine",
-            "lastName": "Wise",
-            "company": "Comveyer",
-            "gender": "female"
-        },
-        {
-            "firstName": "Nancy",
-            "lastName": "Waters",
-            "company": "Fuelton",
-            "gender": "female"
-        },
-        {
-            "firstName": "Misty",
-            "lastName": "Oneill",
-            "company": "Letpro",
-            "gender": "female"
-        }
-    ];
     ///############################################################################################
     $scope.init = function() {
         $scope.idProject = $routeParams.id;
@@ -242,7 +209,7 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     $scope.initCashFlowView = function() {
         $scope.paymentTypesList = $resource("/api/v1/finances/paymentTypes").query(); 
         $scope.financesCategoriesList = $resource("/api/v1/finances/categories").query(); 
-        //$scope.filtro.forma_pagamento = -1;
+        
         $scope.filtro.data_inicio = moment().startOf('month').format("DD/MM/YYYY");
         $scope.filtro.data_termino = moment().endOf('month').format("DD/MM/YYYY");
 
@@ -296,17 +263,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         $("#data1").focus().select();
         $("#data2").focus().select();
         $("#account").focus().select();
-
-        setTimeout(function() {
-            //const dataTable = new DataTable("#datatable_1", { searchable: !0, fixedHeight: !1 });
-            //let table = new DataTable('#datatable_1');
-        }, 300);
-        
-        /*
-        APIService.getData("/finances/exchangeRates", function(resp) {
-            $scope.exchange = resp.data;
-        });
-        //*/
 
         $scope.gridOpts = {
             enableGridMenu: true,
@@ -435,6 +391,8 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     ///############################################################################################
     ///############################################################################################
     ///############################################################################################
+    
+    ///############################################################################################
 
     $scope.init();
 });
@@ -464,6 +422,42 @@ app.controller("FinancesInvoicesCtrl", function ($scope, $routeParams, $resource
         });
     }
 
+    $scope.init();
+});
+///#########################################################################################################################
+app.controller("FinancesCategoriesCtrl", function ($scope, $routeParams, $resource, APIService, $modal){
+    $scope.form = {};
+
+    var modalCategory = $modal({ templateUrl: 'app/views/Finances/Modals/ModalNovaCategoria.html', show: false, scope: $scope, });
+    ///############################################################################################
+    $scope.init = function () {
+        APIService.getData("/finances/accounts/categories", function (resp) { $scope.categoriesList = resp.data; });
+    }
+    ///############################################################################################
+    $scope.novaCategoriaModal = function () {
+        $scope.form.id_pai = null;
+        modalCategory.show();
+    }
+    ///############################################################################################
+    $scope.addCategoriaFilho = function(item) {
+        $scope.form.id_pai = item.id;
+        $scope.form.tipo_operacao = item.tipo;
+        $scope.form.nome = item.nome + " / ";
+        modalCategory.show();
+    }
+    ///############################################################################################
+    $scope.salvarCategoria = function(form) {
+        //console.log(form);
+        APIService.postData("/finances/accounts/categories", form, function (resp) {
+            $scope.form = {};
+            modalCategory.hide();
+            $scope.init();
+        });
+    }
+    ///############################################################################################
+    ///############################################################################################
+    ///############################################################################################
+    
     $scope.init();
 });
 ///#########################################################################################################################
@@ -744,29 +738,6 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
 app.controller("FinancesAddAccount", function ($scope, $rootScope, $routeParams, $resource, APIService, $modal) {
     $scope.form = {};
 
-    $scope.myConfigCB = {
-        valueField: 'id',
-        labelField: 'nome',
-        searchField: 'nome',
-        sortField: 'nome',
-        maxItems: 1,
-        //options: resp.data,
-        render: {
-            item: function (item, escape) {
-                return '<div>'
-                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                    + '<span>&nbsp;' + item.nome + '</span> '
-                    + '</div>';
-            },
-            option: function (item, escape) {
-                return '<div>'
-                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                    + '<span>&nbsp;' + item.nome + '</span> '
-                    + '</div>';
-            }
-        },
-    }
-
     $scope.tiposContasBancarias = [
         { id: 1, nome: 'Conta Corrente' },
         { id: 2, nome: 'Conta Poupança' },
@@ -774,78 +745,15 @@ app.controller("FinancesAddAccount", function ($scope, $rootScope, $routeParams,
         { id: 4, nome: 'Cartão Crédito' },
     ];
 
-    $scope.listaBancos = [
-        { "nome": "Banco do Brasil S.A.", "img": "bb-2", "tipo": ["CONTA CORRENTE", "OUTROS", "INVESTIMENTO"], "id": 1 }, 
-        { "nome": "Banco Inter S.A.", "img": "inter", "tipo": ["CONTA CORRENTE", "OUTROS", "INVESTIMENTO"], "id": "077" }, 
-        { "nome": "Nubank", "img": "nubank2", "tipo": ["CARTAOCREDITO"], "id": "nubank" }, 
-        { "nome": "C6 Bank", "img": "c6-2", "tipo": ["OUTROS"], "id": "c6bank" }
-    ];
-
-    $scope.people = [
-        { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
-        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-        { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
-        { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
-        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
-        { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
-        { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
-        { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
-        { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
-        { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
-    ];
+    $scope.listaBancos = [];
 
     $scope.init = function () {
-        console.log("Modal opening");
         APIService.getData("/cadastros/contas/moedas", function (resp) { 
                 $scope.listaMoedas = resp.data; 
-
-                $scope.configMoedas = {
-                    valueField: 'id',
-                    labelField: 'nome',
-                    searchField: 'nome',
-                    maxItems: 1,
-                    options: $scope.listaMoedas,
-                    render: {
-                        item: function (item, escape) {
-                            return '<div>'
-                                + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                                + '<span>&nbsp;' + item.nome + '</span> '
-                                + '</div>';
-                        },
-                        option: function (item, escape) {
-                            return '<div>'
-                                + '<img src="assets/img/bandeiras/' + item.id + '.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                                + '<span>&nbsp;' + item.nome + '</span> '
-                                + '</div>';
-                        }
-                    },
-                };
         });
 
         APIService.getData("/cadastros/contas/bancos", function (resp) {
                 $scope.listaBancos = resp.data; 
-
-                $scope.myConfig = {
-                    valueField: 'id',
-                    labelField: 'nome',
-                    searchField: 'nome',
-                    maxItems: 1,
-                    options: resp.data,
-                    render: {
-                        item: function (item, escape) {
-                            return '<div>'
-                                + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                                + '<span>&nbsp;' + item.nome + '</span> '
-                                + '</div>';
-                        },
-                        option: function (item, escape) {
-                            return '<div>'
-                                + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                                + '<span>&nbsp;' + item.nome + '</span> '
-                                + '</div>';
-                        }
-                    },
-                }
         });
     }
 
@@ -865,6 +773,12 @@ app.controller("FinancesAddMovement", function ($scope, $rootScope, $routeParams
 
     APIService.getData("/finances/accounts/categories", function (resp) { $scope.categoriesList = resp.data; });
     APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
+
+    $scope.categoriesListFiltered = [];
+
+    $scope.$watch('form.tipo_operacao', function(newValue, oldValue) {
+        $scope.categoriesListFiltered = $scope.categoriesList.filter( e => e.tipo == newValue);
+    });
 
     $scope.salvarMovimentacao = function(form) {
         //console.log(form);

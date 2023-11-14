@@ -2,14 +2,20 @@
     <div class="col-12" ng-init="initViewTicket()">
         <div class="row">
             <div class="col-lg-8">
-                <h2 align="center">{{ ticket.title }}</h2>
+                <h2 align="center">{{ ticket.titulo }}</h2>
                 <!-- Timeline -->
                 <ul class="timeline">
-                    <li ng-repeat="event in ticket.events" class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                    <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
                         <div class="timeline-arrow"></div>
-                        <h2 class="h5 mb-0">{{ event.userName }} <small>&lt;{{ event.email }}&gt;</small> </h2>
-                        <span class="small text-gray"><i class="fa fa-clock-o mr-2"></i> {{ event.creation_date | date:'dd MMMM, yyyy HH:mm' }}</span>
-                        <p class="text-small mt-2 font-weight-light" ng-bind-html="event.event"></p>
+                        <h2 class="h5 mb-0">{{ ticket.username }} <small>&lt;{{ ticket.email }}&gt;</small> </h2>
+                        <span class="small text-gray"><i class="fa fa-clock-o mr-2"></i> {{ ticket.data_cadastro | date:'dd MMMM, yyyy HH:mm' }}</span>
+                        <p class="text-small mt-2 font-weight-light" ng-bind-html="ticket.descricao"></p>
+                    </li>
+                    <li ng-repeat="event in ticket.eventos" class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                        <div class="timeline-arrow"></div>
+                        <h2 class="h5 mb-0">{{ event.username }} <small>&lt;{{ event.email }}&gt;</small> </h2>
+                        <span class="small text-gray"><i class="fa fa-clock-o mr-2"></i> {{ event.data_cadastro | date:'dd MMMM, yyyy HH:mm' }}</span>
+                        <p class="text-small mt-2 font-weight-light" ng-bind-html="event.evento"></p>
                     </li>
                 </ul>
                 <!-- End -->

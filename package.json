@@ -1,6 +1,6 @@
 {
   "name": "express-hello-world",
-  "version": "2023 r54",
+  "version": "2023 r70",
   "description": "Expressjs Hello World example to provide faster start deploying on Cyclic platform",
   "main": "server.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
     "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
     "ofx-js": "^0.1.1",
     "pg": "^8.11.3",
     "pg-promise": "^11.5.4",

@@ -1,5 +1,5 @@
 <div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document" ng-controller="FinancesAddAccount">
+    <div class="modal-dialog" role="document" ng-controller="FinancesAddAccount" ng-init="init()">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" translate="">Financial Account</h5>
@@ -90,11 +90,6 @@
                                 
                             </div>
                         </div>
-                        
-                        
-                        
-                        
-                        {{ form | json }}
                     </form>
             </div>
             <div class="modal-footer">

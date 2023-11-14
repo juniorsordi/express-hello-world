@@ -1,4 +1,4 @@
-app.controller("AppController", function ($scope, $rootScope, $routeParams, $location, APIService, $window, $resource, $modal, $translate) {
+app.controller("AppController", function ($scope, $rootScope, $routeParams, $location, APIService, $window, $http, $modal, $translate) {
     $scope.versao = "1.0.1";
     $scope.form = {};
 
@@ -10,6 +10,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
         accessLevel: 'Administrador',
         foto: 'assets/img/avatars/avatar-2.jpg?1561438316'
     };
+
+    $http.get("version.txt").then(function(response) { $scope.versao = response.data; })
 
     $scope.modules = {
 		finances: true,

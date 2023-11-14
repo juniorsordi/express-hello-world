@@ -16,8 +16,8 @@ var newVersion = `${now.getFullYear()} r${thisCommit}`;
 const regEx = new RegExp(`(?<="version":( *)")([^"]+)`, 'm');
 var newtext = text.replace(regEx, newVersion);
 fs.writeFileSync(filePath, newtext, encoding);
+fs.writeFileSync("./public/version.txt", ""+newVersion);
 ///
-let commitMsg = process.argv.splice(2);
+//let commitMsg = process.argv.splice(2);
 //console.log(`git commit -m "${commitMsg}"`);
-
-cp.execSync(`git add . && git commit -m "${commitMsg}" && git push`);
+//cp.execSync(`git add . && git commit -m "${commitMsg}" && git push`);

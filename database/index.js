@@ -10,7 +10,7 @@ config.database = {};
 let localhost = process.env.DATABASE_LOCAL;
 config.database.port = process.env.DATABASE_PORT || 5432;
 if(localhost) {
-    config.database.database = process.env.DATABASE_DB || "teste";
+    config.database.database = "teste2";
     config.database.user = process.env.DATABASE_USER_LOCAL || 'postgres';
     config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
     config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
@@ -123,6 +123,7 @@ async function getOutstandingMigrations(migrations = []) {
 //migration();
 (async () => {
     try {
+        console.log(config.database);
         let sql = await migrate();
         console.log(sql);
     } catch (e) {

@@ -21,4 +21,13 @@ router.get("/mensagens", async function (req, res, next) {
     }
 });
 
+router.get("/usuarios", async function (req, res, next) {
+    try {
+        res.json(await service.listarUsuarios(req.cookies));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 module.exports = router;

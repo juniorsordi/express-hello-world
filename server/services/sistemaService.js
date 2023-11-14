@@ -13,6 +13,13 @@ async function listarNotificacoesNaoLidas(idUser) {
     return data;
 }
 
+async function listarUsuarios(fields) {
+    return fields;
+    let SQL = `SELECT * FROM sistema_notificacao a WHERE id_usuario = $1 AND lido = 0`;
+    const data = await database.any(SQL, [idUser]);
+    return data;
+}
+
 async function inserirNotificacao(fields) { }
 
 async function listarMensagensUsuario(idUser) { }
@@ -25,4 +32,5 @@ module.exports = {
     inserirNotificacao,
     listarMensagensUsuario,
     inserirMensagemUsuario,
+    listarUsuarios,
 }

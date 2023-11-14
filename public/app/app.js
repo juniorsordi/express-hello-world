@@ -46,6 +46,7 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/finance/invoices',      { templateUrl: 'app/views/Finances/invoice.html?t=' + date, controller: 'FinancesInvoicesCtrl' })
         .when('/finance/ofxreport',     { templateUrl: 'app/views/Finances/ofxReport.html?t=' + date, controller: 'FinancesController' })
         .when('/finance/barcodes',      { templateUrl: 'app/views/Finances/barcodes.html?t=' + date, controller: 'FinancesController' })
+        .when('/finance/categories',    { templateUrl: 'app/views/Finances/categorias.html?t=' + date, controller: 'FinancesCategoriesCtrl' })
 
         .when('/tickets',               { templateUrl: 'app/views/Tickets/dashboard.html', controller: 'TicketsCtrl' })
         .when('/tickets/new',           { templateUrl: 'app/views/Tickets/newTicket.html', controller: 'TicketsCtrl' })

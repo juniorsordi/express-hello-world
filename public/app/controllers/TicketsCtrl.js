@@ -17,7 +17,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     }
 
     $scope.loadTicketData = function(id) {
-        APIService.getData("/ticket/" + id, function (resp) {
+        APIService.getData("/tickets/" + id, function (resp) {
             $scope.ticket = resp.data[0];
         });
     }
@@ -25,19 +25,19 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     $scope.addTicketReply = function(form) {
         //form.user_id = $scope.User.id;
         console.log(form);
-        APIService.postData("/ticket/" + $routeParams.id +"/event", form, function(res) {
+        APIService.postData("/tickets/" + $routeParams.id +"/event", form, function(res) {
             $scope.loadTicketData($routeParams.id);
             $scope.form = {};
         });
     }
     ///############################################################################################
     $scope.initDashboard = function () {
-        $scope.arrStatusDash = $resource("api/v1/dashboard/status").query();
-        $scope.arrLastTickets = $resource("api/v1/dashboard/lastTickets").query();
+        $scope.arrStatusDash = $resource("api/v1/tickets/dashboard/status").query();
+        $scope.arrLastTickets = $resource("api/v1/tickets/dashboard/lastTickets").query();
     }
     ///############################################################################################
     $scope.initProjectsView = function () {
-        $scope.projectsList = $resource("api/v1/projects").query();
+        $scope.projectsList = $resource("api/v1/project").query();
     }
     ///############################################################################################
     $scope.addUser = function (label, value) {
@@ -47,15 +47,23 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     ///############################################################################################
     $scope.userTypeahead = function (value) {
         if (value.length > 2) {
-            $http.get(`api/v1/users?filter=${value}`, { filter: value }).then(function (res) {
+            $http.get(`api/v1/sistema/usuarios?filtro=${value}`, { filter: value }).then(function (res) {
                 $scope.type1.setData(res.data);
             });
         }
     }
     ///############################################################################################
+    $scope.salvarTicket = function(form) {
+        APIService.postData("/tickets", form, function(response) {
+            if(response.data) {
+                console.log(response.data);
+            }
+        })
+    }
+    ///############################################################################################
     $scope.saveNewProject = function (form) {
         form.resources = $scope.selectedUsers;
-        APIService.postData("/projects/new", form, function (res) {
+        APIService.postData("/project/new", form, function (res) {
             if (res.data.affectedRows > 0) {
                 goto("/projects");
             }
@@ -84,7 +92,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     ///############################################################################################
     $scope.getAddress = function (viewValue) {
         var params = { address: viewValue, sensor: false };
-        return $http.get('api/v1/users', { params: params }).then(function (res) {
+        return $http.get('api/v1/sistema/usuarios', { params: params }).then(function (res) {
             return res.data.results;
         });
     };
