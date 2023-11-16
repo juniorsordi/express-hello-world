@@ -204,9 +204,10 @@ async function taskPayment(data) {
     //let SQL = "SELECT * FROM projeto_atividade_apontamento WHERE id_atividade = $1";
     //let result = await database.any(SQL, [data.id]);
     let idEmpresa = 1;
-    let SQL2 = "INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, $1, $2, $3, $4, $5, now()) RETURNING *";
+    let SQL2 = "INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, $1, $2, $3, $4, $5, 0, now()) RETURNING *";
     let valor_total = parseFloat(data.esforco_real) * parseFloat(data.valor_hora);
-    let result2 = await database.one(SQL2, [data.id_projeto, data.id, data.esforco_real, data.valor_hora, valor_total]);
+    let descricao = "Pagamento Atividade "+data.titulo;
+    let result2 = await database.one(SQL2, [data.id_projeto, data.id, descricao, data.esforco_real,  data.valor_hora, valor_total]);
     if(result2) {
         await database.none("UPDATE projeto_atividade_apontamento SET pago = true WHERE id_atividade = $1", [data.id]);
         let valorEstimado = data.esforco_real * data.valor_hora;
