@@ -22,7 +22,7 @@ async function connect() {
 }
 //*/
 let config = {};
-let localhost = true;//process.env.DATABASE_LOCAL;
+let localhost = process.env.DATABASE_LOCAL;
 
 config.database = {};
 config.database.application_name = "financial-RW";
