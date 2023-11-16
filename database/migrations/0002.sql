@@ -40,9 +40,9 @@ INSERT INTO projeto_atividade (id, id_projeto, titulo, descricao, etapa, inicio_
 INSERT INTO projeto_atividade (id, id_projeto, titulo, descricao, etapa, inicio_estimado, termino_estimado, esforco_estimado, esforco_real, percentual_completo, id_status_atividade, id_responsavel, criado_em, atualizado_em) VALUES(2, 1, 'Teste FVL', NULL, 2, '2023-05-30', '2023-06-10', 40.0, 6.0, 15.0, 3, 1, '2023-08-28', '2023-08-28');
 INSERT INTO projeto_atividade (id, id_projeto, titulo, descricao, etapa, inicio_estimado, termino_estimado, esforco_estimado, esforco_real, percentual_completo, id_status_atividade, id_responsavel, criado_em, atualizado_em) VALUES(15, 3, 'Novembro/2023', '', 11, '2023-11-01', '2023-11-30', 105.0, 2.5, 2.380952380952381, 1, 1, '2023-11-07', '2023-11-07');
 INSERT INTO projeto_atividade_participante VALUES (1, 10, 2);
-INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, 3, 14, 40, 46, 1840, 0,'2023-09-25 10:31:55.578');
-INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, 3, 13, 41.049999999999997, 46, 1888.3, 0,'2023-09-25 10:43:24.817');
-INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, 3, 12, 24.25, 46, 1115.5, 0,'2023-09-25 10:45:41.863');
+INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, 3, 14,'', 40, 46, 1840, 0,'2023-09-25 10:31:55.578');
+INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, 3, 13,'', 41.049999999999997, 46, 1888.3, 0,'2023-09-25 10:43:24.817');
+INSERT INTO projeto_financeiro_pagamentos VALUES (DEFAULT, 3, 12,'', 24.25, 46, 1115.5, 0,'2023-09-25 10:45:41.863');
 
 INSERT INTO financas_bancos (id, nome, img, tipo, codigo_bacen) VALUES(1, 'Banco do Brasil S.A.', 'bb-2', '["CONTA CORRENTE","OUTROS","INVESTIMENTO"]'::json, '001');
 INSERT INTO financas_bancos (id, nome, img, tipo, codigo_bacen) VALUES(2, 'Caixa Econômica Federal', 'caixa', '["CONTA CORRENTE","OUTROS","INVESTIMENTO"]'::json, '104');
