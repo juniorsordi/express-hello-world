@@ -53,7 +53,7 @@
                                 </span>
                             </div>
                             <div class="dropdown card-options">
-                                <i ng-if="item.id_status_atividade != closed_activity_status" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
+                                <i ng-if="!item.pago" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
                                 <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
                                 <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>
                                 <i ng-if="!item.pago" class="align-middle" data-feather="dollar-sign" ng-click="tarefaValorRecebido(item)" title="Pagamento recebido"></i>

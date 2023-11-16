@@ -87,7 +87,7 @@
 
                             <div class="mb-3">
                                 <label for="client" class="form-label" translate="">Client</label>
-                                <select id="client" class="form-control" select2 ng-model="form.id_cliente"  ng-options="item.id as item.nome_cliente for item in arrClientes">
+                                <select id="client" class="form-control" select2 ng-model="form.id_cliente"  ng-options="item.id as item.nome for item in arrClientes">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -101,7 +101,7 @@
 
                             <div class="mb-3">
                                 <label for="status" class="form-label" translate="">Status</label>
-                                <select id="status" class="form-control" select2 ng-model="form.id_status" ng-options="item.id as item.descricao for item in arrStatus">
+                                <select id="status" class="form-control" select2 ng-model="form.id_status" ng-options="item.id as item.nome for item in arrStatus">
                                     <option value=""></option>
                                 </select>
                             </div>

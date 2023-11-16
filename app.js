@@ -40,14 +40,14 @@ var storage = multer.diskStorage({ //multers disk storage settings
 });
 
 async function getOutstandingMigrations(migrations = []) {
-    const files = await util.promisify(fs.readdir)(__dirname+"/migrations/");
+    const files = await util.promisify(fs.readdir)(__dirname+"/database/migrations/");
     const sql = await Promise.all(
         files
         .filter((file) => file.split(".")[1] === "sql")
         .filter((file) => !migrations.includes(file))
         .map(async (file) => ({
             file,
-            query: await util.promisify(fs.readFile)(`${__dirname}/migrations/${file}`, {
+            query: await util.promisify(fs.readFile)(`${__dirname}/database/migrations/${file}`, {
             encoding: "utf-8",
             }),
         }))
@@ -59,14 +59,15 @@ async function getOutstandingMigrations(migrations = []) {
 async function getClient() {
 	let config = {};
 	config.database = {};
-	let localhost = process.env.DATABASE_LOCAL;
 	config.database.port = process.env.DATABASE_PORT || 5432;
-	config.database.database = process.env.DATABASE_DB || "teste";
-	config.database.user = process.env.DATABASE_USER || 'postgres';
-	config.database.password = process.env.DATABASE_PW || '123456';
-	config.database.host = process.env.DATABASE_HOST || 'localhost';
+	config.database.user = process.env.DATABASE_USER_LOCAL || 'postgres';
+	config.database.database = process.env.DATABASE_DB_LOCAL || 'backstage';
+	config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
+	config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
+	//config.database.ssl = { require: false, };
 
     try {
+		console.log(config.database);
         const client = new Client(config.database);
         //console.log(client);
         await client.connect();

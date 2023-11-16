@@ -25,7 +25,7 @@ async function saveProject(data, user) {
     //console.log([daysDiff, monthDiff, internetFee,foodFee]);
     let SQL = `INSERT INTO projeto 
     VALUES 
-        (null, $1, $2, $3, $4, $5, 0, 0, $6, $7, $8, $9, $10, $11, $12, $13, $14) returning *`;
+        (DEFAULT, $1, $2, $3, $4, $5, 0, 0, $6, $7, $8, $9, $10, $11, $12, $13, $14) returning *`;
         /*
     console.log([data.nome, 
         data.descricao, 
@@ -94,7 +94,7 @@ async function getProject(id) {
             var temp1 = await database.any("SELECT nome, foto, email FROM usuario WHERE id = $1", [idUser]);
             activities[i]['responsavel'] = temp1[0];
 
-            let paymentsTask = await database.any("SELECT * FROM projeto_financeiro_pagamentos WHERE id_tarefa = $1", [item.id]);
+            let paymentsTask = await database.any("SELECT * FROM projeto_financeiro_pagamentos WHERE id_atividade = $1", [item.id]);
             activities[i]['pago'] = (paymentsTask.length > 0 ? true : false);
 
             var persons = await database.any(`SELECT nome, foto, email FROM projeto_atividade_participante a
