@@ -74,10 +74,10 @@ async function getClient() {
 	let config = {};
 	config.database = {};
 	config.database.port = process.env.DATABASE_PORT || 5432;
-	config.database.user = process.env.DATABASE_USER_LOCAL || 'postgres';
-	config.database.database = process.env.DATABASE_DB_LOCAL || 'backstage';
-	config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
-	config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
+	config.database.user = process.env.DATABASE_USER || 'postgres';
+	config.database.database = process.env.DATABASE_DB || 'backstage';
+	config.database.password = process.env.DATABASE_PW || '123456';
+	config.database.host = process.env.DATABASE_HOST || 'localhost';
 	//config.database.ssl = { require: false, };
 
     try {
