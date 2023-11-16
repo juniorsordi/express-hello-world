@@ -1,4 +1,4 @@
-const db = require('../infra/database');
+const db = require('../infra/postgres');
 //const postgres = require('../infra/postgres');
 var crypto = require('crypto');
 const jwt = require("jsonwebtoken");
