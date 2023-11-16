@@ -42,6 +42,16 @@ create table if not exists usuario (
 	id_empresa integer references empresa (id)
 );
 
+create table if not exists sistema_mensagem (
+	id serial primary key,
+	id_usuario_origem integer references usuario (id),
+	id_usuario_destino integer references usuario (id),
+	mensagem text,
+	lido integer,
+	data_cadastro timestamp not null,
+	data_lido timestamp
+);
+
 create table if not exists projeto_situacao (
 	id serial primary key,
 	nome varchar(256),
@@ -195,6 +205,7 @@ create table if not exists projeto_financeiro_pagamentos (
 	id serial primary key,
 	id_projeto integer not null references projeto (id),
 	id_atividade integer references projeto_atividade (id),
+	descricao varchar(512),
 	esforco_pago float,
 	valor_hora float,
 	total_pago float,

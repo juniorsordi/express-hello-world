@@ -36,6 +36,10 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
             $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
             $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
             $translate.use($scope.currentLang.locale);
+
+            APIService.getData("/../auth/checkToken", function (response) {
+                
+            });
         } else {
             if (localStorage.getItem('user')) {
                 APIService.getData("/../auth/checkToken", function (response) {

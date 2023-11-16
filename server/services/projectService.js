@@ -109,8 +109,11 @@ async function getProject(id) {
         data[0]['participantes'] = participants;
         //const financies = getFinancesInfo(id, data[0].valor_hora);
         //data[0]['financies'] = financies;
-        //let cashflow = await database.query("SELECT * FROM projeto_financeiro WHERE id_projeto = $1", [id]);
-        //data[0]['cashflow'] = cashflow;
+        data[0]['financeiro'] = {};
+        let recebimentos = await database.query("SELECT * FROM projeto_financeiro_pagamentos WHERE id_projeto = $1 ORDER BY descricao ASC", [id]);
+        let despesas = await database.query("SELECT * FROM projeto_financeiro_despesas WHERE id_projeto = $1 ORDER BY data_despesas ASC", [id]);
+        data[0]['financeiro'].receitas = recebimentos;
+        data[0]['financeiro'].despesas = despesas;
         var timeEntries = await database.any(`SELECT a.*, 
         (SELECT titulo FROM projeto_atividade WHERE id = a.id_atividade ) as atividade_titulo,
         (SELECT nome FROM usuario WHERE id = a.id_usuario ) as nome_responsavel,

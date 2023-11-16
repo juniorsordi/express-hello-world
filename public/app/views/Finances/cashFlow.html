@@ -44,8 +44,8 @@
                                     <span ng-class="item.tipo == 'C' ? 'finances-positive-value' : 'finances-negative-value'">{{ item.valor | currency:'R$ ' }}</span>
                                 </td>
                                 <td>
-                                    {{ item.pago | boolean }}
-                                    <i ng-if="item.pago == 0" class="fa fa-sort-down" aria-hidden="true" ng-click="marcarItemPago(item)"></i>
+                                    {{ item.status | boolean }}
+                                    <i ng-if="item.status == 0" class="fa fa-sort-down" aria-hidden="true" ng-click="marcarItemPago(item)"></i>
                                 </td>
                             </tr>
                         </tbody>

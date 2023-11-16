@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="field5" translate="">Category</label>
-                            <ui-select id="field5b" ng-model="form.id_categoria" theme="selectize" title="Choose a person">
+                            <ui-select id="field5" ng-model="form.id_categoria" theme="selectize" title="Choose a person">
                                     <ui-select-match placeholder="Selecione a Categoria">
                                         {{$select.selected.nome}}
                                     </ui-select-match>
@@ -47,8 +47,8 @@
                                 </ui-select>
                         </div>
                         <div class="mb-3">
-                            <label for="field5" translate="">Account</label>
-                            <ui-select id="field2" ng-model="form.conta" theme="selectize" title="Selecione o banco...">
+                            <label for="field6" translate="">Account</label>
+                            <ui-select id="field6" ng-model="form.conta" theme="selectize" title="Selecione o banco...">
                                 <ui-select-match placeholder="Selecione o banco...">
                                     <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ $select.selected.banco.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
                                     {{$select.selected.nome}}
@@ -60,6 +60,15 @@
                                     </div>
                                 </ui-select-choices>
                             </ui-select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="field7" translate="">Rateio entre projetos Ativos?</label>
+                            <div id="field7">
+                                <select class="form-control" ng-model="form.lembrete">
+                                    <option value="0" selected>Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

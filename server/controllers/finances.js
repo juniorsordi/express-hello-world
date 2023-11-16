@@ -92,7 +92,9 @@ async function getCashFlow(idEmpresa, params) {
     let filtro = "";
     if(params) {
         let { inicio, termino, conta } = params;
-        filtro = ` AND data_prevista BETWEEN '${inicio}' AND '${termino}' `;
+            if(inicio) {
+                filtro = ` AND data_prevista BETWEEN '${inicio}' AND '${termino}' `;
+            }
         if(conta) {
             filtro += ` AND id_conta_bancaria = ${conta} `;
         }
@@ -115,17 +117,27 @@ async function saveReceipts(infos, idEmpresa) {
     return await db.any("INSERT INTO financas_contas_receber VALUES (null, ?, ?, ?, ?, null, ?, ?, 0)", [idEmpresa, infos.titulo, infos.valor, infos.data_vencimento, infos.tipo_pagamento, infos.id_categoria])
 }
 
-async function updatePayments(params, tipo, id) {
+async function updatePayments(params, fields, id) {
     let sql = [];
     for (const field of params) {
         sql.push(field.field + " = " + field.value);
     }
-    let tabela = "";
-    if (tipo == '1') { tabela = "financas_contas_receber"; }
-    if (tipo == '2') { tabela = "financas_contas_pagar"; }
-    let updSQL = "UPDATE " + tabela +" SET " + sql.join(",") + " WHERE id = $1";
-    const data = await db.run(updSQL, [id]);
+    let updSQL = "UPDATE financas_movimentacao SET " + sql.join(",") + " WHERE id = $1";
+    const data = await db.none(updSQL, [id]);
+    if(fields.lembrete == 1) {
+        geraRateioProjetos(fields);
+    }
     return data;
+}
+
+async function geraRateioProjetos(dados) {
+    let projects = await db.any("SELECT * FROM projeto WHERE percentual_completo < 100 ORDER BY id ASC");
+    let rateio = (dados.valor * -1) / projects.length;
+    for (const project of projects) {
+        let SQL = `INSERT INTO projeto_financeiro_despesas VALUES (DEFAULT, $1, null, $2, $3, now()) RETURNING *`;
+        await db.one(SQL,[project.id, dados.descricao, rateio]);
+    }
+    
 }
 
 module.exports = {

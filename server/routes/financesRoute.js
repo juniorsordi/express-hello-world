@@ -33,7 +33,7 @@ router.post("/payments", auth, async function (req, res, next) {
 
 router.put("/payments", auth, async function (req, res, next) {
     try {
-        res.json(await controller.updatePayments(req.body.fields, req.body.type, req.body.id));
+        res.json(await controller.updatePayments(req.body.fields, req.body, req.body.id));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);

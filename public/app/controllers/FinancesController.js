@@ -1,4 +1,4 @@
-app.controller("FinancesController", function ($scope, $routeParams, $resource, APIService, $http, $uibModal, $modal, $ocModal, Upload) {
+app.controller("FinancesController", function ($scope, $routeParams, $resource, APIService, $http, $uibModal, $modal, $ocModal, Upload, $location) {
     $scope.versao = "F 1.0.1";
     $scope.form = {};
     $scope.filtro = {};
@@ -350,23 +350,23 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     ///############################################################################################
     $scope.marcarItemPago = function(item) {
         item.fields = [
-            { field: 'pago', value: 1 }
+            { field: 'status', value: 1 }
         ];
         APIService.putData("/finances/payments", item, function(resp) {
-            $scope.loadCashFlow();
+            $scope.filtrar();
         });
     }
     ///############################################################################################
     $scope.testeRelatorioOFX = function() {
         APIService.getData("/../ofx/upload", function(resp) {
             $scope.infoOFX = resp.data;
-        })
+        });
     }
     ///############################################################################################
     $scope.upload = function (file) {
         Upload.upload({
-            url: '/api/ofx/upload',
-            data: { file: file }
+            url: '/api/v1/sistema/upload',
+            data: { file: file, url: $location.$$url }
         }).then(function (resp) {
             $scope.infoOFX = resp.data;
         }, function (resp) {
