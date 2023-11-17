@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-12" ng-init="initDashboard()">
+        <br>
+        <h1 class="h3 mb-3">Dashboard</h1>
+        <br>
+        <div class="row">
+            <div class="col-xl-12">
+				<h3 align="center">Tickets by Status</h3>
+						<div class="card">
+							<div class="card-body">
+								<div class="row task">
+									<div ng-repeat="statusItem in arrStatusDash" class="col-xl-2 col-sm-4 col-6">
+										<div class="card">
+											<div class="card-body bg-{{ statusItem.cor }}">
+												<h5 class="card-title text-white count">{{ statusItem.total }}</h5>
+												<p class="card-text text-white">{{ statusItem.status }}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+        </div>
+        <br>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Last Tickets</h5>
+				<p class="card-text">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col" width="50%" translate>Title</th>
+								<th scope="col" translate>Creation Date</th>
+								<th scope="col" translate>User</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="ticket in arrLastTickets">
+								<th scope="row" ng-click="showTicket(ticket.id)">{{ ticket.id }}</th>
+								<td>{{ ticket.titulo }}</td>
+								<td>{{ ticket.data_cadastro | date:'MMMM, dd yyyy' }}</td>
+								<td>{{ ticket.username }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</p>
+			</div>
+		</div>
+		
+    </div>
+</div>

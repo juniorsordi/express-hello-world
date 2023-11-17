@@ -25,7 +25,6 @@ let config = {};
 let localhost = process.env.DATABASE_LOCAL;
 
 config.database = {};
-config.database.application_name = "financial-RW";
 config.database.port = process.env.DATABASE_PORT || 5432;
 config.database.max = 10;
 config.database.idleTimeoutMillis = 8000;
@@ -43,12 +42,12 @@ if(localhost) {
     config.database.password = process.env.DATABASE_PW;
     config.database.host = process.env.DATABASE_HOST;
 }
-
+/*
 config.database.user = process.env.DATABASE_USER;
 config.database.database = process.env.DATABASE_DB;
 config.database.password = process.env.DATABASE_PW;
 config.database.host = process.env.DATABASE_HOST;
-
+*/
 const options = {
     pgFormatting: true,
     receive: function (data) {

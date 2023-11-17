@@ -58,6 +58,26 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
                 location.href = "login.html";
             }
         }
+
+        $scope.verificarNotificacoesMensagesApp();
+    }
+    ///############################################################################################
+    $scope.initAppDashboard = function() {
+        APIService.getData("/sistema/dashboard", function(response) { 
+            $scope.appDashboard = response.data; 
+            
+            let somaFinanceira = 0;
+            for(const item of $scope.appDashboard.financas) {
+                somaFinanceira += parseFloat(item.soma);
+            }
+
+            $scope.appDashboard.resuladoFinanceiro = somaFinanceira;
+        });
+    }
+    ///############################################################################################
+    $scope.verificarNotificacoesMensagesApp = function() {
+        APIService.getData("/sistema/notificacoes", function(response) { $scope.arrNotificacoes = response.data; });
+        APIService.getData("/sistema/mensagens", function(response) { $scope.arrMensagens = response.data; });
     }
     ///############################################################################################
     $scope.changeLocale = function (locale) {

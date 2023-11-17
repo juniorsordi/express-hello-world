@@ -3,7 +3,7 @@ const database = require("../infra/database");
 moment.locale('pt-br');
 
 async function salvarBatidaPonto(fields) {
-    let hoje = moment();
+    let hoje = moment().utcOffset('-0300');
     let SQL = "INSERT INTO rh_batida_ponto VALUES (DEFAULT, $1, $2, $3, $4, $5, $6) returning *";
     //*
     const info = await database.one(SQL, [

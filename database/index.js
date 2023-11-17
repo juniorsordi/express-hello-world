@@ -1,8 +1,6 @@
 require('dotenv').config();
 var util = require("util");
 const fs = require("fs");
-//const pg = require("pg");
-//const { migrate } = require("postgres-migrations");
 const { Pool, Client } = require("pg");
 
 let config = {};
@@ -10,7 +8,7 @@ config.database = {};
 let localhost = process.env.DATABASE_LOCAL;
 config.database.port = process.env.DATABASE_PORT || 5432;
 if(localhost) {
-    config.database.database = "teste2";
+    config.database.database = process.env.DATABASE_DB;
     config.database.user = process.env.DATABASE_USER_LOCAL || 'postgres';
     config.database.password = process.env.DATABASE_PW_LOCAL || '123456';
     config.database.host = process.env.DATABASE_HOST_LOCAL || 'localhost';
@@ -21,30 +19,12 @@ if(localhost) {
     config.database.host = process.env.DATABASE_HOST || 'localhost';
 }
 
-async function migration() {
-    const dbConfig = {
-        database: config.database.database,
-        user: config.database.user,
-        password: config.database.password,
-        host: config.database.host,
-        port: 5432,
-    }
-
-    // Note: when passing a client, it is assumed that the database already exists
-    const client = new pg.Client(dbConfig) // or a Pool, or a PoolClient
-    await client.connect()
-    try {
-        await migrate({client}, "./migrations/")
-    } finally {
-        await client.end()
-    }
-}
-
+const pool = new Pool(config.database);
 async function getClient() {
     try {
-        const client = new Client(config.database);
+        const client = await pool.connect()
         //console.log(client);
-        await client.connect();
+        //await client.connect();
         return client;
     } catch (error) {
         console.log(error);
@@ -92,6 +72,7 @@ async function migrate() {
 
         // All good, we can commit the transaction
         await client.query("COMMIT");
+
         return results;
     } catch (err) {
         // Oops, something went wrong, rollback!
@@ -120,15 +101,28 @@ async function getOutstandingMigrations(migrations = []) {
   return sql;
 }
 
+async function adjustAutoIncrementIndexes(client) {
+    let tables = await client.query("SELECT * FROM pg_catalog.pg_tables where schemaname = 'public' and tableowner in ('fharjwsz', 'postgres') order by tablename");
+    //console.log(tables);
+    ///*
+    for(const table of tables.rows) {
+        //console.log(table.tablename);
+        let SQL = `SELECT SETVAL('${table.tablename}_id_seq', (SELECT MAX(id) FROM ${table.tablename}))`;
+        await client.query(SQL);
+    }
+    //*/
+    client.end();
+}
+
 //migration();
 (async () => {
     try {
         console.log(config.database);
         let sql = await migrate();
         console.log(sql);
+        await adjustAutoIncrementIndexes(await getClient());
     } catch (e) {
         console.log(e);
         // Deal with the fact the chain failed
     }
-    // `text` is not available here
 })();

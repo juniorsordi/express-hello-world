@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12" ng-init="listarUltimasBatidas()">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" translate>Ponto</h5>
+                <p class="card-text">
+
+                    <center>
+                        <button class="btn btn-secondary" type="button" ng-click="registrarBatidaPonto()">Bater Ponto</button>
+                    </center>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Dia</th>
+                                <th>Mes</th>
+                                <th>Ano</th>
+                                <th>Hora Entrada</th>
+                                <th>Hora Saida</th>
+                                <th>Tempo</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="user in listaPonto">
+                            <td>{{ user.dia }}</td>
+                            <td>{{ user.mes }}</td>
+                            <td>{{ user.ano }}</td>
+                            <td>{{ user.entrada }}</td>
+                            <td>{{ user.saida }}</td>
+                            <td>{{ user.dif }}</td>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

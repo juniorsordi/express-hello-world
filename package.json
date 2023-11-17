@@ -6,13 +6,14 @@
   "scripts": {
     "serve": "nodemon --watch . server.js",
     "start": "node server.js",
+    "migration": "cd database && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cyclic-software/express-hello-world.git"
   },
-  "author": "Cyclic Software",
+  "author": "Dilson Sordi Junior",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cyclic-software/express-hello-world/issues"

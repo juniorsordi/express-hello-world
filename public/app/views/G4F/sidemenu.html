@@ -1,0 +1,82 @@
+<div>
+    <style>
+        .mdi {
+            font-size: 20px !important;
+        }
+    </style>
+    <ul class="sidebar-nav">
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#!/">
+                <i class="align-middle" data-feather="home"></i>
+                <span class="align-middle">Home</span>
+            </a>
+        </li>
+        <li ng-if="modules.os" class="sidebar-item">
+            <a data-bs-target="#os" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <i class="align-middle" data-feather="folder"></i>
+                <span class="align-middle" translate="">Ordems de Serviço</span>
+            </a>
+            <ul id="os" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/ordemServico"> Ordems de Serviço</a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/controle_mudancas">Controle de Mudanças</a>
+                </li>
+            </ul>
+        </li>
+        <li ng-if="modules.tickets" class="sidebar-item">
+            <a data-bs-target="#tickets" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <i class="align-middle" data-feather="folder"></i>
+                <span class="align-middle" translate="">Tickets</span>
+            </a>
+            <ul id="tickets" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/tickets">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/tickets/list">Tickets</a>
+                </li>
+            </ul>
+        </li>
+        <li ng-if="modules.rh" class="sidebar-item">
+            <a data-bs-target="#rh" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <i class="align-middle" data-feather="folder"></i>
+                <span class="align-middle" translate="">RH</span>
+            </a>
+            <ul id="rh" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh/baterPonto">Bater Ponto</a>
+                </li>
+            </ul>
+        </li>
+
+        <li ng-if="modules.system" class="sidebar-item">
+            <a data-bs-target="#system" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <i class="align-middle" data-feather="folder"></i>
+                <span class="align-middle" translate="">System</span>
+            </a>
+            <ul id="system" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link align-middle" href="#!/company/users">
+                        <span class="mdi mdi-account-multiple align-middle"></span>
+                        <span translate="">Users</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/company/settings">
+                        <span class="material-symbols-rounded align-middle">
+                            settings
+                        </span>
+                        <span translate="">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </li>

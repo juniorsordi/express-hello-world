@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="Sistema">
+<html ng-app="G4F">
 <head>
-	<title>Desenvolvimento e Consultoria</title>
+	<title>G4F</title>
 	<meta charset="utf-8"/>
 	<link href="favicon.png" type="image/png" rel="icon">
 
@@ -115,20 +115,16 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
+
 	<!-- js2:js -->
-	<script src="app/app.js"></script>
+	<script src="app/appG4F.js"></script>
 	<script src="app/utils/API.js"></script>
 	<script src="app/utils/directives.js"></script>
 	<script src="app/utils/filters.js"></script>
 	<script src="app/utils/translation.js"></script>
 	<script src="app/utils/Util.js"></script>
-	<script src="app/controllers/AppController.js"></script>
-	<script src="app/controllers/ClientController.js"></script>
-	<script src="app/controllers/FinancesController.js"></script>
-	<script src="app/controllers/ContractsCtrl.js"></script>
-	<script src="app/controllers/ProjectCtrl.js"></script>
-	<script src="app/controllers/TicketsCtrl.js"></script>
-	<script src="app/controllers/RHCtrl.js"></script>
+
 	<!-- endinject -->
 </head>
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" data-preloader="disable" ng-controller="AppController" ng-init="initApp()">
@@ -158,10 +154,10 @@
 						<path d="M10,20c-0.1,0-0.3,0-0.4-0.1l-9-4c-0.5-0.2-0.7-0.8-0.5-1.3c0.2-0.5,0.8-0.7,1.3-0.5l8.6,3.8l8.6-3.8c0.5-0.2,1.1,0,1.3,0.5
 						c0.2,0.5,0,1.1-0.5,1.3l-9,4C10.3,20,10.1,20,10,20z" />
 					</svg>
-					<span class="align-middle me-3" translate>Projects</span>
+					<span class="align-middle me-3">G4F</span>
 				</a>
 
-				<div ng-include="'app/views/Sistema/sideMenu.html'"></div>
+				<div ng-include="'app/views/G4F/sidemenu.html'"></div>
 			</div>
 		</nav>
 		<div class="main">
@@ -179,50 +175,6 @@
 					</div>
 				</form>
 
-				<ul class="navbar-nav hide">
-					<li class="nav-item px-2 dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
-							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Mega menu
-						</a>
-						<div class="dropdown-menu dropdown-menu-start dropdown-mega" aria-labelledby="servicesDropdown">
-							<div class="d-md-flex align-items-start justify-content-start">
-								<div class="dropdown-mega-list">
-									<div class="dropdown-header">UI Elements</div>
-									<a class="dropdown-item" href="#">Alerts</a>
-									<a class="dropdown-item" href="#">Buttons</a>
-									<a class="dropdown-item" href="#">Cards</a>
-									<a class="dropdown-item" href="#">Carousel</a>
-									<a class="dropdown-item" href="#">General</a>
-									<a class="dropdown-item" href="#">Grid</a>
-									<a class="dropdown-item" href="#">Modals</a>
-									<a class="dropdown-item" href="#">Tabs</a>
-									<a class="dropdown-item" href="#">Typography</a>
-								</div>
-								<div class="dropdown-mega-list">
-									<div class="dropdown-header">Forms</div>
-									<a class="dropdown-item" href="#">Layouts</a>
-									<a class="dropdown-item" href="#">Basic Inputs</a>
-									<a class="dropdown-item" href="#">Input Groups</a>
-									<a class="dropdown-item" href="#">Advanced Inputs</a>
-									<a class="dropdown-item" href="#">Editors</a>
-									<a class="dropdown-item" href="#">Validation</a>
-									<a class="dropdown-item" href="#">Wizard</a>
-								</div>
-								<div class="dropdown-mega-list">
-									<div class="dropdown-header">Tables</div>
-									<a class="dropdown-item" href="#">Basic Tables</a>
-									<a class="dropdown-item" href="#">Responsive Table</a>
-									<a class="dropdown-item" href="#">Table with Buttons</a>
-									<a class="dropdown-item" href="#">Column Search</a>
-									<a class="dropdown-item" href="#">Muulti Selection</a>
-									<a class="dropdown-item" href="#">Ajax Sourced Data</a>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 						<li class="nav-item dropdown">
@@ -230,25 +182,65 @@
 								data-bs-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="message-circle"></i>
-									<span ng-if="arrMensagens.length > 0" class="indicator">{{ arrMensagens.length }}</span>
+									<span class="indicator">4</span>
 								</div>
 							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
 									<div class="position-relative">
-										{{ arrMensagens.length }} <span translate>New Messages</span>
+										4 New Messages
 									</div>
 								</div>
 								<div class="list-group">
-									<a ng-repeat="message in arrMensagens" href="#" class="list-group-item">
+									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img ng-src="{{ message.origem.foto }}" class="avatar img-fluid rounded-circle" alt="{{ message.origem.nome }}">
+												<img src="assets/img/avatars/avatar-5.jpg"
+													class="avatar img-fluid rounded-circle" alt="Ashley Briggs">
 											</div>
 											<div class="col-10 ps-2">
-												<div class="text-dark">{{ message.origem.nome }}</div>
-												<div class="text-muted small mt-1" ng-bind-html="message.mensagem" style="font-size: 14px;"></div>
-												<div class="text-muted small mt-1">{{ message.data_cadastro | date:'dd/MM/yyyy HH:mm' }}</div>
+												<div class="text-dark">Ashley Briggs</div>
+												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
+												<div class="text-muted small mt-1">15m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="assets/img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="Carl Jenkins">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Carl Jenkins</div>
+												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="assets/img/avatars/avatar-4.jpg"
+													class="avatar img-fluid rounded-circle" alt="Stacie Hall">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Stacie Hall</div>
+												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna. </div>
+												<div class="text-muted small mt-1">4h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="assets/img/avatars/avatar-3.jpg"
+													class="avatar img-fluid rounded-circle" alt="Bertha Martin">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Bertha Martin</div>
+												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">5h ago</div>
 											</div>
 										</div>
 									</a>
@@ -261,28 +253,59 @@
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
 								<div class="position-relative">
-									<i ng-if="arrNotificacoes.length == 0" class="align-middle" data-feather="bell-off"></i>
-									<i ng-if="arrNotificacoes.length > 0" class="align-middle" data-feather="bell"></i>
-									<span ng-if="arrNotificacoes.length > 0" class="indicator">{{ arrNotificacoes.length }}</span>
+									<i class="align-middle" data-feather="bell-off"></i>
 								</div>
 							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="alertsDropdown">
 								<div class="dropdown-menu-header">
-									{{ arrNotificacoes.length }} <span translate>New Notifications</span>
+									4 New Notifications
 								</div>
 								<div class="list-group">
-									<a ng-repeat="notificacao in arrNotificacoes" href="#" class="list-group-item">
+									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<i ng-if="notificacao.tipo_notificacao == '1'" class="text-danger" data-feather="alert-circle"></i>
-												<i ng-if="notificacao.tipo_notificacao == '2'" class="text-warning" data-feather="bell"></i>
-												<i ng-if="notificacao.tipo_notificacao == '3'" class="text-primary" data-feather="home"></i>
-												<i ng-if="notificacao.tipo_notificacao == '4'" class="text-success" data-feather="user-plus"></i>
+												<i class="text-danger" data-feather="alert-circle"></i>
 											</div>
 											<div class="col-10">
-												<div class="text-dark">{{ notificacao.titulo }}</div>
-												<div class="text-muted small mt-1" ng-bind-html="notificacao.texto"></div>
-												<div class="text-muted small mt-1">{{ notificacao.data_cadastro | date:'dd/MM/yyyy HH:mm' }}</div>
+												<div class="text-dark">Update completed</div>
+												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-warning" data-feather="bell"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Lorem ipsum</div>
+												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
+												<div class="text-muted small mt-1">6h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-primary" data-feather="home"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Login from 192.186.1.1</div>
+												<div class="text-muted small mt-1">8h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-success" data-feather="user-plus"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">New connection</div>
+												<div class="text-muted small mt-1">Anna accepted your request.</div>
+												<div class="text-muted small mt-1">12h ago</div>
 											</div>
 										</div>
 									</a>
@@ -301,31 +324,6 @@
                                     <img ng-src="assets/img/flags/{{ country.flag }}" alt="{{ country.name }}" width="20" class="align-middle me-1" />
                                     <span class="align-middle" translate>{{ country.name }}</span>
                                 </a>
-								<!--a class="dropdown-item" href="#">
-									<img src="assets/img/flags/us.png" alt="English" width="20"
-										class="align-middle me-1" />
-									<span class="align-middle" translate>English</span>
-								</a>
-								<a class="dropdown-item" href="#">
-									<img src="assets/img/flags/br.png" alt="Portuguese" width="20"
-										class="align-middle me-1" />
-									<span class="align-middle" translate>Portuguese</span>
-								</a>
-								<a class="dropdown-item" href="#">
-									<img src="assets/img/flags/es.png" alt="Spanish" width="20"
-										class="align-middle me-1" />
-									<span class="align-middle" translate>Spanish</span>
-								</a>
-								<a class="dropdown-item" href="#">
-									<img src="assets/img/flags/de.png" alt="German" width="20"
-										class="align-middle me-1" />
-									<span class="align-middle" translate>German</span>
-								</a>
-								<a class="dropdown-item" href="#">
-									<img src="assets/img/flags/nl.png" alt="Dutch" width="20"
-										class="align-middle me-1" />
-									<span class="align-middle" translate>Dutch</span>
-								</a-->
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -360,20 +358,6 @@
 				<div class="container-fluid">
 					<div class="row text-muted">
 						<div class="col-6 text-start">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="#" translate>Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#" translate>Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#" translate>Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#" translate>Terms of Service</a>
-								</li>
-							</ul>
 						</div>
 						<div class="col-6 text-end">
 							<p class="mb-0">
@@ -390,12 +374,6 @@
 		<i class="ri-arrow-up-line"></i>
 	</button>
 
-	<script>
-		$(".sidebar-item").click(function () {
-			//$(".sidebar-item").removeClass('active');            
-			//$(this).addClass('active');
-		});
-	</script>
 	<script>
 		feather.replace();
 

@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Cadastro Controle de Mudanças</h5>
+            <p class="card-text">
+                <div class="row">
+                    <div class="col-4">Numero OS:</div>
+                    <div class="col-8"><input type="text" ng-model="form.num_os" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Sistema (Sigla-Descrição):</div>
+                    <div class="col-8"><input type="text" ng-model="form.sistema" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Solicitante (Nome/Área):</div>
+                    <div class="col-8"><input type="text" ng-model="form.solicitante" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Unidade do Requisitante:</div>
+                    <div class="col-8"><input type="text" ng-model="form.unidade" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Analista Responsável:</div>
+                    <div class="col-8"><input type="text" ng-model="form.analista" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Tipo de Demanda:</div>
+                    <div class="col-8">
+                        <select ng-model="form.tipo">
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Implementação">Implementação</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Descrição da Solicitação:</div>
+                    <div class="col-8">
+                        <ng-quill-editor ng-model="form.descricao"></ng-quill-editor>
+                    </div>
+                </div>
+                DETALHAMENTO DAS FUNCIONALIDADES A SEREM EXECUTADAS<br>
+                <table class="table">
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Descrição</th>
+                        <th>Detalhamento</th>
+                        <th>Tipo</th>
+                        <th>Passo a Passo</th>
+                        <th>Interface</th>
+                        <th>Data Cadastro</th>
+                    </tr>
+                    <tr ng-repeat="item in form.detalhamentos">
+                        <td>{{ item.nome_detalhamento }}</td>
+                        <td>{{ item.detalhamento }}</td>
+                        <td>{{ item.descricao }}</td>
+                        <td>{{ item.tipo }}</td>
+                        <td>{{ item.passo_passo }}</td>
+                        <td>{{ item.interface }}</td>
+                        <td>{{ item.data_cadastro }}</td>
+                    </tr>
+                </table>
+                <a class="btn btn-secondary btn-sm " href="" role="button" ng-click="addDetalhamento()"> <i class="fa fa-plus" aria-hidden="true"></i> </a>
+                <br>
+                INFORMAÇOES COMPLEMENTARES<br>
+                <div class="row">
+                    <div class="col-4">Tecnologia:</div>
+                    <div class="col-8"><select ng-model="form.tecnologia">
+                            <option value="JAVA">JAVA</option>
+                            <option value="PHP">PHP</option>
+                            <option value="C#">C#</option>
+                            <option value="VB/.Net (Outras Tecnologias)">VB/.Net (Outras Tecnologias)</option>
+                        </select></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Quantidade de Profissionais Alocados:</div>
+                    <div class="col-8"><input type="text" ng-model="form.profissional_alocado" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-4">Tempo Gasto:</div>
+                    <div class="col-4"><input type="text" ng-model="form.tempo_gasto" /></div>
+                    <div class="col-4">
+                        <select ng-model="form.tempo_gasto_medida">
+                            <option value="Dia(s)">Dia(s)</option>
+                            <option value="Hora(s)">Hora(s)</option>
+                            <option value="Minuto(s)">Minuto(s)</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <a class="btn btn-primary btn-sm " href="" role="button" ng-click="salvar()"> Salvar</a>
+            </p>
+          </div>
+        </div>
+        
+    </div>
+</div>
