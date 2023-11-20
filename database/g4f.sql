@@ -1,5 +1,5 @@
 
-create table if not exists usuario (
+create table if not exists g4f.usuario (
 	id serial primary key,
 	nome varchar(512),
 	email varchar(512),
@@ -11,7 +11,7 @@ create table if not exists usuario (
 	id_empresa integer references empresa (id)
 );
 
-create table if not exists rh_batida_ponto (
+create table if not exists g4f.rh_batida_ponto (
 	id serial primary key,
 	id_usuario integer not null references usuario (id),
 	dia integer,
@@ -21,13 +21,13 @@ create table if not exists rh_batida_ponto (
 	data_cadastro timestamp
 );
 
-CREATE TABLE if not exists lista_tecnologias (
+CREATE TABLE if not exists g4f.lista_tecnologias (
     id serial primary key,
     nome text,
     descricao text
 );
 
-CREATE TABLE if not exists controle_os (
+CREATE TABLE if not exists g4f.controle_os (
     id serial primary key,
     id_contrato integer,
     id_empresa integer,
@@ -51,7 +51,7 @@ CREATE TABLE if not exists controle_os (
     data_cadastro timestamp
 );
 
-CREATE TABLE contagem_pontos_funcao (
+CREATE TABLE if not exists g4f.contagem_pontos_funcao (
     id serial primary key,
     id_os integer references controle_os (id),
     funcao text,
@@ -71,7 +71,7 @@ CREATE TABLE contagem_pontos_funcao (
     data_cadastro timestamp
 );
 
-CREATE TABLE if not exists controle_mudancas (
+CREATE TABLE if not exists g4f.controle_mudancas (
 	id serial primary key,
 	numero_os text not null,
 	sistema text,
@@ -90,7 +90,7 @@ CREATE TABLE if not exists controle_mudancas (
     id_usuario_cadastro integer references usuario (id)
 );
 
-CREATE TABLE if not exists controle_mudancas_detalhamento (
+CREATE TABLE if not exists g4f.controle_mudancas_detalhamento (
 	id serial primary key,
 	id_controle_mudancas integer references controle_mudancas (id),
 	nome_detalhamento text,

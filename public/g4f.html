@@ -144,7 +144,7 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
+				<a class="sidebar-brand" href="#!/">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 						x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20"
 						xml:space="preserve">
@@ -168,7 +168,7 @@
 
 				<form class="d-none d-sm-inline-block">
 					<div class="input-group input-group-navbar">
-						<input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+						<input type="text" class="form-control" placeholder="Procurar..." aria-label="Search">
 						<button class="btn" type="button">
 							<i class="align-middle" data-feather="search"></i>
 						</button>
@@ -182,18 +182,18 @@
 								data-bs-toggle="dropdown">
 								<div class="position-relative">
 									<i class="align-middle" data-feather="message-circle"></i>
-									<span class="indicator">4</span>
+									<span ng-if="listaMensagens.length > 0" class="indicator">{{ listaMensagens.length }}</span>
 								</div>
 							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-								aria-labelledby="messagesDropdown">
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
 									<div class="position-relative">
-										4 New Messages
+										<span ng-if="listaMensagens.length > 0">{{ listaMensagens.length }} Novas Mensagens</span>
+										
 									</div>
 								</div>
 								<div class="list-group">
-									<a href="#" class="list-group-item">
+									<a ng-repeat="item in listaMensagens" href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<img src="assets/img/avatars/avatar-5.jpg"
@@ -206,63 +206,25 @@
 											</div>
 										</div>
 									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="assets/img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="Carl Jenkins">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Carl Jenkins</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="assets/img/avatars/avatar-4.jpg"
-													class="avatar img-fluid rounded-circle" alt="Stacie Hall">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Stacie Hall</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna. </div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="assets/img/avatars/avatar-3.jpg"
-													class="avatar img-fluid rounded-circle" alt="Bertha Martin">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Bertha Martin</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
 								</div>
 								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
+									<a href="#" class="text-muted">Mostrar Tudo</a>
 								</div>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
 								<div class="position-relative">
-									<i class="align-middle" data-feather="bell-off"></i>
+									<i ng-if="listaNotificaces.length == 0" class="align-middle" data-feather="bell-off"></i>
+									<i ng-if="listaNotificaces.length > 0" class="align-middle" data-feather="bell"></i>
 								</div>
 							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-								aria-labelledby="alertsDropdown">
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
 								<div class="dropdown-menu-header">
-									4 New Notifications
+									<span ng-if="listaNotificaces.length > 0">4 New Notifications</span>
 								</div>
 								<div class="list-group">
-									<a href="#" class="list-group-item">
+									<a ng-repeat="item in listaNotificaces" href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
 												<i class="text-danger" data-feather="alert-circle"></i>
@@ -271,41 +233,6 @@
 												<div class="text-dark">Update completed</div>
 												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
 												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-warning" data-feather="bell"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
-												<div class="text-muted small mt-1">6h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-primary" data-feather="home"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Login from 192.186.1.1</div>
-												<div class="text-muted small mt-1">8h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-success" data-feather="user-plus"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Anna accepted your request.</div>
-												<div class="text-muted small mt-1">12h ago</div>
 											</div>
 										</div>
 									</a>
@@ -361,7 +288,7 @@
 						</div>
 						<div class="col-6 text-end">
 							<p class="mb-0">
-								&copy; 2023 - <a href="https://www.dsjconsultoria.com.br" class="text-muted" target="_blank">DSJ Sistemas - v {{ versao }}</a>
+								&copy; 2023 - <a href="" class="text-muted" target="_blank">G4F - v {{ versao }}</a>
 							</p>
 						</div>
 					</div>
@@ -380,6 +307,8 @@
 		var mybutton = document.getElementById("back-to-top");
 		function scrollFunction() { 100 < document.body.scrollTop || 100 < document.documentElement.scrollTop ? mybutton.style.display = "block" : mybutton.style.display = "none" }
 		function topFunction() { document.body.scrollTop = 0, document.documentElement.scrollTop = 0 } mybutton && (window.onscroll = function () { scrollFunction() });
+		const e = document.getElementsByClassName("sidebar")[0]; 
+		document.getElementsByClassName("sidebar-toggle")[0].addEventListener("click", (() => { e.classList.toggle("collapsed"), e.addEventListener("transitionend", (() => { window.dispatchEvent(new Event("resize")) })) }));
 	</script>
 </body>
 </html>

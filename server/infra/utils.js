@@ -2,7 +2,10 @@ require('dotenv').config();
 const { Pool, Client } = require("pg");
 var util = require("util");
 const fs = require("fs");
+const PizZip = require('pizzip');
+const Docxtemplater = require('docxtemplater');
 var ofxParse = require('./ofx2');
+var moment = require("moment");
 
 const createInitials = function (text) {
     if (!text) return "";
@@ -20,6 +23,28 @@ const formatDateDMY = function(oldDate) {
 
 const gerarControleMudancaTemplate = function(dados) {
     const content = fs.readFileSync('modelo2.docx', 'binary');
+    const zip = new PizZip(content);
+    var doc;
+    try {
+        doc = new Docxtemplater(zip, {nullGetter() { return ''; }});
+    } catch (error) {
+        errorHandler(error);
+    }
+    doc.setData(dados);
+    try {
+        doc.render();
+    } catch (error) {
+        errorHandler(error);
+    }
+    let fileName = dados.numero_os+'.docx';
+    const buf = doc.getZip().generate({ type: 'nodebuffer' });
+    fs.writeFileSync('./output/'+dados.numero_os+'.docx', buf);
+    console.log(`"${dados.numero_os}.docx" written to disk`);
+    return fileName;
+}
+
+const gerarControleMudancaTemplateG4F = function(dados) {
+    const content = fs.readFileSync('modeloG4F.docx', 'binary');
     const zip = new PizZip(content);
     var doc;
     try {
@@ -144,6 +169,7 @@ module.exports = {
     createInitials,
     formatDateDMY,
     gerarControleMudancaTemplate,
+    gerarControleMudancaTemplateG4F,
     getOutstandingMigrations,
     getClient,
     parseOFXFile,

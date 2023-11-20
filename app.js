@@ -108,6 +108,7 @@ app.use('/api/v1/finances/dashboard', require('./server/routes/financesDashboard
 app.use('/api/v1/finances/accounts', require('./server/routes/financesAccountsRoute'));
 
 app.use('/api/v1/rh', require('./server/routes/rhRoutes'));
+app.use('/api/v1/g4f', require('./server/routes/g4fRoute'));
 
 app.use("/api/v1/company", require("./server/routes/companyRoute"));
 app.use("/api/v1/sistema", require("./server/routes/sistemaRoute"));

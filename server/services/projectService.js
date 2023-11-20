@@ -1,4 +1,4 @@
-const database = require("../infra/postgres");
+const database = require("../infra/database");
 var moment = require("moment");
 
 async function listProjects(idEmpresa) {

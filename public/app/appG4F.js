@@ -10,6 +10,7 @@ var app = angular.module('G4F', [
     , 'ui.utils.masks'
     //, "textAngular"
     //, 'ui.tinymce'
+    , 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.grid.selection', 'ui.grid.saveState', 'ui.grid.pinning', 'ui.grid.treeView', 'ui.grid.exporter'
     , "oc.lazyLoad"
 ]);
 ///#####################################################################################################
@@ -71,7 +72,8 @@ var date = new Date().getTime().toString();
 app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     $routeProvider
         .when('/',                      { templateUrl: 'app/views/G4F/inicio.html', title: '' })
-        .when('/usuarios',              { templateUrl: 'app/views/G4F/usuarios.html' + '?t=' + date, title: '', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/sistema/usuarios',      { templateUrl: 'app/views/G4F/Sistema/usuarios.html' + '?t=' + date, title: '', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/sistema/configuracao',  { templateUrl: 'app/views/G4F/Sistema/configuracao.html' + '?t=' + date, title: '', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
         .when('/tickets',               { templateUrl: 'app/views/G4F/Tickets/dashboard.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
         .when('/tickets/new',           { templateUrl: 'app/views/G4F/Tickets/newTicket.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
@@ -81,7 +83,10 @@ app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
         .when('/controle_mudancas',         { templateUrl: 'app/views/G4F/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .when('/controle_mudancas/novo',    { templateUrl: 'app/views/G4F/ControleMudancas/cadastro_controle_mudanca.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
-        .when('/rh/baterPonto',         { templateUrl: 'app/views/G4F/RH/BaterPonto.html', controller: 'RHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/RHCtrl.js'] }]); }]} })
+        .when('/ordemServico',             { templateUrl: 'app/views/G4F/OrdemServico/listagem.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+
+        .when('/rh',                    { templateUrl: 'app/views/G4F/RH/Dashboard.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/rh/baterPonto',         { templateUrl: 'app/views/G4F/RH/BaterPonto.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);
@@ -111,6 +116,9 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
         { id: 1, name: 'English', locale: 'en', flag: 'us.png' },
         { id: 2, name: 'Portuguese', locale: 'pt', flag: 'br.png' }
     ];
+
+    $scope.listaMensagens = [];
+    $scope.listaNotificaces = [];
 
     $rootScope.Usuario = $scope.loggedUser;
     ///############################################################################################

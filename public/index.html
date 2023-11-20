@@ -402,6 +402,8 @@
 		var mybutton = document.getElementById("back-to-top");
 		function scrollFunction() { 100 < document.body.scrollTop || 100 < document.documentElement.scrollTop ? mybutton.style.display = "block" : mybutton.style.display = "none" }
 		function topFunction() { document.body.scrollTop = 0, document.documentElement.scrollTop = 0 } mybutton && (window.onscroll = function () { scrollFunction() });
+		const e = document.getElementsByClassName("sidebar")[0]; 
+		document.getElementsByClassName("sidebar-toggle")[0].addEventListener("click", (() => { e.classList.toggle("collapsed"), e.addEventListener("transitionend", (() => { window.dispatchEvent(new Event("resize")) })) }));
 	</script>
 </body>
 </html>

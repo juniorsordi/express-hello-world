@@ -1,0 +1,66 @@
+OS593 - [Automatização APE] - Melhorias
+Pertence a MICHEL ANDRADE
+Última atualização em: out. 30, 2023•Legacy editor
+1- IDENTIFICAÇÃO
+Nº OS593/2023
+Contrato nº31/2021
+ContratadaG4F Soluções Corporativas Ltda Contratante
+ContratanteTCE-SC
+Sistema (Sigla-Descrição)Automatização APE
+Solicitante (Nome/Área)Rafael Queiroz Gonçalves
+Analista ResponsávelToni / Raphael / Lucas
+Área Requisitante do ServiçoDTI
+Data de Emissão30/10/2023
+Tipo da Demanda Manutenção
+TecnologiaJAVA
+ 
+2- DESCRIÇÃO DA SOLICITAÇÃO
+ 1. Automatização APE
+EQ-1830 -
+Desconsiderar as
+regras de “Auditoria
+de Cadastro de Atos
+de Pessoal”,
+“Possui retificação”
+dos critérios de
+automatização.
+AGUARDANDOIMPLANTAÇÃO
+EQ-1819 -
+Mapear regras
+específicas por UG
+municipal
+EM TESTE
+EQ-1873 -
+Levantamento de
+PPAs x Municípios e
+x Estado
+CONCLUÍDO
+EQ-1844 -
+Analisar alteração
+no fluxo,
+encaminhar pensão
+para automatização
+EM TESTE
+----------------Page (0) Break----------------
+EQ-1845 -
+Relatórios para
+Automatização -
+Proventos
+CONCLUÍDO
+EQ-1853 -
+Atualizar
+modalidades
+entrada de dados
+EM REVISÃO
+EQ-1859 -
+Aplicar
+automatização -
+UGs Estaduais - Até
+data de corte
+AGUARDANDOIMPLANTAÇÃO
+EQ-1874 - Criar
+regra de Tempo de
+Serviço (Pedágio) e
+aplicar para a SED
+AGUARDANDODESENVOLVIMENTO
+----------------Page (1) Break----------------

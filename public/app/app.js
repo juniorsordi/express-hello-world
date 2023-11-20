@@ -56,6 +56,7 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/contracts',             { templateUrl: 'app/views/Contratos/listaContratos.html', controller: 'ContractsCtrl' })
 
         .when('/g4f/controle_mudancas', { templateUrl: 'app/views/Projects/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl' })
+        .when('/controle_mudancas/novo', { templateUrl: 'app/views/Projects/ControleMudancas/cadastro_controle_mudanca.html', controller: 'G4FCtrl' })
 
         .when('/rh/baterPonto',         { templateUrl: 'app/views/RH/BaterPonto.html', controller: 'RHCtrl' })
 
