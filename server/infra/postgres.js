@@ -42,7 +42,7 @@ if(localhost) {
     config.database.password = process.env.DATABASE_PW;
     config.database.host = process.env.DATABASE_HOST;
 }
-/*
+//*
 config.database.user = process.env.DATABASE_USER;
 config.database.database = process.env.DATABASE_DB;
 config.database.password = process.env.DATABASE_PW;
