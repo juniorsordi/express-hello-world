@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12">
+    <div class="col-12" ng-init="initCadControleMudanca()">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Cadastro Controle de Mudanças</h5>
@@ -22,7 +22,13 @@
                 </div>
                 <div class="row">
                     <div class="col-4">Analista Responsável:</div>
-                    <div class="col-8"><input type="text" ng-model="form.analista" /></div>
+                    <div class="col-8">
+                        
+                        <select class="form-control" required="required" ng-model="form.analista" ng-options="item.id as item.nome for item in arrAnalistas">
+                            <option value=""></option>
+                        </select>
+                        
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-4">Tipo de Demanda:</div>
@@ -65,7 +71,8 @@
                 INFORMAÇOES COMPLEMENTARES<br>
                 <div class="row">
                     <div class="col-4">Tecnologia:</div>
-                    <div class="col-8"><select ng-model="form.tecnologia">
+                    <div class="col-8">
+                        <select ng-model="form.tecnologia" ng-options="item.id as item.nome for item in arrTecnologias">
                             <option value="JAVA">JAVA</option>
                             <option value="PHP">PHP</option>
                             <option value="C#">C#</option>

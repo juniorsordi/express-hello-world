@@ -38,16 +38,23 @@ async function inserirMensagemUsuario(fields) { }
 
 async function dashboardSistema(idEmpresa, idUser) {
     var currentYear = moment().format('YYYY');
+    var startDate = moment().startOf('month').format('YYYY-MM-DD');
+    var endData = moment().endOf('month').format('YYYY-MM-DD');
     let SQL = `SELECT tipo, sum(valor) as soma from financas_movimentacao 
         where id_conta_bancaria in (select id from financas_conta_bancaria where id_tipo_conta = 1) 
         and status = 1 
-        and data_baixa BETWEEN '${currentYear}-01-01' and '${currentYear}-12-31'
+        and data_baixa BETWEEN '${startDate}' and '${endData}'
         group by tipo`;
     const data = await database.any(SQL);
 
+    const projectData = await database.any(`SELECT b.nome as situacao, coalesce(count(p.id),0) as total FROM projeto p
+        LEFT JOIN projeto_situacao b ON (b.id = p.id_status)
+        WHERE p.id_status is not null AND p.id_empresa = $1
+        group by b.nome`, [idEmpresa]);
+
     let results = {
         financas: data,
-        projetos: []
+        projetos: projectData
     };
     return results;
 }

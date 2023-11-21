@@ -10,6 +10,7 @@ var app = angular.module('G4F', [
     , 'ui.utils.masks'
     //, "textAngular"
     //, 'ui.tinymce'
+    , 'ngQuill'
     , 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.grid.selection', 'ui.grid.saveState', 'ui.grid.pinning', 'ui.grid.treeView', 'ui.grid.exporter'
     , "oc.lazyLoad"
 ]);
@@ -85,6 +86,8 @@ app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
 
         .when('/ordemServico',             { templateUrl: 'app/views/G4F/OrdemServico/listagem.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
+        .when('/relatorio/modelo/1',    { templateUrl: 'app/views/G4F/Relatorios/teste1.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+
         .when('/rh',                    { templateUrl: 'app/views/G4F/RH/Dashboard.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .when('/rh/baterPonto',         { templateUrl: 'app/views/G4F/RH/BaterPonto.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
@@ -130,6 +133,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
             $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
             $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
             $translate.use($scope.currentLang.locale);
+            $scope.Usuario = JSON.parse(localStorage.getItem('user'));
+            $rootScope.Usuario = $scope.Usuario;
 
             APIService.getData("/../auth/checkToken", function (response) {
                 
@@ -161,6 +166,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     ///############################################################################################
     $scope.deslogar = function () {
         sessionStorage.clear();
+        localStorage.clear();
         APIService.resourceQuery("/../auth/logout");
         location.href = "login.html";
     }

@@ -13,7 +13,6 @@ app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
         unidade: 'DTI',
         tecnologia: 'JAVA',
         detalhamentos: [],
-        analista: $rootScope.Usuario.name,
         profissional_alocado: 1,
         tempo_gasto: 4,
         tempo_gasto_medida: 'Hora(s)',
@@ -21,7 +20,9 @@ app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
 
     $scope.salvar = function() {
         APIService.postData("/g4f/controleMudanca", $scope.form, function(resp) {
-            goto("/controle_mudancas");
+            if(resp.data.id){
+                goto("/controle_mudancas");
+            }
         });
     }
 
@@ -85,6 +86,33 @@ app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
     	}
 	};
 
+    $scope.initCadControleMudanca = function() {
+        console.log($scope.Usuario);
+        $scope.form.analista = $scope.Usuario.id,
+        $scope.listarAnalistas();
+        $scope.listarTecnologias();
+    }
+    //
+    $scope.gerarControleMudanca = function(item) {
+        $rootScope.infoCM = item;
+        goto('/relatorio/modelo/1');
+    }
+
+    $scope.initRelatorio = function() {
+        $scope.data = $rootScope.infoCM;
+        console.log($scope.data);
+    }
+
+    $scope.gerarDocControleMudanca = function(item) {
+        let url = "/api/v1/g4f/controleMudanca/"+item.id+"?download=1";
+        let wd = window.open(url, "_blank");
+        setTimeout(() => {
+            wd.close();
+        }, 200);
+    }
+
+    $scope.listarAnalistas = function() { APIService.getData("/g4f/sistema/usuarios", function(resp) { $scope.arrAnalistas = resp.data; }); }
+    $scope.listarTecnologias = function() { APIService.getData("/g4f/sistema/tecnologias", function(resp) { $scope.arrTecnologias = resp.data; }); }
     
 });
 ///##################################################################################################################################

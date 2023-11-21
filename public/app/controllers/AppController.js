@@ -30,7 +30,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $rootScope.Usuario = $scope.loggedUser;
 
     $scope.initApp = function () {
-        //console.log($location.host);
+        /*
         if($location.host() == 'localhost') {
             $scope.Usuario = $scope.loggedUser;
             $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
@@ -40,7 +40,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
             APIService.getData("/../auth/checkToken", function (response) {
                 
             });
-        } else {
+        } else {//*/
             if (localStorage.getItem('user')) {
                 APIService.getData("/../auth/checkToken", function (response) {
                     if(!response.data) {
@@ -52,14 +52,15 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
                         $scope.Usuario = JSON.parse(localStorage.getItem('user'));
                         $rootScope.Usuario = $scope.Usuario;
                         //$scope.anoAtendimento = (new Date()).getFullYear();
+                        $scope.verificarNotificacoesMensagesApp();
                     }
                 });
             } else {
                 location.href = "login.html";
             }
-        }
+       // }
 
-        $scope.verificarNotificacoesMensagesApp();
+        
     }
     ///############################################################################################
     $scope.initAppDashboard = function() {
@@ -89,6 +90,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     ///############################################################################################
     $scope.deslogar = function () {
         sessionStorage.clear();
+        localStorage.clear();
         APIService.resourceQuery("/../auth/logout");
         location.href = "login.html";
     }

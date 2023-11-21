@@ -51,6 +51,22 @@ CREATE TABLE if not exists g4f.controle_os (
     data_cadastro timestamp
 );
 
+CREATE TABLE if not exists g4f.os_visao_geral (
+    id serial primary key,
+    id_os integer references controle_os (id),
+    titulo text,
+    mes_referencia_conclusao date,
+    id_desenvolvedor integer references g4f.usuario (id),
+    status_os integer,
+    prazo_inicial date,
+    prazo_final date,
+    pf_liquido float,
+    pf_bruto float,
+    produtividade float,
+    observacao text,
+    tipo_os text
+)
+
 CREATE TABLE if not exists g4f.contagem_pontos_funcao (
     id serial primary key,
     id_os integer references controle_os (id),

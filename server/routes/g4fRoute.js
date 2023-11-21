@@ -22,15 +22,6 @@ router.get("/controleMudanca", async function (req, res, next) {
         next(err);
     }
 });
-router.get("/controleMudanca/", async function (req, res, next) {
-    try {
-        let info = await service.listarControleMudancas();
-        res.status(200).json(info);
-    } catch (err) {
-        console.error(`Error while getting response`, err.message);
-        next(err);
-    }
-});
 
 router.get("/controleMudanca/:id", async function (req, res, next) {
     try {
@@ -49,7 +40,8 @@ router.get("/controleMudanca/:id", async function (req, res, next) {
 
 router.post("/controleMudanca", async function (req, res, next) {
     try {
-        res.json(await service.salvarControleMudanca(req.body));
+        let id_usuario = req.cookies.IDUser;
+        res.json(await service.salvarControleMudanca(req.body, id_usuario));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -83,6 +75,24 @@ router.get("/rh/dashboard", async function (req, res, next) {
         let id_usuario = req.cookies.IDUser;
         let info = await service.calculoBancoHorasUsuario(id_usuario);
         res.status(200).json(info);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/sistema/usuarios", async function (req, res, next) {
+    try {
+        res.json(await service.listarUsuarios());
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/sistema/tecnologias", async function (req, res, next) {
+    try {
+        res.json(await service.listarTecnologias());
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);

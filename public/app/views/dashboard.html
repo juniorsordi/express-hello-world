@@ -9,7 +9,20 @@
                     <div class="card-body">
                         <h5 class="card-title" translate>Projects</h5>
                         <p class="card-text">
-
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Situação</th>
+                                        <th>Total Projetos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in appDashboard.projetos">
+                                        <td>{{ item.situacao }}</td>
+                                        <td>{{ item.total }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </p>
                     </div>
                 </div>
@@ -20,7 +33,7 @@
                         <h5 class="card-title" translate>Finances</h5>
                         <p class="card-text">
                             
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Tipo</th>
@@ -46,6 +59,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-6">
                 <a href="#" class="card text-decoration-none">

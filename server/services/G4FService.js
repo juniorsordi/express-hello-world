@@ -13,20 +13,23 @@ async function listProjects(idEmpresa) {
 
 async function listarControleMudancas() {
     try {
-        let SQL = `SELECT * FROM g4f.controle_mudancas`;
+        let SQL = `SELECT a.*
+            , (SELECT nome FROM g4f.usuario WHERE id = a.analista_responsavel) as nome_analista
+            , (SELECT nome FROM g4f.lista_tecnologias WHERE id = a.tecnologia) as nome_tecnologia
+        FROM g4f.controle_mudancas a`;
         return await database.any(SQL);
     } catch (err) {
         console.log(err);
     }
 }
 
-async function salvarControleMudanca(fields) {
+async function salvarControleMudanca(fields, idUser) {
     try {
         if(fields.descricao == null) { fields.descricao = ""; }
         
-        let SQL = `INSERT INTO g4f.controle_mudancas VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, null, $8, $9, $10, 1, NOW(), $11)`;
+        let SQL = `INSERT INTO g4f.controle_mudancas VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, null, $8, $9, $10, $11, 1, NOW(), $12) RETURNING *`;
         return await database.any(SQL, [fields.num_os,fields.sistema,fields.solicitante,fields.unidade,fields.analista,fields.tipo,
-            fields.descricao,fields.tecnologia,fields.profissional_alocado,fields.tempo_gasto,fields.tempo_gasto_medida]);
+            fields.descricao,fields.tecnologia,fields.profissional_alocado,fields.tempo_gasto,fields.tempo_gasto_medida, idUser]);
     } catch (err) {
         console.log(err);
     }
@@ -109,6 +112,18 @@ async function calculoBancoHorasUsuario(idUser) {
     return data;
 }
 
+async function listarUsuarios() {
+    let SQL = `SELECT * FROM g4f.usuario a ORDER BY nome ASC`;
+    const data = await database.any(SQL);
+    return data;
+}
+
+async function listarTecnologias() {
+    let SQL = `SELECT * FROM g4f.lista_tecnologias a ORDER BY nome ASC`;
+    const data = await database.any(SQL);
+    return data;
+}
+
 module.exports = {
     listProjects,
     listarControleMudancas,
@@ -117,4 +132,6 @@ module.exports = {
     salvarBatidaPonto,
     listarUltimasBatidas,
     calculoBancoHorasUsuario,
+    listarUsuarios,
+    listarTecnologias,
 }

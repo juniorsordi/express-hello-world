@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Mudanças</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <style>
+    @page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+  /* ... the rest of the rules ... */
+}
+page[size="A4"] {
+  background: white;
+  width: 21cm;
+  height: 29.7cm;
+  display: block;
+  margin: 3mm;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+@media print {
+  body, page[size="A4"] {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+  </style>
+</head>
+<body>
+    <page size="A4" style="padding: 3mm;page-break-after:always;">
+        <img src="../assets/img/logo_tce.png" alt="" height="128">
+        <br>
+
+        <h2 align="center">Controle de Mudanças</h2>
+
+        
+        <table width="100%" border="1" class="table-bordered" >
+            <thead style="background-color: #f1878f;">
+                <tr>
+                    <th colspan="5" align="center" style="text-align: center;">Histórico de revisões</th>
+                </tr>
+                <tr>
+                    <th>Data</th>
+                    <th>Versão</th>
+                    <th>Descrição</th>
+                    <th>Autor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>21/11/2023</td>
+                    <td>1.0</td>
+                    <td>Criação do documento</td>
+                    <td>Dilson Sordi Junior</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h3>1 - IDENTIFICAÇÃO</h3>
+        <br>
+        <table class="table">
+            <tr>
+                <td style="background-color: #c9c9c9;">Nº OS</td>
+                <td>{{ data.numero_os }}</td>
+            </tr>
+            <tr>
+                <td style="background-color: #c9c9c9;">Sistema (Sigla-Descrição)</td>
+                <td>{{ data.sistema }}</td>
+            </tr>
+            <tr>
+                <td style="background-color: #c9c9c9;">Solicitante (Nome/Área)</td>
+                <td>{{ data.solicitante }}</td>
+            </tr>
+            <tr>
+                <td style="background-color: #c9c9c9;">Unidade do Requisitante</td>
+                <td>{{ data.unidade }}</td>
+            </tr>
+            <tr>
+                <td style="background-color: #c9c9c9;">Analista Responsável</td>
+                <td>{{ data.nome_analista }}</td>
+            </tr>
+            <tr>
+                <td style="background-color: #c9c9c9;">Tipo de Demanda</td>
+                <td>{{ data.nome_tipo_demanda }}</td>
+            </tr>
+        </table>
+        <br>
+        <h3>2 - DESCRIÇÃO DA SOLICITAÇÃO</h3>
+        <br>
+        <div style="text-align: justify;" ng-bind-html="data.descricao"></div>
+        <br>
+        <h3>3 - DETALHAMENTO DAS FUNCIONALIDADES A SEREM EXECUTADAS</h3>
+        <br>
+        <div style="text-align: justify;" ng-bind-html="data.detalhamento"></div>
+        <br>
+        <b>Alterações no Banco de Dados</b>
+        <br>
+        <div style="text-align: justify;" ng-bind-html="data.alteracao_bd"></div>
+        <br>
+        <h3>4 - INFORMAÇÕES COMPLEMENTARES</h3>
+        <br>
+        Tecnologia: {{ data.nome_tecnologia }}<br>
+        <table class="table table-bordered">
+            <tr>
+                <td>Quantidade de Profissionais alocadas na Execução da OS/iteração</td>
+                <td>{{ data.total_alocados }}</td>
+            </tr>
+            <tr>
+                <td>Tempo Gasto</td>
+                <td>{{ data.tempo_gasto }} {{ data.tempo_gasto_medida }}</td>
+            </tr>
+        </table>
+        <br>
+        <h3>5 - APROVAÇÃO</h3>
+        <br>
+        <span>O detalhamento acima está em conformidade com as nossas reais necessidades.</span>
+    </page>
+</body>
+</html>

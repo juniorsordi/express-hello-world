@@ -238,6 +238,7 @@ app.controller("AppController", function ($scope, $rootScope, $http, $routeParam
 
     $scope.deslogar = function() {
         sessionStorage.clear();
+        localStorage.clear();
         RestService.getData("/../auth/logout", function (resp) { });
         location.href = "login.html";
     }
