@@ -3,8 +3,6 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 var fs = require("fs");
 var ofxParse = require('../infra/ofx2');
-const AWS = require("aws-sdk");
-const s3 = new AWS.S3();
 
 const controller = require('../services/sicoobService');
 const utils = require('../infra/utils');
@@ -145,12 +143,14 @@ router.get("/ofx/list", async function (req, res, next) {
 
 router.get("/ofx/file/:id", async function (req, res, next) {
     try {
+        /*
         let s3File = await s3.getObject({
             Bucket: process.env.CYCLIC_BUCKET_NAME,
             Key: req.params.id,
         }).promise();
 
-        res.json({ arquivo: s3File.Body.toString() });
+        res.json({ arquivo: s3File.Body.toString() });//*/
+        res.json({ });
     } catch (error) {
         if (error.code === 'NoSuchKey') {
             console.log(`No such key ${req.params.id}`)
