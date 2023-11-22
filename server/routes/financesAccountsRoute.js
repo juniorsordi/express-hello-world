@@ -34,7 +34,7 @@ router.post('/categories', auth, async function (req, res, next) {
 });
 
 router.get('/:id/movimentacoes', async function (req, res, next) {
-    res.json(await accountsService.getMovimentacoesPorConta(req.params.id, req.cookies.user.id_empresa));
+    res.json(await accountsService.getMovimentacoesPorConta(req.params.id, req.cookies.user.id_empresa, req.query));
 });
 
 router.post('/:id/movimentacoes', async function (req, res, next) {

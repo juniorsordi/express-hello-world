@@ -63,6 +63,7 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         //APIService.getData("/finances/dashboard/accountsIncome", function (resp) { $scope.dashboardAccountsIncList = resp.data; });
     }
     ///############################################################################################
+    ///############################################################################################
     $scope.reloadFinancialTab = function() {
         $scope.paymentsList = $resource("/api/v1/finances/payments").query();
         $scope.incomesList = $resource("/api/v1/finances/receipts").query();
@@ -394,7 +395,7 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     
     ///############################################################################################
 
-    $scope.init();
+    //$scope.init();
 });
 ///#########################################################################################################################
 app.controller("FinancesInvoicesCtrl", function ($scope, $routeParams, $resource, APIService, $uibModal, $modal, $ocModal) {

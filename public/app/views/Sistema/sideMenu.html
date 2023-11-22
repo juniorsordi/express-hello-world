@@ -182,12 +182,9 @@
                 <i class="align-middle" data-feather="folder"></i>
                 <span class="align-middle" translate="">System</span>
             </a>
-            <ul
-                id="system"
-                class="sidebar-dropdown list-unstyled collapse "
-                data-bs-parent="#sidebar">
+            <ul id="system" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
                 <li class="sidebar-item">
-                    <a class="sidebar-link align-middle" href="#!/company/users">
+                    <a class="sidebar-link align-middle" href="#!/sistema/usuarios">
                         <span class="mdi mdi-account-multiple align-middle"></span>
                         <span translate="">Users</span>
                     </a>
@@ -201,6 +198,27 @@
                     </a>
                 </li>
             </ul>
+        </li>
+        <li ng-repeat="item in arrSideMenu" class="sidebar-item">
+            <div ng-if="item.rota == null">
+                <a data-bs-target="#MenuID{{ item.id }}" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="material-symbols-rounded align-middle">{{ item.classe_icone }}</span>
+                    <span class="align-middle" translate="">{{ item.titulo }}</span>
+                </a>
+                <ul id="MenuID{{ item.id }}" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                    <li ng-repeat="subitem in item.childrens" class="sidebar-item">
+                        <a class="sidebar-link" href="#!{{ subitem.rota }}">
+                            <span class="material-symbols-rounded align-middle">{{ subitem.classe_icone }}</span>
+                            <span translate>{{ subitem.titulo }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <a ng-if="item.rota != null" class="sidebar-link" href="#!{{ item.rota }}">
+                <span class="material-symbols-rounded align-middle">{{ item.classe_icone }}</span>
+                <span class="align-middle">{{ item.titulo }}</span>
+            </a>
         </li>
         <!--li class="sidebar-header"> Pages </li> <li class="sidebar-item"> <a
         data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link

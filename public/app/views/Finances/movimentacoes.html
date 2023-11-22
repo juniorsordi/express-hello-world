@@ -1,25 +1,22 @@
 <div class="row">
-    <div class="col-md-12">
-        <style>
-        </style>
+    <div class="col-md-12" ng-init="init()">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Movimentações</h5>
                 <p class="card-text">
                     <div class="row p-5">
                         <div class="col-3">
-                            <input type="text" datepicker class="form-control" ng-model="filtro.periodo" />
-                            <input type="text" flatpickr2 ng-model="filtro.periodo" >
-                            <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="myDate" />
+                            <input type="date" class="form-control" ng-model="filtro.data_inicio" />
+                            <input type="date" class="form-control" ng-model="filtro.data_termino" />
                         </div>
                         <div class="col-3">
-                            <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button class="btn btn-primary" type="button" ng-click="filtrar()"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <br>
                     {{ filtro }}
                     <br>
-                    <select class="form-control select-one" type="select-one" choices="select-one" options="accountsList" data-type="select-one"></select>
+                    
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -37,7 +34,10 @@
                                     {{ item.descricao }}<br>
                                     <span ng-repeat="label in item.labels" class="badge bg-secondary" style="margin-right: 5px;font-size: 8px;padding:2px;">{{ label }}</span>
                                 </td>
-                                <td width="10%" align="center"><i ng-if="item.status == 1" class="fa fa-check" aria-hidden="true" style="font-size: 16px;color: green;"></i></td>
+                                <td width="10%" align="center">
+                                    <i ng-if="item.status == 1" class="fa fa-check" aria-hidden="true" style="font-size: 16px;color: green;"></i>
+                                    <i ng-if="item.status == 0" class="fa fa-arrow-circle-down" aria-hidden="true" style="font-size: 16px;" title="Dar Baixa" ng-click="marcarItemPago(item)"></i>
+                                </td>
                                 <td style="width: 8%;"><span ng-class="{'positivo': item.valor > 0, 'negativo': item.valor <= 0}">{{ item.valor | currency:'R$ ' }}</span></td>
                                 <td style="width: 8%;"><span ng-class="{'positivo': item.saldo > 0, 'negativo': item.saldo <= 0}">{{ item.saldo | currency:'R$ ' }}</span></td>
                             </tr>
@@ -58,11 +58,11 @@
                                     <label for="field1" translate>Type</label>
                                     <div id="field1">
                                         <label class="ui-radio ui-radio-danger">
-                                            <input name="radio1" type="radio" value="1" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false" ng-change="filtrarCategorias(1)">
+                                            <input name="radio1" type="radio" value="D" ng-model="form.tipo_operacao" checked="checked" aria-invalid="false">
                                             <span>Despesa</span>
                                         </label>
                                         <label class="ui-radio">
-                                            <input name="radio1" type="radio" value="2" ng-model="form.tipo_operacao" aria-invalid="false" ng-change="filtrarCategorias(2)">
+                                            <input name="radio1" type="radio" value="C" ng-model="form.tipo_operacao" aria-invalid="false">
                                             <span>Receita</span>
                                         </label>
                                     </div>
@@ -81,16 +81,40 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="field5" translate="">Category</label>
-                                    <select id="field5" class="form-control" ng-model="form.id_categoria" select2 ng-options="item.id as item.nome for item in filtredCategoriesList">
-                                        <option value=""></option>
-                                    </select>
+                                    <ui-select id="field5" ng-model="form.id_categoria" theme="selectize" title="Choose a person">
+                                        <ui-select-match placeholder="Selecione a Categoria">
+                                            {{$select.selected.nome}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in categoriesListFiltered | filter: $select.search">
+                                            <div>
+                                                <span>&nbsp;{{ item.nome | highlight: $select.search }}</span>
+                                            </div>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="field5" translate="">Account</label>
-                                    <!--select id="field5" class="form-control" ng-model="form.id_conta_bancaria" ng-options="item.id as item.nome for item in accountsList">
-                                        <option value=""></option>
-                                    </select-->
-                                    <selectize config='myConfigCB' options='accountsList' ng-model="form.id_conta_bancaria"></selectize>
+                                    <label for="field6" translate="">Account</label>
+                                    <ui-select id="field6" ng-model="form.conta" theme="selectize" title="Selecione o banco...">
+                                        <ui-select-match placeholder="Selecione o banco...">
+                                            <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ $select.selected.banco.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                            {{$select.selected.nome}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in accountsList | filter: $select.search">
+                                            <div>
+                                                <img ng-src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/{{ item.banco.img }}.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                                <span>&nbsp;{{ item.nome | highlight: $select.search }}</span>
+                                            </div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="field7" translate="">Rateio entre projetos Ativos?</label>
+                                    <div id="field7">
+                                        <select class="form-control" ng-model="form.lembrete">
+                                            <option value="0" selected>Não</option>
+                                            <option value="1">Sim</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

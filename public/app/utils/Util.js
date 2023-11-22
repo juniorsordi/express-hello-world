@@ -19,6 +19,14 @@ function pegarCheckboxes(name) {
     return allVals.toString();
 }
 ///###################################################################################################################
+function testeOCLazyLoad(controller, path) {
+	if(path == null) { path = ""; }
+	let name = controller.replace("Ctrl", "");
+	name = controller.replace("Controller", "");
+	let json = { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: name, files: ['app/controllers/'+path+''+controller+'.js'] }]); }]};
+	return json;
+}
+///###################################################################################################################
 function toggleDisplay(id) {
   var item = $("#"+id);
   if(item.css('display') == 'none') {

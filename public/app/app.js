@@ -5,16 +5,11 @@ var app = angular.module('Sistema', ['ngRoute'
     , 'angular.filter'
     , 'mgcrea.ngStrap'
     , 'ui.bootstrap'
-    //, 'ui.utils'
     , 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter'
     , 'ui.utils.masks'
-    //, 'textAngular'
-    //, "checklist-model"
-    //, 'summernote'
     , 'ngQuill'
     , 'ngFileUpload'
-    //, 'angularUtils.directives.dirPagination'
-    //, 'datatables'
+    , "oc.lazyLoad"
     , 'ui.select'
     , 'selectize'
     , "pascalprecht.translate"
@@ -27,6 +22,7 @@ app.config(function ($controllerProvider) {
 ///#####################################################################################################
 ///#####################################################################################################
 var date = new Date().getTime().toString();
+/*
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
 
@@ -41,7 +37,7 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/project2/:id',          { templateUrl: 'app/views/Projects/viewProject2.html?t=' + date, controller: 'ProjectCtrl' })
 
         .when('/finances',              { templateUrl: 'app/views/Finances/dashboard.html?t=' + date, controller: 'FinancesDashboard' })
-        .when('/finances/movimentacoes', { templateUrl: 'app/views/Finances/movimentacoes.html?t=' + date, controller: 'FinancesDashboard' })
+        .when('/finances/movimentacoes', { templateUrl: 'app/views/Finances/movimentacoes.html?t=' + date, controller: 'FinanceMovimentacaoCtrl' })
         .when('/finance/cashFlow',      { templateUrl: 'app/views/Finances/cashFlow.html?t=' + date, controller: 'FinancesController' })
         .when('/finance/invoices',      { templateUrl: 'app/views/Finances/invoice.html?t=' + date, controller: 'FinancesInvoicesCtrl' })
         .when('/finance/ofxreport',     { templateUrl: 'app/views/Finances/ofxReport.html?t=' + date, controller: 'FinancesController' })
@@ -60,14 +56,15 @@ app.config(function ($routeProvider, $locationProvider) {
 
         .when('/rh/baterPonto',         { templateUrl: 'app/views/RH/BaterPonto.html', controller: 'RHCtrl' })
 
-        .when('/company/users',          { templateUrl: 'app/views/Companies/users.html', controller: 'CompanyUsersCtrl' })
-        .when('/company/settings',       { templateUrl: 'app/views/Companies/clientSettings.html', controller: 'ClientCtrl' })
+        .when('/company/users',         { templateUrl: 'app/views/Companies/users.html', controller: 'CompanyUsersCtrl' })
+        .when('/company/settings',      { templateUrl: 'app/views/Companies/clientSettings.html', controller: 'ClientCtrl' })
 
         .when('/games',       { templateUrl: 'app/views/GamesApp/dashboard.html' })
         .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);
 });
+//*/
 ///#####################################################################################################
 app.factory("tokenInterceptor", ["$window", "$location", function ($window, $location) {
     return {

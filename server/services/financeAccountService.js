@@ -1,5 +1,6 @@
 const moment = require("moment");
 const database = require("../infra/database");
+const controller = require("../controllers/finances");
 //const ofx = require('../infra/ofx');
 //, (SELECT json_agg(json_build_object('key', key, 'value', value)) FROM financas_bancos WHERE id = a.banco::int) as banco
 async function getContasBancarias(idEmpresa) {
@@ -27,8 +28,14 @@ async function getCategorias(idEmpresa) {
     return data;
 }
 
-async function getMovimentacoesPorConta(idConta, idEmpresa) {
-    const data = await database.any("SELECT * FROM financas_movimentacao WHERE id_empresa = $1 ORDER BY data_prevista, id ASC", [idEmpresa]);
+async function getMovimentacoesPorConta(idConta, idEmpresa, filtro) {
+    let temp = "";
+    if(filtro) {
+        if(filtro.inicio != null) {
+            temp = ` AND data_prevista BETWEEN '${filtro.inicio}' AND '${filtro.termino}' `;
+        }
+    }
+    const data = await database.any("SELECT * FROM financas_movimentacao WHERE id_empresa = $1 "+temp+" ORDER BY data_prevista, id ASC", [idEmpresa]);
     return data;
 }
 
@@ -105,8 +112,13 @@ async function saveAccountMoviment(fields, idEmpresa) {
 
     //console.log(SQL);
 
-    return await database.one(SQL, [fields.titulo, fields.data_vencimento, valor, valor_previsto, valor_efetivo, fields.tipo_operacao, 
+    let registro = await database.one(SQL, [fields.titulo, fields.data_vencimento, valor, valor_previsto, valor_efetivo, fields.tipo_operacao, 
         situacao, data_baixa, fields.conta.id, fields.id_categoria.id, idEmpresa, fields.lembrete]);
+    if(registro && fields.lembrete == 1 && situacao == 1) {
+        fields.descricao = fields.titulo;
+        controller.geraRateioProjetos(fields);
+    }
+    return registro;
 }
 
 async function testeOFX(idEmpresa) {

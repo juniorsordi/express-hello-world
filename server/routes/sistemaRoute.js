@@ -24,6 +24,15 @@ router.get("/mensagens", async function (req, res, next) {
     }
 });
 
+router.get("/menu_lateral", async function (req, res, next) {
+    try {
+        res.json(await service.gerarItemsMenuLateral(req.cookies.IDUser));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.get("/dashboard", async function (req, res, next) {
     try {
         res.json(await service.dashboardSistema(req.cookies.user.id_empresa, req.cookies.IDUser));

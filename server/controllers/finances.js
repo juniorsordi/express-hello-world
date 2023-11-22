@@ -153,5 +153,6 @@ module.exports = {
     getDashboardAcountsIncome,
     savePayments,
     saveReceipts,
-    updatePayments
+    updatePayments,
+    geraRateioProjetos
 }

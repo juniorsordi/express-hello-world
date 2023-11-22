@@ -18,6 +18,16 @@ async function listarUsuarios(fields) {
     return data;
 }
 
+async function gerarItemsMenuLateral(idUser) {
+    let SQL = `SELECT * FROM sistema_menus a WHERE id_menu_pai is null AND ativo = true`;
+    const data = await database.any(SQL);
+    for(const menu of data) {
+        const childrens = await database.any("SELECT * FROM sistema_menus a WHERE id_menu_pai = $1 AND ativo = true", [menu.id]);
+        menu.childrens = childrens;
+    }
+    return data;
+}
+
 async function inserirNotificacao(fields) { }
 
 async function listarMensagensUsuario(idUser) {
@@ -66,4 +76,5 @@ module.exports = {
     inserirMensagemUsuario,
     listarUsuarios,
     dashboardSistema,
+    gerarItemsMenuLateral,
 }

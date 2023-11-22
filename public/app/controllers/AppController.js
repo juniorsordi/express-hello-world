@@ -79,6 +79,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $scope.verificarNotificacoesMensagesApp = function() {
         APIService.getData("/sistema/notificacoes", function(response) { $scope.arrNotificacoes = response.data; });
         APIService.getData("/sistema/mensagens", function(response) { $scope.arrMensagens = response.data; });
+
+        APIService.getData("/sistema/menu_lateral", function(response) { $scope.arrSideMenu = response.data; });
     }
     ///############################################################################################
     $scope.changeLocale = function (locale) {

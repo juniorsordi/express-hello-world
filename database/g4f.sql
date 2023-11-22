@@ -118,3 +118,12 @@ CREATE TABLE if not exists g4f.controle_mudancas_detalhamento (
 	data_cadastro timestamp,
     id_usuario_cadastro integer references usuario (id)
 );
+
+CREATE TABLE IF NOT EXISTS sistema_menus (
+    id serial primary key,
+    titulo varchar(256),
+    rota varchar(256),
+    classe_icone varchar(256),
+    id_menu_pai integer,
+    ativo boolean
+);

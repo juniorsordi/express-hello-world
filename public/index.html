@@ -87,6 +87,7 @@
 	<script src="assets/js/angular/ui-bootstrap-tpls.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-flatpickr/3.6.6/ng-flatpickr.min.js"></script>
 	<script src="assets/js/angular/angular-selectize.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.min.js"></script>
@@ -117,18 +118,21 @@
 
 	<!-- js2:js -->
 	<script src="app/app.js"></script>
+	<script src="app/utils/Util.js"></script>
+	<script src="app/routes.js"></script>
 	<script src="app/utils/API.js"></script>
 	<script src="app/utils/directives.js"></script>
 	<script src="app/utils/filters.js"></script>
 	<script src="app/utils/translation.js"></script>
-	<script src="app/utils/Util.js"></script>
+	
 	<script src="app/controllers/AppController.js"></script>
-	<script src="app/controllers/ClientController.js"></script>
+	<!--script src="app/controllers/ClientController.js"></script>
 	<script src="app/controllers/FinancesController.js"></script>
+	<script src="app/controllers/Finances/FinanceMovimentacaoCtrl.js"></script>
 	<script src="app/controllers/ContractsCtrl.js"></script>
 	<script src="app/controllers/ProjectCtrl.js"></script>
 	<script src="app/controllers/TicketsCtrl.js"></script>
-	<script src="app/controllers/RHCtrl.js"></script>
+	<script src="app/controllers/RHCtrl.js"></script-->
 	<!-- endinject -->
 </head>
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" data-preloader="disable" ng-controller="AppController" ng-init="initApp()">

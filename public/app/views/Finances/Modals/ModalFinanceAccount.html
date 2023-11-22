@@ -19,12 +19,12 @@
                                 <label for="field5b">Tipo de Conta</label> 
                                 <ui-select id="field5b" ng-model="form.moeda" theme="selectize" title="Choose a person">
                                     <ui-select-match placeholder="Selecione a Moeda da Conta">
-                                        <img src="assets/img/bandeiras/{{ $select.selected.id }}.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                        <img ng-src="assets/img/bandeiras/{{ $select.selected.id }}.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
                                         {{$select.selected.nome}}
                                     </ui-select-match>
                                     <ui-select-choices repeat="item in listaMoedas | filter: $select.search">
                                         <div>
-                                            <img src="assets/img/bandeiras/{{ item.id }}.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
+                                            <img ng-src="assets/img/bandeiras/{{ item.id }}.svg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />
                                             <span>&nbsp;{{ item.nome | highlight: $select.search }}</span>
                                         </div>
                                     </ui-select-choices>
