@@ -97,4 +97,13 @@ router.get("/auth/checkToken", async function (req, res, next) {
     
 });
 
+router.get("/auth/testPwd", async function (req, res, next) {
+    try {
+        const test = await controller.testePassword();
+        res.status(200).json(test);
+    } catch (err) {
+        res.status(200).json({ valid: false, error: "Unauthorized! Invalid Token" });
+    }
+});
+
 module.exports = router;

@@ -1,4 +1,4 @@
-app.controller('SistemaCtrl', function ($scope, $location, RestService) {
+app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
 
     $scope.form = {};
     $scope.plan = {};
@@ -96,7 +96,19 @@ app.controller('SistemaCtrl', function ($scope, $location, RestService) {
         $scope.planSelected.id_user = $scope.user.id;
         alert(JSON.stringify($scope.planSelected));
     }
+
+    $scope.listaUsuarios = function() {
+        APIService.getData("/sistema/usuarios", function(resp) { $scope.arrUsuarios = resp.data; });
+    }
+
+    modalNewUser = $modal({ templateUrl: 'app/views/Sistema/Modals/ModalCriarUsuario.html', show: false, scope: $scope, });
+
+    $scope.showModalNewUser = function() {
+        modalNewUser.show();
+    }
 });
+
+var modalNewUser;
 ///###################################################################################################
 app.controller('FinanceiroCtrl', function ($scope, PagSeguroService, RestService) {
 

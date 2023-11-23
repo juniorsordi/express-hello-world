@@ -1,9 +1,11 @@
 const db = require('../infra/database');
 //const postgres = require('../infra/postgres');
 var crypto = require('crypto');
+const sha256 = require('sha256');
 const jwt = require("jsonwebtoken");
 const utils = require("../infra/utils");
 const companyCtrl = require("./company");
+var pbkdf2 = require('pbkdf2')
 
 var fs = require('fs');
 //var parser = require('xml2json');
@@ -117,6 +119,34 @@ async function userLoginPG(email, password) {
     }
 }
 
+async function testePassword() {
+    //ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413
+    //ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413
+    let pwdDB = "b32f01d1d3c368fc335b99d9a18a23e9dd7187d73e971f7c940daa17c91f411ef9f162765409af271c432513ee3ccaad17bee0cbf0f708698ef689981caefcb0";
+    let salt1 = "dc2661d30c89cd5922e4f464a8265e265719e87a6133d2e591fd3fe501e43c6045832c2636a1eff31133d52f1f2c1e2af5e0eb3ff1e3229b32f571a4be556698";
+    //var hash = crypto.createHash('sha256').update("123456").digest('base64');
+    /*
+    var hash = crypto.createHash('sha256').update("123456").digest('hex');
+    var hash2 = sha256('123456');
+    return { pwd: hash, pwd2: hash2 }
+    //*/
+    let password = '123456';
+    var salt = crypto.randomBytes(128).toString('hex');
+    var iterations = 10000;
+    var hash = pbkdf2.pbkdf2Sync(password, salt1, 1, 64, 'sha512');
+    var hash2 = crypto.createHash('sha512').update(password).digest('hex');
+    var hash3 = crypto.createHash('sha512').update(hash2+salt1).digest('hex');
+
+    return {
+        salt: salt,
+        pwdDB,
+        hash3,
+        hash: hash.toString("hex"),
+        hash2: hash2,
+        iterations: iterations
+    };
+}
+
 async function processManifestXML() {
     /*
     fs.readFile('./manifest_sample.xml', function (err, data) {
@@ -198,4 +228,5 @@ module.exports = {
     userLoginPG,
     userRegisterPG,
     processManifestXML,
+    testePassword,
 }

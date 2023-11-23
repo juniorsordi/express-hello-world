@@ -1,7 +1,7 @@
 var crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
-
+//nE2g2UqfynTKBdehLZy6gwj9FkZGBnZcsynYJnDP
 const database = require("../infra/database");
 moment.locale('pt-br');
 
@@ -12,17 +12,19 @@ async function listarNotificacoesNaoLidas(idUser) {
 }
 
 async function listarUsuarios(fields) {
-    return fields;
-    let SQL = `SELECT * FROM sistema_notificacao a WHERE id_usuario = $1 AND lido = 0`;
-    const data = await database.any(SQL, [idUser]);
+    //return fields;
+    let SQL = `SELECT a.* 
+    , (SELECT nome FROM empresa WHERE id = a.id_empresa) as nome_empresa
+    FROM usuario a`;
+    const data = await database.any(SQL);
     return data;
 }
 
 async function gerarItemsMenuLateral(idUser) {
-    let SQL = `SELECT * FROM sistema_menus a WHERE id_menu_pai is null AND ativo = true`;
+    let SQL = `SELECT * FROM sistema_menus a WHERE id_menu_pai is null AND ativo = true ORDER BY ordem ASC`;
     const data = await database.any(SQL);
     for(const menu of data) {
-        const childrens = await database.any("SELECT * FROM sistema_menus a WHERE id_menu_pai = $1 AND ativo = true", [menu.id]);
+        const childrens = await database.any("SELECT * FROM sistema_menus a WHERE id_menu_pai = $1 AND ativo = true ORDER BY ordem, id ASC", [menu.id]);
         menu.childrens = childrens;
     }
     return data;
@@ -69,6 +71,35 @@ async function dashboardSistema(idEmpresa, idUser) {
     return results;
 }
 
+async function rastreamentoPacoteCorreios(pacote) {
+    const { rastrearEncomendas } = require('correios-brasil');
+    const https = require('https');
+    //YQ023653986BR
+    let teste1 = "https://api.linketrack.com/track/json?user=teste&token=1abcd00b2731640e886fb41a8a9671ad1434c599dbaa0a0de9a5aa619f29a83f&codigo="+pacote;
+    https.get(teste1, (resp) => {
+        let data = '';
+
+        // Um bloco de dados foi recebido.
+        resp.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        // Toda a resposta foi recebida. Exibir o resultado.
+        resp.on('end', () => {
+            console.log(data);
+        });
+    }).on("error", (err) => {
+        console.log("Error: " + err.message);
+    });
+    return [];
+    /*
+    let codRastreio = ['YQ023653986BR'];
+    rastrearEncomendas(codRastreio).then(response => {
+        return response;
+    });
+    //*/
+}
+
 module.exports = {
     listarNotificacoesNaoLidas,
     inserirNotificacao,
@@ -77,4 +108,5 @@ module.exports = {
     listarUsuarios,
     dashboardSistema,
     gerarItemsMenuLateral,
+    rastreamentoPacoteCorreios,
 }

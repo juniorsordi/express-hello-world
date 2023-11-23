@@ -51,6 +51,15 @@ router.get("/usuarios", async function (req, res, next) {
     }
 });
 
+router.get("/correios/rastreamento/:id", async function (req, res, next) {
+    try {
+        res.json(await service.rastreamentoPacoteCorreios(req.params.id));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.get('/execute/migration', async function(req, res) {
   try {
     const client = await utils.getClient();

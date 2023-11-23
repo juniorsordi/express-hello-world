@@ -1,0 +1,23 @@
+PHP
+
+$options = [
+    'cost' => 11,
+];
+// Get the password from post
+$passwordFromPost = $_POST['password'];
+
+$hash = password_hash($passwordFromPost, PASSWORD_BCRYPT, $options);
+
+
+// Get the password from the database and compare it to a variable (for example post)
+$passwordFromPost = $_POST['password'];
+$hashedPasswordFromDB = ...;
+
+if (password_verify($passwordFromPost, $hashedPasswordFromDB)) {
+    echo 'Password is valid!';
+} else {
+    echo 'Invalid password.';
+}
+
+hash ( "sha512", $salt . $password);
+$password = hash_hmac('sha512', $password . $salt, $sitewide_key);
