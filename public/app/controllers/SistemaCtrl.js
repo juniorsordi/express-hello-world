@@ -85,7 +85,9 @@ app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
         $scope.planSelected.paymentMethod = id;
         $scope.incrementStep();
     }
+//kA04EOP5CdYlFch1KdH7vyv6z75eEK1oOMDVgc7M
 
+//lQy3uQQ4HcmKYYzSQpQrxzbdtBnJxzgSD3ZDoPGG
     $scope.resetPayment = function() {
         $scope.paymentBankSlip = true;
         $scope.paymentPix = true;
@@ -103,9 +105,7 @@ app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
 
     modalNewUser = $modal({ templateUrl: 'app/views/Sistema/Modals/ModalCriarUsuario.html', show: false, scope: $scope, });
 
-    $scope.showModalNewUser = function() {
-        modalNewUser.show();
-    }
+    $scope.showModalNewUser = function() { modalNewUser.show(); }
 });
 
 var modalNewUser;
