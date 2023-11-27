@@ -7,7 +7,6 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const fileupload = require('express-fileupload');
 
-
 const app = express();
 // #############################################################################
 // Logs all request paths and method
@@ -21,27 +20,10 @@ app.use(function (req, res, next) {
 const oneDay = 1000 * 60 * 60 * 23;
 
 app.use(cors());
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser.json({limit: '250mb'})); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true, limit: '250mb', parameterLimit: 10000000 })); // support encoded bodies
 app.use(cookieParser());
 app.use(session({ secret: 'XASDASDA', saveUninitialized: false, resave: false, cookie: { maxAge: oneDay } }));
-
-/*
-var storage = multer.diskStorage({ //multers disk storage settings
-  destination: function (req, file, cb) {
-    cb(null, '/tmp/')
-  },
-  filename: function (req, file, cb) {
-    var datetimestamp = Date.now();
-    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
-  }
-});
-
-const upload = multer({ dest: "/tmp" });
-var upload2 = multer({ //multer settings
-  storage: storage
-}).single('file');
-//*/
 
 app.use(fileupload({ useTempFiles: true, tempFileDir: "/tmp", }))
 // #############################################################################
@@ -67,22 +49,6 @@ app.all('*', function (req, res, next) {
 
 // #############################################################################
 // Catch all handler for all other request.
-/*
-app.use('*', (req,res) => {
-  res.json({
-      at: new Date().toISOString(),
-      method: req.method,
-      hostname: req.hostname,
-      ip: req.ip,
-      query: req.query,
-      headers: req.headers,
-      cookies: req.cookies,
-      params: req.params
-    })
-    .end()
-});
-//*/
-
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/api/test', function (req, res) {   res.send('hello world');  });
 app.get('/apiweb/notificacoes/naolidas', function (req, res) { res.json([]); });

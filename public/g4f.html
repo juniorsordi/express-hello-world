@@ -7,12 +7,14 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<!--link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" /-->
+	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+	<link rel="stylesheet" href="lib/vendors/material-icons/iconfont/material-icons.css" />
+	<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.2/iconfont/material-icons.min.css"-->
 	<!-- css:css -->
 	
 	<link rel="stylesheet" href="assets/css/icon_remixes.css">
@@ -85,11 +87,11 @@
 	<script src="assets/js/angular/angular-translate.min.js"></script>
 	<script src="assets/js/angular/angular-upload.min.js"></script>
 	<script src="assets/js/angular/ui-bootstrap-tpls.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-flatpickr/3.6.6/ng-flatpickr.min.js"></script>
 	<script src="assets/js/angular/angular-selectize.js"></script>
+	<script src="assets/js/extra/ng-flatpickr.min.js"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.min.js"></script>
+	<link rel="stylesheet" href="assets/js/extra/select.min.css">
+	<script src="assets/js/extra/select.min.js"></script>
 
 	<link rel="stylesheet" href="assets/css/quill.snow.min.css">
 	<script src="assets/js/highlight.min.js"></script>
@@ -100,22 +102,21 @@
 	<link rel="stylesheet" href="assets/css/select2.min.css">
 	<script src="assets/js/select2.full.min.js"></script>
 
-	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/lodash.min.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/jszip.min.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/excel-builder.dist.js"></script>
+	<script src="assets/js/extra/csv.js"></script>
+	<script src="assets/js/extra/pdfmake.js"></script>
+	<script src="assets/js/extra/vfs_fonts.js"></script>
+	<script src="assets/js/extra/lodash.min.js"></script>
+	<script src="assets/js/extra/jszip.min.js"></script>
+	<script src="assets/js/extra/excel-builder.dist.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/gh/angular-ui/bower-ui-grid/ui-grid.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/angular-ui/bower-ui-grid/ui-grid.exporter.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/angular-ui/bower-ui-grid/ui-grid.selection.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/angular-ui/bower-ui-grid/ui-grid.min.css">
+	<script src="assets/js/extra/ui-grid.min.js"></script>
+	<script src="assets/js/extra/ui-grid.exporter.min.js"></script>
+	<script src="assets/js/extra/ui-grid.selection.min.js"></script>
+	<link rel="stylesheet" href="assets/js/extra/ui-grid.min.css">
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
+	<script src="assets/js/extra/ng-file-upload-shim.min.js"></script>
+	<script src="assets/js/extra/ng-file-upload-all.min.js"></script>
+	<script src="assets/js/extra/ocLazyLoad.min.js"></script>
 
 	<!-- js2:js -->
 	<script src="app/appG4F.js"></script>
@@ -145,16 +146,8 @@
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="#!/">
-					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-						x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20"
-						xml:space="preserve">
-						<path d="M19.4,4.1l-9-4C10.1,0,9.9,0,9.6,0.1l-9,4C0.2,4.2,0,4.6,0,5s0.2,0.8,0.6,0.9l9,4C9.7,10,9.9,10,10,10s0.3,0,0.4-0.1l9-4C19.8,5.8,20,5.4,20,5S19.8,4.2,19.4,4.1z" />
-						<path d="M10,15c-0.1,0-0.3,0-0.4-0.1l-9-4c-0.5-0.2-0.7-0.8-0.5-1.3c0.2-0.5,0.8-0.7,1.3-0.5l8.6,3.8l8.6-3.8c0.5-0.2,1.1,0,1.3,0.5
-						c0.2,0.5,0,1.1-0.5,1.3l-9,4C10.3,15,10.1,15,10,15z" />
-						<path d="M10,20c-0.1,0-0.3,0-0.4-0.1l-9-4c-0.5-0.2-0.7-0.8-0.5-1.3c0.2-0.5,0.8-0.7,1.3-0.5l8.6,3.8l8.6-3.8c0.5-0.2,1.1,0,1.3,0.5
-						c0.2,0.5,0,1.1-0.5,1.3l-9,4C10.3,20,10.1,20,10,20z" />
-					</svg>
-					<span class="align-middle me-3">G4F</span>
+					<img src="https://mail.contrato.g4f.com.br/skins/default/images/logo.svg" alt="" style="height: 50px;" />
+					<span class="align-middle me-3">&nbsp;</span>
 				</a>
 
 				<div ng-include="'app/views/G4F/sidemenu.html'"></div>

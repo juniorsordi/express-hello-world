@@ -73,8 +73,8 @@ var date = new Date().getTime().toString();
 app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     $routeProvider
         .when('/',                      { templateUrl: 'app/views/G4F/inicio.html', title: '' })
-        .when('/sistema/usuarios',      { templateUrl: 'app/views/G4F/Sistema/usuarios.html' + '?t=' + date, title: '', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
-        .when('/sistema/configuracao',  { templateUrl: 'app/views/G4F/Sistema/configuracao.html' + '?t=' + date, title: '', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/sistema/usuarios',      { templateUrl: 'app/views/G4F/Sistema/usuarios.html' + '?t=' + date, title: '', controller: 'G4FSistemaCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/sistema/configuracao',  { templateUrl: 'app/views/G4F/Sistema/configuracao.html' + '?t=' + date, title: '', controller: 'G4FSistemaCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
         .when('/tickets',               { templateUrl: 'app/views/G4F/Tickets/dashboard.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
         .when('/tickets/new',           { templateUrl: 'app/views/G4F/Tickets/newTicket.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
@@ -83,6 +83,7 @@ app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
 
         .when('/controle_mudancas',         { templateUrl: 'app/views/G4F/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .when('/controle_mudancas/novo',    { templateUrl: 'app/views/G4F/ControleMudancas/cadastro_controle_mudanca.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/controle_mudancas/:id/detalhe',    { templateUrl: 'app/views/G4F/ControleMudancas/cadastro_detalhe_controle_mudanca.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
         .when('/ordemServico',             { templateUrl: 'app/views/G4F/OrdemServico/listagem.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
@@ -112,7 +113,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
         os: true,
         tickets: true,
         rh: true,
-        system: true
+        system: false
     };
 
     $scope.languagesList = [
@@ -137,24 +138,38 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
             $rootScope.Usuario = $scope.Usuario;
 
             APIService.getData("/../auth/checkToken", function (response) {
-                
+                if(!response.data) {
+                        location.href = "loginG4F.html";
+                } else {
+                    $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
+                    $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
+                    $translate.use($scope.currentLang.locale);
+                    $scope.Usuario = JSON.parse(localStorage.getItem('user'));
+                    $rootScope.Usuario = $scope.Usuario;
+                    if($scope.Usuario.is_admin == 1) {
+                        $scope.modules.system = true;
+                    }
+                }
             });
         } else {
             if (localStorage.getItem('user')) {
                 APIService.getData("/../auth/checkToken", function (response) {
                     if(!response.data) {
-                        location.href = "login.html";
+                        location.href = "loginG4F.html";
                     } else {
                         $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
                         $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
                         $translate.use($scope.currentLang.locale);
                         $scope.Usuario = JSON.parse(localStorage.getItem('user'));
                         $rootScope.Usuario = $scope.Usuario;
+                        if($scope.Usuario.is_admin == 1) {
+                            $scope.modules.system = true;
+                        }
                         //$scope.anoAtendimento = (new Date()).getFullYear();
                     }
                 });
             } else {
-                location.href = "login.html";
+                location.href = "loginG4F.html";
             }
         }
     }
@@ -167,8 +182,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $scope.deslogar = function () {
         sessionStorage.clear();
         localStorage.clear();
-        APIService.resourceQuery("/../auth/logout");
-        location.href = "login.html";
+        APIService.resourceQuery("/auth/logout");
+        location.href = "loginG4F.html";
     }
     ///############################################################################################
     ///############################################################################################

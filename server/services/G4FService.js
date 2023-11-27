@@ -1,4 +1,7 @@
+var crypto = require('crypto');
+const jwt = require("jsonwebtoken");
 const database = require("../infra/database");
+const utils = require("../infra/utils");
 var moment = require("moment");
 moment.locale('pt-br');
 
@@ -11,13 +14,51 @@ async function listProjects(idEmpresa) {
     }
 }
 
-async function listarControleMudancas() {
+async function loginSistema(fields) {
+    try {
+        let email = fields.email;
+        let password = fields.password;
+        // Validate user input
+        if (!(email && password)) {
+            //res.status(400).send("All input is required");
+            return { success: false, msg: 'Email ou senha vazios'};
+        }
+        let hashPassword = crypto.createHash('sha1');
+        hashPassword.update(password.trim());
+        var tempHash = hashPassword.digest('hex');
+        // Validate if user exist in our database
+        let emailC = email.trim();
+        const user = await database.one("SELECT * FROM g4f.usuario WHERE email = $1", [emailC]);
+        if (user && (tempHash == user.senha)) {
+            // Create token
+            const token = jwt.sign(
+                { user_id: user.id, email: emailC, foto: user.foto },
+                `${process.env.TOKEN_KEY}`,
+                {
+                    expiresIn: "24h",
+                }
+            );
+            user.initials = utils.createInitials(user.nome);
+            // save user token
+            user.success = true;
+            user.token = token;
+            return user;
+        }
+        return { success: false, msg: 'Usuário não encontrado' };
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function listarControleMudancas(idUser) {
     try {
         let SQL = `SELECT a.*
             , (SELECT nome FROM g4f.usuario WHERE id = a.analista_responsavel) as nome_analista
             , (SELECT nome FROM g4f.lista_tecnologias WHERE id = a.tecnologia) as nome_tecnologia
-        FROM g4f.controle_mudancas a`;
-        return await database.any(SQL);
+        FROM g4f.controle_mudancas a
+        WHERE analista_responsavel = $1
+        ORDER BY numero_os, data_cadastro, id ASC`;
+        return await database.any(SQL, [idUser]);
     } catch (err) {
         console.log(err);
     }
@@ -35,12 +76,17 @@ async function salvarControleMudanca(fields, idUser) {
     }
 }
 
+async function salvarDetalhamentoControleMudanca(fields, idUser) {
+    return fields;
+}
+
 async function pegarControleMudancas(id) {
     try {
         let SQL = `SELECT a.* 
             , (SELECT nome FROM g4f.usuario WHERE id = a.analista_responsavel) as nome_analista
             , (SELECT nome FROM g4f.lista_tecnologias WHERE id = a.tecnologia) as nome_tecnologia
             , (TO_CHAR(now(),'dd/mm/yyyy')) as data_atual
+            --, (SELECT json_agg(json_build_object(id,nome_detalhamento,passo_passo,descricao,tipo,interface) from (SELECT * FROM controle_mudancas_detalhamento WHERE id_controle_mudancas = a.id))) as detalhes
         FROM g4f.controle_mudancas a
         WHERE a.id = $1`;
         let info = await database.any(SQL,[id]);
@@ -118,6 +164,13 @@ async function listarUsuarios() {
     return data;
 }
 
+async function salvarUsuario(fields) {
+    let senhaPadrao = crypto.createHash('sha1').update("123456").digest('hex');
+    let SQL = `INSERT INTO g4f.usuario VALUES (DEFAULT, $1, $2, $3, null, 1, 0, true, 1) RETURNING *`;
+    const data = await database.one(SQL, [fields.nome, fields.email, senhaPadrao]);
+    return data;
+}
+
 async function listarTecnologias() {
     let SQL = `SELECT * FROM g4f.lista_tecnologias a ORDER BY nome ASC`;
     const data = await database.any(SQL);
@@ -126,12 +179,15 @@ async function listarTecnologias() {
 
 module.exports = {
     listProjects,
+    loginSistema,
     listarControleMudancas,
     pegarControleMudancas,
     salvarControleMudanca,
+    salvarDetalhamentoControleMudanca,
     salvarBatidaPonto,
     listarUltimasBatidas,
     calculoBancoHorasUsuario,
     listarUsuarios,
+    salvarUsuario,
     listarTecnologias,
 }

@@ -1,4 +1,4 @@
-app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
+app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService, $modal) {
 
     $scope.listarControleCadastrados = function() {
         APIService.getData("/g4f/controleMudanca/", function(resp) {
@@ -26,11 +26,13 @@ app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
         });
     }
 
-    $scope.addDetalhamento = function() {
+    $scope.addDetalhamento = function(item) {
+        $scope.form.id_controle_mudanca = item.id;
         $modal({
             title: 'My Title',
-            templateUrl: 'app/views/Projects/ControleMudancas/cadastro_detalhamento_modal.html',
+            templateUrl: 'app/views/G4F/ControleMudancas/cadastro_detalhamento_modal.html',
             show: true,
+            size: 'lg',
             scope: $scope,
         });
     }
@@ -111,12 +113,26 @@ app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
         }, 200);
     }
 
+    $scope.salvarDetalhamentoCM = function(form) {
+        APIService.postData("/g4f/controleMudanca/"+form.id_controle_mudanca+"/detalhamento", form, function(resp) {
+
+        });
+    }
+
+    $scope.salvarDetalhe = function(form) {
+        form.id_controle_mudanca = $routeParams.id;
+
+        APIService.postData("/g4f/controleMudanca/"+form.id_controle_mudanca+"/detalhamento", form, function(resp) {
+
+        });
+    }
+
     $scope.listarAnalistas = function() { APIService.getData("/g4f/sistema/usuarios", function(resp) { $scope.arrAnalistas = resp.data; }); }
     $scope.listarTecnologias = function() { APIService.getData("/g4f/sistema/tecnologias", function(resp) { $scope.arrTecnologias = resp.data; }); }
     
 });
 ///##################################################################################################################################
-app.controller('G4FRHCtrl', function ($scope, $rootScope, $routeParams, APIService, $window, $resource, $modal, $translate) {
+app.controller('G4FRHCtrl', function ($scope, APIService) {
 
     $scope.listarUltimasBatidas = function() {
         APIService.getData("/g4f/rh/ponto/ultimos", function(resp) {
@@ -134,6 +150,23 @@ app.controller('G4FRHCtrl', function ($scope, $rootScope, $routeParams, APIServi
         APIService.postData("/g4f/rh/ponto/bater", {}, function(resp) {
             $scope.listarUltimasBatidas();
         })
+    }
+});
+///##################################################################################################################################
+app.controller('G4FSistemaCtrl', function ($scope, $rootScope, $routeParams, APIService, $translate, $modal) {
+
+    modalNewUser = $modal({ templateUrl: 'app/views/G4F/Sistema/Modals/ModalNovoUsuario.html', show: false, scope: $scope, });
+
+    $scope.listaUsuarios = function() { 
+        APIService.getData("/g4f/sistema/usuarios", function(resp) { $scope.arrUsuarios = resp.data; }); 
+    }
+
+    $scope.showModalNewUser = function() { modalNewUser.show(); }
+
+    $scope.salvarNovoUsuario = function(form) {
+        APIService.postData("/g4f/sistema/usuarios", form, function(resp) { 
+            $scope.arrUsuarios = resp.data; 
+        });
     }
 });
 ///##################################################################################################################################

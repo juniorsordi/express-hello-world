@@ -13,7 +13,7 @@ create table if not exists g4f.usuario (
 
 create table if not exists g4f.rh_batida_ponto (
 	id serial primary key,
-	id_usuario integer not null references usuario (id),
+	id_usuario integer not null references g4f.usuario (id),
 	dia integer,
 	mes integer,
 	ano integer,
@@ -31,13 +31,13 @@ CREATE TABLE if not exists g4f.controle_os (
     id serial primary key,
     id_contrato integer,
     id_empresa integer,
-    id_usuario_responsavel integer references usuario (id),
+    id_usuario_responsavel integer references g4f.usuario (id),
     sistema text,
     metodo_contagem text,
     tipo_contagem text,
     flag_cfps boolean,
     data_contagem date,
-    id_tecnologia integer references lista_tecnologias (id),
+    id_tecnologia integer references g4f.lista_tecnologias (id),
     duracao_intereacao integer,
     qtde_postos_trabalho integer,
     meta_pf float,
@@ -47,13 +47,13 @@ CREATE TABLE if not exists g4f.controle_os (
     escopo text,
     fronteira text,
     observacao text,
-    id_usuario_cadastro integer references usuario (id),
+    id_usuario_cadastro integer references g4f.usuario (id),
     data_cadastro timestamp
 );
 
 CREATE TABLE if not exists g4f.os_visao_geral (
     id serial primary key,
-    id_os integer references controle_os (id),
+    id_os integer references g4f.controle_os (id),
     titulo text,
     mes_referencia_conclusao date,
     id_desenvolvedor integer references g4f.usuario (id),
@@ -69,7 +69,7 @@ CREATE TABLE if not exists g4f.os_visao_geral (
 
 CREATE TABLE if not exists g4f.contagem_pontos_funcao (
     id serial primary key,
-    id_os integer references controle_os (id),
+    id_os integer references g4f.controle_os (id),
     funcao text,
     id_tipo_contagem integer,
     deflator integer,
@@ -83,7 +83,7 @@ CREATE TABLE if not exists g4f.contagem_pontos_funcao (
     pfb integer,
     pfl integer,
     documentacao text,
-    id_usuario_cadastro integer references usuario (id),
+    id_usuario_cadastro integer references g4f.usuario (id),
     data_cadastro timestamp
 );
 
@@ -93,22 +93,23 @@ CREATE TABLE if not exists g4f.controle_mudancas (
 	sistema text,
 	solicitante text,
 	unidade text,
-	analista_responsavel integer references usuario (id),
+	analista_responsavel integer references g4f.usuario (id),
 	tipo_demanda text,
 	descricao text,
 	detalhamento text,
-	tecnologia integer references lista_tecnologias (id),
+	tecnologia integer references g4f.lista_tecnologias (id),
 	total_alocados integer,
 	tempo_gasto float,
     tempo_gasto_medida text,
 	aprovado integer,
 	data_cadastro timestamp,
-    id_usuario_cadastro integer references usuario (id)
+    id_usuario_cadastro integer references g4f.usuario (id)
 );
+alter table g4f.controle_mudancas add column alteracao_banco text;
 
 CREATE TABLE if not exists g4f.controle_mudancas_detalhamento (
 	id serial primary key,
-	id_controle_mudancas integer references controle_mudancas (id),
+	id_controle_mudancas integer references g4f.controle_mudancas (id),
 	nome_detalhamento text,
 	detalhamento text,
 	passo_passo text,
@@ -116,7 +117,7 @@ CREATE TABLE if not exists g4f.controle_mudancas_detalhamento (
 	tipo text,
 	interface text,
 	data_cadastro timestamp,
-    id_usuario_cadastro integer references usuario (id)
+    id_usuario_cadastro integer references g4f.usuario (id)
 );
 
 CREATE TABLE IF NOT EXISTS sistema_menus (
