@@ -51,6 +51,15 @@ router.get("/usuarios", async function (req, res, next) {
     }
 });
 
+router.get("/dadosTabela", async function (req, res, next) {
+    try {
+        res.json(await service.pegarCamposTabela(req.query.schema, req.query.tabela, req.query.caminho));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.get("/correios/rastreamento/:id", async function (req, res, next) {
     try {
         res.json(await service.rastreamentoPacoteCorreios(req.params.id));

@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
+var fs = require("fs");
 //nE2g2UqfynTKBdehLZy6gwj9FkZGBnZcsynYJnDP
 const database = require("../infra/database");
 moment.locale('pt-br');
@@ -100,6 +101,54 @@ async function rastreamentoPacoteCorreios(pacote) {
     //*/
 }
 
+async function pegarCamposTabela(schema, tabela, caminho) {
+    if(schema == "") { schema = "public"; }
+    let SQL = `SELECT column_name, data_type, ordinal_position
+    FROM information_schema.columns
+    WHERE table_schema = '${schema}'
+    AND table_name   = '${tabela}' AND column_name <> 'id'`;
+    const data = await database.any(SQL);
+    ///
+    let html = `<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Formulário</h4>
+                <p class="card-text">\n`;
+    for(const item of data) {
+        let temp = `\t\t\t\t\t<div class="row">
+            \t\t\t<div class="col-4">${item.column_name}:</div>
+            \t\t\t<div class="col-8">\n\t\t\t\t\t\t\t`;
+        if(item.data_type == 'integer') { 
+            if(item.column_name.substring(0,3) == 'id_') {
+                temp += `<select ng-model="form.${item.column_name}"><option value=""></option></select>`; 
+            } else {
+                temp += `<input type="number" ng-model="form.${item.column_name}" />`; 
+            }
+        }
+        else if(item.data_type == 'text') { temp += `<input type="text" ng-model="form.${item.column_name}" />`; }
+        else if(item.data_type == 'boolean') { temp += `<select ng-model="form.${item.column_name}"><option value="0">Não</option><option value="1">Sim</option></select>`; }
+        else if(item.data_type == 'date') { temp += `<input type="date" ng-model="form.${item.column_name}" />`; }
+        else if(item.data_type == 'double precision') { temp += `<input type="text" ng-model="form.${item.column_name}" ui-money-mask="2" />`; }
+        else {
+            temp += `<input type="text" ng-model="form.${item.column_name}" />`;
+        }
+
+        temp += `\n\t\t\t\t\t\t</div>
+        \t\t\t</div>`;
+        html += temp+"\n";
+    }
+
+    html += `                </p>
+            </div>
+        </div>
+    </div>\n</div>`;
+    let timeStamp = "teste2";//moment().unix();
+    fs.writeFileSync("./public/app/views/"+caminho, html);
+    ///
+    return data;
+}
+
 module.exports = {
     listarNotificacoesNaoLidas,
     inserirNotificacao,
@@ -109,4 +158,5 @@ module.exports = {
     dashboardSistema,
     gerarItemsMenuLateral,
     rastreamentoPacoteCorreios,
+    pegarCamposTabela,
 }

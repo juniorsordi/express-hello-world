@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Formulário</h4>
+                <p class="card-text">
+					<div class="row">
+            			<div class="col-4">nome:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.nome" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">email:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.email" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">senha:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.senha" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">foto:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.foto" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">id_tipo_login:</div>
+            			<div class="col-8">
+							<select ng-model="form.id_tipo_login"><option value=""></option></select>
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">is_admin:</div>
+            			<div class="col-8">
+							<input type="number" ng-model="form.is_admin" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">ativo:</div>
+            			<div class="col-8">
+							<select ng-model="form.ativo"><option value="0">Não</option><option value="1">Sim</option></select>
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">id_empresa:</div>
+            			<div class="col-8">
+							<select ng-model="form.id_empresa"><option value=""></option></select>
+						</div>
+        			</div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

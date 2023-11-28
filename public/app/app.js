@@ -110,6 +110,12 @@ app.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.interceptors.push('loadingInterceptor');
 }]);
 ///#####################################################################################################
+app.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.debugInfoEnabled(false);
+    $compileProvider.commentDirectivesEnabled(false);
+    $compileProvider.cssClassDirectivesEnabled(false);
+}]);
+///#####################################################################################################
 app.run(function ($rootScope, $route, $http, $routeParams) {
     $rootScope.carregando = false;
     $rootScope.stackDeCarga = 0;

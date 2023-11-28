@@ -88,6 +88,29 @@ app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService
     	}
 	};
 
+    $scope.initListagemOS = function() {
+        $scope.keys = Object.keys($scope.listaOS[0]);
+        APIService.getData("/g4f/ordemServico", function(resp) {
+            $scope.listaOS2 = resp.data;
+        })
+    }
+
+    $scope.initCadOS = function() {
+        $scope.form = {};
+        $scope.listarTecnologias();
+        $scope.listarAnalistas();
+        APIService.getData("/g4f/sistema/listagemSimples?tabela=empresa_cliente", function(resp) { $scope.arrClientes = resp.data; })
+    }
+
+    $scope.salvarOS = function(form) {
+        console.log(form);
+        form.id_empresa = form.id_contrato;
+        form.id_usuario_cadastro = $scope.Usuario.id;
+        APIService.postData("/g4f/sistema/salvar?tabela=controle_os", form, function(resp) {
+
+        });
+    }
+
     $scope.initCadControleMudanca = function() {
         console.log($scope.Usuario);
         $scope.form.analista = $scope.Usuario.id,
@@ -132,6 +155,18 @@ app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService
     
 });
 ///##################################################################################################################################
+app.controller('G4FDashboardCtrl', function ($scope, APIService) {
+
+    $scope.initDashboard = function() {
+        APIService.getData("/g4f/dashboard", function(resp) {
+            $scope.dadosDashboard = resp.data;
+        })
+    }
+
+    $scope.initDashboard();
+
+});
+///##################################################################################################################################
 app.controller('G4FRHCtrl', function ($scope, APIService) {
 
     $scope.listarUltimasBatidas = function() {
@@ -143,6 +178,12 @@ app.controller('G4FRHCtrl', function ($scope, APIService) {
     $scope.initDashboard = function() {
         APIService.getData("/g4f/rh/dashboard", function(resp) {
             $scope.dadosDashboard = resp.data;
+        })
+    }
+
+    $scope.initFerias = function() {
+        APIService.getData("/g4f/rh/ferias", function(resp) {
+            $scope.dadosFerias = resp.data;
         })
     }
 

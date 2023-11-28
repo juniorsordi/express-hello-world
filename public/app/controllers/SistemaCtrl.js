@@ -103,6 +103,15 @@ app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
         APIService.getData("/sistema/usuarios", function(resp) { $scope.arrUsuarios = resp.data; });
     }
 
+    $scope.gerarFormPelaTabela = function() {
+        let schema = $scope.schema;
+        let tabela = $scope.tabela;
+        let caminho = $scope.caminho;
+        APIService.getData(`/sistema/dadosTabela?schema=${schema}&tabela=${tabela}&caminho=${caminho}`, function(resp) {
+            $scope.camposForm = resp.data;
+        })
+    }
+
     modalNewUser = $modal({ templateUrl: 'app/views/Sistema/Modals/ModalCriarUsuario.html', show: false, scope: $scope, });
 
     $scope.showModalNewUser = function() { modalNewUser.show(); }

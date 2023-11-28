@@ -72,25 +72,27 @@ app.run(function ($rootScope, $route, $http, $routeParams) {
 var date = new Date().getTime().toString();
 app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     $routeProvider
-        .when('/',                      { templateUrl: 'app/views/G4F/inicio.html', title: '' })
-        .when('/sistema/usuarios',      { templateUrl: 'app/views/G4F/Sistema/usuarios.html' + '?t=' + date, title: '', controller: 'G4FSistemaCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
-        .when('/sistema/configuracao',  { templateUrl: 'app/views/G4F/Sistema/configuracao.html' + '?t=' + date, title: '', controller: 'G4FSistemaCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/',                          { templateUrl: 'app/views/G4F/inicio.html', title: '', controller: 'G4FDashboardCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/sistema/usuarios',          { templateUrl: 'app/views/G4F/Sistema/usuarios.html' + '?t=' + date, title: '', controller: 'G4FSistemaCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/sistema/configuracao',      { templateUrl: 'app/views/G4F/Sistema/configuracao.html' + '?t=' + date, title: '', controller: 'G4FSistemaCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
-        .when('/tickets',               { templateUrl: 'app/views/G4F/Tickets/dashboard.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
-        .when('/tickets/new',           { templateUrl: 'app/views/G4F/Tickets/newTicket.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
-        .when('/tickets/list',          { templateUrl: 'app/views/G4F/Tickets/tickets.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
-        .when('/ticket/:id',            { templateUrl: 'app/views/G4F/Tickets/viewTicket.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
+        .when('/tickets',                   { templateUrl: 'app/views/G4F/Tickets/dashboard.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
+        .when('/tickets/new',               { templateUrl: 'app/views/G4F/Tickets/newTicket.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
+        .when('/tickets/list',              { templateUrl: 'app/views/G4F/Tickets/tickets.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
+        .when('/ticket/:id',                { templateUrl: 'app/views/G4F/Tickets/viewTicket.html', controller: 'TicketsCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'Tickets', files: ['app/controllers/TicketsCtrl.js'] }]); }]} })
 
         .when('/controle_mudancas',         { templateUrl: 'app/views/G4F/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .when('/controle_mudancas/novo',    { templateUrl: 'app/views/G4F/ControleMudancas/cadastro_controle_mudanca.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .when('/controle_mudancas/:id/detalhe',    { templateUrl: 'app/views/G4F/ControleMudancas/cadastro_detalhe_controle_mudanca.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
-        .when('/ordemServico',             { templateUrl: 'app/views/G4F/OrdemServico/listagem.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/ordemServico',              { templateUrl: 'app/views/G4F/OrdemServico/listagem.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/ordemServico/novo',         { templateUrl: 'app/views/G4F/OrdemServico/cadastro.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
-        .when('/relatorio/modelo/1',    { templateUrl: 'app/views/G4F/Relatorios/teste1.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/relatorio/modelo/1',        { templateUrl: 'app/views/G4F/Relatorios/teste1.html', controller: 'G4FCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'G4F', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
 
-        .when('/rh',                    { templateUrl: 'app/views/G4F/RH/Dashboard.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
-        .when('/rh/baterPonto',         { templateUrl: 'app/views/G4F/RH/BaterPonto.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/rh',                        { templateUrl: 'app/views/G4F/RH/Dashboard.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/rh/ferias',                 { templateUrl: 'app/views/G4F/RH/Ferias.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
+        .when('/rh/baterPonto',             { templateUrl: 'app/views/G4F/RH/BaterPonto.html', controller: 'G4FRHCtrl', resolve: { lazy: ['$ocLazyLoad', function ($ocLazyLoad) { return $ocLazyLoad.load([{ name: 'RH', files: ['app/controllers/G4FCtrl.js'] }]); }]} })
         .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);
@@ -130,6 +132,9 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $scope.initApp = function () {
         //console.log($location.host);
         if($location.host() == 'localhost') {
+            if (!localStorage.getItem('user')) {
+                location.href = "loginG4F.html";
+            }
             $scope.Usuario = $scope.loggedUser;
             $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
             $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));

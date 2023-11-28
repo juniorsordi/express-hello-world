@@ -1,3 +1,17 @@
+create table if not exists g4f.empresa (
+    id serial primary key,
+	nome varchar(512) not null,
+	logo varchar(1024),
+	ativo boolean
+);
+
+create table if not exists g4f.empresa_cliente (
+	id serial primary key,
+	nome varchar(1024),
+	logo varchar(1024),
+	ativo boolean,
+	id_empresa integer references g4f.empresa(id)
+);
 
 create table if not exists g4f.usuario (
 	id serial primary key,
@@ -8,7 +22,7 @@ create table if not exists g4f.usuario (
 	id_tipo_login integer,
 	is_admin integer,
 	ativo boolean,
-	id_empresa integer references empresa (id)
+	id_empresa integer references g4f.empresa (id)
 );
 
 create table if not exists g4f.rh_batida_ponto (
@@ -29,8 +43,8 @@ CREATE TABLE if not exists g4f.lista_tecnologias (
 
 CREATE TABLE if not exists g4f.controle_os (
     id serial primary key,
-    id_contrato integer,
-    id_empresa integer,
+    id_contrato integer references g4f.contrato (id),
+    id_empresa integer references g4f.empresa (id),
     id_usuario_responsavel integer references g4f.usuario (id),
     sistema text,
     metodo_contagem text,
@@ -50,6 +64,7 @@ CREATE TABLE if not exists g4f.controle_os (
     id_usuario_cadastro integer references g4f.usuario (id),
     data_cadastro timestamp
 );
+ALTER TABLE g4f.controle_os ALTER COLUMN data_cadastro SET DEFAULT now();
 
 CREATE TABLE if not exists g4f.os_visao_geral (
     id serial primary key,
@@ -127,4 +142,25 @@ CREATE TABLE IF NOT EXISTS sistema_menus (
     classe_icone varchar(256),
     id_menu_pai integer,
     ativo boolean
+);
+
+CREATE TABLE IF NOT EXISTS g4f.contrato (
+    id serial primary key,
+    id_empresa integer references g4f.empresa (id),
+    id_cliente integer references g4f.empresa_cliente(id),
+    numeracao text,
+    inicio_contrato date,
+    termino_contrato date,
+    termos_contrato text,
+    id_usuario_cadastro integer references g4f.usuario (id),
+    data_cadastro timestamp
+);
+
+CREATE TABLE IF NOT EXISTS g4f.ferias (
+    id serial primary key,
+    id_colaborador integer references g4f.usuario (id),
+    id_tipo_modalidade integer,
+    periodos json,
+    id_usuario_cadastro integer references g4f.usuario (id),
+    data_cadastro timestamp DEFAULT now()
 );

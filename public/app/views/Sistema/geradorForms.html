@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-12">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-4">Schema:</div>
+                <div class="col-8"><input type="text" ng-model="schema" /></div>
+            </div>
+            <div class="row">
+                <div class="col-4">Tabela:</div>
+                <div class="col-8"><input type="text" ng-model="tabela" /></div>
+            </div>
+            <div class="row">
+                <div class="col-4">Caminho HTML:</div>
+                <div class="col-8"><input type="text" ng-model="caminho" /></div>
+            </div>
+            <a class="btn btn-secondary btn-sm " href="" role="button" ng-click="gerarFormPelaTabela()"> Gerar Formulario </a>
+            <hr>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Formulário</h4>
+                    <p class="card-text">
+                        <div ng-repeat="campo in camposForm" class="row">
+                            <div class="col-4" ng-bind="campo.column_name">:</div>
+                            <div class="col-8">
+                                <span ng-if="campo.data_type == 'integer'">
+                                    <span ng-if="campo.column_name.substring(0,3) == 'id_'"><select ng-model="form[campo.column_name]"><option value=""></option></select></span>
+                                    <span ng-if="campo.column_name.substring(0,3) != 'id_'"><input type="number" ng-model="form[campo.column_name]" /></span>
+                                </span>
+                                <span ng-if="campo.data_type == 'text' || campo.data_type == 'character varying' || campo.data_type == 'json'"><input type="text" ng-model="form[campo.column_name]" /></span>
+                                <span ng-if="campo.data_type == 'boolean'">
+                                    
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="1"  ng-model="form[campo.column_name]">
+                                            Checkbox
+                                        </label>
+                                    </div>
+                                    
+                                </span>
+                                <span ng-if="campo.data_type == 'date'"><input type="date" ng-model="form[campo.column_name]" /></span>
+                                <span ng-if="campo.data_type == 'double precision'"><input type="text" ng-model="form[campo.column_name]" ui-money-mask="2" /></span>
+                                
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>

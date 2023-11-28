@@ -3,6 +3,7 @@ const router = express.Router();
 const moment = require("moment");
 const service = require("../services/G4FService");
 const utils = require("../infra/utils");
+const database = require("../infra/database");
 
 router.get("/", async function (req, res, next) {
     try {
@@ -46,6 +47,26 @@ router.post("/auth/login", async function (req, res, next) {
 router.get("/auth/logout", async function (req, res, next) {
     req.session.destroy();
     res.status(200).json([]);
+});
+
+router.get("/dashboard", async function (req, res, next) {
+    try {
+        let info = await service.listarDadosDashboard();
+        res.status(200).json(info);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/ordemServico", async function (req, res, next) {
+    try {
+        let info = await service.listarOrdemServico(req.cookies.IDUser);
+        res.status(200).json(info);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
 });
 
 router.get("/controleMudanca", async function (req, res, next) {
@@ -129,6 +150,38 @@ router.get("/rh/dashboard", async function (req, res, next) {
     }
 });
 
+router.get("/rh/ferias", async function (req, res, next) {
+    try {
+        let info = await service.listarFerias();
+        res.status(200).json(info);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.post("/sistema/salvar", async function (req, res, next) {
+    try {
+        let fields = req.body;
+        let tabela = req.query.tabela;
+        let campos = Object.keys(fields);
+        let valores = Object.values(fields);
+        let SQL = `INSERT INTO g4f.${tabela} (id, `;
+        SQL += campos.join(", ");
+        let temp1 = [];
+        for (let index = 0; index < campos.length; index++) {
+            temp1.push("$"+(index+1));
+        }
+        SQL += ") VALUES (DEFAULT, "+temp1.join(", ")+") RETURNING *";
+        let resposta = await database.one(SQL, valores);
+
+        res.json(resposta);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.post("/sistema/usuarios", async function (req, res, next) {
     try {
         res.json(await service.salvarUsuario(req.body));
@@ -150,6 +203,15 @@ router.get("/sistema/usuarios", async function (req, res, next) {
 router.get("/sistema/tecnologias", async function (req, res, next) {
     try {
         res.json(await service.listarTecnologias());
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/sistema/listagemSimples", async function (req, res, next) {
+    try {
+        res.json(await service.listagemSimplesTabela(req.query.tabela));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);

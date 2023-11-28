@@ -50,6 +50,28 @@ async function loginSistema(fields) {
     }
 }
 
+async function listagemSimplesTabela(tabela) {
+    try {
+        let SQL = `SELECT * FROM g4f.${tabela} ORDER BY id ASC`;
+        return await database.any(SQL);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function listarOrdemServico(idUser) {
+    try {
+        let SQL = `SELECT a.*
+            , (SELECT nome FROM g4f.usuario WHERE id = a.id_usuario_responsavel) as nome_responsavel
+            , (SELECT nome FROM g4f.lista_tecnologias WHERE id = a.id_tecnologia) as nome_tecnologia
+        FROM g4f.controle_os a
+        ORDER BY data_cadastro DESC, id ASC`;
+        return await database.any(SQL);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 async function listarControleMudancas(idUser) {
     try {
         let SQL = `SELECT a.*
@@ -59,6 +81,18 @@ async function listarControleMudancas(idUser) {
         WHERE analista_responsavel = $1
         ORDER BY numero_os, data_cadastro, id ASC`;
         return await database.any(SQL, [idUser]);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function listarFerias() {
+    try {
+        let SQL = `SELECT a.*
+            , (SELECT nome FROM g4f.usuario WHERE id = a.id_colaborador) as nome_analista
+        FROM g4f.ferias a
+        ORDER BY 1 ASC`;
+        return await database.any(SQL);
     } catch (err) {
         console.log(err);
     }
@@ -177,10 +211,22 @@ async function listarTecnologias() {
     return data;
 }
 
+async function listarDadosDashboard() {
+    let SQL = `SELECT 
+        (SELECT count(id) as total_os FROM g4f.controle_os WHERE data_cadastro BETWEEN '2023-11-01' AND '2023-11-30') as total_os,
+        (SELECT count(id) as total_cm FROM g4f.controle_mudancas WHERE data_cadastro BETWEEN '2023-11-01' AND '2023-11-30') as total_cm
+    `;
+    const data = await database.any(SQL);
+    return data[0];
+}
+
 module.exports = {
     listProjects,
     loginSistema,
+    listagemSimplesTabela,
     listarControleMudancas,
+    listarOrdemServico,
+    listarFerias,
     pegarControleMudancas,
     salvarControleMudanca,
     salvarDetalhamentoControleMudanca,
@@ -190,4 +236,5 @@ module.exports = {
     listarUsuarios,
     salvarUsuario,
     listarTecnologias,
+    listarDadosDashboard,
 }
