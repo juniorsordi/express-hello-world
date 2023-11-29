@@ -1,0 +1,35 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 100vw;">
+            <div class="modal-header">
+                <h5 class="modal-title" translate="">Detalhamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="$hide()"></button>
+            </div>
+            <div class="modal-body m-3">
+                <div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Breve descrição</th>
+                            <th>Tipo</th>
+                            <th>Passo a Passo</th>
+                            <th>Data Cadastro</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="item in arrDetalhamento track by $index">
+                            <td>{{ item.nome_detalhamento }}</td>
+                            <td>{{ item.tipo }}</td>
+                            <td>{{ item.passo_passo }}</td>
+                            <td>{{ item.data_cadastro | date:'dd/MM/yyyy HH:mm' }}</td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ng-click="$hide()" translate>Close</button>
+            </div>
+        </div>
+    </div>
+</div>

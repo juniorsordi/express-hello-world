@@ -72,6 +72,19 @@ async function listarOrdemServico(idUser) {
     }
 }
 
+async function listarTodosControleMudancas(idUser) {
+    try {
+        let SQL = `SELECT a.*
+            , (SELECT nome FROM g4f.usuario WHERE id = a.analista_responsavel) as nome_analista
+            , (SELECT nome FROM g4f.lista_tecnologias WHERE id = a.tecnologia) as nome_tecnologia
+        FROM g4f.controle_mudancas a
+        ORDER BY numero_os, data_cadastro, id ASC`;
+        return await database.any(SQL);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 async function listarControleMudancas(idUser) {
     try {
         let SQL = `SELECT a.*
@@ -103,7 +116,7 @@ async function salvarControleMudanca(fields, idUser) {
         if(fields.descricao == null) { fields.descricao = ""; }
         
         let SQL = `INSERT INTO g4f.controle_mudancas VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, null, $8, $9, $10, $11, 1, NOW(), $12) RETURNING *`;
-        return await database.any(SQL, [fields.num_os,fields.sistema,fields.solicitante,fields.unidade,fields.analista,fields.tipo,
+        return await database.one(SQL, [fields.num_os,fields.sistema,fields.solicitante,fields.unidade,fields.analista,fields.tipo,
             fields.descricao,fields.tecnologia,fields.profissional_alocado,fields.tempo_gasto,fields.tempo_gasto_medida, idUser]);
     } catch (err) {
         console.log(err);
@@ -111,7 +124,22 @@ async function salvarControleMudanca(fields, idUser) {
 }
 
 async function salvarDetalhamentoControleMudanca(fields, idUser) {
-    return fields;
+    let SQL = `INSERT INTO g4f.controle_mudancas_detalhamento (id, id_controle_mudancas, nome_detalhamento, passo_passo, tipo, detalhamento, interface, data_cadastro, id_usuario_cadastro) 
+    VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, now(), $7) RETURNING *`;
+    let campos = [fields.id_controle_mudanca,fields.nome_detalhamento,fields.passo_passo,fields.tipo,fields.detalhamento,fields.interface, idUser];
+    return await database.one(SQL,campos);
+    //return fields;
+}
+
+async function listarDetalhamentoControleMudanca(id) {
+    try {
+        let SQL = `SELECT a.* FROM g4f.controle_mudancas_detalhamento a
+        WHERE id_controle_mudancas = $1
+        ORDER BY 1 ASC`;
+        return await database.any(SQL, [id]);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 async function pegarControleMudancas(id) {
@@ -224,9 +252,11 @@ module.exports = {
     listProjects,
     loginSistema,
     listagemSimplesTabela,
+    listarTodosControleMudancas,
     listarControleMudancas,
     listarOrdemServico,
     listarFerias,
+    listarDetalhamentoControleMudanca,
     pegarControleMudancas,
     salvarControleMudanca,
     salvarDetalhamentoControleMudanca,

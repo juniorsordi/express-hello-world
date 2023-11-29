@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-12" ng-init="initCadDetCM()">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Controle de Mudanças - Detalhamento</h5>
+                <p class="card-text">
+                    <div class="row">
+                        <div class="col-4">Nome:</div>
+                        <div class="col-8">
+                            <input type="text" class="form-control" ng-model="form.nome_detalhamento" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Passo a Passo:</div>
+                        <div class="col-8">
+                            <input type="text" class="form-control" ng-model="form.passo_passo" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Tipo:</div>
+                        <div class="col-8">
+                            <select class="form-control" ng-model="form.tipo" select2>
+                                <option value=""></option>
+                                <option value="Inclusão">Inclusão</option>
+                                <option value="Alteração">Alteração</option>
+                                <option value="Exclusão">Exclusão</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Detalhamento:</div>
+                        <div class="col-8">
+                            <ng-quill-editor ng-model="form.detalhamento"></ng-quill-editor>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Interface:</div>
+                        <div class="col-8">
+                            <ng-quill-editor ng-model="form.interface"></ng-quill-editor>
+                        </div>
+                    </div>
+                    <br>
+                    <a class="btn btn-primary btn-sm " href="" role="button" ng-click="salvarDetalhamentoCM(form)"> Salvar</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

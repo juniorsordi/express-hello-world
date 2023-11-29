@@ -1,0 +1,99 @@
+<div>
+    <style>
+        .mdi {
+            font-size: 20px !important;
+        }
+    </style>
+    <ul class="sidebar-nav">
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#!/">
+                <span class="material-icons align-middle">home</span>
+                <span class="align-middle">Home</span>
+            </a>
+        </li>
+        <li ng-if="modules.os" class="sidebar-item">
+            <a data-bs-target="#os" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">Controle de Mudanças</span>
+            </a>
+            <ul id="os" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item hide">
+                    <a class="sidebar-link" href="#!/ordemServico"> 
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Ordems de Serviço
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/controle_mudancas"><span class="material-icons align-middle">chevron_right</span> Controle de Mudanças</a>
+                </li>
+            </ul>
+        </li>
+        <li ng-if="modules.tickets" class="sidebar-item">
+            <a data-bs-target="#tickets" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">Tickets</span>
+            </a>
+            <ul id="tickets" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/tickets">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/tickets/list">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Tickets
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li ng-if="modules.rh" class="sidebar-item">
+            <a data-bs-target="#rh" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">RH</span>
+            </a>
+            <ul id="rh" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh/ferias">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Férias
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/rh/baterPonto">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Bater Ponto
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li ng-if="modules.system" class="sidebar-item">
+            <a data-bs-target="#system" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">System</span>
+            </a>
+            <ul id="system" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link align-middle" href="#!/sistema/usuarios">
+                        <span class="material-icons align-middle">group</span>
+                        <span translate="">Users</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/sistema/configuracao">
+                        <span class="material-icons align-middle">settings</span>
+                        <span translate="">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    <ul>
+</div>

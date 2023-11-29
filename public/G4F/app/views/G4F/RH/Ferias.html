@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12" ng-init="initFerias()">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Férias</h2>
+                <p class="card-text">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="33%">Nome</th>
+                            <th>Periodo(s) Férias</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in dadosFerias">
+                            <td>{{ item.nome_analista }}</td>
+                            <td>
+                                <span ng-repeat="periodo in item.periodos track by $index">
+                                    Periodo {{ ($index + 1) }}: {{ periodo.inicio }} a {{ periodo.termino }}&nbsp;&nbsp;
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<div ng-init="initRelatorio()">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    
+        @media print {
+    
+            html,
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
+    
+            /* ... the rest of the rules ... */
+        }
+    
+        @media print {
+    
+            body,
+            page[size="A4"] {
+                margin: 0;
+                box-shadow: 0;
+            }
+        }
+    </style>
+<page size="A4" class="print" style="padding: 3mm;page-break-after:always;">
+    <img src="../assets/img/logo_tce.png" alt="" height="128">
+    <br>
+
+    <h2 align="center">Controle de Mudanças</h2>
+
+
+    <table width="100%" border="1" class="table-bordered">
+        <thead style="background-color: #f1878f;">
+            <tr>
+                <th colspan="5" align="center" style="text-align: center;">Histórico de revisões</th>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <th>Versão</th>
+                <th>Descrição</th>
+                <th>Autor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>21/11/2023</td>
+                <td>1.0</td>
+                <td>Criação do documento</td>
+                <td>Dilson Sordi Junior</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <h3>1 - IDENTIFICAÇÃO</h3>
+    <br>
+    <table class="table table-bordered">
+        <tr>
+            <td style="background-color: #c9c9c9;" width="30%">Nº OS</td>
+            <td>{{ data.numero_os }}</td>
+        </tr>
+        <tr>
+            <td style="background-color: #c9c9c9;">Sistema (Sigla-Descrição)</td>
+            <td>{{ data.sistema }}</td>
+        </tr>
+        <tr>
+            <td style="background-color: #c9c9c9;">Solicitante (Nome/Área)</td>
+            <td>{{ data.solicitante }}</td>
+        </tr>
+        <tr>
+            <td style="background-color: #c9c9c9;">Unidade do Requisitante</td>
+            <td>{{ data.unidade }}</td>
+        </tr>
+        <tr>
+            <td style="background-color: #c9c9c9;">Analista Responsável</td>
+            <td>{{ data.nome_analista }}</td>
+        </tr>
+        <tr>
+            <td style="background-color: #c9c9c9;">Tipo de Demanda</td>
+            <td>{{ data.tipo_demanda }}</td>
+        </tr>
+    </table>
+    <br>
+    <h3>2 - DESCRIÇÃO DA SOLICITAÇÃO</h3>
+    <br>
+    <div style="text-align: justify;" ng-bind-html="data.descricao"></div>
+    <br>
+    <h3>3 - DETALHAMENTO DAS FUNCIONALIDADES A SEREM EXECUTADAS</h3>
+    <br>
+    <div style="text-align: justify;" ng-bind-html="data.detalhamento"></div>
+    <br>
+    <b>Alterações no Banco de Dados</b>
+    <br>
+    <div style="text-align: justify;" ng-bind-html="data.alteracao_bd"></div>
+    <br>
+    <h3>4 - INFORMAÇÕES COMPLEMENTARES</h3>
+    <br>
+    Tecnologia: {{ data.nome_tecnologia }}<br>
+    <table class="table table-bordered">
+        <tr>
+            <td>Quantidade de Profissionais alocadas na Execução da OS/iteração</td>
+            <td>{{ data.total_alocados }}</td>
+        </tr>
+        <tr>
+            <td>Tempo Gasto</td>
+            <td>{{ data.tempo_gasto }} {{ data.tempo_gasto_medida }}</td>
+        </tr>
+    </table>
+    <br>
+    <h3>5 - APROVAÇÃO</h3>
+    <br>
+    <span>O detalhamento acima está em conformidade com as nossas reais necessidades.</span>
+</page>
+<br>
+<br>
+<br>
+<button onclick="window.print()">Imprimir</button>
+</div>

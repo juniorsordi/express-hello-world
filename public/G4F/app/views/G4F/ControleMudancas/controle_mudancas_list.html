@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12" ng-init="listarControleCadastrados();">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Controle de Mudanças</h5>
+                <p class="card-text">
+                    <a class="btn btn-primary btn-sm " href="#!/controle_mudancas/novo" role="button"><i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add</span></a>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="5%">OS</th>
+                                    <th scope="col">Sistema</th>
+                                    <th scope="col">Unidade</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col" width="8%">Tecnologia</th>
+                                    <th scope="col" width="8%">Pessoas Alocadas</th>
+                                    <th scope="col" width="8%">Tempo Gasto</th>
+                                    <th width="5%">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="" ng-repeat="item in listaControleMudancas">
+                                    <td scope="row">{{ item.numero_os }}</td>
+                                    <td>{{ item.sistema }}</td>
+                                    <td>{{ item.unidade }}</td>
+                                    <td>{{ item.tipo_demanda }}</td>
+                                    <td>{{ item.nome_tecnologia }}</td>
+                                    <td>{{ item.total_alocados }}</td>
+                                    <td>{{ item.tempo_gasto }} {{ item.tempo_gasto_medida }}</td>
+                                    <td width="6%">
+                                        <a href="#!/controle_mudancas/{{ item.id }}/detalhe"><i class="fa fa-info-circle" aria-hidden="true" title="Adicionar detalhamento"></i></a>
+                                        
+                                        <i class="fa fa-plus-square" aria-hidden="true" title="Visualizar detalhamento" ng-click="addDetalhamento(item)"></i>
+                                        <i class="fa fa-file-word-o" aria-hidden="true" title="Gerar Arquivo Word" ng-click="gerarDocControleMudanca(item)"></i>
+                                        <i class="fa fa-file" aria-hidden="true" title="Gerar Arquivo" ng-click="gerarControleMudanca(item)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

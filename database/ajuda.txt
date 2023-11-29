@@ -21,3 +21,20 @@ if (password_verify($passwordFromPost, $hashedPasswordFromDB)) {
 
 hash ( "sha512", $salt . $password);
 $password = hash_hmac('sha512', $password . $salt, $sitewide_key);
+
+///#########################################################################################
+Goof Troop Remake
+Vidas - 3
+HP representado por corações -> padrao 1 coração
+2 slots para items
+6 coracoes -> +1 Vida
+Frutas (cereja, banana) -> add 1 coracao
+Diamante -> +1 continue
+Rubi -> +1 Vida
+
+Puzzles com blocos q deslizam
+
+Inimigos -> referencia a piratas/bucaneiros e insetos gigantes (abelha, cobra, ourico )
+
+Items: -> Pá, pistola de corda, sino, chave, 
+Arremessaveis -> jarro, barril, planta, pedra, bomba

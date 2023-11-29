@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-12" ng-init="initCadOS()">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Nova Ordem de Serviço</h4>
+                <p class="card-text">
+					<div class="row">
+            			<div class="col-4">Contrato:</div>
+            			<div class="col-8">
+							<select ng-model="form.id_contrato" ng-options="item.id as item.nome for item in arrClientes"><option value=""></option></select>
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Responsavel:</div>
+            			<div class="col-8">
+							<select ng-model="form.id_usuario_responsavel" ng-options="item.id as item.nome for item in arrAnalistas"><option value=""></option></select>
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Sistema:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.sistema" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Metodo_contagem:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.metodo_contagem" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Tipo_contagem:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.tipo_contagem" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">cfps:</div>
+            			<div class="col-8">
+							<select ng-model="form.flag_cfps"><option value="0">Não</option><option value="1">Sim</option></select>
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Data Contagem:</div>
+            			<div class="col-8">
+							<input type="date" ng-model="form.data_contagem" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Tecnologia:</div>
+            			<div class="col-8">
+							<select ng-model="form.id_tecnologia" ng-options="item.id as item.nome for item in arrTecnologias"><option value=""></option></select>
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Duracao Interacao:</div>
+            			<div class="col-8">
+							<input type="number" ng-model="form.duracao_intereacao" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Qtde Postos Trabalho:</div>
+            			<div class="col-8">
+							<input type="number" ng-model="form.qtde_postos_trabalho" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Meta PF:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.meta_pf" ui-number-mask="2" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Total PF Bruto:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.total_pf_bruto" ui-number-mask="2" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Total PF Liquido:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.total_pf_liquido" ui-number-mask="2" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Proposito:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.proposito" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Escopo:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.escopo" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Fronteira:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.fronteira" />
+						</div>
+        			</div>
+					<div class="row">
+            			<div class="col-4">Observacao:</div>
+            			<div class="col-8">
+							<input type="text" ng-model="form.observacao" />
+						</div>
+        			</div>
+
+					<a class="btn btn-success btn-sm " href="" role="button" ng-click="salvarOS(form)"> <i class="fa fa-save" aria-hidden="true"></i> <span translate>Save</span> </a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

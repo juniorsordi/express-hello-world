@@ -117,6 +117,15 @@ router.post("/controleMudanca/:id/detalhamento", async function (req, res, next)
     }
 });
 
+router.get("/controleMudanca/:id/detalhamento", async function (req, res, next) {
+    try {
+        res.json(await service.listarDetalhamentoControleMudanca(req.params.id));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.post("/rh/ponto/bater", async function (req, res, next) {
     try {
         let id_usuario = req.cookies.IDUser;
