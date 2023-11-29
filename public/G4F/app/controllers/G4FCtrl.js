@@ -130,11 +130,18 @@ app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService
     }
 
     $scope.gerarDocControleMudanca = function(item) {
+        /*
         let url = "../api/v1/g4f/controleMudanca/"+item.id+"?download=1";
         let wd = window.open(url, "_blank");
         setTimeout(() => {
             wd.close();
         }, 200);
+        //*/
+        APIService.getData("/g4f/controleMudanca/"+item.id+"?download=1", function(resp) {
+            if(resp.data.arquivo) {
+                window.open("../"+resp.data.arquivo, "_blank");
+            }
+        });
     }
 
     $scope.initCadDetCM = function() {

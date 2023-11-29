@@ -250,11 +250,18 @@ create table if not exists sistema_notificacao (
 	data_cadastro timestamp
 );
 
+create table if not exists ticket_status (
+	id serial primary key,
+	nome varchar(256),
+	cor varchar(128),
+	ativo integer
+);
+
 CREATE TABLE if not exists ticket (
 	id serial primary key,
 	id_usuario integer references usuario(id),
 	id_responsavel integer references usuario(id),
-	id_situacao integer,
+	id_situacao integer references ticket_status(id),
 	titulo varchar(1024),
 	descricao text,
 	data_cadastro timestamp not null,
@@ -269,12 +276,7 @@ CREATE TABLE if not exists ticket_evento (
   data_cadastro timestamp NOT NULL
 );
 
-create table if not exists ticket_status (
-	id serial primary key,
-	nome varchar(256),
-	cor varchar(128),
-	ativo integer
-);
+
 
 CREATE TABLE if not exists controle_mudancas (
 	id serial primary key,

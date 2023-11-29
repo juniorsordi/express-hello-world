@@ -17,7 +17,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     }
 
     $scope.loadTicketData = function(id) {
-        APIService.getData("/../tickets/" + id, function (resp) {
+        APIService.getData("/tickets/" + id, function (resp) {
             $scope.ticket = resp.data[0];
         });
     }
@@ -25,15 +25,15 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     $scope.addTicketReply = function(form) {
         //form.user_id = $scope.User.id;
         console.log(form);
-        APIService.postData("/../tickets/" + $routeParams.id +"/event", form, function(res) {
+        APIService.postData("/g4f/tickets/" + $routeParams.id +"/event", form, function(res) {
             $scope.loadTicketData($routeParams.id);
             $scope.form = {};
         });
     }
     ///############################################################################################
     $scope.initDashboard = function () {
-        $scope.arrStatusDash = $resource("api/v1/tickets/dashboard/status").query();
-        $scope.arrLastTickets = $resource("api/v1/tickets/dashboard/lastTickets").query();
+        APIService.getData("/g4f/tickets/dashboard/status", function(resp) { $scope.arrStatusDash = resp.data });
+        APIService.getData("/g4f/tickets/dashboard/lastTickets", function(resp) { $scope.arrLastTickets = resp.data; });
     }
     ///############################################################################################
     $scope.initProjectsView = function () {
@@ -47,14 +47,14 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     ///############################################################################################
     $scope.userTypeahead = function (value) {
         if (value.length > 2) {
-            $http.get(`api/v1/sistema/usuarios?filtro=${value}`, { filter: value }).then(function (res) {
+            $http.get(`../api/v1/sistema/usuarios?filtro=${value}`, { filter: value }).then(function (res) {
                 $scope.type1.setData(res.data);
             });
         }
     }
     ///############################################################################################
     $scope.salvarTicket = function(form) {
-        APIService.postData("/tickets", form, function(response) {
+        APIService.postData("/g4f/tickets", form, function(response) {
             if(response.data) {
                 console.log(response.data);
             }

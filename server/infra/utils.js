@@ -46,125 +46,127 @@ const gerarControleMudancaTemplate = function(dados) {
 }
 
 const testeDocx = async function(item) {
-    let documentOptions = { "orientation": "portrait", header: true, footer: true, pageNumber: true, table: { row: { cantSplit: true } }, };
-    let headerHTMLString = `<img src="https://virtual.qa.tce.sc.gov.br/web/image/logoTCESC.png" width="128" /><br>`;
-    let footerHTMLString = "";
-    const filePath = './output/'+item.numero_os+'.docx';
-    ///
-    let htmlDetalhamento = `<div>`;
-    let i = 1;
-    for(const detalhe of item.detalhamentos) {
-        htmlDetalhamento += `<h3>3.${i} - ${detalhe.nome_detalhamento}</h3>
-        <table align="center" class="table table-bordered">
-            <tr><th style="background-color: #c9c9c9;">Breve descrição da funcionalidade:</th><td>${detalhe.nome_detalhamento}</td></tr>
-            <tr><th colspan="2" style="background-color: #c9c9c9;">Passo a Passo de acesso a Funcionalidade</th></tr>
-            <tr><th colspan="2">${ (detalhe.passo_passo == null ? "" : detalhe.passo_passo)}</th></tr>
-            <tr><th colspan="2" style="background-color: #c9c9c9;">Descrição da Manutenção</th></tr>
-            <tr>
-                <th>${detalhe.detalhamento}</th>
-                <td>
-                    ${detalhe.tipo}
-                </td>
-            </tr>
-            <tr><th colspan="2" style="background-color: #c9c9c9;">Interface do usuário</th></tr>
-            <tr><th colspan="2">${ (detalhe.interface == null ? "" : detalhe.interface)}</th></tr>
-        </table>
-        <br>
-        `;
-        i++;
-    }
-    htmlDetalhamento += `</div>`;
-    ///
-    let htmlString = `<!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <meta charset="UTF-8" />
-                <title>Document</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
-            </head>
-            <body>
-                <h2 style="text-align: center;">Controle de Mudanças</h2>
-                <table align="center" class="table table-bordered">
-                    <tr>
-                        <th colspan="4" style="background-color: #f1878f;text-align: center;">Histórico de revisões</th>
-                    </tr>
-                    <tr>
-                        <th align="center" style="background-color: #f1878f;text-align: center;">Data</th>
-                        <th align="center" style="background-color: #f1878f;text-align: center;">Versão</th>
-                        <th align="center" style="background-color: #f1878f;text-align: center;">Descrição</th>
-                        <th align="center" style="background-color: #f1878f;text-align: center;">Autor</th>
-                    </tr>
-                    <tr>
-                        <td>27/11/2023</td>
-                        <td>1.0</td>
-                        <td>Criação do Documento</td>
-                        <td>${item.nome_analista}</td>
-                    </tr>
-                </table>
-                <br>
-                <h3>1 - IDENTIFICAÇÃO</h3>
-                <table align="center" class="table table-bordered">
-                    <tr><th style="background-color: #c9c9c9;">Nº OS</th><td>${item.numero_os}</td></tr>
-                    <tr><th style="background-color: #c9c9c9;">Sistema (Sigla-Descrição)</th><td>${item.sistema}</td></tr>
-                    <tr><th style="background-color: #c9c9c9;">Solicitante (Nome/Área)</th><td>${item.solicitante}</td></tr>
-                    <tr><th style="background-color: #c9c9c9;">Unidade do Requisitante</th><td>${item.unidade}</td></tr>
-                    <tr><th style="background-color: #c9c9c9;">Analista Responsável</th><td>${item.nome_analista}</td></tr>
-                    <tr><th style="background-color: #c9c9c9;">Tipo da Demanda</th><td>${item.tipo_demanda}</td></tr>
-                </table>
-                <h3>2 - DESCRIÇÃO DA SOLICITAÇÃO</h3>
-                <div style="text-align: 'justify';">
-                    ${item.descricao}
-                </div>
-                <h3>3 - DETALHAMENTO DAS FUNCIONALIDADES A SEREM EXECUTADAS</h3>
-                <div>
-                    ${htmlDetalhamento}
-                    <hr>
-                    Alterações no Banco de Dados
+    //if(fs.existsSync("./public/G4F/docs/"+item.numero_os+".html")) {
+    //    return { arquivo: `G4F/docs/${item.numero_os}.html`}
+    //} else {
+        let documentOptions = { "orientation": "portrait", header: true, footer: true, pageNumber: true, table: { row: { cantSplit: true } }, };
+        let headerHTMLString = `<img src="https://virtual.qa.tce.sc.gov.br/web/image/logoTCESC.png" width="128" /><br>`;
+        let footerHTMLString = "";
+        const filePath = './output/'+item.numero_os+'.docx';
+        ///
+        let htmlDetalhamento = `<div>`;
+        let i = 1;
+        for(const detalhe of item.detalhamentos) {
+            htmlDetalhamento += `<h3>3.${i} - ${detalhe.nome_detalhamento}</h3>
+            <table align="center" class="table table-bordered">
+                <tr><th style="background-color: #c9c9c9;">Breve descrição da funcionalidade:</th><td>${detalhe.nome_detalhamento}</td></tr>
+                <tr><th colspan="2" style="background-color: #c9c9c9;">Passo a Passo de acesso a Funcionalidade</th></tr>
+                <tr><th colspan="2">${ (detalhe.passo_passo == null ? "" : detalhe.passo_passo)}</th></tr>
+                <tr><th colspan="2" style="background-color: #c9c9c9;">Descrição da Manutenção</th></tr>
+                <tr>
+                    <th>${detalhe.detalhamento}</th>
+                    <td>
+                        ${detalhe.tipo}
+                    </td>
+                </tr>
+                <tr><th colspan="2" style="background-color: #c9c9c9;">Interface do usuário</th></tr>
+                <tr><th colspan="2">${ (detalhe.interface == null ? "" : detalhe.interface)}</th></tr>
+            </table>
+            <br />
+            Alterações no Banco de Dados
+            <table align="center" class="table table-bordered">
+                <tr><th style="background-color: #c9c9c9;text-align: center;">Descrição da Manutenção</th></tr>
+                <tr><td>${ (detalhe.alteracao_banco == null ? 'Não houve' : detalhe.alteracao_banco) }</td></tr>
+            </table>
+            <br /><br />
+            `;
+            i++;
+        }
+        htmlDetalhamento += `</div>`;
+        ///
+        let htmlString = `<!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <meta charset="UTF-8" />
+                    <title>Document</title>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+                </head>
+                <body>
+                    <h2 style="text-align: center;">Controle de Mudanças</h2>
                     <table align="center" class="table table-bordered">
-                        <tr><th style="background-color: #c9c9c9;text-align: center;">Descrição da Manutenção</th></tr>
-                        <tr><td>${ (item.alteracao_banco == null ? 'Não houve' : item.alteracao_banco) }</td></tr>
+                        <tr>
+                            <th colspan="4" style="background-color: #f1878f;text-align: center;">Histórico de revisões</th>
+                        </tr>
+                        <tr>
+                            <th align="center" style="background-color: #f1878f;text-align: center;">Data</th>
+                            <th align="center" style="background-color: #f1878f;text-align: center;">Versão</th>
+                            <th align="center" style="background-color: #f1878f;text-align: center;">Descrição</th>
+                            <th align="center" style="background-color: #f1878f;text-align: center;">Autor</th>
+                        </tr>
+                        <tr>
+                            <td>27/11/2023</td>
+                            <td>1.0</td>
+                            <td>Criação do Documento</td>
+                            <td>${item.nome_analista}</td>
+                        </tr>
                     </table>
-
-                </div>
-                <h3>4 - INFORMAÇÕES COMPLEMENTARES</h3>
-                <div>
+                    <br />
+                    <h3>1 - IDENTIFICAÇÃO</h3>
                     <table align="center" class="table table-bordered">
-                        <tr><th style="background-color: #c9c9c9;">Tecnologia</th><td>${item.nome_tecnologia}</td></tr>
-                        <tr><th style="background-color: #c9c9c9;">Quantidade de Profissionais alocados na Execução da OS/ iteração</th><td>${item.total_alocados}</td></tr>
-                        <tr><th style="background-color: #c9c9c9;">Tempo Gasto</th><td>${item.tempo_gasto} ${item.tempo_gasto_medida}</td></tr>
+                        <tr><th style="background-color: #c9c9c9;">Nº OS</th><td>${item.numero_os}</td></tr>
+                        <tr><th style="background-color: #c9c9c9;">Sistema (Sigla-Descrição)</th><td>${item.sistema}</td></tr>
+                        <tr><th style="background-color: #c9c9c9;">Solicitante (Nome/Área)</th><td>${item.solicitante}</td></tr>
+                        <tr><th style="background-color: #c9c9c9;">Unidade do Requisitante</th><td>${item.unidade}</td></tr>
+                        <tr><th style="background-color: #c9c9c9;">Analista Responsável</th><td>${item.nome_analista}</td></tr>
+                        <tr><th style="background-color: #c9c9c9;">Tipo da Demanda</th><td>${item.tipo_demanda}</td></tr>
                     </table>
-                </div>
-                <div class="page-break" style="page-break-before: always"></div>
-                <h3>5 - APROVAÇÃO</h3>
-                <div>
-                        O detalhamento acima está em conformidade com as nossas reais necessidades.
-                        <table align="center" class="table table-bordered" cellpadding=0 cellspacing=0>
-                            <tr><th style="background-color: #c9c9c9;" colspan="2">ASSINATURAS</th></tr>
-                            <tr><th style="background-color: #c9c9c9;">Fiscal Requisitante do Contrato</th><th style="background-color: #c9c9c9;">Fiscal Técnico do Contrato</th></tr>
-                            <tr>
-                                <td style="text-align: center;"><br><br>_____________________<br>
-                                Nome do Fiscal<br>
-                                Matrícula nº</td>
-                                <td style="text-align: center;"><br><br>_____________________<br>
-                                Nome do Fiscal<br>
-                                Matrícula nº</td>
-                            </tr>
-                            <tr><th style="background-color: #c9c9c9;text-align: center;" colspan="2">Brasília, _____ de _____________________ de 20__</th></tr>
-                            <tr><th style="background-color: #f1878f;" colspan="2">&nbsp;</th></tr>
+                    <h3>2 - DESCRIÇÃO DA SOLICITAÇÃO</h3>
+                    <div style="text-align: 'justify';">
+                        ${item.descricao}
+                    </div>
+                    <h3>3 - DETALHAMENTO DAS FUNCIONALIDADES A SEREM EXECUTADAS</h3>
+                    <div>
+                        ${htmlDetalhamento}
+                    </div>
+                    <h3>4 - INFORMAÇÕES COMPLEMENTARES</h3>
+                    <div>\t\t\t<table align="center" class="table table-bordered">
+                            <tr><th style="background-color: #c9c9c9;">Tecnologia</th><td>${item.nome_tecnologia}</td></tr>
+                            <tr><th style="background-color: #c9c9c9;">Quantidade de Profissionais alocados na Execução da OS/ iteração</th><td>${item.total_alocados}</td></tr>
+                            <tr><th style="background-color: #c9c9c9;">Tempo Gasto</th><td>${item.tempo_gasto} ${item.tempo_gasto_medida}</td></tr>
                         </table>
-                </div>
-            </body></html>`;
-    ///
-    fs.writeFileSync("./test.html", htmlString);
-    const fileBuffer = await HTMLtoDOCX(htmlString, headerHTMLString, documentOptions, footerHTMLString);
-    fs.writeFile(filePath, fileBuffer, (error) => {
-    if (error) {
-      console.log('Docx file creation failed');
-      console.log(error);
-      return;
-    }
-    console.log('Docx file created successfully');
-  });
+                    </div>
+                    <div class="page-break" style="page-break-before: always"></div>
+                    <h3>5 - APROVAÇÃO</h3>
+                    <div>
+                            O detalhamento acima está em conformidade com as nossas reais necessidades.
+                            <table align="center" class="table table-bordered" cellpadding=0 cellspacing=0>
+                                <tr><th style="background-color: #c9c9c9;" colspan="2">ASSINATURAS</th></tr>
+                                <tr><th style="background-color: #c9c9c9;">Fiscal Requisitante do Contrato</th><th style="background-color: #c9c9c9;">Fiscal Técnico do Contrato</th></tr>
+                                <tr>
+                                    <td style="text-align: center;"><br />_____________________<br />\nNome do Fiscal<br />\nMatrícula nº</td>
+                                    <td style="text-align: center;"><br />_____________________<br />\nNome do Fiscal<br />\nMatrícula nº</td>
+                                </tr>
+                                <tr><th style="background-color: #c9c9c9;text-align: center;" colspan="2">Brasília, _____ de _____________________ de 20__</th></tr>
+                                <tr><th style="background-color: #f1878f;" colspan="2"></th></tr>
+                            </table>
+                    </div>
+                </body></html>`;
+        ///
+        fs.writeFileSync("./test.html", htmlString);
+        fs.writeFileSync("./public/G4F/docs/"+item.numero_os+".html", htmlString);
+        /*
+        const fileBuffer = await HTMLtoDOCX(htmlString, headerHTMLString, documentOptions, footerHTMLString);
+        fs.writeFile(filePath, fileBuffer, (error) => {
+            if (error) {
+                console.log('Docx file creation failed');
+                console.log(error);
+                return;
+            }
+            console.log('Docx file created successfully');
+        });//*/
+        return { arquivo: `G4F/docs/${item.numero_os}.html`}
+    //}
+    
 }
 
 const gerarControleMudancaTemplateG4F = function(dados) {

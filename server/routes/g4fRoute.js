@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const moment = require("moment");
+const auth = require("../middleware/auth");
 const service = require("../services/G4FService");
 const utils = require("../infra/utils");
 const database = require("../infra/database");
@@ -85,9 +86,9 @@ router.get("/controleMudanca/:id", async function (req, res, next) {
         if(req.query.download == 1) {
             let item = info[0];
             //let file = utils.gerarControleMudancaTemplateG4F(info[0]);
-            utils.testeDocx(item);
-            res.download("./output/"+item.numero_os+".docx");
-            //res.json(info[0]);
+            let temp = await utils.testeDocx(item);
+            //res.download("./output/"+item.numero_os+".docx");
+            res.json(temp);
         } else {
             res.status(200).json(info[0]);
         }
@@ -163,6 +164,62 @@ router.get("/rh/ferias", async function (req, res, next) {
     try {
         let info = await service.listarFerias();
         res.status(200).json(info);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/tickets/dashboard/status", auth, async function (req, res, next) {
+    try {
+        res.json(await service.getDashboardStatusTickets());
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/tickets/dashboard/lastTickets", auth, async function (req, res, next) {
+    try {
+        res.json(await service.getDashboardLastTickets());
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/tickets/list", auth, async function (req, res, next) {
+    try {
+        res.json(await service.getAllTickets());
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/tickets/:id", auth, async function (req, res, next) {
+    try {
+        res.json(await service.getTicketByID(req.params.id));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.post("/tickets/", auth, async function (req, res, next) {
+    try {
+        req.body.user_id = req.cookies.IDUser;
+        res.json(await service.saveTicket(req.body, req.params.id));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.post("/tickets/:id/event", auth, async function (req, res, next) {
+    try {
+        req.body.user_id = req.cookies.IDUser;
+        res.json(await service.saveTicketEvent(req.body, req.params.id));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);

@@ -124,9 +124,9 @@ async function salvarControleMudanca(fields, idUser) {
 }
 
 async function salvarDetalhamentoControleMudanca(fields, idUser) {
-    let SQL = `INSERT INTO g4f.controle_mudancas_detalhamento (id, id_controle_mudancas, nome_detalhamento, passo_passo, tipo, detalhamento, interface, data_cadastro, id_usuario_cadastro) 
-    VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, now(), $7) RETURNING *`;
-    let campos = [fields.id_controle_mudanca,fields.nome_detalhamento,fields.passo_passo,fields.tipo,fields.detalhamento,fields.interface, idUser];
+    let SQL = `INSERT INTO g4f.controle_mudancas_detalhamento (id, id_controle_mudancas, nome_detalhamento, passo_passo, tipo, detalhamento, interface, data_cadastro, id_usuario_cadastro, alteracao_banco) 
+    VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, now(), $7, $8) RETURNING *`;
+    let campos = [fields.id_controle_mudanca,fields.nome_detalhamento,fields.passo_passo,fields.tipo,fields.detalhamento,fields.interface, idUser, fields.alteracao_banco];
     return await database.one(SQL,campos);
     //return fields;
 }
@@ -248,6 +248,48 @@ async function listarDadosDashboard() {
     return data[0];
 }
 
+async function getAllTickets() {
+    const data = await database.any(`SELECT a.*, b.nome as userName FROM g4f.ticket a
+        LEFT JOIN usuario b ON (b.id = a.id_usuario)
+        ORDER BY a.id DESC`);
+    return data;
+}
+
+async function getTicketByID(id) {
+    const data = await database.any(`SELECT a.*, b.nome as userName, b.email FROM g4f.ticket a
+        LEFT JOIN g4f.usuario b ON (b.id = a.id_usuario)
+        WHERE a.id = $1`,[id]);
+    const events = await database.any(`SELECT a.*, b.nome as userName, b.email FROM g4f.ticket_evento a
+    LEFT JOIN g4f.usuario b ON (b.id = a.id_usuario)
+    WHERE id_ticket = $1 
+    ORDER BY id ASC`,[id]);
+    data[0]['eventos'] = events;
+    return data;
+}
+
+async function saveTicketEvent(data, id) {
+    return database.one("INSERT INTO g4f.ticket_evento VALUES (DEFAULT, $1, $2, $3, now()) RETURNING *",[id, data.user_id, data.event]);
+}
+
+async function saveTicket(fields) {
+    return database.one("INSERT INTO g4f.ticket VALUES (DEFAULT, $1, null, 1, $2, $3, now(), null) RETURNING *",[ fields.user_id, fields.titulo, fields.event]);
+}
+
+async function getDashboardStatusTickets() {
+    const data = await database.any(`SELECT b.nome as status, b.cor, count(a.id) as total  from g4f.ticket a
+        left join g4f.ticket_status b on(b.id = a.id_situacao and b.ativo = 1)
+        group by b.nome, b.cor, b.id
+        ORDER BY b.id`);
+    return data;
+}
+
+async function getDashboardLastTickets() {
+    const data = await database.any(`SELECT a.*, b.nome as userName FROM g4f.ticket a
+        LEFT JOIN g4f.usuario b ON (b.id = a.id_usuario)
+        ORDER BY a.id DESC`);
+    return data;
+}
+
 module.exports = {
     listProjects,
     loginSistema,
@@ -267,4 +309,10 @@ module.exports = {
     salvarUsuario,
     listarTecnologias,
     listarDadosDashboard,
+    getAllTickets,
+    getTicketByID,
+    saveTicketEvent,
+    getDashboardStatusTickets,
+    getDashboardLastTickets,
+    saveTicket,
 }
