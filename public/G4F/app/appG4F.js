@@ -114,7 +114,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $scope.modules = {
         os: true,
         tickets: true,
-        rh: false,
+        rh: true,
         system: false
     };
 
