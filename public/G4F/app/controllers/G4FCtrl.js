@@ -1,4 +1,4 @@
-app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService, $modal) {
+app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService, $modal, $location) {
 
     $scope.listarControleCadastrados = function() {
         APIService.getData("/g4f/controleMudanca/", function(resp) {
@@ -121,12 +121,16 @@ app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService
     //
     $scope.gerarControleMudanca = function(item) {
         $rootScope.infoCM = item;
-        goto('/relatorio/modelo/1');
+        goto('/relatorio/modelo/1?id='+item.id);
     }
 
     $scope.initRelatorio = function() {
-        $scope.data = $rootScope.infoCM;
-        console.log($scope.data);
+        let itemId = $location.search()['id'];
+        APIService.getData("/g4f/controleMudanca/"+itemId+"?download=1", function(resp) {
+            if(resp.data.arquivo) {
+                $scope.relatorioHTML = resp.data.arquivo;
+            }
+        });
     }
 
     $scope.gerarDocControleMudanca = function(item) {
@@ -139,7 +143,14 @@ app.controller("G4FCtrl", function ($scope, $rootScope, $routeParams, APIService
         //*/
         APIService.getData("/g4f/controleMudanca/"+item.id+"?download=1", function(resp) {
             if(resp.data.arquivo) {
-                window.open("../"+resp.data.arquivo, "_blank");
+                //window.open("../"+resp.data.arquivo, "_blank");
+
+                var mywindow = window.open('', '_blank');
+                mywindow.document.write(resp.data.arquivo);
+                mywindow.document.close(); // necessary for IE >= 10
+                mywindow.focus(); // necessary for IE >= 10*/
+                //mywindow.print();
+                //mywindow.close();
             }
         });
     }

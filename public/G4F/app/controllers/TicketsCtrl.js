@@ -9,7 +9,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     }
     ///############################################################################################
     $scope.initTickets = function() {
-        $scope.ticketsList = APIService.resourceQuery("/tickets/list");
+        $scope.ticketsList = APIService.resourceQuery("/g4f/tickets/list");
     }
     ///############################################################################################
     $scope.initViewTicket = function() {
@@ -17,7 +17,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     }
 
     $scope.loadTicketData = function(id) {
-        APIService.getData("/tickets/" + id, function (resp) {
+        APIService.getData("/g4f/tickets/" + id, function (resp) {
             $scope.ticket = resp.data[0];
         });
     }
@@ -47,7 +47,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     ///############################################################################################
     $scope.userTypeahead = function (value) {
         if (value.length > 2) {
-            $http.get(`../api/v1/sistema/usuarios?filtro=${value}`, { filter: value }).then(function (res) {
+            $http.get(`../api/v1/g4f/sistema/usuarios?filtro=${value}`, { filter: value }).then(function (res) {
                 $scope.type1.setData(res.data);
             });
         }
@@ -61,14 +61,6 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
         })
     }
     ///############################################################################################
-    $scope.saveNewProject = function (form) {
-        form.resources = $scope.selectedUsers;
-        APIService.postData("/project/new", form, function (res) {
-            if (res.data.affectedRows > 0) {
-                goto("/projects");
-            }
-        });
-    }
     ///############################################################################################
     $scope.asyncSelected = null;
     ///############################################################################################
@@ -92,7 +84,7 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     ///############################################################################################
     $scope.getAddress = function (viewValue) {
         var params = { address: viewValue, sensor: false };
-        return $http.get('api/v1/sistema/usuarios', { params: params }).then(function (res) {
+        return $http.get('api/v1/g4f/sistema/usuarios', { params: params }).then(function (res) {
             return res.data.results;
         });
     };

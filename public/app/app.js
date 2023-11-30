@@ -87,6 +87,7 @@ app.factory('loadingInterceptor', function ($rootScope, $q) {
 	    request: function (config) {
 	    	$rootScope.stackDeCarga = $rootScope.stackDeCarga + 1;
 	    	$rootScope.carregando = !config.ignoreLoading;
+            $rootScope.logoutForced = false;
 	    	return config;
 	    },
 	    response: function (response) {
@@ -97,8 +98,13 @@ app.factory('loadingInterceptor', function ($rootScope, $q) {
 	    	return response;
 	    },
 	    responseError: function (rejection) {
+            if(rejection.status == 401) {
+                location.href = "login.html";
+                //$rootScope.$scope.deslogar();
+            }
 	    	$rootScope.stackDeCarga = $rootScope.stackDeCarga - 1;
 	    	$rootScope.carregando = false;
+            $rootScope.logoutForced = true;
 	    	return $q.reject(rejection);
 	    }
 	  };
@@ -119,6 +125,7 @@ app.config(['$compileProvider', function ($compileProvider) {
 app.run(function ($rootScope, $route, $http, $routeParams) {
     $rootScope.carregando = false;
     $rootScope.stackDeCarga = 0;
+    $rootScope.logoutForced = false;
 });
 ///#####################################################################################################
 var myModal;

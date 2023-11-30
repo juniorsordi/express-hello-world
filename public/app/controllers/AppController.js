@@ -30,6 +30,10 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
     $rootScope.Usuario = $scope.loggedUser;
 
     $scope.initApp = function () {
+
+        if($rootScope.logoutForced) {
+            $scope.deslogar();
+        }
         /*
         if($location.host() == 'localhost') {
             $scope.Usuario = $scope.loggedUser;
@@ -76,11 +80,22 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
         });
     }
     ///############################################################################################
+    $scope.$on("updateListTasks", function () {
+        $scope.deslogar();
+    });
+    ///############################################################################################
+    $scope.verificaHttpStatus = function(resp) {
+        if(resp.status == 401) {
+            //$rootScope.$broadcast('logoutForced');
+            $scope.deslogar();
+        }
+    }
+    ///############################################################################################
     $scope.verificarNotificacoesMensagesApp = function() {
         APIService.getData("/sistema/notificacoes", function(response) { $scope.arrNotificacoes = response.data; });
         APIService.getData("/sistema/mensagens", function(response) { $scope.arrMensagens = response.data; });
 
-        APIService.getData("/sistema/menu_lateral", function(response) { $scope.arrSideMenu = response.data; });
+        APIService.getData("/sistema/menu_lateral", function(response) { $scope.verificaHttpStatus(response); $scope.arrSideMenu = response.data;  });
     }
     ///############################################################################################
     $scope.changeLocale = function (locale) {

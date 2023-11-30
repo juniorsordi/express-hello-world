@@ -6,7 +6,7 @@ const service = require("../services/sistemaService");
 const utils = require("../infra/utils");
 
 
-router.get("/notificacoes", async function (req, res, next) {
+router.get("/notificacoes", auth, async function (req, res, next) {
     try {
         res.json(await service.listarNotificacoesNaoLidas(req.cookies.IDUser));
     } catch (err) {
@@ -15,7 +15,7 @@ router.get("/notificacoes", async function (req, res, next) {
     }
 });
 
-router.get("/mensagens", async function (req, res, next) {
+router.get("/mensagens", auth, async function (req, res, next) {
     try {
         res.json(await service.listarMensagensUsuario(req.cookies.IDUser));
     } catch (err) {
@@ -24,7 +24,7 @@ router.get("/mensagens", async function (req, res, next) {
     }
 });
 
-router.get("/menu_lateral", async function (req, res, next) {
+router.get("/menu_lateral", auth, async function (req, res, next) {
     try {
         res.json(await service.gerarItemsMenuLateral(req.cookies.IDUser));
     } catch (err) {
@@ -33,7 +33,7 @@ router.get("/menu_lateral", async function (req, res, next) {
     }
 });
 
-router.get("/dashboard", async function (req, res, next) {
+router.get("/dashboard", auth, async function (req, res, next) {
     try {
         res.json(await service.dashboardSistema(req.cookies.user.id_empresa, req.cookies.IDUser));
     } catch (err) {
@@ -42,7 +42,7 @@ router.get("/dashboard", async function (req, res, next) {
     }
 });
 
-router.get("/usuarios", async function (req, res, next) {
+router.get("/usuarios", auth, async function (req, res, next) {
     try {
         res.json(await service.listarUsuarios(req.cookies));
     } catch (err) {

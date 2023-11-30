@@ -24,8 +24,23 @@
                 box-shadow: 0;
             }
         }
+
+        @media print {
+  body {
+    visibility: hidden;
+  }
+  #section-to-print {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
     </style>
-<page size="A4" class="print" style="padding: 3mm;page-break-after:always;">
+<page size="A4" class="print" style="padding: 3mm;page-break-after:always;width: 80vw;" id="section-to-print">
+    <div ng-bind-html="relatorioHTML"></div>
+</page>
+<page size="A4" class="print hide" style="padding: 3mm;page-break-after:always;" id="section-to-print0">
     <img src="../assets/img/logo_tce.png" alt="" height="128">
     <br>
 

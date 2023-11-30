@@ -90,8 +90,12 @@ const testeDocx = async function(item) {
                     <meta charset="UTF-8" />
                     <title>Document</title>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+                    <style>body { font-size: 12px !important; }</style>
                 </head>
                 <body>
+                    <header>
+                        <img src="https://virtual.qa.tce.sc.gov.br/web/image/logoTCESC.png" width="64" /><br>
+                    </header>
                     <h2 style="text-align: center;">Controle de Mudanças</h2>
                     <table align="center" class="table table-bordered">
                         <tr>
@@ -164,7 +168,8 @@ const testeDocx = async function(item) {
             }
             console.log('Docx file created successfully');
         });//*/
-        return { arquivo: `G4F/docs/${item.numero_os}.html`}
+        //return { arquivo: `G4F/docs/${item.numero_os}.html`}
+        return { arquivo: htmlString }
     //}
     
 }

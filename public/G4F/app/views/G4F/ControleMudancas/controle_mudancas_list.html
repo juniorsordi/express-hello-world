@@ -30,11 +30,10 @@
                                     <td>{{ item.total_alocados }}</td>
                                     <td>{{ item.tempo_gasto }} {{ item.tempo_gasto_medida }}</td>
                                     <td width="6%">
-                                        <a href="#!/controle_mudancas/{{ item.id }}/detalhe"><i class="fa fa-info-circle" aria-hidden="true" title="Adicionar detalhamento"></i></a>
+                                        <a href="#!/controle_mudancas/{{ item.id }}/detalhe"><i class="fa fa-plus-square" aria-hidden="true" title="Adicionar detalhamento"></i></a>
                                         
-                                        <i class="fa fa-plus-square" aria-hidden="true" title="Visualizar detalhamento" ng-click="addDetalhamento(item)"></i>
-                                        <i class="fa fa-file-word-o" aria-hidden="true" title="Gerar Arquivo Word" ng-click="gerarDocControleMudanca(item)"></i>
-                                        <i class="fa fa-file" aria-hidden="true" title="Gerar Arquivo" ng-click="gerarControleMudanca(item)"></i>
+                                        <i class="fa fa-info-circle" aria-hidden="true" title="Visualizar detalhamento" ng-click="addDetalhamento(item)"></i>
+                                        <i class="fa fa-file" aria-hidden="true" title="Gerar Arquivo" ng-click="gerarDocControleMudanca(item)"></i>
                                     </td>
                                 </tr>
                             </tbody>

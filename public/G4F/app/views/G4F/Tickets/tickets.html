@@ -17,9 +17,9 @@
                         <tbody>
                             <tr ng-repeat="ticket in ticketsList">
                                 <th scope="row" ng-click="showTicket(ticket.id)">{{ ticket.id }}</th>
-                                <td>{{ ticket.title }}</td>
-                                <td>{{ ticket.creation_date | date:'dd/MM/yyyy hh:mm' }}</td>
-                                <td>{{ ticket.userName }}</td>
+                                <td>{{ ticket.titulo }}</td>
+                                <td>{{ ticket.data_cadastro | date:'dd/MM/yyyy hh:mm' }}</td>
+                                <td>{{ ticket.username }}</td>
                             </tr>
                         </tbody>
                     </table>
