@@ -1,4 +1,4 @@
-app.controller("FinancesController", function ($scope, $routeParams, $resource, APIService, $http, $uibModal, $modal, $ocModal, Upload, $location) {
+app.controller("FinancesController", function ($scope, $routeParams, $resource, APIService, $modal, Upload, $location) {
     $scope.versao = "F 1.0.1";
     $scope.form = {};
     $scope.filtro = {};
@@ -398,7 +398,9 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     //$scope.init();
 });
 ///#########################################################################################################################
-app.controller("FinancesInvoicesCtrl", function ($scope, $routeParams, $resource, APIService, $uibModal, $modal, $ocModal) {
+
+///#########################################################################################################################
+app.controller("FinancesInvoicesCtrl", function ($scope, APIService) {
     $scope.form = {};
 
     $scope.init = function () {
@@ -426,7 +428,7 @@ app.controller("FinancesInvoicesCtrl", function ($scope, $routeParams, $resource
     $scope.init();
 });
 ///#########################################################################################################################
-app.controller("FinancesCategoriesCtrl", function ($scope, $routeParams, $resource, APIService, $modal){
+app.controller("FinancesCategoriesCtrl", function ($scope, APIService, $modal){
     $scope.form = {};
 
     var modalCategory = $modal({ templateUrl: 'app/views/Finances/Modals/ModalNovaCategoria.html', show: false, scope: $scope, });

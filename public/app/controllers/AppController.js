@@ -31,9 +31,6 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
 
     $scope.initApp = function () {
 
-        if($rootScope.logoutForced) {
-            $scope.deslogar();
-        }
         /*
         if($location.host() == 'localhost') {
             $scope.Usuario = $scope.loggedUser;
@@ -45,7 +42,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
                 
             });
         } else {//*/
-            if (localStorage.getItem('user')) {
+            if (localStorage.getItem('user') && getCookie("token")) {
                 APIService.getData("/../auth/checkToken", function (response) {
                     if(!response.data) {
                         location.href = "login.html";
@@ -80,8 +77,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
         });
     }
     ///############################################################################################
-    $scope.$on("updateListTasks", function () {
-        $scope.deslogar();
+    $scope.$on("logoutForced", function () {
+        //$scope.deslogar();
     });
     ///############################################################################################
     $scope.verificaHttpStatus = function(resp) {

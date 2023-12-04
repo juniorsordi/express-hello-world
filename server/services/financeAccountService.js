@@ -3,6 +3,7 @@ const database = require("../infra/database");
 const controller = require("../controllers/finances");
 //const ofx = require('../infra/ofx');
 //, (SELECT json_agg(json_build_object('key', key, 'value', value)) FROM financas_bancos WHERE id = a.banco::int) as banco
+
 async function getContasBancarias(idEmpresa) {
     var startDate = moment().startOf('month').format('YYYY-MM-DD');
     var hoje = moment().format('YYYY-MM-DD');
@@ -121,6 +122,11 @@ async function saveAccountMoviment(fields, idEmpresa) {
     return registro;
 }
 
+async function deleteAccountMoviment(id) {
+    let SQL = `DELETE FROM financas_movimentacao WHERE id = $1 RETURNING *`;
+    return await database.one(SQL, [id]);
+}
+
 async function testeOFX(idEmpresa) {
     /*
     const file = fs.readFileSync('extrato_202307.ofx', 'utf8')
@@ -148,5 +154,6 @@ module.exports = {
     saveAccount,
     saveCategory,
     saveAccountMoviment,
+    deleteAccountMoviment,
     testeOFX,
 }

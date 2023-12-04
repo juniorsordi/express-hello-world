@@ -98,13 +98,8 @@ app.factory('loadingInterceptor', function ($rootScope, $q) {
 	    	return response;
 	    },
 	    responseError: function (rejection) {
-            if(rejection.status == 401) {
-                location.href = "login.html";
-                //$rootScope.$scope.deslogar();
-            }
 	    	$rootScope.stackDeCarga = $rootScope.stackDeCarga - 1;
 	    	$rootScope.carregando = false;
-            $rootScope.logoutForced = true;
 	    	return $q.reject(rejection);
 	    }
 	  };

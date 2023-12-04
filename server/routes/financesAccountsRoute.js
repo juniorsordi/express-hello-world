@@ -41,4 +41,8 @@ router.post('/:id/movimentacoes', async function (req, res, next) {
     res.json(await accountsService.saveAccountMoviment(req.body, req.cookies.user.id_empresa));
 });
 
+router.delete('/movimentacao/:id', async function (req, res, next) {
+    res.json(await accountsService.deleteAccountMoviment(req.params.id));
+});
+
 module.exports = router;
