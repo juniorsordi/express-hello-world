@@ -19,15 +19,12 @@ app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
     $scope.initSubsctription = function() {
         var params = $location.$$search;
         var idPlan = params.plan;
-        //console.log(idPlan);
         $scope.plan = $scope.plans.find( e => e.id == idPlan);
-        console.log($scope.plan);
     }
 
     $scope.setSelectedPlan = function(id) {
         $scope.planSelected.id = id
         $scope.plan = $scope.plans.find(e => e.id == id);
-        console.log($scope.plan);
         $scope.incrementStep();
     }
 
@@ -41,40 +38,11 @@ app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
     }
 
     $scope.salvarDados = function() {
-        
-        //*
-        /*
-        var data = {
-            id: 1,
-            nome: "Dilson Sordi Junior",
-            foto: "images/faces/face9.jpg",
-            area: 'Informática/TI',
-            rating: 3,
-            email: "juniorsordi@gmail.com"
-        };
-        //*/
         var data = $scope.form;
         data.rating = 0;
         data.foto = "";
-        console.log(data);
         
-        //const collection = firestore.collection('prestadores');
         collection.add(data);
-        //var userId = "" + Math.random()*1000;
-        //db.ref('usuarios/' + userId.substr(0,3)).set(data);
-        /*
-        var userId = 1;
-        var name = "Dilson Sordi Junior";
-        var email = "juniorsordi@gmail.com";
-        var imageUrl = "images/faces/face9.jpg";
-        firebase.database().ref('usuarios/' + userId).set({
-            username: name,
-            email: email,
-            profile_picture: imageUrl,
-            area: 'Informática/TI',
-            rating: 3
-        });
-        //*/
     }
 
     $scope.paymentBankSlip = true;
@@ -189,17 +157,13 @@ app.controller('FinanceiroCtrl', function ($scope, PagSeguroService, RestService
             form.dados = dados.dados;
             form.email = dados.email;
             form.nome = dados.nome;
-            //console.log(form);
-            //*
+            
             RestService.postData("/financeiro/boleto", form, function (resp) {
                 $scope.loading = false;
                 $scope.listarFinanceiroAdmin();
             });
-            //*/
         })
-        
     }
-
     
 });
 ///###################################################################################################
@@ -238,7 +202,6 @@ app.controller('PerfilCtrl', function ($scope, RestService) {
                 removeModal('exampleModalScrollable1');
                 $scope.listarProdutosPrestador();
             } else {
-                //alert(resp.data.msg);
                 $scope.showAlert("warning", resp.data.msg, 5);
             }
         });
@@ -284,7 +247,6 @@ app.controller('PerfilProfCtrl', function ($scope, RestService, $uibModal) {
                 removeModal('exampleModalScrollable');
                 $scope.listarProdutosPrestador();
             } else {
-                //alert(resp.data.msg);
                 $scope.showAlert("warning", resp.data.msg, 5);
             }
         });
@@ -332,8 +294,6 @@ app.controller('GymCtrl', function ($scope, $location, $http, RestService) {
     $scope.infoUser = {};
     $scope.onSelectUsuario = function ($item, $model, $label, $event) {
         $scope.UsuarioID = $item.id;
-        console.log($item);
-        //$scope.listarPermissoesUsuario();
         $scope.buscarDadosUsuario($scope.UsuarioID);
     };
 
@@ -373,7 +333,6 @@ app.controller('GymCtrl', function ($scope, $location, $http, RestService) {
     }
 
     $scope.addExercicio = function(form) {
-
         form.serie = $scope.treinoLabel;
         form.id_treino = $scope.form.treino.id;
         RestService.postData("/gym/user/" + $scope.UsuarioID +"/exercise", form, function(response) {

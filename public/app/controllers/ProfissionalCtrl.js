@@ -45,8 +45,6 @@ app.controller('ProfissionalCtrl', function ($scope, $rootScope, $routeParams, R
     }
 
     $scope.salvarHistorico = function(form) {
-        //var value = editor.getData();
-        //form.historico = value;
         form.id_usuario = $scope.item_agendamento.id_usuario;
         form.id_prestador = $scope.item_agendamento.id_prestador;
         console.log(form);

@@ -14,32 +14,10 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         ];
         //$scope.reloadFinancialTab();
 
-        $scope.incomesList = [];//$resource("/api/v1/finances/cashFlow").query();
+        $scope.incomesList = [];
 
         $scope.gridOpts = {
             enableGridMenu: true,
-            /*
-            enableSelectAll: true,
-            exporterCsvFilename: 'myFile.csv',
-            exporterPdfDefaultStyle: { fontSize: 9 },
-            exporterPdfTableStyle: { margin: [30, 30, 30, 30] },
-            exporterPdfTableHeaderStyle: { fontSize: 10, bold: true, italics: true, color: 'red' },
-            exporterPdfHeader: { text: "My Header", style: 'headerStyle' },
-            exporterPdfFooter: function (currentPage, pageCount) {
-                return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
-            },
-            exporterPdfCustomFormatter: function (docDefinition) {
-                docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
-                docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
-                return docDefinition;
-            },
-            exporterPdfOrientation: 'portrait',
-            exporterPdfPageSize: 'LETTER',
-            exporterPdfMaxGridWidth: 500,
-            exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
-            exporterExcelFilename: 'myFile.xlsx',
-            exporterExcelSheetName: 'Sheet1',
-            //*/
             columnDefs: [
                 { name: 'titulo' },
                 { name: 'data_vencto', type: 'date', cellFilter: 'date:\'dd/MM/yyyy\'' },
@@ -71,8 +49,7 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     ///############################################################################################
     $scope.openModalFinanceMovement = function() {
         $scope.form = {};
-        $scope.paymentTypesList = $resource("/api/v1/finances/paymentTypes").query(); 
-        //$scope.form.type = type;
+        $scope.paymentTypesList = $resource("/api/v1/finances/paymentTypes").query();
         $modal({
             title: 'My Title',
             templateUrl: 'app/views/Finances/Modals/ModalFinanceMovement.html',
@@ -82,14 +59,12 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     }
     ///############################################################################################
     $scope.saveFinanceMovement = function(form) {
-        //$hide();
         console.log(form);
         if (form.tipo_operacao == 1) {
             APIService.postData("/finances/payments", form, function (resp) {
                 if (resp.data > 0) {
                     $scope.reloadFinancialTab();
                     $scope.loadCashFlow();
-                    //$hide();
                 }
             });
         } else {
@@ -97,11 +72,9 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
                 if (resp.data > 0) {
                     $scope.reloadFinancialTab();
                     $scope.loadCashFlow();
-                    //$hide();
                 }
             });
         }
-        
     }
     ///############################################################################################
     ///############################################################################################
@@ -110,13 +83,7 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         $scope.unpaidEntries2 = $scope.projectInfo.timeEntries.filter(e => e.pago == 0);
         console.log($scope.unpaidEntries2);
         $scope.form.hour_price = $scope.projectInfo.valor_hora;
-        
-       
-        /*
-        myModal = new bootstrap.Modal(document.getElementById("ModalFinanceInvoice"), { backdrop: true });
-        myModal.show();
-        ///*/
-        //*
+
         $modal({
             controller: function ($scope) {
                 $scope.cancel = function () {
@@ -127,46 +94,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
                 };
             }, 
             templateUrl: 'app/views/Modals/ModalFinanceInvoice.html', show: true });
-        //*/
-        /*
-        $ocModal.open({
-            url: 'app/views/Modals/ModalFinanceInvoice.html',
-            cls: 'test fade-in',
-            onOpen: function () {
-                console.log('modal1 opened from url');
-                $scope.temp = $scope.projectInfo;
-                console.log($scope.temp);
-                console.log($scope.temp.valor_hora);
-                $scope.form.hour_price = $scope.temp.valor_hora;
-            }
-        })
-        /*
-        $modal.open({
-            templateUrl: 'app/views/Modals/ModalFinanceInvoice.html',
-            backdrop: 'static',
-            keyboard: false,
-            controller: function ($scope, $modalInstance) {
-                $scope.cancel = function () {
-                    $modalInstance.dismiss('cancel');
-                };
-                $scope.ok = function () {
-                    $modalInstance.close();
-                };
-            }
-        });
-        //*/
-        /*
-        var modalInstance = $uibModal.open({
-            templateUrl: 'app/views/Modals/ModalFinanceInvoice.html',
-            controller: 'ModalContentCtrl',
-            size: 'lg'
-        });
-        ///
-        modalInstance.result.then(function () {
-            //$scope.complexResult = selectedItem;
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
         //*/
     }
     ///############################################################################################
@@ -190,7 +117,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
             $scope.incomesList = resp.data;
             $scope.sumarioCashFlowFilter();
         });
-        
     }
     ///############################################################################################
     $scope.dateOpts = {
@@ -222,8 +148,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         }
         const u = new URLSearchParams(temp).toString();
         dataTable = new DataTable('#example', {
-            //processing: true,
-            //serverSide: true,
             ajax: { url: "api/v1/finances/cashFlow?"+u, dataSrc: "" },
             columns: [
                 { data: 'titulo', title: 'Titulo' },
@@ -241,10 +165,8 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
                             if (data < 0) {
                                 color = 'red';
                             }
-
                             return `<span style="color:${color}">${number}</span>`;
                         }
-
                         return number;
                     }
                 },
@@ -267,28 +189,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
 
         $scope.gridOpts = {
             enableGridMenu: true,
-            /*
-            enableSelectAll: true,
-            exporterCsvFilename: 'myFile.csv',
-            exporterPdfDefaultStyle: { fontSize: 9 },
-            exporterPdfTableStyle: { margin: [30, 30, 30, 30] },
-            exporterPdfTableHeaderStyle: { fontSize: 10, bold: true, italics: true, color: 'red' },
-            exporterPdfHeader: { text: "My Header", style: 'headerStyle' },
-            exporterPdfFooter: function (currentPage, pageCount) {
-                return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
-            },
-            exporterPdfCustomFormatter: function (docDefinition) {
-                docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
-                docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
-                return docDefinition;
-            },
-            exporterPdfOrientation: 'portrait',
-            exporterPdfPageSize: 'LETTER',
-            exporterPdfMaxGridWidth: 500,
-            exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
-            exporterExcelFilename: 'myFile.xlsx',
-            exporterExcelSheetName: 'Sheet1',
-            //*/
             columnDefs: [
                 { name: 'titulo' },
                 { name: 'data_vencimento', type: 'date', cellFilter: 'date:\'dd/MM/yyyy\'' },
@@ -392,9 +292,7 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     ///############################################################################################
     ///############################################################################################
     ///############################################################################################
-    
     ///############################################################################################
-
     //$scope.init();
 });
 ///#########################################################################################################################
@@ -450,7 +348,6 @@ app.controller("FinancesCategoriesCtrl", function ($scope, APIService, $modal){
     }
     ///############################################################################################
     $scope.salvarCategoria = function(form) {
-        //console.log(form);
         APIService.postData("/finances/accounts/categories", form, function (resp) {
             $scope.form = {};
             modalCategory.hide();
@@ -474,40 +371,6 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
     modalAccount = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceAccount.html', show: false, scope: $scope, });
     modalCategory = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceCategory.html', show: false, scope: $scope, });
     modalMovement = $modal({ templateUrl: 'app/views/Finances/Modals/ModalFinanceMovement.html', show: false, scope: $scope, });
-
-    $scope.myConfigCB = {
-        valueField: 'id',
-        labelField: 'nome',
-        searchField: 'nome',
-        sortField: 'nome',
-        maxItems: 1,
-        //options: resp.data,
-        render: {
-            item: function (item, escape) {
-                return '<div>'
-                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                    + '<span>&nbsp;' + item.nome + '</span> '
-                    + '</div>';
-            },
-            option: function (item, escape) {
-                return '<div>'
-                    + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                    + '<span>&nbsp;' + item.nome + '</span> '
-                    + '</div>';
-            }
-        },
-    }
-
-    $scope.employees = [{ "id": "1", "employee_name": "Albano", "employee_salary": "222", "employee_age": "38", "profile_image": "" }, 
-    { "id": "2", "employee_name": "Lemos", "employee_salary": "89", "employee_age": "50", "profile_image": "" }, 
-    { "id": "3", "employee_name": "Carla", "employee_salary": "0", "employee_age": "0", "profile_image": "" }, 
-    { "id": "4", "employee_name": "albano", "employee_salary": "439", "employee_age": "255", "profile_image": "" }, 
-    { "id": "5", "employee_name": "Paula", "employee_salary": "50", "employee_age": "53", "profile_image": "" }, 
-    { "id": "6", "employee_name": "test", "employee_salary": "1111", "employee_age": "111111", "profile_image": "" }, 
-    { "id": "7", "employee_name": "Junior-codigo", "employee_salary": "137500", "employee_age": "605", "profile_image": "" }, 
-    { "id": "8", "employee_name": "Rhona Davidson", "employee_salary": "327900", "employee_age": "55", "profile_image": "" }, 
-    { "id": "9", "employee_name": "ori", "employee_salary": "1", "employee_age": "25", "profile_image": "" }, 
-    { "id": "10", "employee_name": "Sonya \/\/\/Frostdddf", "employee_salary": "2775675678", "employee_age": "23", "profile_image": "" }]
 
     $scope.calcularSaldo = function(item, idx) {
         var saldo = 0;
@@ -536,12 +399,9 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
                 }
                 $scope.movimentacoesContaList[i].saldo = saldo;
             }
-
-            console.log($scope.movimentacoesContaList);
         });
     });
     ///############################################################################################
-
     $scope.init = function () {
         APIService.getData("/finances/dashboard/accounts", function (resp) { 
 
@@ -550,30 +410,6 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
             $scope.dashboardAccountsList.forEach(element => {
                 //element.banco = JSON.parse(element.banco);
             });
-
-            /*
-            $("#select-console").selectize({
-                valueField: 'id',
-                labelField: 'nome',
-                searchField: 'nome',
-                sortField: 'nome',
-                options: resp.data,
-                render: {
-                    item: function (item, escape) {
-                        return '<div>'
-                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/' + item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    },
-                    option: function (item, escape) {
-                        return '<div>'
-                            + '<img src="https://s3.amazonaws.com/img.meudinheiroweb.com.br/bankicons/'+ item.banco.img + '.jpg" alt="" style="width: 25px; height: 25px;border-radius: 100%;" />'
-                            + '<span>&nbsp;' + item.nome + '</span> '
-                            + '</div>';
-                    }
-                },
-            });
-            //*/
         });
         APIService.getData("/finances/report/categoryCards", function (resp) { $scope.dashboardCategoryCards = resp.data; });
         APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
@@ -590,8 +426,6 @@ app.controller("FinancesDashboard", function ($scope, $rootScope, $routeParams, 
                 }
                 $scope.movimentacoesContaList[i].saldo = saldo;
             }
-
-            console.log($scope.movimentacoesContaList);
         });
         
         $scope.relatorio = {
@@ -784,7 +618,6 @@ app.controller("FinancesAddMovement", function ($scope, $rootScope, $routeParams
     });
 
     $scope.salvarMovimentacao = function(form) {
-        //console.log(form);
         APIService.postData("/finances/accounts/2/movimentacoes", form, function (resp) {
             $scope.form = {};
             modalMovement.hide();

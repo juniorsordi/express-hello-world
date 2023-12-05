@@ -64,6 +64,17 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $loc
         
     }
     ///############################################################################################
+    $scope.alert = {};
+    $scope.showAlert = function(type, msg, timer) {
+        if(!timer) { timer = 3; }
+        $("#alertas").removeClass('hide');
+        $scope.alert.type = type;
+        $scope.alert.msg = msg;
+        setTimeout(function() {
+            $("#alertas").addClass('hide');
+        }, timer * 1000);
+    }
+    ///############################################################################################
     $scope.initAppDashboard = function() {
         APIService.getData("/sistema/dashboard", function(response) { 
             $scope.appDashboard = response.data; 

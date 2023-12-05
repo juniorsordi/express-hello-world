@@ -40,7 +40,7 @@ app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     .when('/games',                 { templateUrl: 'app/views/GamesApp/dashboard.html?t=' + date, controller: 'GamesAppCtrl',                 resolve: testeOCLazyLoad("GamesCtrl", "") })
 
     .when('/sistema/usuarios',      { templateUrl: 'app/views/Sistema/usuarios.html?t=' + date, controller: 'SistemaCtrl',                    resolve: testeOCLazyLoad("SistemaCtrl", "") })
-    .when('/sistema/geradorForm',   { templateUrl: 'app/views/Sistema/geradorForms.html?t=' + date, controller: 'SistemaCtrl',                    resolve: testeOCLazyLoad("SistemaCtrl", "") })
+    .when('/sistema/geradorForm',   { templateUrl: 'app/views/Sistema/geradorForms.html?t=' + date, controller: 'SistemaCtrl',                resolve: testeOCLazyLoad("SistemaCtrl", "") })
     .otherwise({ templateUrl: 'app/views/Sistema/Erro_404.html' });
     // use the HTML5 History API
     //$locationProvider.html5Mode(true);

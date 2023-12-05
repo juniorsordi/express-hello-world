@@ -3,7 +3,10 @@
         <h5 class="card-title mb-0"><span translate>Activities</span></h5>
     </div>
     <div class="card-body">
-        <button class="btn btn-secondary mb-2" type="button" ng-click="addTask('ModalNovaAtividade')"> <i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add Task</span></button>
+        <button class="btn btn-secondary mb-2" type="button" ng-click="addTask('ModalNovaAtividade')"> 
+            <i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add Task</span>
+        </button>
+        
         <div ng-repeat="(key, value) in projectInfo.atividades | orderBy: 'etapa' | groupBy:'etapa'" class="card-list">
             <div class="card-list-head">
                 <h6 ng-if="key">{{ (!key ? 'Unique' : 'Etapa '+key) }}</h6>

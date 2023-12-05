@@ -41,7 +41,7 @@ app.use(express.static('public', options))
 app.all('*', function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, x-access-token');
+	res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method, x-access-token');
 	res.header('Access-Control-Max-Age', 60000);
 	//console.log(req.session);
 	next();
@@ -84,6 +84,10 @@ app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
 //app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 
 app.use('/api/v1/tickets', require('./server/routes/tickets.routes'));
+
+let d = new Date()
+console.log(""+d);
+
 
 var errorHandler = function (err, req, res, next) {
     console.error(err);

@@ -7,82 +7,41 @@
                     <div class="col-xl-6">
                         <div class="mb-3">
                             <label for="projectname" class="form-label" translate="">Name</label>
-                            <input
-                                type="text"
-                                id="projectname"
-                                class="form-control"
-                                placeholder="Enter project name"
-                                ng-model="form.nome"></div>
+                            <input type="text" id="projectname" class="form-control" placeholder="Enter project name" ng-model="form.nome"></div>
 
                             <div class="mb-3">
                                 <label for="project-overview" class="form-label" translate="">Overview</label>
-                                <textarea
-                                    class="form-control"
-                                    id="project-overview"
-                                    rows="5"
-                                    placeholder="Enter some brief about project.."
-                                    ng-model="form.descricao"></textarea>
+                                <textarea class="form-control" id="project-overview" rows="5" placeholder="Enter some brief about project.." ng-model="form.descricao"></textarea>
                                 <div id="ckeditor-classic"></div>
                             </div>
 
                             <!-- Date View -->
                             <div class="mb-3 position-relative" id="datepicker1">
                                 <label class="form-label" translate="">Start Date</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    data-provide="datepicker"
-                                    data-date-language="pt-BR"
-                                    ng-model="form.inicio_estimado"
-                                    data-date-container="#datepicker1"
-                                    data-date-format="dd/mm/yyyy"
-                                    data-date-autoclose="true"/>
+                                <input type="text" class="form-control" data-provide="datepicker" data-date-language="pt-BR" ng-model="form.inicio_estimado"
+                                    data-date-container="#datepicker1" data-date-format="dd/mm/yyyy" data-date-autoclose="true"/>
                             </div>
 
                             <!-- Date View -->
                             <div class="mb-3 position-relative" id="datepicker2">
                                 <label class="form-label" translate="">Due Date</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    data-provide="datepicker"
-                                    data-date-language="pt-BR"
-                                    ng-model="form.termino_estimado"
-                                    data-date-container="#datepicker2"
-                                    data-date-format="dd/mm/yyyy"
-                                    data-date-autoclose="true"/>
+                                <input type="text" class="form-control" data-provide="datepicker" data-date-language="pt-BR" ng-model="form.termino_estimado"
+                                    data-date-container="#datepicker2" data-date-format="dd/mm/yyyy" data-date-autoclose="true"/>
                             </div>
 
                             <div class="mb-3">
                                 <label for="project-budget" class="form-label" translate="">Budget</label>
-                                <input
-                                    type="text"
-                                    id="project-budget"
-                                    class="form-control"
-                                    placeholder="Enter project budget"
-                                    ng-model="form.budget"
-                                    ui-money-mask="2"/>
+                                <input type="text" id="project-budget" class="form-control" placeholder="Enter project budget" ng-model="form.budget" ui-money-mask="2"/>
                             </div>
 
                             <div class="mb-3">
                                 <label for="hour-value" class="form-label" translate="">Hour Value</label>
-                                <input
-                                    type="text"
-                                    id="hour-value"
-                                    class="form-control"
-                                    placeholder="Enter hour value"
-                                    ng-model="form.valor_hora"
-                                    ui-money-mask="2"/>
+                                <input type="text" id="hour-value" class="form-control" placeholder="Enter hour value" ng-model="form.valor_hora" ui-money-mask="2"/>
                             </div>
 
                             <div class="mb-3">
                                 <label for="estimated_effort" class="form-label" translate="">Estimated Effort (Hours)</label>
-                                <input
-                                    type="text"
-                                    id="estimated_effort"
-                                    class="form-control"
-                                    placeholder="Enter Estimated Effort"
-                                    ng-model="form.esforco_estimado"/>
+                                <input type="text" id="estimated_effort" class="form-control" placeholder="Enter Estimated Effort" ng-model="form.esforco_estimado"/>
                             </div>
 
                             <div class="mb-3">
@@ -109,77 +68,20 @@
                             <div class="mb-0 hide" data-select2-id="select2-data-5-6c3x">
                                 <label for="project-overview" class="form-label" translate="">Team Members</label>
 
-                                <select class="form-control select2" select2
-                                    tabindex="-1"
-                                    aria-hidden="true">
+                                <select class="form-control select2" select2 tabindex="-1" aria-hidden="true">
                                     <option data-select2-id="select2-data-3-01md">Select</option>
                                 </select>
 
                                 <div class="mt-2" id="tooltip-container">
-                                    <a
-                                        href="javascript:void(0);"
-                                        data-bs-container="#tooltip-container"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="top"
-                                        class="d-inline-block"
-                                        aria-label="Mat Helme"
-                                        data-bs-original-title="Mat Helme">
-                                        <img
-                                            src="assets/img/users/avatar-6.jpg"
-                                            class="rounded-circle avatar-xs"
-                                            alt="friend"/></a>
+                                    <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        class="d-inline-block" aria-label="Mat Helme" data-bs-original-title="Mat Helme">
+                                        <img src="assets/img/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="friend"/>
+                                    </a>
 
-                                    <a
-                                        href="javascript:void(0);"
-                                        data-bs-container="#tooltip-container"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="top"
-                                        class="d-inline-block"
-                                        aria-label="Michael Zenaty"
-                                        data-bs-original-title="Michael Zenaty">
-                                        <img
-                                            src="assets/img/users/avatar-7.jpg"
-                                            class="rounded-circle avatar-xs"
-                                            alt="friend"/></a>
-
-                                    <a
-                                        href="javascript:void(0);"
-                                        data-bs-container="#tooltip-container"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="top"
-                                        class="d-inline-block"
-                                        aria-label="James Anderson"
-                                        data-bs-original-title="James Anderson">
-                                        <img
-                                            src="assets/img/users/avatar-8.jpg"
-                                            class="rounded-circle avatar-xs"
-                                            alt="friend"/></a>
-
-                                    <a
-                                        href="javascript:void(0);"
-                                        data-bs-container="#tooltip-container"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="top"
-                                        class="d-inline-block"
-                                        aria-label="Lorene Block"
-                                        data-bs-original-title="Lorene Block">
-                                        <img
-                                            src="assets/img/users/avatar-4.jpg"
-                                            class="rounded-circle avatar-xs"
-                                            alt="friend"/></a>
-
-                                    <a
-                                        href="javascript:void(0);"
-                                        data-bs-container="#tooltip-container"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="top"
-                                        class="d-inline-block"
-                                        aria-label="Mike Baker"
-                                        data-bs-original-title="Mike Baker">
-                                        <img
-                                            src="assets/img/users/avatar-5.jpg"
-                                            class="rounded-circle avatar-xs"
-                                            alt="friend"/></a>
+                                    <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        class="d-inline-block" aria-label="Michael Zenaty" data-bs-original-title="Michael Zenaty">
+                                        <img src="assets/img/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="friend"/>
+                                    </a>
                                 </div>
 
                                 <div class="row">
@@ -215,14 +117,8 @@
                                 <label for="projectname" class="mb-0">Avatar</label>
                                 <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
 
-                                <form
-                                    action="/"
-                                    method="post"
-                                    class="dropzone dz-clickable"
-                                    id="myAwesomeDropzone"
-                                    data-plugin="dropzone"
-                                    data-previews-container="#file-previews"
-                                    data-upload-preview-template="#uploadPreviewTemplate">
+                                <form action="/" method="post" class="dropzone dz-clickable" id="myAwesomeDropzone" data-plugin="dropzone"
+                                    data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
 
                                     <div class="dz-message needsclick">
                                         <i class="h3 text-muted ri-upload-cloud-2-line"></i>
@@ -232,8 +128,7 @@
 
                                 <!-- Preview -->
                                 <div class="dropzone-previews mt-3" id="file-previews">
-                                    <div
-                                        class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
+                                    <div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
                                         <div class="p-2">
                                             <div class="row align-items-center">
                                                 <div class="col-auto"></div>
@@ -273,10 +168,9 @@
                     </div>
                     <!-- end card-body -->
                 </div>
-
-                
-                                    <br></div>
-                                </div>
-                                <button type="button" class="btn btn-success" ng-click="inserirNovoProjeto()">Salvar</button>
-                            </div>
-                        </div>
+                <br>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" ng-click="inserirNovoProjeto()">Salvar</button>
+    </div>
+</div>

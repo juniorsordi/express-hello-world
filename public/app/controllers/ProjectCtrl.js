@@ -23,15 +23,12 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     $scope.initProjectsView = function () {
         APIService.getData("/project", function(resp) {
             $scope.projectsList = resp.data;
-        })
-        //$scope.projectsList = APIService.resourceQuery("/project/:id");
+        });
         $scope.arrStatus = APIService.resourceQuery("/company/status");
         $scope.filtro = {};
     }
     ///############################################################################################
     $scope.initProjectView = function () {
-        //$scope.projectInfo = APIService.resourceQuery("/dashboard/projectsYear");
-        //$scope.projectInfo = $resource("api/v1/project/:id").get({ id: $routeParams.id });
         APIService.getData("/project/" + $routeParams.id, function(resp) {
             $scope.projectInfo = resp.data;
             var temp1 = ($scope.projectInfo.receita_recebida * 100) / $scope.projectInfo.receita_estimada;
@@ -67,13 +64,10 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
                 { value: 'data', metadata: { style: headings.id } }, 
                 { value: 'for', metadata: { style: headings.id } }
             ],
-            //['generating', 'excel', 'in'],
-            //['java', 'script', ' ']
         ];
         $scope.projectsList.map(el => {
             jsonData.push([el.id, el.nome, el.esforco_estimado, el.esforco_atual, el.percentual_completo, el.valor_hora, el.inicio_estimado, el.termino_estimado]);
         });
-        console.log(jsonData);
         //*
         sheet1.setData(jsonData);
         workbook.addWorksheet(sheet1);
@@ -91,7 +85,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     $scope.apontarHoras = function (item, element) {
         $scope.selectedItem = item;
         $scope.form = {};
-        //*
+        
         $modal({
             title: 'My Title',
             //template: 'app/views/Modals/ModalTest2.html',
@@ -99,20 +93,6 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
             show: true,
             scope: $scope,
         });
-        //*/
-        /*
-        $ocModal.open({
-            url: 'app/views/Modals/ModalApontamentoAtividade.html',
-            cls: 'test fade-in',
-            onOpen: function () {
-
-            }
-        })
-        //*/
-        /*
-        myModal = new bootstrap.Modal(document.getElementById(element), { backdrop: true });
-        myModal.show();
-        //*/
     }
     ///############################################################################################
     //JJZFA5KPHNSGWQCUMVKHOUBKNRZCG5D5
@@ -142,7 +122,6 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
                 $scope.initProjectView();
             }
         });
-        //*/
     }
     ///############################################################################################
     $scope.calculateEffort = function() {
@@ -223,7 +202,6 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
     ///############################################################################################
     $scope.tarefaValorRecebido = function(item) {
         item.valor_hora = $scope.projectInfo.valor_hora;
-        //console.log(item); return;
         APIService.postData("/project/taskPayment", item, function(resp) {
             $rootScope.$broadcast('updateListTasks');
         })
@@ -362,7 +340,6 @@ app.controller("ProjectDashboardCtrl", function ($scope, APIService) {
                 dados2.push({ name: temp01[i].tipo_projeto, y: parseFloat(temp01[i].total) });
             }
             $scope.Highcharts3DPie("graph01", dados2, "Horas");
-            //*/
         });
 
         APIService.getData(`/project/dashboard/graphByClient?ano=${$scope.ano_selecionado}`, function (res) {
@@ -431,7 +408,6 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
 
     $scope.inserirNovoProjeto = function () {
         APIService.postData("/project", $scope.form, function (resp) {
-            console.log(resp.data);
             $rootScope.$broadcast('updateListTasks');
         })
     }
@@ -468,8 +444,7 @@ app.controller("UserTasksCtrl", function ($scope, $rootScope, $modal, APIService
     $scope.apontarHoras = function (item, element) {
         $scope.selectedItem = item;
         $scope.form = {};
-        console.log(item);
-        //*
+        
         $modal({
             title: 'My Title',
             templateUrl: 'app/views/Projects/Modals/ModalApontamentoTarefa.html',
@@ -481,7 +456,7 @@ app.controller("UserTasksCtrl", function ($scope, $rootScope, $modal, APIService
     $scope.salvarApontamento = function () {
         var temp = $scope.form.data_apontamento.toISOString().substr(0, 10);
         var selectedItem = $scope.selectedItem;
-        console.log($scope.form);
+        
         var apontamento = {
             id_atividade: selectedItem.id,
             id_usuario: $scope.Usuario.id,
@@ -518,19 +493,6 @@ app.controller("KanbanViewCtrl", function ($scope, APIService) {
         APIService.putData("/project/kanban/" + $scope.id_projeto, { id_atividade: data.id, id_situacao: targetColId }, function (resp) {
             $scope.kanbanRest = APIService.resourceQuery("/project/kanban/" + $scope.id_projeto);
         });
-        /*
-        boardService.canMoveTask(data.ColumnId, targetColId)
-            .then(function (canMove) {
-                if (canMove) {
-                    boardService.moveTask(data.Id, targetColId).then(function (taskMoved) {
-                        $scope.isLoading = false;
-                        boardService.sendRequest();
-                    }, onError);
-                    $scope.isLoading = true;
-                }
-
-            }, onError);
-        //*/
     };
 });
 ///#####################################################################################################
@@ -556,22 +518,9 @@ app.controller("G4FCtrl", function ($scope, $rootScope, APIService, $modal) {
     }
 
     $scope.salvar = function() {
-        /*
-        var object = { '1536135941922': 'true', '1536135962942': 'false', '1536135986966': 'false', '1536135989968': 'true' };
-        var array = Object
-                .entries($scope.form)
-                .map(pair => Object.fromEntries([pair]));
-
-        let result = [];
-        array.map(function([key, value]) {
-            result.push(value);
-        });
-        //*/
         APIService.postData("/controleMudanca", $scope.form, function(resp) {
 
         });
-        //let result = array.map(([key, value]) => ({ [key]: value }));
-        //console.log(Object.values());
     }
 
     $scope.addDetalhamento = function() {

@@ -2,6 +2,12 @@ app.controller('AgendamentoCtrl', function ($scope, $rootScope, $http, RestServi
 
     $scope.form = {};
 
+    $scope.plans = [
+        { id: 1, label: 'Basic', price: 0, default: true },
+        { id: 2, label: 'Professional', price: 200, default: false },
+        { id: 3, label: 'Enterprise', price: 500, default: false }
+    ];
+
     $scope.today = new Date();
     $scope.initAgendamento = function () {
         $scope.form = {};

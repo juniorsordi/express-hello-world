@@ -3,29 +3,26 @@ app.controller("FinanceMovimentacaoCtrl", function ($scope, $rootScope, APIServi
     $scope.form = {};
     $scope.teste = {};
     $scope.filtro = {};
+    $scope.categoriesListFiltered = [];
 
     var modalEditMovement = $modal({ templateUrl: 'app/views/Finances/Modals/ModalEditarMovimentacao.html', show: false, scope: $scope, });
 
     ///############################################################################################
     $scope.$watch('form.tipo_operacao', function(newValue, oldValue) {
-        $scope.categoriesListFiltered = $scope.categoriesList.filter( e => e.tipo == newValue);
+        if($scope.categoriesList != null) {
+            $scope.categoriesListFiltered = $scope.categoriesList.filter( e => e.tipo == newValue);
+        }
+        
     });
     ///############################################################################################
     $scope.init = function() {
-        $scope.filtro = {
-            mes: moment().toDate()
-        };
+        $scope.filtro = { mes: moment().toDate() };
 
         $scope.teste.saldo_anterior = 0;
         
-        //$scope.listarMovimentacoes();
         $scope.filtrar();
-        APIService.getData("/finances/accounts/categories", function (resp) { $scope.categoriesList = resp.data; });
+        APIService.getData("/finances/accounts/categories", function (resp) { $scope.categoriesList = resp.data; $scope.form.tipo_operacao = 'D'; });
         APIService.getData("/finances/accounts", function (resp) { $scope.accountsList = resp.data; });
-
-        $scope.categoriesListFiltered = [];
-
-        
     }
     ///############################################################################################
     $scope.$on("updateListTasks", function () {

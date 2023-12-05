@@ -2286,3 +2286,11 @@
 .bg-blue {
   background-color: #17a2b8 !important;
 }
+
+.finances-positive-value {
+  color: blue;
+}
+
+.finances-negative-value {
+  color: red;
+}

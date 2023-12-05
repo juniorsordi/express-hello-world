@@ -28,3 +28,26 @@ INSERT INTO sistema_menus (id, titulo, rota, classe_icone, id_menu_pai, ativo, o
 INSERT INTO sistema_menus (id, titulo, rota, classe_icone, id_menu_pai, ativo, ordem) VALUES(18, 'System', NULL, 'folder', NULL, true, 6);
 INSERT INTO sistema_menus (id, titulo, rota, classe_icone, id_menu_pai, ativo, ordem) VALUES(19, 'Users', '/sistema/usuarios', 'manage_accounts', 18, true, NULL);
 INSERT INTO sistema_menus (id, titulo, rota, classe_icone, id_menu_pai, ativo, ordem) VALUES(20, 'Settings', '/company/settings', 'settings', 18, true, NULL);
+
+CREATE TABLE IF NOT EXISTS agendamento_planos (
+    id serial primary key,
+    titulo varchar(256),
+    descricao text,
+    valor_mensal float,
+    padrao boolean,
+    ativo boolean
+);
+INSERT INTO agendamento_planos (id, titulo, descricao, valor_mensal, padrao, ativo) VALUES(1, 'Básico', '<ul class="list-unstyled plan-features">
+	<li>Agendar horarios com diversos tipos de profissionais</li>
+	<li>Descontos exclusivos</li>
+	<li>Agilidade e facilidade em localizar profissionais proximos</li>
+</ul>', 0.0, true, true);
+INSERT INTO agendamento_planos (id, titulo, descricao, valor_mensal, padrao, ativo) VALUES(2, 'Profissional', '<ul class="list-unstyled plan-features">
+                                        <li>Gerenciar seus agendamentos</li>
+                                        <li>Disponibilizar sua agenda para os clientes fazerem seus agendamentos de forma inteligente</li>
+                                    </ul>', 200.0, false, true);
+INSERT INTO agendamento_planos (id, titulo, descricao, valor_mensal, padrao, ativo) VALUES(3, 'Empresarial', '<ul class="list-unstyled plan-features">
+                                        <li>Gerenciar seus agendamentos</li>
+                                        <li>Disponibilizar sua agenda para os clientes fazerem seus agendamentos de forma inteligente</li>
+                                        <li>Gerenciamento de todas atividades da empresa</li>
+                                    </ul>', 500.0, false, true);

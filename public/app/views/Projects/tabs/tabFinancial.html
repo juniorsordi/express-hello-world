@@ -1,4 +1,4 @@
-<div class="row" ng-controller="FinancesController">
+<div class="row">
     <div class="col-12 mb-2">
         <h5 class="card-title mb-0" align="center"><span translate>Financial</span> {{ versao }}</h5>
         <div class="row mb-3">
@@ -75,56 +75,6 @@
         </div>
         <br>
         <i class="fa fa-refresh" aria-hidden="true" ng-click="reloadFinancialTab()"></i>
-    </div>
-    <br>
-    <div>
-        {{ projectInfo.cashflow }}
-    </div>
-</div>
-<div class="card">
-    <div class="card-header">
-        <h5 class="card-title mb-0"><span translate>Financial</span> {{ versao }}</h5>
-    </div>
-    <div class="card-body">
-        <p class="card-text">
-            <div class="row">
-
-            </div>
-            <div class="row">
-                <div class="col-md-12" align="center">
-                    <h3 align="center">Unpaid Hours</h3>
-                    Total: <b>{{ projectInfo.unpaidHours | number:2 }} Hours</b>
-                    <br>
-                    <button class="btn btn-primary btn-sm " role="button" ng-click="generatePaymentInvoice()"> Generate Invoice</button>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 align="center">Income Entries</h3>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Paid Date</th>
-                                    <th scope="col">Hours Charged</th>
-                                    <th scope="col">Total Value</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="entry in incomeEntries" class="">
-                                    <td scope="row">{{ entry.dueDate | date:'dd/MM/yyyy' }}</td>
-                                    <td>{{ entry.paidDate | date:'dd/MM/yyyy' }}</td>
-                                    <td>{{ entry.totalHours }}</td>
-                                    <td>{{ (entry.totalHours * entry.hourPrice) | currency: 'R$ ' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </p>
     </div>
 </div>
 <!--div ng-include="'app/views/Modals/ModalFinanceInvoice.html'"></div-->

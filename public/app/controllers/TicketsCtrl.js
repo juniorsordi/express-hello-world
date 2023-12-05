@@ -23,8 +23,6 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
     }
 
     $scope.addTicketReply = function(form) {
-        //form.user_id = $scope.User.id;
-        console.log(form);
         APIService.postData("/tickets/" + $routeParams.id +"/event", form, function(res) {
             $scope.loadTicketData($routeParams.id);
             $scope.form = {};
@@ -106,12 +104,6 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
             { id: 2, date: '2023-05-05T11:29:00', user_name: 'Dilson Sordi Junior', user_position: 'IT Analist', event_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula...." }
         ]
     };
-    ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
-    ///############################################################################################
     ///############################################################################################
     ///############################################################################################
     ///############################################################################################

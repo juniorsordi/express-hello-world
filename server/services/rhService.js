@@ -38,7 +38,7 @@ async function listarUltimasBatidas(idUser) {
     FROM rh_batida_ponto a
     WHERE id_usuario = $1 
     GROUP BY dia, mes, ano, id_usuario
-    ORDER BY dia DESC, mes DESC, ano DESC`
+    ORDER BY mes DESC, dia DESC, ano DESC`
     const data = await database.any(SQL, [idUser]);
     return data;
 }
