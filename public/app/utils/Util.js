@@ -19,6 +19,36 @@ function pegarCheckboxes(name) {
     return allVals.toString();
 }
 ///###################################################################################################################
+function calcularEsforco(datai, dataf, horas_dia) {
+    var param = moment(datai,"DD/MM/YYYY");
+    var param2 = moment(dataf,"DD/MM/YYYY");
+    var signal = param.unix() < param2.unix() ? 1 : -1;
+    var start = moment.min(param, param2).clone();
+    var end = moment.max(param, param2).clone();
+    var start_offset = start.day() - 7;
+    var end_offset = end.day();
+
+    var end_sunday = end.clone().subtract(end_offset, 'd');
+    var start_sunday = start.clone().subtract(start_offset, 'd');
+    var weeks = end_sunday.diff(start_sunday, 'days') / 7;
+
+    start_offset = Math.abs(start_offset);
+    if (start_offset == 7)
+        start_offset = 5;
+    else if (start_offset == 1)
+        start_offset = 0;
+    else
+        start_offset -= 2;
+
+
+    if (end_offset == 6)
+        end_offset--;
+
+    var total = signal * (weeks * 5 + start_offset + end_offset);
+    var esforco_estimado = total * horas_dia;
+	return esforco_estimado;
+}
+///###################################################################################################################
 function testeOCLazyLoad(controller, path) {
 	if(path == null) { path = ""; }
 	let name = controller.replace("Ctrl", "");

@@ -3,21 +3,21 @@
         <br>
         <h1 class="h3 mb-3">Dashboard</h1>
 
-					<div class="row">
-						<div class="col-12 col-xl-6">
-							<div class="card">
-								<div class="card-header">
+			<div class="row">
+				<div class="col-12 col-xl-6">
+					<div class="card">
+						<div class="card-header">
 									<h2 class="card-title">Apontamentos da Equipe</h2>
 									<h6 class="card-subtitle text-muted">Mês atual</h6>
-								</div>
-                                <table class="table table-bordered">
-                                    <thead>
+						</div>
+                        <table class="table table-bordered">
+                            <thead>
                                             <tr>
                                                 <th>Usuário</th>
                                                 <th style="width:20%">Horas Apontadas</th>
                                             </tr>
-                                    </thead>
-                                    <tr ng-repeat="item in arrRanking" ng-click="exibirDetalheRanking(item)">
+                            </thead>
+                            <tr ng-repeat="item in arrRanking" ng-click="exibirDetalheRanking(item)">
                                         <td>
                                             <div class="row">
                                                 <div class="col">
@@ -32,41 +32,41 @@
                                         <td width="6%">
                                             {{ item.total_horas}}
                                         </td>
-                                    </tr>
-                                </table>
-							</div>
-						</div>
+                            </tr>
+                        </table>
+					</div>
+				</div>
 
-						<div class="col-12 col-xl-6">
-							<div class="card">
-								<div class="card-header">
-									<h2 class="card-title">Total de Projetos por Situação</h2>
-									<h6 class="card-subtitle text-muted"></h6>
-								</div>
-								<table class="table">
-									<thead>
-										<tr>
-											<th>Situação</th>
-											<th style="width:20%">Qtde Projetos</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr ng-repeat="item in arrProjetosSituacao">
-											<td>{{ item.situacao }}</td>
-											<td>{{ item.total }}</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+				<div class="col-12 col-xl-6">
+					<div class="card">
+						<div class="card-header">
+							<h2 class="card-title">Total de Projetos por Situação</h2>
+							<h6 class="card-subtitle text-muted"></h6>
 						</div>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Situação</th>
+									<th style="width:20%">Qtde Projetos</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in arrProjetosSituacao">
+									<td>{{ item.situacao }}</td>
+									<td>{{ item.total }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
-						<div class="col-12 col-xl-6">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Total de Projetos Entregues por Ano</h5>
-									<h6 class="card-subtitle text-muted"></h6>
-								</div>
-                                <div style="margin: 10px;">
+				<div class="col-12 col-xl-6">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">Total de Projetos Entregues por Ano</h5>
+							<h6 class="card-subtitle text-muted"></h6>
+						</div>
+                        <div style="margin: 10px;">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item">
                                             <a class="nav-link active" aria-current="page" data-bs-toggle="tab" data-bs-target="#home" href="">Gráfico</a>
@@ -83,47 +83,46 @@
                                             {{ arrProjetosAno | json }}
                                         </div>
                                     </div>
-                                </div>
-							</div>
-						</div>
-
-						<div class="col-12 col-xl-6">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Atendimento Equipe de Produção no Ano</h5>
-									<h6 class="card-subtitle text-muted"></h6>
-								</div>
-                                <div style="margin-left: 10px;margin-right: 10px;margin-bottom: 15px;">
-                                    <select class="form-control" ng-model="ano_selecionado" ng-change="atualizarGraficosAtendimento()" placeholder="Escolha uma opção" select2 ng-options="item.id as item.label for item in arrAnos">
-                                        <option value=""></option>
-                                    </select>
-                                    <br>
-                                    <ul class="nav nav-tabs">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" data-bs-toggle="tab" data-bs-target="#tab1" href="">Tipo de Projeto</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2" href="">Solicitante</a>
-                                        </li>
-                                        <li class="nav-item hide">
-                                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3" href="">Por Categoria</a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab1" role="tabpanel">
-                                            <div id="graph01" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="tab-pane" id="tab2" role="tabpanel">
-                                            <div id="graph02" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="tab-pane" id="tab3" role="tabpanel">
-                                            <div id="graph03" style="width: 100%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-							</div>
-						</div>
-                        
+                        </div>
 					</div>
+				</div>
+
+				<div class="col-12 col-xl-6">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">Atendimento Equipe de Produção no Ano</h5>
+							<h6 class="card-subtitle text-muted"></h6>
+						</div>
+                        <div style="margin-left: 10px;margin-right: 10px;margin-bottom: 15px;">
+                            <select class="form-control" ng-model="ano_selecionado" ng-change="atualizarGraficosAtendimento()" placeholder="Escolha uma opção" select2 ng-options="item.id as item.label for item in arrAnos">
+                                <option value=""></option>
+                            </select>
+                            <br>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" data-bs-toggle="tab" data-bs-target="#tab1" href="">Tipo de Projeto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2" href="">Solicitante</a>
+                                </li>
+                                <li class="nav-item hide">
+                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3" href="">Por Categoria</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1" role="tabpanel">
+                                    <div id="graph01" style="width: 100%;"></div>
+                                </div>
+                                <div class="tab-pane" id="tab2" role="tabpanel">
+                                    <div id="graph02" style="width: 100%;"></div>
+                                </div>
+                                <div class="tab-pane" id="tab3" role="tabpanel">
+                                    <div id="graph03" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+		    </div>
     </div>
 </div>

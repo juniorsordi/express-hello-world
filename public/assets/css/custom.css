@@ -2294,3 +2294,8 @@
 .finances-negative-value {
   color: red;
 }
+
+.font12 {
+  font-size: 18px;
+  cursor: default;
+}

@@ -32,12 +32,12 @@
                         <div class="card-meta">
                             <ul class="avatars">
                                 <li>
-                                    <a href="#" data-toggle="tooltip" title="{{ item.responsavel.nome }}">
+                                    <a href="" data-toggle="tooltip" title="{{ item.responsavel.nome }}">
                                         <img alt="{{ item.responsavel.nome }}" class="avatar" ng-src="{{ item.responsavel.foto }}" />
                                     </a>
                                 </li>
                                 <li ng-repeat="assignee in item.participantes">
-                                    <a href="#" data-toggle="tooltip" title="{{ assignee.nome }}">
+                                    <a href="" data-toggle="tooltip" title="{{ assignee.nome }}">
                                         <img alt="{{ assignee.nome }}" class="avatar" ng-src="{{ assignee.foto }}" />
                                     </a>
                                 </li>
@@ -52,14 +52,17 @@
                                     <span ng-if="item.pago">
                                         Receita Recebida: {{ (item.esforco_real * projectInfo.valor_hora) | currency:'R$ ' }}
                                     </span>
-                                    
                                 </span>
                             </div>
                             <div class="dropdown card-options">
-                                <i ng-if="!item.pago" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
+                                <span class="material-icons align-middle font12" ng-if="!item.pago" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" title="Apontar Horas">schedule</span>
+                                <span class="material-icons align-middle font12" title="Visualizar Atividade">visibility</span>
+                                <span class="material-icons align-middle font12" title="Editar Atividade">edit_square</span>
+                                <span class="material-icons align-middle font12" ng-if="!item.pago" ng-click="tarefaValorRecebido(item)" title="Pagamento recebido">attach_money</span>
+                                <!--i ng-if="!item.pago" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
                                 <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
                                 <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>
-                                <i ng-if="!item.pago" class="align-middle" data-feather="dollar-sign" ng-click="tarefaValorRecebido(item)" title="Pagamento recebido"></i>
+                                <i ng-if="!item.pago" class="align-middle" data-feather="dollar-sign" ng-click="tarefaValorRecebido(item)" title="Pagamento recebido"></i-->
                             </div>
                         </div>
                     </div>
@@ -108,6 +111,10 @@
                                 <span>Esforço atual: {{ item.esforco_atual | number:2 }} h/{{ item.esforco_estimado | number:2 }} h</span>
                             </div>
                             <div class="dropdown card-options">
+                                <span class="material-icons align-middle">schedule</span>
+                                <span class="material-icons align-middle">visibility</span>
+                                <span class="material-icons align-middle">edit</span>
+                                <span class="material-icons align-middle">attach_money</span>
                                 <i ng-if="item.id_status_atividade != closed_activity_status" ng-click="apontarHoras(item,'ModalApontamentoAtividade')" class="align-middle" data-feather="clock" title="Apontar Horas"></i>
                                 <i class="align-middle" data-feather="eye" title="Visualizar Atividade"></i>
                                 <i class="align-middle" data-feather="edit" title="Editar Atividade"></i>

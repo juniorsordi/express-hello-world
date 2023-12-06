@@ -4,7 +4,11 @@
             <div class="card-body">
                 <h5 class="card-title">Tickets</h5>
                 <p class="card-text">
-                    <button class="btn btn-primary" onclick="goto('/tickets/new')"> <i class="fa fa-plus" aria-hidden="true"></i> <span translate>Add Ticket</span></button>
+                    <button class="btn btn-primary" onclick="goto('/tickets/new')"> 
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <span class="material-icons align-middle">add</span>
+                        <span translate>Add Ticket</span>
+                    </button>
                     <table class="table">
                         <thead>
                             <tr>
@@ -12,6 +16,7 @@
                                 <th scope="col" translate>Title</th>
                                 <th scope="col" translate>Date</th>
                                 <th scope="col" translate>User Name</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -20,6 +25,9 @@
                                 <td>{{ ticket.title }}</td>
                                 <td>{{ ticket.creation_date | date:'dd/MM/yyyy hh:mm' }}</td>
                                 <td>{{ ticket.userName }}</td>
+                                <td>
+                                    <span class="material-icons align-middle">add</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

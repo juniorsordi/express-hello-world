@@ -19,29 +19,29 @@
                             <div class="mb-3 position-relative" id="datepicker1">
                                 <label class="form-label" translate="">Start Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker" data-date-language="pt-BR" ng-model="form.inicio_estimado"
-                                    data-date-container="#datepicker1" data-date-format="dd/mm/yyyy" data-date-autoclose="true"/>
+                                    data-date-container="#datepicker1" data-date-format="dd/mm/yyyy" data-date-autoclose="true" ng-change="calcularEsforco1()"/>
                             </div>
 
                             <!-- Date View -->
                             <div class="mb-3 position-relative" id="datepicker2">
                                 <label class="form-label" translate="">Due Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker" data-date-language="pt-BR" ng-model="form.termino_estimado"
-                                    data-date-container="#datepicker2" data-date-format="dd/mm/yyyy" data-date-autoclose="true"/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="project-budget" class="form-label" translate="">Budget</label>
-                                <input type="text" id="project-budget" class="form-control" placeholder="Enter project budget" ng-model="form.budget" ui-money-mask="2"/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="hour-value" class="form-label" translate="">Hour Value</label>
-                                <input type="text" id="hour-value" class="form-control" placeholder="Enter hour value" ng-model="form.valor_hora" ui-money-mask="2"/>
+                                    data-date-container="#datepicker2" data-date-format="dd/mm/yyyy" data-date-autoclose="true" ng-change="calcularEsforco1()"/>
                             </div>
 
                             <div class="mb-3">
                                 <label for="estimated_effort" class="form-label" translate="">Estimated Effort (Hours)</label>
                                 <input type="text" id="estimated_effort" class="form-control" placeholder="Enter Estimated Effort" ng-model="form.esforco_estimado"/>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hour-value" class="form-label" translate="">Hour Value</label>
+                                <input type="text" id="hour-value" class="form-control" placeholder="Enter hour value" ng-model="form.valor_hora" ui-money-mask="2" ng-change="calcularBudget()" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="project-budget" class="form-label" translate="">Budget</label>
+                                <input type="text" id="project-budget" class="form-control" placeholder="Enter project budget" ng-model="form.budget" ui-money-mask="2"/>
                             </div>
 
                             <div class="mb-3">

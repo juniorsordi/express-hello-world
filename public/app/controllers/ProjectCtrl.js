@@ -374,17 +374,18 @@ app.controller("ProjectDashboardCtrl", function ($scope, APIService) {
 app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
 
     $scope.form = {
-        nome: "Testes de Psicopedagogia",
-        descricao: "Testes de Psicopedagogia utilizando uma planilha de excel como exemplo para os calculos e entrada de campos.",
+        nome: "",
+        descricao: "",
         inicio_estimado: "10/05/2023",
-        termino_estimado: "10/09/2023",
-        budget: 9000,
-        id_cliente: 11,
-        id_categoria: 4,
-        esforco_estimado: 440,
-        valor_hora: 20.00,
+        termino_estimado: "31/12/2023",
+        budget: 0,
+        id_cliente: 1,
+        id_categoria: 2,
+        esforco_estimado: 0,
+        valor_hora: 0,
         prioridade: 1,
     };
+
     $scope.arrPriorities = [
         { id: 0, label: 'Low', value: '0' },
         { id: 1, label: 'Medium', value: '1' },
@@ -397,6 +398,18 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
         { id: 3, label: 'Completed' }
     ];
 
+    $scope.calcularEsforco1 = function() {
+        //console.log([$scope.form.inicio_estimado, $scope.form.termino_estimado]);
+        let total = calcularEsforco($scope.form.inicio_estimado, $scope.form.termino_estimado, 4);
+        $scope.form.esforco_estimado = total;
+        $scope.calcularBudget();
+    }
+
+    $scope.calcularBudget = function() {
+        let budget = parseFloat($scope.form.esforco_estimado) * parseFloat($scope.form.valor_hora);
+        $scope.form.budget = budget;
+    }
+
     $scope.init = function () {
         $scope.arrTipoProjeto = APIService.resourceQuery("/company/projectTypes");
         $scope.arrClientes = APIService.resourceQuery("/company/clients");
@@ -404,6 +417,8 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
         $scope.arrCategorias = APIService.resourceQuery("/company/categories");
         //$scope.arrCategories = APIService.resourceQuery("/company/categories");
         $scope.arrStatus = APIService.resourceQuery("/company/status");
+
+        $scope.calcularEsforco1();
     }
 
     $scope.inserirNovoProjeto = function () {

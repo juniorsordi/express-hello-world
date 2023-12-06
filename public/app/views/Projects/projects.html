@@ -5,7 +5,7 @@
 				<input type="text" class="form-control" ng-model="filtro.nome" placeholder="{{ 'Search' | translate }}" />
 			</div>
 			<div class="col">
-				<a class="btn btn-primary btn-sm " href="#!/projects/new" role="button"> <i class="fa fa-plus"></i> <span translate>Add Project</span></a>
+				<a class="btn btn-primary btn-sm " href="#!/projects/new" role="button"><span class="material-icons align-middle">add</span> <span translate>Add Project</span></a>
                 <button class="btn btn-primary" type="button" ng-click="exportProjects()">Test</button>
 			</div>
 		</div>
@@ -57,14 +57,13 @@
                             </ul>
                         </div>
                         <div class="col-2">
-                            <a href="#!/project/{{ project.id }}"><i class="fa fa-chevron-right fa-2x" aria-hidden="true" ></i></a>
+                            <a href="#!/project/{{ project.id }}">
+                                <span class="material-icons align-middle" style="font-size: 40px;">chevron_right</span>
+                            </a>
                         </div>
                     </div>
 				</div>
             </div>
         </div>
     </div>
-    <script>
-      feather.replace()
-    </script>
 </div>
