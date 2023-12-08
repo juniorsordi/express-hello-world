@@ -1,0 +1,131 @@
+<div>
+    <style>
+        .mdi {
+            font-size: 20px !important;
+        }
+    </style>
+    <ul class="sidebar-nav">
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#!/">
+                <span class="material-icons align-middle">home</span>
+                <span>Home</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#!/usuario/agenda">
+                <span class="material-icons align-middle">event</span>
+                <span>Minha Agenda</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#!/plans">
+                <span class="material-icons align-middle">layers</span>
+                <span>Planos</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#!/gyms">
+                <span class="material-icons align-middle">fitness_center</span>
+                <span>Academias</span>
+            </a>
+        </li>
+        <li ng-if="modules.os" class="sidebar-item">
+            <a data-bs-target="#os" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">Ordems de Serviço</span>
+            </a>
+            <ul id="os" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/ordemServico"> 
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Ordems de Serviço
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/controle_mudancas"><span class="material-icons align-middle">chevron_right</span> Controle de Mudanças</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-item">
+            <a data-bs-target="#academia" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">Academia</span>
+            </a>
+            <ul id="academia" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/gym">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/gyms/clientes">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Clientes
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/gyms/treinos">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Treinos
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-item">
+            <a data-bs-target="#Profissional" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">Profissional</span>
+            </a>
+            <ul id="Profissional" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/profissional">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/profissional/agenda">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Agenda do Dia
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/profissional/financeiro">
+                        <span class="material-icons align-middle">chevron_right</span>
+                        Financeiro
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-item">
+            <a data-bs-target="#system" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <span class="material-icons align-middle">folder</span>
+                <span class="align-middle" translate="">System</span>
+            </a>
+            <ul id="system" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a class="sidebar-link align-middle" href="#!/sistema/usuarios">
+                        <span class="material-icons align-middle">group</span>
+                        <span translate="">Users</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/sistema/configuracao">
+                        <span class="material-icons align-middle">settings</span>
+                        <span translate="">Settings</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#!/sistema/financas">
+                        <span class="material-icons align-middle">settings</span>
+                        <span translate="">Financeiros</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    <ul>
+</div>

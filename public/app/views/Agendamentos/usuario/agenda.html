@@ -17,13 +17,13 @@
                     <div ng-repeat="item in arrAgendamentos" class="col-md-12 item-agenda">
                         <table width="100%">
                             <tr>
-                                <td width="15%" align="center">
+                                <td width="18%" align="center">
                                     <span class="data">{{ item.data.substr(0,10) |  date: "dd ' de ' MMMM ' de ' yyyy" }}</span><br>
-                                    <span class="horario">{{ item.horario }}</span>
+                                    <span class="horario">{{ item.horario.substr(0,5) }}</span>
                                 </td>
                                 <td style="padding-left: 10px;">
                                     {{ item.nome_prestador }}<br>
-                                    #{{ $index+1 }} - {{ item.nomeProduto }}
+                                    #{{ $index+1 }} - {{ item.descricao }}
                                 </td>
                                 <td width="10%" align="center">
                                     <span ng-if="item.status == 1">
@@ -46,17 +46,17 @@
                     <div ng-repeat="item in arrAgendamentosPassados" class="col-md-12 item-agenda">
                         <table width="100%">
                             <tr>
-                                <td width="15%" align="center">
+                                <td width="20%" align="center">
                                     <span class="data">{{ item.data.substr(0,10) |  date: "dd ' de ' MMMM ' de ' yyyy" }}</span><br>
-                                    <span class="horario">{{ item.horario }}</span>
+                                    <span class="horario">{{ item.horario.substr(0,5) }}</span>
                                 </td>
                                 <td style="padding-left: 10px;">
                                     {{ item.nome_prestador }}<br>
-                                    #{{ $index+1 }} - {{ item.nomeProduto }}
+                                    #{{ $index+1 }} - {{ item.descricao }}
                                 </td>
                                 <td width="20%">
-                                    <button ng-if="item.status == 2" class="btn btn-warning btn-xs" type="button" ng-click="avaliarItem(item)">Avaliar</button>
-                                    <span ng-if="item.status == 3">
+                                    <button ng-if="item.id_status == 2" class="btn btn-warning btn-xs" type="button" ng-click="avaliarItem(item)">Avaliar</button>
+                                    <span ng-if="item.id_status == 3">
                                         <span ng-repeat="star in stars track by $index" style="font-size: 11px;">
                                             <i ng-if="$index < item.rating" class="fa fa-star" style="color: #f5c71a;"></i>
                                             <i ng-if="$index >= item.rating" class="fa fa-star"></i>
@@ -71,7 +71,6 @@
                         <h3 align="center">Sem agendamentos Anteriores</h3>
                     </div>
                 </div>
-                <div ng-include="'app/views/Agendamentos/modal/usuarioAvaliacao'"></div>
             </div>
         </div>
     </div>

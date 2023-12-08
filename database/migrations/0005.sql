@@ -51,3 +51,18 @@ INSERT INTO agendamento_planos (id, titulo, descricao, valor_mensal, padrao, ati
                                         <li>Disponibilizar sua agenda para os clientes fazerem seus agendamentos de forma inteligente</li>
                                         <li>Gerenciamento de todas atividades da empresa</li>
                                     </ul>', 500.0, false, true);
+
+CREATE TABLE agendamento_academias (
+    id serial primary key,
+    nome varchar(256),
+    capa text,
+    id_usuario_responstavel integer references usuario (id),
+    data_cadastro timestamp,
+    ativo integer
+);
+INSERT INTO agendamento_academias (id, nome, capa, id_usuario_responstavel, data_cadastro, ativo) VALUES(2, 'Academia do Douglas', 'assets/img/gyms/facebook-fitness-cover-design-template-0467cfdc196325e9098855cdab3ff352_screen.jpg?ts=1568879538', 3, '2023-12-08 13:24:44.701', 1);
+INSERT INTO agendamento_academias (id, nome, capa, id_usuario_responstavel, data_cadastro, ativo) VALUES(3, 'Academia do Dilson', 'assets/img/gyms/gym-and-fitness-facebook-cover-advertising-te-design-template-ac1243e180d670f56a4e31a3950307fc_screen.jpg?ts=1619300876', 1, '2023-12-08 13:24:47.868', 1);
+
+INSERT INTO agendamento_prestador_compromisso (id, id_prestador, id_produto, id_usuario_solicitante, descricao, "data", horario, id_status, data_cadastro) VALUES(1, 1, 1, 3, 'Desenvolvimento PHP', '2023-12-15', '10:00:00', 1, '2023-12-08 15:03:15.492');
+INSERT INTO agendamento_prestador_compromisso (id, id_prestador, id_produto, id_usuario_solicitante, descricao, "data", horario, id_status, data_cadastro) VALUES(2, 1, 1, 2, 'Desenvolvimento PHP', '2023-11-10', '10:00:00', 2, '2023-12-08 15:06:25.034');
+

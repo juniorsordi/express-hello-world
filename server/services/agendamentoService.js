@@ -11,6 +11,16 @@ async function getAgendamentoAreas() {
     }
 }
 
+async function getAcademiasAtivas() {
+    try {
+        let SQL = `SELECT * FROM agendamento_academias ORDER BY nome ASC`;
+        let lista = await database.any(SQL);
+        return lista;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 async function getAgendamentoPrestadores() {
     try {
         let SQL = `SELECT * FROM agendamento_prestador ORDER BY titulo ASC`
@@ -31,9 +41,18 @@ async function getAgendamentoPrestadorByID(id) {
     }
 }
 
-async function getAcademiasAtivas() {
+async function getAgendaUsuario(id) {
     try {
-        let SQL = `SELECT * FROM agendamento_prestador WHERE id = 0 ORDER BY titulo ASC`
+        let SQL = `SELECT * FROM agendamento_prestador_compromisso WHERE data >= now() AND id_usuario_solicitante = 3 ORDER BY data DESC, horario DESC`;
+        return await database.any(SQL);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function getAgendaUsuarioPassada(id) {
+    try {
+        let SQL = `SELECT * FROM agendamento_prestador_compromisso WHERE data < now() AND id_usuario_solicitante = 2 ORDER BY data DESC, horario DESC`;
         return await database.any(SQL);
     } catch (err) {
         console.log(err);
@@ -45,4 +64,6 @@ module.exports = {
     getAgendamentoPrestadores,
     getAgendamentoPrestadorByID,
     getAcademiasAtivas,
+    getAgendaUsuario,
+    getAgendaUsuarioPassada,
 }

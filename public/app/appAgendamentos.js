@@ -118,7 +118,7 @@ app.directive("tinymce", function () {
 });
 ///#####################################################################################################
 ///#####################################################################################################
-app.controller("AppController", function ($scope, $rootScope, $http, $routeParams, RestService, $location) {
+app.controller("AppController", function ($scope, $rootScope, $routeParams, RestService, $window, $translate) {
     $scope.versao = "1.10.0";
 
     $scope.showSideMenu = false;
@@ -137,6 +137,11 @@ app.controller("AppController", function ($scope, $rootScope, $http, $routeParam
         }
     ];
 
+    $scope.languagesList = [
+        { id: 1, name: 'English', locale: 'en', flag: 'us.png' },
+        { id: 2, name: 'Portuguese', locale: 'pt', flag: 'br.png' }
+    ];
+
     $scope.alert = {};
     $scope.showAlert = function(type, msg, timer) {
         if(!timer) { timer = 3; }
@@ -153,13 +158,17 @@ app.controller("AppController", function ($scope, $rootScope, $http, $routeParam
         $scope.showSideMenu = true;
         $scope.toggleSideBar();
 
-        var user = JSON.parse(sessionStorage.getItem("user"));
-        console.log(user);
+        var user = JSON.parse(localStorage.getItem("user"));
         if (user) {
             $scope.user = user;
             //$scope.user.empresa = 1;
             $scope.user.plan = (user.prestador == 1 ? "Profissional" : "Básico");
             $scope.listarNotificacoes();
+            $scope.lang = $window.navigator.language || $window.navigator.userLanguage;
+            $scope.currentLang = $scope.languagesList.find(e => e.locale === $scope.lang.substr(0, 2));
+            $translate.use($scope.currentLang.locale);
+            $scope.Usuario = user;
+            $rootScope.Usuario = $scope.Usuario;
         } else {
             //location.href="login.html";
         }

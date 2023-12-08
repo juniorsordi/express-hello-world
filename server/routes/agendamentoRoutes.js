@@ -44,7 +44,7 @@ router.get("/areas", auth, async function (req, res, next) {
 
 router.get("/usuario/agenda", auth, async function (req, res, next) {
     try {
-        res.json([req.query]);
+        res.json(await service.getAgendaUsuario(req.query.id));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -53,16 +53,17 @@ router.get("/usuario/agenda", auth, async function (req, res, next) {
 
 router.get("/usuario/agenda/passados", auth, async function (req, res, next) {
     try {
-        res.json([]);
+        res.json(await service.getAgendaUsuarioPassada(req.query.id));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
     }
 });
 
-/*
-router.get("/gym/list", auth, async function (req, res, next) {
+
+router.get("/gym/list", async function (req, res, next) {
     try {
+        //res.json({ success: false });
         res.json(await service.getAcademiasAtivas());
     } catch (err) {
         console.error(`Error while getting response`, err.message);

@@ -1,4 +1,4 @@
-app.controller('AgendamentoCtrl', function ($scope, $rootScope, $http, RestService, $location, $modal) {
+app.controller('AgendamentoCtrl', function ($scope, $rootScope, $routeParams, $http, RestService, $location, $modal) {
 
     $scope.form = {};
 
@@ -125,4 +125,15 @@ app.controller('AgendamentoCtrl', function ($scope, $rootScope, $http, RestServi
             $scope.arrAgendamentosPassados = response.data;
         })
     }
+
+    $scope.initViewPrestador = function() {
+        var id = $routeParams.id;
+        $scope.item = {};
+        RestService.getData("/agendamento/prestador/"+id, function(response) {
+            $scope.item = response.data;
+        });
+    }
 });
+///################################################################################################################################
+///################################################################################################################################
+///################################################################################################################################
