@@ -38,8 +38,6 @@ app.controller('GymCtrl', function ($scope, $location, $http, RestService) {
     $scope.infoUser = {};
     $scope.onSelectUsuario = function ($item, $model, $label, $event) {
         $scope.UsuarioID = $item.id;
-        console.log($item);
-        //$scope.listarPermissoesUsuario();
         $scope.buscarDadosUsuario($scope.UsuarioID);
     };
 

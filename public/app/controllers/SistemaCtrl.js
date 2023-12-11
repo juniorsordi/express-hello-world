@@ -53,9 +53,10 @@ app.controller('SistemaCtrl', function ($scope, $location, $modal, APIService) {
         $scope.planSelected.paymentMethod = id;
         $scope.incrementStep();
     }
-//kA04EOP5CdYlFch1KdH7vyv6z75eEK1oOMDVgc7M
 
+//kA04EOP5CdYlFch1KdH7vyv6z75eEK1oOMDVgc7M
 //lQy3uQQ4HcmKYYzSQpQrxzbdtBnJxzgSD3ZDoPGG
+
     $scope.resetPayment = function() {
         $scope.paymentBankSlip = true;
         $scope.paymentPix = true;

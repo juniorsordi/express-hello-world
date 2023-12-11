@@ -68,7 +68,7 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
         $scope.projectsList.map(el => {
             jsonData.push([el.id, el.nome, el.esforco_estimado, el.esforco_atual, el.percentual_completo, el.valor_hora, el.inicio_estimado, el.termino_estimado]);
         });
-        //*
+        
         sheet1.setData(jsonData);
         workbook.addWorksheet(sheet1);
         ExcelBuilder.Builder.createFile(workbook, {
@@ -78,7 +78,6 @@ app.controller("ProjectCtrl", function ($scope, $rootScope, $routeParams, APISer
                 type: "base64"
             }), "Demo.xlsx");
         });
-        //*/
     }
     ///############################################################################################
     ///############################################################################################
@@ -399,7 +398,6 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
     ];
 
     $scope.calcularEsforco1 = function() {
-        //console.log([$scope.form.inicio_estimado, $scope.form.termino_estimado]);
         let total = calcularEsforco($scope.form.inicio_estimado, $scope.form.termino_estimado, 4);
         $scope.form.esforco_estimado = total;
         $scope.calcularBudget();
@@ -413,9 +411,7 @@ app.controller("NewProjectCtrl", function ($scope, $rootScope, APIService) {
     $scope.init = function () {
         $scope.arrTipoProjeto = APIService.resourceQuery("/company/projectTypes");
         $scope.arrClientes = APIService.resourceQuery("/company/clients");
-        //$scope.arrClients = APIService.resourceQuery("/company/clients");
         $scope.arrCategorias = APIService.resourceQuery("/company/categories");
-        //$scope.arrCategories = APIService.resourceQuery("/company/categories");
         $scope.arrStatus = APIService.resourceQuery("/company/status");
 
         $scope.calcularEsforco1();

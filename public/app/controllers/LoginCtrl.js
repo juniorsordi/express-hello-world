@@ -35,47 +35,34 @@ app.controller("LoginCtrl", function ($scope, $rootScope, $http, RestService, $l
         console.log(`user picture ${payload.picture}`);
         console.log(payload);
         RestService.postData("/../auth/user", payload, function(resp) {
-            //*
             console.log(resp.data);
             if (resp.data.success) {
-                //localStorage.setItem("user", JSON.stringify(resp.data));
-                sessionStorage.setItem("user", JSON.stringify(resp.data));
+                localStorage.setItem("user", JSON.stringify(resp.data));
+                //sessionStorage.setItem("user", JSON.stringify(resp.data));
                 location.href = "./";
             } else {
                 //alert(resp.data.msg);
             }
-            //*/
         })
     }
 
     $scope.SignIn = function (event) {
         $http.post("/../api/auth/login", $scope.user).then(function(resp) {
             if (resp.data.success) {
-                //localStorage.setItem("user", JSON.stringify(resp.data));
-                sessionStorage.setItem("user", JSON.stringify(resp.data));
-                location.href = "./";
-            } else {
-                alert(resp.data.msg);
-            }
-        })
-        /*
-        RestService.postData("/../auth/login", $scope.user, function (resp) {
-            if (resp.data.success) {
-                //localStorage.setItem("user", JSON.stringify(resp.data));
-                sessionStorage.setItem("user", JSON.stringify(resp.data));
+                localStorage.setItem("user", JSON.stringify(resp.data));
+                //sessionStorage.setItem("user", JSON.stringify(resp.data));
                 location.href = "./";
             } else {
                 alert(resp.data.msg);
             }
         });
-        //*/
     }
 
     $scope.criarConta = function () {
         RestService.postData("/../auth/user/new", $scope.user, function (resp) {
             if (resp.data.success) {
-                //localStorage.setItem("user", JSON.stringify(resp.data));
-                sessionStorage.setItem("user", JSON.stringify(resp.data));
+                localStorage.setItem("user", JSON.stringify(resp.data));
+                //sessionStorage.setItem("user", JSON.stringify(resp.data));
                 location.href = "./";
             } else {
                 alert(resp.data.msg);

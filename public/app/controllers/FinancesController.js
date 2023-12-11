@@ -12,7 +12,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
             { id: 1, totalHours: 60, hourPrice: 20, dueDate: '2023-05-15', paidDate: '2023-05-16' },
             { id: 2, totalHours: 80, hourPrice: 20, dueDate: '2023-05-31', paidDate: null }
         ];
-        //$scope.reloadFinancialTab();
 
         $scope.incomesList = [];
 
@@ -183,9 +182,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
         });
 
         $scope.filtrar();
-        $("#data1").focus().select();
-        $("#data2").focus().select();
-        $("#account").focus().select();
 
         $scope.gridOpts = {
             enableGridMenu: true,
@@ -296,7 +292,6 @@ app.controller("FinancesController", function ($scope, $routeParams, $resource, 
     //$scope.init();
 });
 ///#########################################################################################################################
-
 ///#########################################################################################################################
 app.controller("FinancesInvoicesCtrl", function ($scope, APIService) {
     $scope.form = {};
@@ -595,7 +590,7 @@ app.controller("FinancesAddAccount", function ($scope, $rootScope, $routeParams,
     }
 
     $scope.salvarContaBancaria = function(form) {
-        console.log(form); return;
+        //console.log(form); return;
         APIService.postData("/finances/accounts", form, function(resp) {
             modalAccount.hide();
             $scope.form = {};

@@ -34,7 +34,6 @@ app.controller('PrestadorCtrl', function ($scope, $rootScope, APIService, $modal
                 modalCadProduto.hide();
                 $scope.listarProdutosPrestador();
             } else {
-                //alert(resp.data.msg);
                 $scope.showAlert("warning", resp.data.msg, 5);
             }
         });
@@ -82,8 +81,6 @@ app.controller('GymCtrl', function ($scope, $rootScope, APIService, $http, $moda
     $scope.infoUser = {};
     $scope.onSelectUsuario = function ($item, $model, $label, $event) {
         $scope.UsuarioID = $item.id;
-        console.log($item);
-        //$scope.listarPermissoesUsuario();
         $scope.buscarDadosUsuario($scope.UsuarioID);
     };
 
@@ -106,7 +103,6 @@ app.controller('GymCtrl', function ($scope, $rootScope, APIService, $http, $moda
                 $scope.$apply();
             }
         });
-        
     }
 
     $scope.usuarios = function (val) {

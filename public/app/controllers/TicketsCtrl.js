@@ -4,7 +4,6 @@ app.controller("TicketsCtrl", function ($scope, $routeParams, $resource, APIServ
 
     ///############################################################################################
     $scope.showTicket = function(id) {
-        //goto("/ticket/"+id);
         location.href="#!/ticket/"+id;
     }
     ///############################################################################################
