@@ -44,8 +44,9 @@ async function listarUltimasBatidas(idUser) {
 }
 
 async function calculoBancoHorasUsuario(idUser) {
+    //let mesAtual = 10;//moment().format("MM");
     let mesAtual = moment().format("MM");
-    let SQL1 = `SELECT distinct dia, mes, ano FROM rh_batida_ponto WHERE mes = $1 AND id_usuario = $2;`;
+    let SQL1 = `SELECT distinct dia, mes, ano FROM rh_batida_ponto WHERE mes = $1 AND id_usuario = $2 ORDER BY ano, mes, dia ASC`;
     const data = await database.any(SQL1, [mesAtual, idUser]);
     var i = 0;
     for (const element of data) {
@@ -60,8 +61,14 @@ async function calculoBancoHorasUsuario(idUser) {
     return data;
 }
 
+async function listarSaldoHoras(idUser) {
+    const data = await database.any("SELECT * FROM rh_saldo_horas_mes WHERE id_usuario = $1 ORDER BY ano, mes DESC", [idUser]);
+    return data;
+}
+
 module.exports = {
     salvarBatidaPonto,
     listarUltimasBatidas,
     calculoBancoHorasUsuario,
+    listarSaldoHoras,
 }

@@ -66,3 +66,11 @@ INSERT INTO agendamento_academias (id, nome, capa, id_usuario_responstavel, data
 INSERT INTO agendamento_prestador_compromisso (id, id_prestador, id_produto, id_usuario_solicitante, descricao, "data", horario, id_status, data_cadastro) VALUES(1, 1, 1, 3, 'Desenvolvimento PHP', '2023-12-15', '10:00:00', 1, '2023-12-08 15:03:15.492');
 INSERT INTO agendamento_prestador_compromisso (id, id_prestador, id_produto, id_usuario_solicitante, descricao, "data", horario, id_status, data_cadastro) VALUES(2, 1, 1, 2, 'Desenvolvimento PHP', '2023-11-10', '10:00:00', 2, '2023-12-08 15:06:25.034');
 
+CREATE TABLE rh_saldo_horas_mes (
+    id serial primary key,
+    id_usuario integer references usuario(id),
+    mes integer,
+    ano integer,
+    saldo json,
+    data_cadastro timestamp
+);

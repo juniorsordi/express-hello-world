@@ -62,6 +62,30 @@ app.filter('Timestamp', function () {
   }
 });
 ///################################################################################################################
+app.filter('myDateFilter', ['$filter',
+    function($filter) {
+      return function(input) {
+        let negativo = false;
+        if(input < 0) { input = input * -1; negativo = true; }
+        // set minutes to seconds
+        var seconds = input * 60
+
+        // calculate (and subtract) whole days
+        var days = Math.floor(seconds / 86400);
+        seconds -= days * 86400;
+
+        // calculate (and subtract) whole hours
+        var hours = Math.floor(seconds / 3600) % 24;
+        seconds -= hours * 3600;
+
+        // calculate (and subtract) whole minutes
+        var minutes = Math.floor(seconds / 60) % 60;
+
+        return days + 'd ' + hours + 'h ' + (negativo ? '-' : '') + minutes + 'm ';
+      }
+    }
+  ]);
+///################################################################################################################
 app.filter('total', function () {
   return function (input, property) {
     var i = input.length;

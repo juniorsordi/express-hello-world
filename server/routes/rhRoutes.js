@@ -37,4 +37,15 @@ router.get("/dashboard", async function (req, res, next) {
     }
 });
 
+router.get("/dashboard/saldo_horas_mes", async function (req, res, next) {
+    try {
+        let id_usuario = req.cookies.IDUser;
+        let info = await service.listarSaldoHoras(id_usuario);
+        res.status(200).json(info);
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 module.exports = router;

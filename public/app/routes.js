@@ -32,6 +32,7 @@ app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     .when('/g4f/controle_mudancas', { templateUrl: 'app/views/Projects/ControleMudancas/controle_mudancas_list.html', controller: 'G4FCtrl',        resolve: testeOCLazyLoad("G4FCtrl", "") })
     .when('/controle_mudancas/novo', { templateUrl: 'app/views/Projects/ControleMudancas/cadastro_controle_mudanca.html', controller: 'G4FCtrl',    resolve: testeOCLazyLoad("G4FCtrl", "") })
 
+    .when('/rh',                    { templateUrl: 'app/views/RH/Dashboard.html?t=' + date, controller: 'RHCtrl',                            resolve: testeOCLazyLoad("RHCtrl", "") })
     .when('/rh/baterPonto',         { templateUrl: 'app/views/RH/BaterPonto.html?t=' + date, controller: 'RHCtrl',                            resolve: testeOCLazyLoad("RHCtrl", "") })
 
     .when('/company/users',         { templateUrl: 'app/views/Companies/users.html?t=' + date, controller: 'CompanyUsersCtrl',                resolve: testeOCLazyLoad("ClientController", "") })
