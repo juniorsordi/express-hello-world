@@ -353,3 +353,41 @@ create table if not exists projeto_atividade_situacao (
 	ordem integer,
 	id_empresa integer references empresa(id)
 );
+
+create table financas_moedas (
+	id serial primary key,
+	codigo varchar(10),
+	nome varchar(256),
+	simbolo varchar(10),
+	ativo boolean
+);
+
+create table empresa_custo_mensal (
+	id serial primary key,
+	id_empresa integer references empresa(id),
+	alimentacao float,
+	internet float,
+	condominio float,
+	luz float,
+	iptu float,
+	outros float,
+	data_cadastro TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	data_atualizacao TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+alter table financas_conta_bancaria add column id_moeda integer references financas_moedas(id);
+alter table financas_conta_bancaria add column conta_padrao integer default 0;
+
+create table sistema_rotas (
+    id serial primary key,
+    id_menu integer references sistema_menus(id),
+    url_page varchar(512),
+    controller varchar(256),
+	file_controller varchar(256),
+	lazy_load boolean,
+    ativo boolean
+);
+alter table sistema_rotas add column ordem integer;
+
+INSERT INTO sistema_rotas (id, id_menu, url_page, controller, ativo) VALUES(1, 1, 'dashboard.html', 'AppController', true);
+INSERT INTO sistema_rotas (id, id_menu, url_page, controller, ativo) VALUES(2, 3, 'Projects/dashboard.html', 'ProjectDashboardCtrl', true);

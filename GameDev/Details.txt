@@ -1,6 +1,0 @@
-3D Adventure Action game
-
-Game Engine: Unity3D
-Platforms Target: PC and Consoles (Playstation and Xbox)
-Input methods: Keyboard+Mouse and Gamepads
-
