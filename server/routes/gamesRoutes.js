@@ -39,7 +39,7 @@ router.get("/gamesByPlatform", async function (req, res, next) {
 
 router.get("/gameInfo", async function (req, res, next) {
     try {
-        fetch("https://api.rawg.io/api/games/"+req.query.id+"?key=353f4de2e4f54a26812a5ee816408273&page_size=50")
+        fetch("https://api.rawg.io/api/games/"+req.query.id+"?key=a9dc202186f5446bb0702b8e6cf64d97&page_size=50")
             .then(response => response.json())
             .then(response => {
                 res.json(response.results);
