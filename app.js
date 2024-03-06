@@ -7,6 +7,9 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const fileupload = require('express-fileupload');
 
+let hltb = require('howlongtobeat');
+let hltbService = new hltb.HowLongToBeatService();
+
 const app = express();
 // #############################################################################
 // Logs all request paths and method
@@ -84,6 +87,20 @@ app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
 //app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 
 app.use('/api/v1/tickets', require('./server/routes/tickets.routes'));
+
+
+
+app.get('/api/hltb/search', function (req, res) { 
+	let search = req.query.name;
+	hltbService.search(search)
+		.then(result => res.status(200).json(result) );
+});
+
+app.get('/api/hltb/info/:id', function (req, res) {   
+	hltbService.detail(req.params.id)
+		.then(result => res.status(200).json(result) )
+		.catch(e => console.error(e));
+});
 
 let d = new Date()
 console.log(""+d);

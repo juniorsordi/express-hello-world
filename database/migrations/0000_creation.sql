@@ -385,9 +385,47 @@ create table sistema_rotas (
     controller varchar(256),
 	file_controller varchar(256),
 	lazy_load boolean,
-    ativo boolean
+    ativo boolean,
+	ordem integer
 );
-alter table sistema_rotas add column ordem integer;
 
 INSERT INTO sistema_rotas (id, id_menu, url_page, controller, ativo) VALUES(1, 1, 'dashboard.html', 'AppController', true);
 INSERT INTO sistema_rotas (id, id_menu, url_page, controller, ativo) VALUES(2, 3, 'Projects/dashboard.html', 'ProjectDashboardCtrl', true);
+
+CREATE TABLE financas_investimento (
+	id serial primary key,
+	id_banco integer references financas_bancos(id),
+	valor_inicial float,
+	data_aplicacao date,
+	nome varchar(512),
+	data_cadastro timestamp,
+	id_usuario_cadastro integer,
+	id_empresa integer references empresa(id)
+);
+
+CREATE TABLE empresa_produto (
+	id serial primary key,
+	id_empresa integer references empresa(id),
+	id_projeto integer references projeto(id),
+	nome_comercial varchar(512),
+	valor_unitario float,
+	ativo boolean
+);
+
+CREATE TABLE sale_plataforma (
+	id serial primary key,
+	id_empresa integer references empresa(id),
+	nome varchar(256),
+	site varchar(512),
+	taxa float
+);
+
+CREATE TABLE sale_venda_produto (
+	id serial primary key,
+	id_empresa integer references empresa(id),
+	id_produto integer references empresa_produto(id),
+	data_venda timestamp,
+	valor float,
+	id_ambiente_venda integer references sale_plataforma(id),
+	data_cadastro timestamp
+);
