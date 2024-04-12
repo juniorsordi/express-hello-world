@@ -1,0 +1,40 @@
+<div>
+    <div class="row">
+        <div class="col-md-12" ng-init="initCadAposta()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Cadastrar Aposta</h4>
+                            <p class="card-text">
+                                <form ng-submit="salvarAposta(form)">
+                                    <div class="mb-3">
+                                        <label for="f1" class="form-label">Nome</label>
+                                        <select name="f1" id="f1" class="form-control" ng-model="form.nome"
+                                            ng-options="item.nome as item.nome for item in listaApostadores"></select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="f2" class="form-label">Jogo</label>
+                                        <select name="f2" id="f2" class="form-control" ng-model="form.jogo"
+                                            ng-options="item as (item.time_a+' x '+item.time_b) for item in arrEventos"></select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="f3" class="form-label">Gols Time A <span ng-if="form.jogo">( {{ form.jogo.time_a }} )</span></label>
+                                        <input type="text" id="f3" class="form-control" ng-model="form.gols_time_a" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="f4" class="form-label">Gols Time B <span ng-if="form.jogo">( {{ form.jogo.time_b }} )</span></label>
+                                        <input type="text" id="f4" class="form-control" ng-model="form.gols_time_b" />
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

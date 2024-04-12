@@ -1,0 +1,69 @@
+<div>
+    <div class="row">
+        <div class="col-md-12" ng-init="listarProximosEventos()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Cadastrar Jogo</h4>
+                            <p class="card-text">
+                                <form ng-submit="salvarJogo(form)">
+                                    <div class="mb-3">
+                                        <label for="f1" class="form-label">Campeonato/Torneio</label>
+                                        <select name="f1" id="f1" class="form-control" ng-model="form.id_campeonato"
+                                            ng-options="item.id as item.nome for item in listaCampeonatos"></select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="f2" class="form-label">Data</label>
+                                        <input type="date" id="f2" class="form-control" ng-model="form.data_jogo" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="f1b" class="form-label">Horario</label>
+                                        <select name="f1b" id="f1b" class="form-control" ng-model="form.horario">
+                                            <option value="01h00">01h00</option>
+                                            <option value="02h00">02h00</option>
+                                            <option value="03h00">03h00</option>
+                                            <option value="04h00">04h00</option>
+                                            <option value="05h00">05h00</option>
+                                            <option value="06h00">06h00</option>
+                                            <option value="07h00">07h00</option>
+                                            <option value="08h00">08h00</option>
+                                            <option value="09h00">09h00</option>
+                                            <option value="10h00">10h00</option>
+                                            <option value="11h00">11h00</option>
+                                            <option value="12h00">12h00</option>
+                                            <option value="13h00">13h00</option>
+                                            <option value="14h00">14h00</option>
+                                            <option value="15h00">15h00</option>
+                                            <option value="16h00">16h00</option>
+                                            <option value="17h00">17h00</option>
+                                            <option value="18h00">18h00</option>
+                                            <option value="19h00">19h00</option>
+                                            <option value="20h00">20h00</option>
+                                            <option value="21h00">21h00</option>
+                                            <option value="22h00">22h00</option>
+                                            <option value="23h00">23h00</option>
+                                            <option value="0h00">0h00</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="f3" class="form-label">Time A</label>
+                                        <input type="text" id="f3" class="form-control" ng-model="form.time_a" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="f4" class="form-label">Time B</label>
+                                        <input type="text" id="f4" class="form-control" ng-model="form.time_b" />
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

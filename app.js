@@ -87,6 +87,7 @@ app.use('/api/v1/', require('./server/routes/meudinheiroRoutes'));
 //app.use('/api/v2/', require('./server/routes/meudinheiroRoutes2'));
 
 app.use('/api/v1/tickets', require('./server/routes/tickets.routes'));
+app.use('/api/dtibet', require('./server/routes/dtibetRoutes'));
 
 
 

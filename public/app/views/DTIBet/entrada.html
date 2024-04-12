@@ -1,0 +1,66 @@
+<div>
+    <div class="row">
+        <div class="col-md-12" ng-init="listarProximosEventos()">
+            <h2>DTI Bet</h2>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Ranking</h4>
+                            <p class="card-text">
+                            <table class="table">
+                                <tr ng-repeat="apostador in listaApostadores">
+                                    <td>{{ apostador.nome }}</td>
+                                    <td width="5%">{{ apostador.pontos }}</td>
+                                </tr>
+                            </table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div ng-repeat="evento in arrEventos" class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ evento.time_a }} x {{ evento.time_b }} - {{ evento.data_jogo | date:'dd/MM/yyyy' }}</h4>
+                            <p class="card-text">
+                                <span ng-if="evento.encerrado == 1" class="badge rounded-pill text-bg-danger" >Encerrado</span >
+                                <div class="text-center" style="font-size: 40px;">
+                                    {{ evento.gols_a }} x {{ evento.gols_b }}
+                                </div>
+                                <div>
+                                    <table class="table" aria-describedby="apostas">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>{{ evento.time_a }}</th>
+                                                <th>{{ evento.time_b }}</th>
+                                                <th>Pontos</th>
+                                            </tr>
+                                        </thead>
+                                        <tr ng-repeat="aposta in evento.apostas">
+                                            <td>{{ aposta.nome }}</td>
+                                            <td align="center">{{ aposta.gols_time_a }}</td>
+                                            <td align="center">{{ aposta.gols_time_b }}</td>
+                                            <td>{{ aposta.pontos }}</td>
+                                        </tr>
+                                    </table>
+                                    <div class="text-center">
+                                        <a href="#!/apostar/{{ evento.id }}" class="btn btn-secondary btn-sm"> Apostar </a>
+                                    </div>
+                                    
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div>
+    <div class="row">
+        <div class="col-md-12" ng-init="listarJogos()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Jogos</h4>
+                            <p class="card-text">
+                                <a class="btn btn-primary btn-sm " href="#!/novoJogo" role="button"> Novo Jogo</a>
+                                <table class="table table-bordered table-striped">
+                                    <tr ng-repeat="jogo in jogos">
+                                        <td>{{ jogo.time_a }}</td>
+                                        <td width="8%" align="center">{{ jogo.gols_a }} X {{ jogo.gols_b }}</td>
+                                        <td>{{ jogo.time_b }}</td>
+                                        <td width="19%">{{ jogo.data_jogo | date:'dd/MM/yyyy' }} {{ jogo.horario }}</td>
+                                        <td width="8%">
+                                            {{ jogo.encerrado }}
+                                            <a href="#!/editarJogo/{{ jogo.id }}" alt=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
