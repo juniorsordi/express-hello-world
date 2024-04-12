@@ -184,6 +184,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, Rest
     $scope.salvarAposta = function(form) {
         RestService.postData("/dtibet/aposta", form, function(resp) {
             if(resp.data.success) {
+                $scope.form = {};
                 goto("/");
             }
         })
@@ -192,6 +193,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, Rest
     $scope.salvarJogo = function(form) {
         RestService.postData("/dtibet/jogo", form, function(resp) {
             if(resp.data.success) {
+                $scope.form = {};
                 goto("/");
             }
         })
