@@ -7,19 +7,19 @@
                         <div class="card-body">
                             <h4 class="card-title">Cadastrar Jogo</h4>
                             <p class="card-text">
-                                <form ng-submit="salvarJogo(form)">
+                                <form id="form1" name="form1" ng-submit="salvarJogo(form)">
                                     <div class="mb-3">
                                         <label for="f1" class="form-label">Campeonato/Torneio</label>
-                                        <select name="f1" id="f1" class="form-control" ng-model="form.id_campeonato"
+                                        <select name="f1" id="f1" class="form-control" ng-model="form.id_campeonato" required
                                             ng-options="item.id as item.nome for item in listaCampeonatos"></select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="f2" class="form-label">Data</label>
-                                        <input type="date" id="f2" class="form-control" ng-model="form.data_jogo" />
+                                        <input type="date" id="f2" class="form-control" ng-model="form.data_jogo" required />
                                     </div>
                                     <div class="mb-3">
                                         <label for="f1b" class="form-label">Horario</label>
-                                        <select name="f1b" id="f1b" class="form-control" ng-model="form.horario">
+                                        <select name="f1b" id="f1b" class="form-control" ng-model="form.horario" required>
                                             <option value="01h00">01h00</option>
                                             <option value="02h00">02h00</option>
                                             <option value="03h00">03h00</option>
@@ -49,14 +49,14 @@
                                     
                                     <div class="mb-3">
                                         <label for="f3" class="form-label">Time A</label>
-                                        <input type="text" id="f3" class="form-control" ng-model="form.time_a" />
+                                        <input type="text" id="f3" class="form-control" ng-model="form.time_a" required />
                                     </div>
                                     <div class="mb-3">
                                         <label for="f4" class="form-label">Time B</label>
-                                        <input type="text" id="f4" class="form-control" ng-model="form.time_b" />
+                                        <input type="text" id="f4" class="form-control" ng-model="form.time_b" required />
                                     </div>
                                 
-                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid">Salvar</button>
                                 
                                 </form>
                             </p>

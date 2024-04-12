@@ -132,7 +132,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, Rest
         RestService.getData("/dtibet/proximosEventos", function(resp) {
             $scope.arrEventos = resp.data;
             for(const evento of $scope.arrEventos) {
-                if(evento.data_jogo != date) {
+                if(evento.data_jogo.substr(0,10) != date) {
                     continue;
                 }
                 let time_ganhador = 0;
@@ -186,6 +186,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, Rest
             if(resp.data.success) {
                 $scope.form = {};
                 goto("/");
+            } else {
+                alert("ERRO ao inserir." + resp.data.detail);
             }
         })
     }
@@ -195,6 +197,8 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, Rest
             if(resp.data.success) {
                 $scope.form = {};
                 goto("/");
+            } else {
+                alert("ERRO ao inserir." + resp.data.detail);
             }
         })
     }
@@ -220,7 +224,6 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, Rest
                 document.getElementById("f2").disabled = true;
             }
         });
-        //$scope.listarProximosEventos();
     }
 
 });
@@ -229,7 +232,7 @@ if (window.Worker) {
     //const myWorker = new Worker("worker.js");
 }
 ///#####################################################################################################
-var date = new Date().getTime().toString();
+let date = new Date().getTime().toString();
 app.config(function ($routeProvider, $locationProvider, $ocLazyLoadProvider) {
     $routeProvider
         .when('/',                      { templateUrl: 'app/views/DTIBet/entrada.html', title: '' })

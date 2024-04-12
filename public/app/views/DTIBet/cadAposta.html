@@ -7,10 +7,10 @@
                         <div class="card-body">
                             <h4 class="card-title">Cadastrar Aposta</h4>
                             <p class="card-text">
-                                <form ng-submit="salvarAposta(form)">
+                                <form id="form1" name="form1" ng-submit="salvarAposta(form)">
                                     <div class="mb-3">
                                         <label for="f1" class="form-label">Nome</label>
-                                        <select name="f1" id="f1" class="form-control" ng-model="form.nome"
+                                        <select name="f1" id="f1" class="form-control" ng-model="form.nome" required
                                             ng-options="item.nome as item.nome for item in listaApostadores"></select>
                                     </div>
                                     <div class="mb-3">
@@ -20,14 +20,14 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="f3" class="form-label">Gols Time A <span ng-if="form.jogo">( {{ form.jogo.time_a }} )</span></label>
-                                        <input type="text" id="f3" class="form-control" ng-model="form.gols_time_a" />
+                                        <input type="text" id="f3" class="form-control" ng-model="form.gols_time_a" required />
                                     </div>
                                     <div class="mb-3">
                                         <label for="f4" class="form-label">Gols Time B <span ng-if="form.jogo">( {{ form.jogo.time_b }} )</span></label>
-                                        <input type="text" id="f4" class="form-control" ng-model="form.gols_time_b" />
+                                        <input type="text" id="f4" class="form-control" ng-model="form.gols_time_b" required />
                                     </div>
                                 
-                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid">Salvar</button>
                                 
                                 </form>
                             </p>

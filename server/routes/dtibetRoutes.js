@@ -33,7 +33,6 @@ router.get("/:id/apostas", async function (req, res, next) {
 router.post("/aposta", async function (req, res, next) {
     try {
         res.json(await service.salvarAposta(req.body));
-        //res.json(req.body);
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -43,7 +42,6 @@ router.post("/aposta", async function (req, res, next) {
 router.post("/jogo", async function (req, res, next) {
     try {
         res.json(await service.salvarJogo(req.body));
-        //res.json(req.body);
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -53,7 +51,6 @@ router.post("/jogo", async function (req, res, next) {
 router.put("/jogo", async function (req, res, next) {
     try {
         res.json(await service.atualizarJogo(req.body));
-        //res.json(req.body);
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
