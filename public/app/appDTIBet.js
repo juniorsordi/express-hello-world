@@ -173,6 +173,7 @@ FIFA World Cup - 2000
     }
 
     let verificarRanking = function() {
+        $scope.arrRankingDia = [];
         for(const evento of $scope.arrEventos) {
                 $scope.verificarResultado(evento);
                 /*
@@ -229,10 +230,14 @@ FIFA World Cup - 2000
 
     $scope.listarProximosEventos = function() {
         $scope.arrRankingDia = [];
-        RestService2.getData("/dtibet/proximosEventos", function(resp) {
+        RestService.getData("/dtibet/jogosDia", function(resp) {
             $scope.arrEventos = resp.data;
 
             verificarRanking();
+        });
+
+        RestService.getData("/dtibet/proximosEventos", function(resp) {
+            $scope.arrProxEventos = resp.data;
         });
 
         //$scope.listarJogosAPI();
@@ -269,7 +274,7 @@ FIFA World Cup - 2000
     $scope.atualizarInfoJogo = function(id) {
 
         RestService2.getData("/dtibet/updateGame/"+id, function(resp) {
-            $scope.listarEventosPorCampeonato();
+            $scope.listarProximosEventos();
         });
     }
 

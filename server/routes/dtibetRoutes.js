@@ -12,6 +12,15 @@ router.get("/jogos", async function (req, res, next) {
     }
 });
 
+router.get("/jogosDia", async function (req, res, next) {
+    try {
+        res.json(await service.listarJogosDoDia());
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.get("/jogo/:id", async function (req, res, next) {
     try {
         res.json(await service.pesquisarJogoByID(req.params.id));

@@ -2,15 +2,29 @@ const database = require("../infra/postgres");
 const fetch = require('node-fetch');
 const request = require('request');
 
-async function getProximosEventos(id_campeonato) {
+async function getProximosEventos() {
     try {
-        if(id_campeonato == null) { id_campeonato = 1; }
         let SQL = `SELECT * FROM dtibet.jogos 
-        WHERE encerrado <> 1 and data_jogo <= now() + interval '5' day AND id_campeonato = ${id_campeonato}
+        WHERE encerrado = 0 and data_jogo BETWEEN now() AND now() + interval '3' day
         ORDER BY data_jogo ASC`;
         let listaJogos = await database.any(SQL);
         for (const jogo of listaJogos) {
         //listaJogos.forEach(jogo => {
+            jogo.apostas = await database.any("SELECT * FROM dtibet.apostas WHERE id_jogo = $1 ORDER BY nome ASC", [jogo.id]);
+        };
+        return listaJogos;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function listarJogosDoDia() {
+    try {
+        let SQL = `SELECT * FROM dtibet.jogos 
+        WHERE encerrado <> 1 and data_jogo <= now() + interval '1'
+        ORDER BY data_jogo ASC`;
+        let listaJogos = await database.any(SQL);
+        for (const jogo of listaJogos) {
             jogo.apostas = await database.any("SELECT * FROM dtibet.apostas WHERE id_jogo = $1 ORDER BY nome ASC", [jogo.id]);
         };
         return listaJogos;
@@ -157,6 +171,7 @@ async function pegarListaJogosAPI(callback) {
 }
 
 module.exports = {
+    listarJogosDoDia,
     getProximosEventos,
     getApostasByIdJogo,
     pesquisarJogoByID,

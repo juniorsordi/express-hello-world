@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div class="col-md-12" ng-init="listarProximosEventos()">
-            <h2>DTI Bet</h2>
+            <h1 align="center">DTI Bet</h1>
 
             <div class="row d-none">
                 <div class="col-md-3">
@@ -20,24 +20,12 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    Selecione o Campeonato:
-                </div>
-                <div class="col-md-6">
-                    <select class="form-control" ng-change="listarEventosPorCampeonato()" ng-model="filtro.id_campeonato" ng-options="item.id as item.nome for item in listaCampeonatos"></select>
-                </div>
-                <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm" ng-click="listarEventosPorCampeonato()">
-                        <i class="fa fa-refresh" aria-hidden="true" title="atualizar dados"></i>
-                    </button>
-                    
-                </div>
-            </div>
-            <br>
             <br>
             
+            <button type="button" class="btn btn-default" ng-click="listarProximosEventos()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            
+            
+            <h2>Jogos do Dia</h2>
 
             <div class="row">
                 <div ng-repeat="evento in arrEventos" class="col-md-4">
@@ -81,23 +69,51 @@
                 </div>
             </div>
 
+            <br>
+            <br>
+            <h3>Próximos Jogos</h3>
             <div class="row">
-                <div class="col-md-3" ng-repeat="jogo in jogosAPI">
+                <div ng-repeat="evento in arrProxEventos" class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ jogo.homeTeam.shortName }} x {{ jogo.awayTeam.shortName }}</h4>
+                            <h4 class="card-title">
+                                {{ evento.time_a }} x {{ evento.time_b }}
+                                <span class="pull-right" style="font-size: 8px;"><i class="fa fa-info-circle" aria-hidden="true" ng-click="atualizarInfoJogo(evento.id)"></i></span>
+                            </h4>
                             <p class="card-text">
-                                <span style="font-size: 13px;font-weight: bold;">{{ jogo.utcDate | date:'dd/MM/yyyy HH:mm' }}</span><br>
-                                <span ng-if="jogo.status == 'FINISHED'" class="badge rounded-pill text-bg-danger">Encerrado</span>
+                                <span style="font-size: 13px;font-weight: bold;">{{ evento.data_jogo | date:'dd/MM/yyyy' }} - {{ evento.horario }}</span><br>
+                                <span ng-if="evento.encerrado == 1" class="badge rounded-pill text-bg-danger" >Encerrado</span >
                                 <div class="text-center" style="font-size: 40px;">
-                                    {{ jogo.score.fullTime.home }} x {{ jogo.score.fullTime.away }}
+                                    {{ evento.gols_a }} x {{ evento.gols_b }}
+                                </div>
+                                <div>
+                                    <table class="table" aria-describedby="apostas">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>{{ evento.time_a }}</th>
+                                                <th>{{ evento.time_b }}</th>
+                                                <th>Pontos</th>
+                                            </tr>
+                                        </thead>
+                                        <tr ng-repeat="aposta in evento.apostas">
+                                            <td>{{ aposta.nome }}</td>
+                                            <td align="center">{{ aposta.gols_time_a }}</td>
+                                            <td align="center">{{ aposta.gols_time_b }}</td>
+                                            <td>{{ aposta.pontos }}</td>
+                                        </tr>
+                                    </table>
+                                    <div class="text-center">
+                                        <a href="#!/apostar/{{ evento.id }}" class="btn btn-secondary btn-sm"> Apostar </a>
+                                    </div>
+                                    
                                 </div>
                             </p>
                         </div>
                     </div>
-                    
                 </div>
             </div>
+
             
             
         </div>
