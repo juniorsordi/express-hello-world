@@ -29,6 +29,18 @@ async function listarJogos() {
     }
 }
 
+async function pesquisarJogoByID(id) {
+    try {
+        let SQL = `SELECT * FROM dtibet.jogos WHERE id = $1 ORDER BY data_jogo DESC`;
+        let jogo = await database.any(SQL,[id]);
+        jogo.apostas = await database.any("SELECT * FROM dtibet.apostas WHERE id_jogo = $1 ORDER BY nome ASC", [id]);
+        return jogo;
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
 async function getApostasByIdJogo(id) {
     try {
         let SQL = `SELECT * FROM dtibet.apostas WHERE id_jogo = $1 ORDER BY nome ASC`;
@@ -117,6 +129,7 @@ async function pegarListaJogosAPI(callback) {
 module.exports = {
     getProximosEventos,
     getApostasByIdJogo,
+    pesquisarJogoByID,
     listarJogos,
     salvarAposta,
     salvarJogo,

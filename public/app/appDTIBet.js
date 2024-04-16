@@ -131,14 +131,14 @@ FIFA World Cup - 2000
 
 
     $scope.listaApostadores = [
-        { id: 1, nome: 'Johnlen' },
+        { id: 5, nome: 'Dilson' },
+        { id: 7, nome: 'Edilson' },
         { id: 2, nome: 'Jackson' },
+        { id: 1, nome: 'Johlen' },
+        { id: 8, nome: 'Leonardo' },
         { id: 3, nome: 'Lucas' },
         { id: 4, nome: 'Matheus' },
-        { id: 5, nome: 'Dilson' },
         { id: 6, nome: 'Thayse' },
-        { id: 7, nome: 'Edilson' },
-        { id: 8, nome: 'Leonardo' },
     ];
 
     $scope.arrRankingDia = [];
@@ -172,17 +172,8 @@ FIFA World Cup - 2000
         }
     }
 
-    $scope.listarEventosPorCampeonato = function() {
-        RestService.getData("/dtibet/proximosEventos?id="+$scope.filtro.id_campeonato, function(resp) {
-            $scope.arrEventos = resp.data;
-        });
-    }
-
-    $scope.listarProximosEventos = function() {
-        $scope.arrRankingDia = [];
-        RestService.getData("/dtibet/proximosEventos", function(resp) {
-            $scope.arrEventos = resp.data;
-            for(const evento of $scope.arrEventos) {
+    let verificarRanking = function() {
+        for(const evento of $scope.arrEventos) {
                 $scope.verificarResultado(evento);
                 /*
                 if(evento.data_jogo.substr(0,10) != date) {
@@ -226,6 +217,22 @@ FIFA World Cup - 2000
             }
             let tempOrdernado = Object.values($scope.listaApostadores).sort((a,b) => b.pontos - a.pontos);
             $scope.listaApostadores = tempOrdernado;
+    }
+
+    $scope.listarEventosPorCampeonato = function() {
+        RestService.getData("/dtibet/proximosEventos?id="+$scope.filtro.id_campeonato, function(resp) {
+            $scope.arrEventos = resp.data;
+
+            verificarRanking();
+        });
+    }
+
+    $scope.listarProximosEventos = function() {
+        $scope.arrRankingDia = [];
+        RestService.getData("/dtibet/proximosEventos", function(resp) {
+            $scope.arrEventos = resp.data;
+
+            verificarRanking();
         });
 
         //$scope.listarJogosAPI();
@@ -276,7 +283,20 @@ FIFA World Cup - 2000
     }
 
     $scope.initCadAposta = function() {
-        
+        //let jogo = $scope.arrEventos.find( e => e.id == $routeParams.id);
+        if($routeParams.id) {
+            RestService.getData("/dtibet/jogo/"+$routeParams.id, function(resp) {
+                $scope.arrEventos = resp.data;
+                if($routeParams.id) {
+                    let jogo = resp.data.find( e => e.id == $routeParams.id);
+                    $scope.form.jogo = jogo;
+                    document.getElementById("f2").disabled = true;
+                }
+            });
+        } else {
+
+        }
+        /*
         RestService.getData("/dtibet/proximosEventos", function(resp) {
             $scope.arrEventos = resp.data;
 
@@ -286,6 +306,7 @@ FIFA World Cup - 2000
                 document.getElementById("f2").disabled = true;
             }
         });
+        //*/
     }
 
 });
