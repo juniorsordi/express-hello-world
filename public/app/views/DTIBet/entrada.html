@@ -28,6 +28,12 @@
                 <div class="col-md-6">
                     <select class="form-control" ng-change="listarEventosPorCampeonato()" ng-model="filtro.id_campeonato" ng-options="item.id as item.nome for item in listaCampeonatos"></select>
                 </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-sm" ng-click="listarEventosPorCampeonato()">
+                        <i class="fa fa-refresh" aria-hidden="true" title="atualizar dados"></i>
+                    </button>
+                    
+                </div>
             </div>
             <br>
             <br>
@@ -37,7 +43,10 @@
                 <div ng-repeat="evento in arrEventos" class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ evento.time_a }} x {{ evento.time_b }}</h4>
+                            <h4 class="card-title">
+                                {{ evento.time_a }} x {{ evento.time_b }}
+                                <span class="pull-right" style="font-size: 8px;"><i class="fa fa-info-circle" aria-hidden="true" ng-click="atualizarInfoJogo(evento.id)"></i></span>
+                            </h4>
                             <p class="card-text">
                                 <span style="font-size: 13px;font-weight: bold;">{{ evento.data_jogo | date:'dd/MM/yyyy' }} - {{ evento.horario }}</span><br>
                                 <span ng-if="evento.encerrado == 1" class="badge rounded-pill text-bg-danger" >Encerrado</span >

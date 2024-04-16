@@ -86,6 +86,36 @@ async function atualizarJogo(fields) {
     }
 }
 
+async function atualizarInfoJogoAPI(id, callback) {
+    //5185ef7e31a44439915632d4a8dfb08a
+    let url = "https://api.football-data.org/v4/matches/"+id;
+    let headers = {
+        'X-Auth-Token': '5185ef7e31a44439915632d4a8dfb08a',
+        'Access-Control-Allow-Methods': "GET",
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Headers': "x-auth-token, x-response-control",
+        'Content-Length': 0
+    };
+    //fetch(url, { method: 'GET', headers: headers }).then(callback);
+    return request({
+        url: url,
+        headers: headers,
+        json: true
+    }, function(err, response, body) {
+        let result = body;
+        let encerradoSQL = "encerrado = 1, ";
+        let SQL = `UPDATE dtibet.jogos SET 
+            ${(result.status == "FINISHED" ? encerradoSQL : "")}
+            gols_a = ${result.score.fullTime.home},
+            gols_b = ${result.score.fullTime.away}
+        WHERE id = ${id}`;
+        //console.log(SQL);
+        database.any(SQL);
+        result.SQL = SQL;
+        return callback(result);
+    });
+}
+
 async function pegarListaJogosAPI(callback) {
     let url = "https://api.football-data.org/v4/competitions/2013/matches";
     let headers = {
@@ -135,4 +165,5 @@ module.exports = {
     salvarJogo,
     atualizarJogo,
     pegarListaJogosAPI,
+    atualizarInfoJogoAPI,
 }

@@ -50,6 +50,17 @@ router.get("/testeAPI", async function (req, res, next) {
     }
 });
 
+router.get("/updateGame/:id", async function (req, res, next) {
+    try {
+        await service.atualizarInfoJogoAPI(req.params.id, function(response) {
+            res.json(response);
+        });
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 router.post("/aposta", async function (req, res, next) {
     try {
         res.json(await service.salvarAposta(req.body));

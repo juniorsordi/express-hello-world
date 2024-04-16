@@ -671,6 +671,22 @@ app.factory('RestService', function ($http) {
         }
     }
 });
+app.factory('RestService2', function ($http) {
+    return {
+        getData: function (path, callback) {
+            $http.get("https://dsjprojetos.cyclic.app/api" + path).then(callback);
+        },
+        postData: function (path, param, callback) {
+            $http.post("https://dsjprojetos.cyclic.app/api" + path, param).then(callback);
+        },
+        putData: function (path, param, callback) {
+            $http.put("https://dsjprojetos.cyclic.app/api" + path, param).then(callback);
+        },
+        deleteData: function (path, callback) {
+            $http.delete("https://dsjprojetos.cyclic.app/api" + path).then(callback);
+        }
+    }
+});
 ///#####################################################################################################
 app.factory('PagSeguroService', function($http) {
     return {

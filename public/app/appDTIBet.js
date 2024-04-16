@@ -14,7 +14,7 @@ app.config(function ($controllerProvider) {
     app.controller = $controllerProvider.register;
 });
 ///#####################################################################################################
-app.controller("AppController", function ($scope, $rootScope, $routeParams, RestService, $window, $translate) {
+app.controller("AppController", function ($scope, $rootScope, $routeParams, $http, RestService, RestService2, $window, $translate) {
     $scope.versao = "1.10.0";
 
     $scope.showSideMenu = false;
@@ -220,7 +220,7 @@ FIFA World Cup - 2000
     }
 
     $scope.listarEventosPorCampeonato = function() {
-        RestService.getData("/dtibet/proximosEventos?id="+$scope.filtro.id_campeonato, function(resp) {
+        RestService2.getData("/dtibet/proximosEventos?id="+$scope.filtro.id_campeonato, function(resp) {
             $scope.arrEventos = resp.data;
 
             verificarRanking();
@@ -229,7 +229,7 @@ FIFA World Cup - 2000
 
     $scope.listarProximosEventos = function() {
         $scope.arrRankingDia = [];
-        RestService.getData("/dtibet/proximosEventos", function(resp) {
+        RestService2.getData("/dtibet/proximosEventos", function(resp) {
             $scope.arrEventos = resp.data;
 
             verificarRanking();
@@ -239,13 +239,13 @@ FIFA World Cup - 2000
     }
 
     $scope.listarApostas = function(id) {
-        RestService.getData("/dtibet/"+id+"/apostas", function(resp) {
+        RestService2.getData("/dtibet/"+id+"/apostas", function(resp) {
             $scope.apostas = resp.data;
         })
     }
 
     $scope.salvarAposta = function(form) {
-        RestService.postData("/dtibet/aposta", form, function(resp) {
+        RestService2.postData("/dtibet/aposta", form, function(resp) {
             if(resp.data.success) {
                 $scope.form = {};
                 goto("/");
@@ -256,7 +256,7 @@ FIFA World Cup - 2000
     }
 
     $scope.salvarJogo = function(form) {
-        RestService.postData("/dtibet/jogo", form, function(resp) {
+        RestService2.postData("/dtibet/jogo", form, function(resp) {
             if(resp.data.success) {
                 $scope.form = {};
                 goto("/");
@@ -266,8 +266,15 @@ FIFA World Cup - 2000
         })
     }
 
+    $scope.atualizarInfoJogo = function(id) {
+
+        RestService2.getData("/dtibet/updateGame/"+id, function(resp) {
+            $scope.listarEventosPorCampeonato();
+        });
+    }
+
     $scope.listarJogos = function() {
-        RestService.getData("/dtibet/jogos", function(resp) {
+        RestService2.getData("/dtibet/jogos", function(resp) {
             $scope.jogos = resp.data;
         });
     }
@@ -285,7 +292,7 @@ FIFA World Cup - 2000
     $scope.initCadAposta = function() {
         //let jogo = $scope.arrEventos.find( e => e.id == $routeParams.id);
         if($routeParams.id) {
-            RestService.getData("/dtibet/jogo/"+$routeParams.id, function(resp) {
+            RestService2.getData("/dtibet/jogo/"+$routeParams.id, function(resp) {
                 $scope.arrEventos = resp.data;
                 if($routeParams.id) {
                     let jogo = resp.data.find( e => e.id == $routeParams.id);
