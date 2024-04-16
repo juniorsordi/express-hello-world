@@ -14,7 +14,7 @@ router.get("/jogos", async function (req, res, next) {
 
 router.get("/proximosEventos", async function (req, res, next) {
     try {
-        res.json(await service.getProximosEventos());
+        res.json(await service.getProximosEventos(req.query.id));
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);
@@ -24,6 +24,17 @@ router.get("/proximosEventos", async function (req, res, next) {
 router.get("/:id/apostas", async function (req, res, next) {
     try {
         res.json(await service.getApostasByIdJogo(req.params.id));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
+router.get("/testeAPI", async function (req, res, next) {
+    try {
+        await service.pegarListaJogosAPI(function(result) {
+            res.json(result);
+        });
     } catch (err) {
         console.error(`Error while getting response`, err.message);
         next(err);

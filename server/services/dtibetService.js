@@ -1,8 +1,13 @@
 const database = require("../infra/postgres");
+const fetch = require('node-fetch');
+const request = require('request');
 
-async function getProximosEventos() {
+async function getProximosEventos(id_campeonato) {
     try {
-        let SQL = `SELECT * FROM dtibet.jogos WHERE encerrado = 0 ORDER BY data_jogo ASC`;
+        if(id_campeonato == null) { id_campeonato = 1; }
+        let SQL = `SELECT * FROM dtibet.jogos 
+        WHERE encerrado <> 1 and data_jogo <= now() + interval '5' day AND id_campeonato = ${id_campeonato}
+        ORDER BY data_jogo ASC`;
         let listaJogos = await database.any(SQL);
         for (const jogo of listaJogos) {
         //listaJogos.forEach(jogo => {
@@ -69,6 +74,46 @@ async function atualizarJogo(fields) {
     }
 }
 
+async function pegarListaJogosAPI(callback) {
+    let url = "https://api.football-data.org/v4/competitions/2013/matches";
+    let headers = {
+        'X-Auth-Token': '5185ef7e31a44439915632d4a8dfb08a',
+        'Access-Control-Allow-Methods': "GET",
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Headers': "x-auth-token, x-response-control",
+        'Content-Length': 0
+    };
+    //let lista = fetch(url, { method: 'GET', headers: headers });
+    //return lista;
+    return request({
+        url: url,
+        headers: headers,
+        json: true
+    }, function(err, response, body) {
+        let result = body;
+        for(const jogo of body.matches) {
+            if(jogo.homeTeam == null) { continue; }
+            let fields = {
+                id_campeonato: 1,
+                time_a: jogo.homeTeam.shortName,
+                time_b: jogo.awayTeam.shortName,
+                data_jogo: jogo.utcDate,
+                horario: jogo.utcDate.substring(11,16),
+                encerrado: 0
+            };
+            if(jogo.status == 'FINISHED') {
+                fields.gols_a = jogo.score.fullTime.home;
+                fields.gols_b = jogo.score.fullTime.away;
+                fields.encerrado = 1;
+            }
+
+            let SQL = `INSERT INTO dtibet.jogos VALUES (${jogo.id}, $1, $2, $3, $4, $5, $6, $7, $8)`;
+            database.any(SQL,[fields.id_campeonato, fields.time_a, fields.time_b, fields.gols_a, fields.gols_b, fields.data_jogo, fields.horario, fields.encerrado]);
+        }
+        return callback(result);
+    });
+}
+
 module.exports = {
     getProximosEventos,
     getApostasByIdJogo,
@@ -76,4 +121,5 @@ module.exports = {
     salvarAposta,
     salvarJogo,
     atualizarJogo,
+    pegarListaJogosAPI,
 }

@@ -177,6 +177,15 @@
                     </a>
 
                     <div ng-include="'app/views/DTIBet/sidemenu.html'"></div>
+                    <div style="background-color: white;color: black;margin: 5px;">
+                        <h3>Ranking</h3>
+                        <table class="table">
+                            <tr ng-repeat="apostador in listaApostadores">
+                                <td>{{ apostador.nome }}</td>
+                                <td width="5%">{{ apostador.pontos }}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </nav>
             <div class="main">

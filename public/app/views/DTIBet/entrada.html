@@ -3,7 +3,7 @@
         <div class="col-md-12" ng-init="listarProximosEventos()">
             <h2>DTI Bet</h2>
 
-            <div class="row">
+            <div class="row d-none">
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
@@ -20,14 +20,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    Selecione o Campeonato:
+                </div>
+                <div class="col-md-6">
+                    <select class="form-control" ng-change="listarEventosPorCampeonato()" ng-model="filtro.id_campeonato" ng-options="item.id as item.nome for item in listaCampeonatos"></select>
+                </div>
+            </div>
+            <br>
+            <br>
             
 
             <div class="row">
                 <div ng-repeat="evento in arrEventos" class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ evento.time_a }} x {{ evento.time_b }} - {{ evento.data_jogo | date:'dd/MM/yyyy' }}</h4>
+                            <h4 class="card-title">{{ evento.time_a }} x {{ evento.time_b }}</h4>
                             <p class="card-text">
+                                <span style="font-size: 13px;font-weight: bold;">{{ evento.data_jogo | date:'dd/MM/yyyy' }} - {{ evento.horario }}</span><br>
                                 <span ng-if="evento.encerrado == 1" class="badge rounded-pill text-bg-danger" >Encerrado</span >
                                 <div class="text-center" style="font-size: 40px;">
                                     {{ evento.gols_a }} x {{ evento.gols_b }}
@@ -57,6 +69,24 @@
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3" ng-repeat="jogo in jogosAPI">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ jogo.homeTeam.shortName }} x {{ jogo.awayTeam.shortName }}</h4>
+                            <p class="card-text">
+                                <span style="font-size: 13px;font-weight: bold;">{{ jogo.utcDate | date:'dd/MM/yyyy HH:mm' }}</span><br>
+                                <span ng-if="jogo.status == 'FINISHED'" class="badge rounded-pill text-bg-danger">Encerrado</span>
+                                <div class="text-center" style="font-size: 40px;">
+                                    {{ jogo.score.fullTime.home }} x {{ jogo.score.fullTime.away }}
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             
