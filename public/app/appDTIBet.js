@@ -22,7 +22,7 @@ app.controller("AppController", function ($scope, $rootScope, $routeParams, $htt
     $scope.form = {};
     $scope.filtro = {};
 
-    var date = new Date().toISOString().substring(0, 10);
+    let date = new Date().toISOString().substring(0, 10);
     console.log(date);
 
     $scope.languagesList = [
@@ -137,6 +137,19 @@ FIFA World Cup - 2000
         { id: 1, nome: 'Johlen' },
         { id: 8, nome: 'Leonardo' },
         { id: 3, nome: 'Lucas' },
+        { id: 9, nome: 'Luciano' },
+        { id: 4, nome: 'Matheus' },
+        { id: 6, nome: 'Thayse' },
+    ];
+
+    $scope.listaApostadoresOrdenada = [
+        { id: 5, nome: 'Dilson' },
+        { id: 7, nome: 'Edilson' },
+        { id: 2, nome: 'Jackson' },
+        { id: 1, nome: 'Johlen' },
+        { id: 8, nome: 'Leonardo' },
+        { id: 3, nome: 'Lucas' },
+        { id: 9, nome: 'Luciano' },
         { id: 4, nome: 'Matheus' },
         { id: 6, nome: 'Thayse' },
     ];
@@ -217,6 +230,18 @@ FIFA World Cup - 2000
                 item.pontos = temp;
             }
             let tempOrdernado = Object.values($scope.listaApostadores).sort((a,b) => b.pontos - a.pontos);
+            let listaTop = tempOrdernado.filter( e => e.pontos == tempOrdernado[0].pontos);
+            let divisaoPote = $scope.poteMaximo / listaTop.length;
+            for(const item of tempOrdernado) {
+                for(const top of listaTop) {
+                    if(item.id == top.id) {
+                        item.valor = divisaoPote;
+                    } else {
+                        item.valor = 0;
+                    }
+                }
+            }
+            //console.log(tempOrdernado);
             $scope.listaApostadores = tempOrdernado;
     }
 
@@ -227,6 +252,14 @@ FIFA World Cup - 2000
             verificarRanking();
         });
     }
+
+    $scope.mudarStatus = function(status, id) {
+        RestService.putData("/dtibet/jogo/"+id, { status }, function(resp) {
+
+        });
+    }
+
+    $scope.poteMaximo = $scope.listaApostadores.length * 2.00;
 
     $scope.listarProximosEventos = function() {
         $scope.arrRankingDia = [];
@@ -273,13 +306,13 @@ FIFA World Cup - 2000
 
     $scope.atualizarInfoJogo = function(id) {
 
-        RestService2.getData("/dtibet/updateGame/"+id, function(resp) {
+        RestService.getData("/dtibet/updateGame/"+id, function(resp) {
             $scope.listarProximosEventos();
         });
     }
 
     $scope.listarJogos = function() {
-        RestService2.getData("/dtibet/jogos", function(resp) {
+        RestService.getData("/dtibet/jogos", function(resp) {
             $scope.jogos = resp.data;
         });
     }
@@ -295,9 +328,8 @@ FIFA World Cup - 2000
     }
 
     $scope.initCadAposta = function() {
-        //let jogo = $scope.arrEventos.find( e => e.id == $routeParams.id);
         if($routeParams.id) {
-            RestService2.getData("/dtibet/jogo/"+$routeParams.id, function(resp) {
+            RestService.getData("/dtibet/jogo/"+$routeParams.id, function(resp) {
                 $scope.arrEventos = resp.data;
                 if($routeParams.id) {
                     let jogo = resp.data.find( e => e.id == $routeParams.id);
@@ -308,17 +340,6 @@ FIFA World Cup - 2000
         } else {
 
         }
-        /*
-        RestService.getData("/dtibet/proximosEventos", function(resp) {
-            $scope.arrEventos = resp.data;
-
-            if($routeParams.id) {
-                let jogo = resp.data.find( e => e.id == $routeParams.id);
-                $scope.form.jogo = jogo;
-                document.getElementById("f2").disabled = true;
-            }
-        });
-        //*/
     }
 
 });

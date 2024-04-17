@@ -179,10 +179,12 @@
                     <div ng-include="'app/views/DTIBet/sidemenu.html'"></div>
                     <div style="background-color: white;color: black;margin: 5px;">
                         <h3>Ranking</h3>
+                        <h5>Pote Máximo: {{ poteMaximo | currency:'R$ ' }}</h5>
                         <table class="table">
                             <tr ng-repeat="apostador in listaApostadores">
-                                <td>{{ apostador.nome }}</td>
-                                <td width="5%">{{ apostador.pontos }}</td>
+                                <td style="padding: 2px;">{{ apostador.nome }}</td>
+                                <td width="3%" style="padding: 2px;">{{ apostador.pontos }}</td>
+                                <td width="18%" style="font-size: 9px;padding: 2px;">{{ apostador.valor | currency:'R$ ' }}</td>
                             </tr>
                         </table>
                     </div>

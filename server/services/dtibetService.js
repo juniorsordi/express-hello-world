@@ -1,12 +1,12 @@
 const database = require("../infra/postgres");
-const fetch = require('node-fetch');
+const moment = require("moment");
 const request = require('request');
 
 async function getProximosEventos() {
     try {
         let SQL = `SELECT * FROM dtibet.jogos 
         WHERE encerrado = 0 and data_jogo BETWEEN now() AND now() + interval '3' day
-        ORDER BY data_jogo ASC`;
+        ORDER BY data_jogo ASC, importancia DESC`;
         let listaJogos = await database.any(SQL);
         for (const jogo of listaJogos) {
         //listaJogos.forEach(jogo => {
@@ -22,7 +22,7 @@ async function listarJogosDoDia() {
     try {
         let SQL = `SELECT * FROM dtibet.jogos 
         WHERE encerrado <> 1 and data_jogo <= now() + interval '1'
-        ORDER BY data_jogo ASC`;
+        ORDER BY data_jogo ASC, importancia DESC`;
         let listaJogos = await database.any(SQL);
         for (const jogo of listaJogos) {
             jogo.apostas = await database.any("SELECT * FROM dtibet.apostas WHERE id_jogo = $1 ORDER BY nome ASC", [jogo.id]);
@@ -35,7 +35,7 @@ async function listarJogosDoDia() {
 
 async function listarJogos() {
     try {
-        let SQL = `SELECT * FROM dtibet.jogos ORDER BY data_jogo DESC`;
+        let SQL = `SELECT * FROM dtibet.jogos WHERE data_jogo BETWEEN '2024-04-01' AND '2024-05-31' ORDER BY data_jogo DESC`;
         return await database.any(SQL);
     } catch (err) {
         console.log(err);
@@ -100,6 +100,18 @@ async function atualizarJogo(fields) {
     }
 }
 
+async function mudarStatus(idJogo, fields) {
+    try {
+        let SQL = `UPDATE dtibet.jogos SET 
+            encerrado = $2
+        WHERE id = $1`;
+        return await database.any(SQL,[idJogo, fields.status]);
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
 async function atualizarInfoJogoAPI(id, callback) {
     //5185ef7e31a44439915632d4a8dfb08a
     let url = "https://api.football-data.org/v4/matches/"+id;
@@ -149,12 +161,13 @@ async function pegarListaJogosAPI(callback) {
         let result = body;
         for(const jogo of body.matches) {
             if(jogo.homeTeam == null) { continue; }
+            let data_jogo = moment(jogo.utcDate);
             let fields = {
                 id_campeonato: 1,
                 time_a: jogo.homeTeam.shortName,
                 time_b: jogo.awayTeam.shortName,
-                data_jogo: jogo.utcDate,
-                horario: jogo.utcDate.substring(11,16),
+                data_jogo: data_jogo.format("YYYY-MM-DD"),
+                horario: data_jogo.format('hh:mm'),
                 encerrado: 0
             };
             if(jogo.status == 'FINISHED') {
@@ -163,8 +176,9 @@ async function pegarListaJogosAPI(callback) {
                 fields.encerrado = 1;
             }
 
-            let SQL = `INSERT INTO dtibet.jogos VALUES (${jogo.id}, $1, $2, $3, $4, $5, $6, $7, $8)`;
-            database.any(SQL,[fields.id_campeonato, fields.time_a, fields.time_b, fields.gols_a, fields.gols_b, fields.data_jogo, fields.horario, fields.encerrado]);
+            let SQL = `INSERT INTO dtibet.jogos VALUES (${jogo.id}, $1, $2, $3, $4, $5, $6, $7, $8, 0)`;
+            console.log([SQL, fields]);
+            //database.any(SQL,[fields.id_campeonato, fields.time_a, fields.time_b, fields.gols_a, fields.gols_b, fields.data_jogo, fields.horario, fields.encerrado]);
         }
         return callback(result);
     });
@@ -179,6 +193,7 @@ module.exports = {
     salvarAposta,
     salvarJogo,
     atualizarJogo,
+    mudarStatus,
     pegarListaJogosAPI,
     atualizarInfoJogoAPI,
 }

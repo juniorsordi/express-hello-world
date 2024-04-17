@@ -97,5 +97,14 @@ router.put("/jogo", async function (req, res, next) {
     }
 });
 
+router.put("/jogo/:id", async function (req, res, next) {
+    try {
+        res.json(await service.mudarStatus(req.params.id, req.body));
+    } catch (err) {
+        console.error(`Error while getting response`, err.message);
+        next(err);
+    }
+});
+
 
 module.exports = router;

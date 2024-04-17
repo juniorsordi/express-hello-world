@@ -8,15 +8,51 @@
                             <h4 class="card-title">Jogos</h4>
                             <p class="card-text">
                                 <a class="btn btn-primary btn-sm " href="#!/novoJogo" role="button"> Novo Jogo</a>
+                                <i class="fa fa-refresh" aria-hidden="true" ng-click="listarJogos()"></i>
                                 <table class="table table-bordered table-striped">
-                                    <tr ng-repeat="jogo in jogos">
+                                    <thead>
+                                        <tr>
+                                            <td colspan="6">
+                                                <input type="text" class="form-control" ng-model="filtroJogos">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Time da Casa</th>
+                                            <th>Placar</th>
+                                            <th>Time Visitante</th>
+                                            <th>Data Jogo</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tr ng-repeat="jogo in jogos | filter: filtroJogos">
                                         <td>{{ jogo.time_a }}</td>
                                         <td width="8%" align="center">{{ jogo.gols_a }} X {{ jogo.gols_b }}</td>
                                         <td>{{ jogo.time_b }}</td>
                                         <td width="19%">{{ jogo.data_jogo | date:'dd/MM/yyyy' }} {{ jogo.horario }}</td>
+                                        <td>
+                                            {{ (jogo.encerrado == 0 ? 'Agendado' : (jogo.encerrado == 2 ? 'Em Andamento' : 'Encerrado')) }}
+                                        </td>
                                         <td width="8%">
-                                            {{ jogo.encerrado }}
-                                            <a href="#!/editarJogo/{{ jogo.id }}" alt=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a href="#!/editarJogo/{{ jogo.id }}" alt=""><i class="fa fa-pencil" aria-hidden="true" alt=""></i></a>
+                                            <div class="dropdown">
+                                                <button
+                                                    class="btn btn-secondary dropdown-toggle"
+                                                    type="button"
+                                                    id="triggerId"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"
+                                                >
+                                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="triggerId">
+                                                    <a class="dropdown-item" href="" ng-click="mudarStatus(2, jogo.id)">Colocar em Andamento</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="" ng-click="mudarStatus(1, jogo.id)">Encerrar Jogo</a>
+                                                </div>
+                                            </div>
+                                            
                                         </td>
                                     </tr>
                                 </table>
