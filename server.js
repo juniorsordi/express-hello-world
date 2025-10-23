@@ -75,9 +75,7 @@ try {
     console.error('connection error:', err)
   });
 
-  ///
   // Load the /posts routes
-  //app.use("/posts", posts);
   app.use('/api/', authRoutes);
   app.use('/api/v1/hospital/pessoas', hospitalRoutes);
   
@@ -85,21 +83,9 @@ try {
 
   app.get('/api/test', async function (req, res) {
     const tennisPlayers = await UsuarioModel.find({}).exec();
-    //await UsuarioModel.createCollection();
-    //await UsuarioModel.create({ nome: "Dilson Sordi Junior", email: "juniorsordi@gmail.com", senha: "123456", empresa: "G4F", ativo: true });
     res.send(tennisPlayers);
   });
 
-  app.get('/api/test/pessoa', async function (req, res) {
-    let pessoa = await PessoasModel.find({
-      cpf: req.query.cpf
-    }).exec();
-    if (pessoa.length == 0) {
-      pessoa = await PessoasModel.create({ nome: "Dilson Sordi Junior", cpf: "13783002036", data_nascimento: "2022-01-01", cep: "12345678", logradouro: "Rua 1", numero: "1", bairro: "Bairro 1", cidade: "Cidade 1", estado: "Estado 1", plano_saude: "Plano 1" });
-    }
-    res.send(pessoa);
-  })
-  //*/
   app.use((err, _req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Uh oh! An unexpected error occured.")
@@ -109,14 +95,10 @@ try {
   app.response.status(500).send(error);
 }
 
-
-//await SomeModel.create({ nome: "Dilson Sordi Junior", cpf: "03543977962", data_nascimento: "2022-01-01", cep: "12345678", logradouro: "Rua 1", numero: "1", bairro: "Bairro 1", cidade: "Cidade 1", estado: "Estado 1", plano_saude: "Plano 1" });
-
 // Global error handling
 var errorHandler = function (err, req, res, next) {
   console.error(err);
   res.status(422);
-  //res.send({ error: err });
   res.json({ message: err.message });
 };
 
