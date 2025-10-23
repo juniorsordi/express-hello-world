@@ -1,16 +1,17 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-
-const controller = require('../controllers/auth');
-const mailer = require("../infra/mailer");
-
+//const auth = require("../middleware/auth");
+//const controller = require('../controllers/auth');
+import * as controller from '../controllers/auth.js';
+//const mailer = require("../infra/mailer");
+import * as mailer from "../infra/mailer.js";
 
 router.post("/auth/login", async function (req, res, next) {
     try {
         // Get user input
         const { email, password } = req.body;
-        const user = await controller.userLoginPG(email, password);
+        const user = await controller.userLoginMongo(email, password);
+        console.log(user);
         // user
         if (user) {
             res.cookie("access_token", user.token, {
@@ -21,14 +22,14 @@ router.post("/auth/login", async function (req, res, next) {
             //
             res.cookie("user", user, { maxAge: 86400000 });
             res.cookie("IDUser", user.id, { maxAge: 86400000 });
-            res.cookie("IDEmpresa", user.id_empresa, { maxAge: 86400000 });
+            //res.cookie("IDEmpresa", user.id_empresa, { maxAge: 86400000 });
             res.cookie("token", user.token, { maxAge: 86400000 });
             //*/
-            req.session.loggedin = true;
-            req.session.userID = user.id;
+            //req.session.loggedin = true;
+            //req.session.userID = user.id;
             //req.session.user = user;
-            req.session.token = user.token;
-            req.session.save(function(err) { console.log(err); });
+            //req.session.token = user.token;
+            //req.session.save(function(err) { console.log(err); });
             res.status(200).json(user);
         } else {
             res.status(200).json({ success: false, msg: "Invalid Credentials" });
@@ -106,4 +107,4 @@ router.get("/auth/testPwd", async function (req, res, next) {
     }
 });
 
-module.exports = router;
+export default router; 

@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
-const send = async function (email) {
+export async function send(email) {
     const transporter = nodemailer.createTransport({
         name: 'Consultoria RB',
         host: 'email-smtp.us-east-1.amazonaws.com',
@@ -30,8 +30,4 @@ const send = async function (email) {
         //*/
     //});
     return info;
-};
-
-module.exports = {
-    send
 };

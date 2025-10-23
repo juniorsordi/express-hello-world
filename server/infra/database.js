@@ -11,4 +11,4 @@ if(process.env.DATABASE_TYPE == "postgres") { database = postgres; }
 //if(process.env.DATABASE_TYPE == "mongo")    { database = mongo; }
 //if(process.env.DATABASE_TYPE == "mysql")    { database = mysql; }
 
-module.exports = database;
+export default database;

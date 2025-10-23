@@ -1,15 +1,11 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
-const auth = require("../middleware/auth");
-const service = require("../services/usuarioService");
+import * as service from '../services/usuarioService.js';
 
-router.get("/list", async function (req, res, next) {
-    try {
-        res.json(await service.listarUsuarios());
-    } catch (err) {
-        console.error(`Error while getting response`, err.message);
-        next(err);
-    }
-});
+router.get("/", service.listarUsuarios);
 
-module.exports = router;
+router.get("/:id", service.pegarUsuario);
+
+router.post("/", service.criarUsuario);
+
+export default router; 

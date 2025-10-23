@@ -1,16 +1,43 @@
-const db = require('../infra/database');
+//const db = require('../infra/database');
 //const postgres = require('../infra/postgres');
-var crypto = require('crypto');
-const sha256 = require('sha256');
-const jwt = require("jsonwebtoken");
-const utils = require("../infra/utils");
-const companyCtrl = require("./company");
-var pbkdf2 = require('pbkdf2')
+//var crypto = require('crypto');
+//const sha256 = require('sha256');
+//const jwt = require("jsonwebtoken");
+//const utils = require("../infra/utils");
+//const companyCtrl = require("./company");
+//var pbkdf2 = require('pbkdf2')
 
-var fs = require('fs');
+//var fs = require('fs');
+//import * as db from '../infra/database';
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
+import { PessoasModel, UsuarioModel } from "../models/pessoas.js";
 //var parser = require('xml2json');
 
-async function userLogin(email, password) {
+export async function userLoginMongo(email, password) {
+    try {
+        // Validate user input
+        console.log(email, password);
+        if (!(email && password)) {
+            //res.status(400).send("All input is required");
+            return null;
+        }
+        let hashPassword = crypto.createHash('sha1');
+        hashPassword.update(password);
+        var tempHash = hashPassword.digest('hex');
+        // Validate if user exist in our database
+        const user = await UsuarioModel.findOne({ email: email, senha: password, ativo: true }).exec();
+        if (user) {
+            return user;
+        }
+        return null;
+    } catch (err) {
+        console.log(err);
+        return null;
+    }
+}
+
+export async function userLogin(email, password) {
     try {
         // Validate user input
         if (!(email && password)) {
@@ -22,6 +49,7 @@ async function userLogin(email, password) {
         var tempHash = hashPassword.digest('hex');
         // Validate if user exist in our database
         //const tempUser = await db1.query("SELECT * FROM usuario WHERE email = ?", [email]);
+        /*
         const user = await db.get("SELECT * FROM usuario WHERE email = ?", [email]);
 
         if (user && (tempHash == user.senha)) {
@@ -41,13 +69,14 @@ async function userLogin(email, password) {
         } else {
 
         }
+        //*/
         return null;
     } catch (err) {
         console.log(err);
     }
 }
 
-async function userRegister(fields) {
+export async function userRegister(fields) {
     try {
         let { nome, email, senha, empresa } = fields;
         
@@ -66,7 +95,7 @@ async function userRegister(fields) {
     
 }
 
-async function userRegisterPG(fields) {
+export async function userRegisterPG(fields) {
     try {
         let { nome, email, senha, empresa } = fields;
         
@@ -85,7 +114,7 @@ async function userRegisterPG(fields) {
     
 }
 
-async function userLoginPG(email, password) {
+export async function userLoginPG(email, password) {
     try {
         // Validate user input
         if (!(email && password)) {
@@ -119,7 +148,7 @@ async function userLoginPG(email, password) {
     }
 }
 
-async function testePassword() {
+export async function testePassword() {
     //ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413
     //ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413
     let pwdDB = "b32f01d1d3c368fc335b99d9a18a23e9dd7187d73e971f7c940daa17c91f411ef9f162765409af271c432513ee3ccaad17bee0cbf0f708698ef689981caefcb0";
@@ -147,7 +176,7 @@ async function testePassword() {
     };
 }
 
-async function processManifestXML() {
+export async function processManifestXML() {
     /*
     fs.readFile('./manifest_sample.xml', function (err, data) {
         var json = parser.toJson(data, { object: true });
@@ -220,13 +249,4 @@ async function processManifestXML() {
         
     });
     //*/
-}
-
-module.exports = {
-    userLogin,
-    userRegister,
-    userLoginPG,
-    userRegisterPG,
-    processManifestXML,
-    testePassword,
 }
